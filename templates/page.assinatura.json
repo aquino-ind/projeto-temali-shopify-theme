@@ -5,6 +5,7 @@
       "settings": {
         "texto": "Escolha os cafés e a frequência: mensal, bimestral ou trimestral. A gente envia no prazo combinado, sem você precisar lembrar de comprar e sem pagar frete.",
         "produto_a": "cafe-torra-media-84-pontos",
+        "imagem_a_padrao": "tml-assinatura-servindo.webp",
         "imagem_b_padrao": "tml-preparo-espresso-em-casa.jpg"
       },
       "blocks": {

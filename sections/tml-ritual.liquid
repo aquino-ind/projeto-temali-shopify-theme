@@ -1,0 +1,46 @@
+{%- comment -%}
+  O ritual: preparo em 4 passos com fotos reais (pese, moa, despeje, sirva). As fotos não mostram o pacote, então a seção serve para os dois cafés.
+{%- endcomment -%}
+<div class="tml">
+  <section class="ritual-sec" id="ritual">
+    <div class="wrap">
+      <div class="centro reveal">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+        {%- if section.settings.texto != blank -%}<p class="lead">{{ section.settings.texto }}</p>{%- endif -%}
+      </div>
+      <ol class="ritual reveal">
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>
+            <figure>{% render 'tml-imagem', img: block.settings.imagem, asset: block.settings.imagem_padrao, alt: block.settings.alt, largura: 800, altura: 1000, sizes: '(max-width: 760px) 50vw, 25vw' %}</figure>
+            <span class="rit-n">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            <h3>{{ block.settings.titulo }}</h3>
+            <p>{{ block.settings.texto }}</p>
+          </li>
+        {%- endfor -%}
+      </ol>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • O ritual",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "O ritual" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Quatro gestos, uma pausa no seu dia" },
+    { "type": "textarea", "id": "texto", "label": "Texto" }
+  ],
+  "blocks": [
+    { "type": "passo", "name": "Passo", "settings": [
+      { "type": "image_picker", "id": "imagem", "label": "Foto" },
+      { "type": "text", "id": "imagem_padrao", "label": "Foto padrão (arquivo do tema)" },
+      { "type": "text", "id": "alt", "label": "Descrição da foto (acessibilidade)" },
+      { "type": "text", "id": "titulo", "label": "Título" },
+      { "type": "textarea", "id": "texto", "label": "Texto" }
+    ]}
+  ],
+  "max_blocks": 6,
+  "presets": [ { "name": "T • O ritual" } ]
+}
+{% endschema %}

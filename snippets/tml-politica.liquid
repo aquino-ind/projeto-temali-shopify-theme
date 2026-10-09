@@ -1,0 +1,42 @@
+{%- comment -%}
+  Moldura das páginas de política (/policies/...). O texto é o cadastrado na Shopify (Configurações → Políticas):
+  o layout/theme.liquid chama este snippet com parte: 'inicio' antes do content_for_layout e parte: 'fim' depois.
+  Menu: todas as políticas cadastradas (shop.policies). "Nesta página": montado pelo tml.js a partir dos títulos do texto.
+{%- endcomment -%}
+{%- if parte == 'inicio' -%}
+<div class="tml">
+  <section class="pol-hero escuro">
+    <div class="wrap">
+      <span class="eyebrow">Políticas da loja</span>
+      <h1>{{ page_title }}</h1>
+      <p class="lead">Regras claras para você comprar com tranquilidade. Ficou alguma dúvida? A gente responde pelo WhatsApp.</p>
+    </div>
+  </section>
+  <div class="wrap pol-grid">
+    <aside class="pol-lado">
+      <nav class="pol-nav" aria-label="Políticas da loja">
+        <span class="pol-rot">Políticas</span>
+        <ul>
+          {%- for p in shop.policies -%}
+            <li><a href="{{ p.url }}"{% if p.url == request.path %} aria-current="page"{% endif %}>{{ p.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+      <nav class="pol-toc" data-pol-toc hidden aria-label="Nesta página">
+        <span class="pol-rot">Nesta página</span>
+        <ol></ol>
+      </nav>
+    </aside>
+    <article class="pol-conteudo" data-pol>
+{%- else -%}
+      <div class="pol-ajuda">
+        <div>
+          <b>Ficou alguma dúvida?</b>
+          <p>Atendimento humano, de segunda a sexta, das 9h às 16h.</p>
+        </div>
+        <a class="btn btn-whats" href="https://wa.me/{{ settings.tml_whats_numero }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </article>
+  </div>
+</div>
+{%- endif -%}

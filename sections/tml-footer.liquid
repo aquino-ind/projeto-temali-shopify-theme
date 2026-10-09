@@ -26,6 +26,12 @@
       </div>
       <div class="rodape-fim">
         <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos os direitos reservados.{% if section.settings.empresa != blank %} {{ section.settings.empresa }}{% endif %}</span>
+        {%- comment -%} todas as políticas cadastradas em Configurações → Políticas, automaticamente {%- endcomment -%}
+        {%- if shop.policies.size > 0 -%}
+          <nav class="rodape-pol" aria-label="Políticas da loja">
+            {%- for p in shop.policies -%}<a href="{{ p.url }}">{{ p.title }}</a>{%- endfor -%}
+          </nav>
+        {%- endif -%}
         <span>{{ section.settings.selos }}</span>
       </div>
     </div>

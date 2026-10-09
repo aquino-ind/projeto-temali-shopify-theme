@@ -39,29 +39,42 @@
         "b3": {
           "type": "ficha",
           "settings": {
-            "rotulo": "Peso",
-            "valor": "500g"
+            "rotulo": "Bebida[i:mole]",
+            "valor": "Mole"
           }
         },
         "b4": {
-          "type": "garantia",
+          "type": "ficha",
           "settings": {
-            "texto": "Envio em até 48h após o pedido"
+            "rotulo": "Peso",
+            "valor": "500g"
           }
         },
         "b5": {
           "type": "garantia",
           "settings": {
-            "texto": "Frete grátis acima de R$ 150"
+            "texto": "Envio em até 48h após o pedido"
           }
         },
         "b6": {
           "type": "garantia",
           "settings": {
-            "texto": "100% arábica, zero aditivos[i:arabica]"
+            "texto": "Frete grátis acima de R$ 150"
           }
         },
         "b7": {
+          "type": "garantia",
+          "settings": {
+            "texto": "100% arábica, zero aditivos[i:arabica]"
+          }
+        },
+        "b8": {
+          "type": "garantia",
+          "settings": {
+            "texto": "Garantia de satisfação: não gostou, devolvemos seu dinheiro"
+          }
+        },
+        "b9": {
           "type": "garantia",
           "settings": {
             "texto": "Compra segura"
@@ -75,7 +88,9 @@
         "b4",
         "b5",
         "b6",
-        "b7"
+        "b7",
+        "b8",
+        "b9"
       ]
     },
     "s2": {
@@ -296,9 +311,9 @@
         "b4": {
           "type": "pilar",
           "settings": {
-            "icone": "frete",
-            "titulo": "Envio em até 48h",
-            "texto": "Seu pedido sai em até 48h após a compra."
+            "icone": "mao",
+            "titulo": "Da fazenda da família",
+            "texto": "Cultivado na Fazenda Maria Ângela, da família, desde 1985."
           }
         }
       },
@@ -385,8 +400,8 @@
         "b2": {
           "type": "item",
           "settings": {
-            "rotulo": "Espécie[i:arabica]",
-            "valor": "100% Arábica"
+            "rotulo": "Variedade[i:catuai]",
+            "valor": "Catuaí (100% arábica)"
           }
         },
         "b3": {
@@ -420,8 +435,8 @@
         "b7": {
           "type": "item",
           "settings": {
-            "rotulo": "Formatos[i:graos]",
-            "valor": "Grão ou moído"
+            "rotulo": "Processo[i:natural]",
+            "valor": "Natural"
           }
         },
         "b8": {
@@ -479,6 +494,58 @@
       ]
     },
     "s9": {
+      "type": "tml-ritual",
+      "settings": {
+        "eyebrow": "O ritual",
+        "titulo": "Quatro gestos, uma pausa no seu dia",
+        "texto": "Café especial pede pouco: uma balança, água quente e alguns minutos só seus."
+      },
+      "blocks": {
+        "b1": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Pese",
+            "texto": "Cerca de 10 g de café para cada 100 ml de água. A balança tira o acaso da receita.",
+            "imagem_padrao": "tml-ritual-pese.webp",
+            "alt": "Colher de grãos de café sendo despejada na balança"
+          }
+        },
+        "b2": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Moa na hora",
+            "texto": "Moído na hora, o grão guarda os aromas até chegar à xícara.",
+            "imagem_padrao": "tml-ritual-moa.webp",
+            "alt": "Mãos moendo café em um moedor manual"
+          }
+        },
+        "b3": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Despeje devagar",
+            "texto": "Água entre 90 e 96 °C, em círculos e sem pressa. É aqui que o sabor aparece.",
+            "imagem_padrao": "tml-ritual-despeje.webp",
+            "alt": "Água quente sobre o café no coador V60"
+          }
+        },
+        "b4": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Sirva",
+            "texto": "Prove primeiro sem açúcar e repare nas notas que vêm do próprio grão.",
+            "imagem_padrao": "tml-ritual-sirva.webp",
+            "alt": "Café coado sendo servido em um copo"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "s10": {
       "type": "tml-metodos-lista",
       "settings": {
         "titulo": "Funciona no seu método, qualquer que seja",
@@ -571,7 +638,7 @@
         "b10"
       ]
     },
-    "s10": {
+    "s11": {
       "type": "tml-depoimentos",
       "settings": {
         "ancora": "avaliacoes",
@@ -728,14 +795,14 @@
         "b13"
       ]
     },
-    "s11": {
+    "s12": {
       "type": "tml-avaliacoes-app",
       "settings": {
         "eyebrow": "Avaliações",
         "titulo": "Todas as avaliações do Clássico"
       }
     },
-    "s12": {
+    "s13": {
       "type": "tml-assinatura-cta",
       "settings": {
         "url": "/pages/assinatura",
@@ -743,7 +810,7 @@
         "texto": "Assine e receba o Temalli Clássico em casa a cada 1, 2 ou 3 meses, com frete grátis em todas as entregas."
       }
     },
-    "s13": {
+    "s14": {
       "type": "tml-faq",
       "settings": {},
       "blocks": {
@@ -785,6 +852,13 @@
         "b6": {
           "type": "pergunta",
           "settings": {
+            "pergunta": "E se eu não gostar do café?",
+            "resposta": "<p>Devolvemos o seu dinheiro. Nossa garantia de satisfação vale para qualquer produto da loja: comprou e não gostou, é só falar com a gente.</p>"
+          }
+        },
+        "b7": {
+          "type": "pergunta",
+          "settings": {
             "pergunta": "O que significa o nome Temalli?",
             "resposta": "<p>É o nome da família em três sílabas: <strong>TE</strong> de Téo, <strong>MA</strong> de Mateus e <strong>LLI</strong> de Lyvia. Mateus e Lyvia criaram a marca; o Téo é o filho do casal. A fazenda, em Piumhi (MG), está com a família desde 1985.</p>"
           }
@@ -796,10 +870,11 @@
         "b3",
         "b4",
         "b5",
-        "b6"
+        "b6",
+        "b7"
       ]
     },
-    "s14": {
+    "s15": {
       "type": "tml-cta-final",
       "settings": {
         "titulo": "Seu próximo café pode ser o melhor do mês",
@@ -807,6 +882,49 @@
         "botao": "Quero o kit Clássico",
         "url": "#comprar"
       }
+    },
+    "garantia": {
+      "type": "tml-garantia",
+      "settings": {
+        "titulo": "O nosso compromisso com você",
+        "texto": "Café especial é uma escolha de confiança. Por isso, o que prometemos está escrito aqui."
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "icone": "garantia",
+            "texto": "<b>Não gostou? Devolvemos o seu dinheiro.</b> A garantia de satisfação vale para qualquer produto da loja."
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "icone": "frete",
+            "texto": "<b>Envio em até 48h</b> após a compra, com frete grátis acima de R$ 150."
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "icone": "whats",
+            "texto": "<b>Atendimento humano</b> pelo WhatsApp, de segunda a sexta, das 9h às 16h."
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "icone": "cadeado",
+            "texto": "<b>Compra segura</b> no checkout da Shopify, com Pix ou cartão."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
     }
   },
   "order": [
@@ -822,7 +940,9 @@
     "s10",
     "s11",
     "s12",
+    "garantia",
     "s13",
-    "s14"
+    "s14",
+    "s15"
   ]
 }

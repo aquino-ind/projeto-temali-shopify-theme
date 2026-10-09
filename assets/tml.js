@@ -318,6 +318,8 @@
 
   // glossário (i): textos num lugar só; o HTML usa <button class="info" data-termo="sca">
   var GLOSSARIO = {
+    catuai: ['Catuaí', 'Uma das variedades de arábica mais tradicionais do Brasil, desenvolvida pelo Instituto Agronômico de Campinas. Dá cafés doces, equilibrados e de corpo médio, com notas de caramelo e chocolate.'],
+    natural: ['Processo natural', 'O fruto do café seca inteiro, com a casca, antes de o grão ser retirado. Durante a secagem o grão absorve açúcares da polpa, o que deixa a bebida mais doce e encorpada.'],
     sca: ['SCA', 'Specialty Coffee Association, entidade internacional que define como cafés são avaliados. Provadores certificados dão notas de 0 a 100. A partir de 80 pontos o café é considerado especial; a maioria do café vendido no mercado fica abaixo disso.'],
     mole: ['Bebida mole', 'Classificação brasileira da prova de xícara. Da melhor para a pior: estritamente mole, mole, apenas mole, dura, riada e rio. “Mole” indica um café suave e adocicado, sem aspereza ou adstringência.'],
     corpo: ['Corpo', 'É a textura e o “peso” do café na boca, como a diferença entre leite desnatado e integral. Corpo cremoso é denso e aveludado; equilibrado fica no meio, nem ralo nem pesado.'],
@@ -393,6 +395,8 @@
   var API = {
     carrinho: function(){ return fetch('/cart.js', {headers: {'Accept': 'application/json'}}).then(function(r){ return r.json(); }); },
     alterar: function(linha, qtd){ return fetch('/cart/change.js', {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}, body: JSON.stringify({line: linha, quantity: Math.max(0, qtd)})}).then(function(r){ return r.json(); }); },
+    // tira todas as linhas de um café de uma vez (a Shopify pode ter dividido o café em várias linhas por causa do desconto)
+    remover: function(chaves){ var u = {}; chaves.forEach(function(k){ u[k] = 0; }); return fetch('/cart/update.js', {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}, body: JSON.stringify({updates: u})}).then(function(r){ if(!r.ok){ throw r; } return r.json(); }); },
     adicionar: function(itens){ return fetch('/cart/add.js', {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}, body: JSON.stringify({items: itens})}).then(function(r){ if(!r.ok){ throw r; } return r.json(); }); },
     checkout: function(){ return CFG.checkout || '/checkout'; }
   };
@@ -409,7 +413,11 @@
   function ehKit(id){ return (CFG.kits || []).map(String).indexOf(String(id)) > -1; }
   var VAZIO_XICARA = '<span class="xicara-vapor" aria-hidden="true"><span class="vapor"><i></i><i></i><i></i></span><svg viewBox="0 0 44 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6h26v10a11 11 0 01-11 11h-4A11 11 0 016 16z"/><path d="M32 9h3a5 5 0 010 10h-3"/><path d="M3 31h34"/></svg></span>';
 
+  var ultimo = {items: []};   // último carrinho recebido: as ações da gaveta usam as linhas reais dele
+  var brindesVistos = {};     // brindes por café no desenho anterior (para destacar quando ganha um novo)
+  var ICONE_PRESENTE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v7a1 1 0 001 1h12a1 1 0 001-1v-7M12 8.5v12"/><path d="M12 8.5C10.5 5 7 4.5 7 6.6 7 8.5 12 8.5 12 8.5zM12 8.5c1.5-3.5 5-4 5-1.9 0 1.9-5 1.9-5 1.9z"/></svg>';
   function desenha(c, raiz, naGaveta){
+    ultimo = c;
     var minimo = CFG.freteMinimo || 15000;
     var cont = raiz.querySelector('[data-gav-count]');
     if(cont){ cont.textContent = c.item_count ? '(' + c.item_count + (c.item_count > 1 ? ' itens)' : ' item)') : ''; }
@@ -430,28 +438,43 @@
       frete.innerHTML = '<div class="gav-frete">Faltam <b>' + dinheiro(minimo - c.total_price) + '</b> para o frete grátis.<div class="gav-trilho"><i style="--p:' + Math.round(c.total_price / minimo * 100) + '%"></i></div></div>';
     }
     var noCarrinho = c.items.map(function(it){ return String(it.product_id); });
-    var totalKit = 0, linhaBrinde = 0, menor = Infinity;
-    c.items.forEach(function(it, i){
-      if(!ehKit(it.product_id)){ return; }
-      totalKit += it.quantity;
-      var unit = it.original_line_price / it.quantity;
-      if(unit < menor){ menor = unit; linhaBrinde = i + 1; }
+    // a Shopify divide o mesmo café em várias linhas quando aplica o "Pague 3, Leve 4" (ex.: 1 + 1 grátis + 3):
+    // na gaveta cada café/variante aparece uma vez só, e as unidades grátis ganham uma faixa de brinde
+    var grupos = [], porVar = {};
+    c.items.forEach(function(it){
+      var g = porVar[it.variant_id];
+      if(!g){ g = porVar[it.variant_id] = {it: it, quantidade: 0, original: 0, final: 0, desc: 0}; grupos.push(g); }
+      g.quantidade += it.quantity; g.original += it.original_line_price; g.final += it.final_line_price;
+      g.desc += (it.line_level_discount_allocations || []).reduce(function(s, a){ return s + a.amount; }, 0);
     });
-    if(totalKit % 4 !== 3){ linhaBrinde = 0; }
-    var itens = c.items.map(function(it, i){
-      var desc = (it.line_level_discount_allocations || []).reduce(function(s, a){ return s + a.amount; }, 0);
-      var linha = i + 1;
+    var totalKit = 0, varBrinde = null, menor = Infinity;
+    grupos.forEach(function(g){
+      if(!ehKit(g.it.product_id)){ return; }
+      totalKit += g.quantidade;
+      var unit = g.original / g.quantidade;
+      if(unit < menor){ menor = unit; varBrinde = g.it.variant_id; }
+    });
+    if(totalKit % 4 !== 3){ varBrinde = null; }
+    var brindesAntes = brindesVistos; brindesVistos = {};
+    var itens = grupos.map(function(g){
+      var it = g.it, v = it.variant_id, unit = g.original / g.quantidade;
+      var gratis = g.desc ? Math.round(g.desc / unit) : 0;
+      brindesVistos[v] = gratis;
       // compre 3, ganhe 1 (vale misturado): faltando 1 pacote, o aviso fica no café mais barato, que é o que sai de graça
-      var brinde = linha === linhaBrinde
-        ? '<button type="button" class="gav-brinde" data-gav-qtd="' + linha + '" data-q="' + (it.quantity + 1) + '"><span>Adicione o ' + (totalKit + 1) + 'º pacote de graça</span><b>Pague 3, Leve 4</b></button>' : '';
-      return '<div class="gav-item"><img src="' + esc(miniatura(it.image)) + '" alt="" width="76" height="76" loading="lazy"><div class="gav-info">' +
+      var aviso = v === varBrinde
+        ? '<button type="button" class="gav-brinde" data-gav-acao="mais" data-gav-var="' + v + '"><span>Adicione o ' + (totalKit + 1) + 'º pacote de graça</span><b>Pague 3, Leve 4</b></button>' : '';
+      var presente = gratis
+        ? '<div class="gav-presente' + (gratis > (brindesAntes[v] || 0) && brindesAntes._pronto ? ' novo' : '') + '"><span class="gav-presente-ic" aria-hidden="true">' + ICONE_PRESENTE + '</span>' +
+          '<div><b>' + gratis + (gratis > 1 ? ' unidades' : ' unidade') + ' de brinde</b><small>Pague 3, Leve 4</small></div>' +
+          '<div class="gav-presente-valor"><s>' + dinheiro(g.desc) + '</s><span>Grátis</span></div></div>' : '';
+      return '<div class="gav-item" data-gav-item="' + v + '"><img src="' + esc(miniatura(it.image)) + '" alt="" width="76" height="76" loading="eager" decoding="async"><div class="gav-info">' +
         '<div class="gav-linha1"><div><a class="gav-nome" href="' + esc(it.url) + '">' + esc(nomeCurto(it.product_title)) + '</a><span class="gav-var">' + esc(bonito(it.variant_title)) + '</span></div>' +
-        '<div class="gav-preco">' + (desc ? '<s>' + dinheiro(it.original_line_price) + '</s>' : '') + dinheiro(it.final_line_price) + '</div></div>' +
-        (desc ? '<span class="gav-desc">Pague 3, Leve 4: −' + dinheiro(desc) + '</span>' : '') +
-        '<div class="gav-linha2"><div class="gav-qtd"><button type="button" data-gav-qtd="' + linha + '" data-q="' + (it.quantity - 1) + '" aria-label="Menos um">−</button><output>' + it.quantity + '</output>' +
-        '<button type="button" data-gav-qtd="' + linha + '" data-q="' + (it.quantity + 1) + '" aria-label="Mais um">+</button></div>' +
-        '<button type="button" class="gav-remover" data-gav-qtd="' + linha + '" data-q="0">Remover</button></div></div>' + brinde + '</div>';
+        '<div class="gav-preco">' + (g.desc ? '<s>' + dinheiro(g.original) + '</s>' : '') + dinheiro(g.final) + '</div></div>' +
+        '<div class="gav-linha2"><div class="gav-qtd"><button type="button" data-gav-acao="menos" data-gav-var="' + v + '" aria-label="Menos um">−</button><output>' + g.quantidade + '</output>' +
+        '<button type="button" data-gav-acao="mais" data-gav-var="' + v + '" aria-label="Mais um">+</button></div>' +
+        '<button type="button" class="gav-remover" data-gav-acao="remover" data-gav-var="' + v + '">Remover</button></div></div>' + presente + aviso + '</div>';
     }).join('');
+    brindesVistos._pronto = true;
     var sug = (CFG.sugestoes || []).filter(function(s){ return noCarrinho.indexOf(String(s.produtoId)) < 0; })[0];
     var sugHtml = sug ? '<div class="gav-sugestao"><small>Que tal provar também?</small><div class="gav-sug"><img src="' + esc(sug.img) + '" alt="" width="56" height="56" loading="lazy">' +
       '<div><b>' + esc(sug.titulo) + '</b><span>' + esc(sug.descricao) + ' • ' + dinheiro(sug.preco) + '</span></div>' +
@@ -478,13 +501,30 @@
   [gaveta, paginaCarrinho].forEach(function(raiz){
     if(!raiz){ return; }
     raiz.addEventListener('click', function(e){
-      var q = e.target.closest('[data-gav-qtd]'), add = e.target.closest('[data-gav-add]');
+      var ac = e.target.closest('[data-gav-acao]'), add = e.target.closest('[data-gav-add]');
       if(e.target.closest('[data-gav-fechar]') || e.target === gaveta){ gaveta.close(); return; }
-      if(q || add){
-        raiz.classList.add('gav-carregando');
-        var p = q ? API.alterar(+q.dataset.gavQtd, +q.dataset.q) : API.adicionar([{id: +add.dataset.gavAdd, quantity: 1}]).then(API.carrinho);
-        p.then(redesenha).finally(function(){ raiz.classList.remove('gav-carregando'); });
+      if(!ac && !add){ return; }
+      if(raiz.classList.contains('gav-carregando')){ return; }   // um pedido por vez
+      raiz.classList.add('gav-carregando');
+      var p;
+      if(add){
+        p = API.adicionar([{id: +add.dataset.gavAdd, quantity: 1}]).then(API.carrinho);
+      } else {
+        var v = +ac.dataset.gavVar, acao = ac.dataset.gavAcao;
+        // linhas reais desse café no carrinho (a Shopify pode ter dividido em várias)
+        var linhas = ultimo.items.map(function(it, i){ return {linha: i + 1, q: it.quantity, v: it.variant_id, chave: it.key}; }).filter(function(l){ return l.v === v; });
+        var total = linhas.reduce(function(s, l){ return s + l.q; }, 0), ult = linhas[linhas.length - 1];
+        // resposta na hora: o número muda já e só o preço desse café fica esperando a Shopify (nada de apagar a gaveta inteira)
+        var item = raiz.querySelector('[data-gav-item="' + v + '"]'), out = item && item.querySelector('output');
+        if(item){ item.classList.add('gav-atualizando'); }
+        if(out){ out.textContent = acao === 'mais' ? total + 1 : acao === 'menos' ? Math.max(0, total - 1) : 0; }
+        if(!ult){ p = API.carrinho(); }
+        else if(acao === 'mais'){ p = API.alterar(ult.linha, ult.q + 1); }
+        else if(acao === 'menos'){ p = API.alterar(ult.linha, ult.q - 1); }
+        else { p = API.remover(linhas.map(function(l){ return l.chave; }), v); }
       }
+      p.then(redesenha).catch(function(){ return API.carrinho().then(redesenha); })
+       .finally(function(){ raiz.classList.remove('gav-carregando'); });
     });
   });
   if(gaveta){
@@ -560,6 +600,61 @@
       var monta = function(){ setTimeout(function(){ pir.classList.add('montada'); liga(); }, 1400); };
       if(pir.classList.contains('on') || !pir.classList.contains('reveal')){ monta(); }
       else { new MutationObserver(function(m, o){ if(pir.classList.contains('on')){ o.disconnect(); monta(); } }).observe(pir, {attributes:true, attributeFilter:['class']}); }
+    }
+  });
+
+  // rodapé: momento do dia do céu e, se a seção logo acima for escura, transição sem a bruma clara
+  (function(){
+    var rod = document.querySelector('footer.site'); if(!rod) return;
+    // céu pela hora de quem visita: dia 6h–17h, entardecer 17h–19h, noite no resto (?ceu=dia|entardecer|noite para testar)
+    var h = new Date().getHours(), forcado = (location.search.match(/[?&]ceu=(dia|entardecer|noite)/) || [])[1];
+    var momento = forcado || (h >= 6 && h < 17 ? 'dia' : h >= 17 && h < 19 ? 'entardecer' : 'noite');
+    if(momento !== 'noite'){ rod.classList.add('ceu-' + momento); }
+    var topo = rod.getBoundingClientRect().top + window.scrollY, acima = null, fundo = 0;
+    document.querySelectorAll('section').forEach(function(sec){
+      if(rod.contains(sec)) return;
+      var r = sec.getBoundingClientRect(), b = r.bottom + window.scrollY;
+      if(r.height && b <= topo + 2 && b >= fundo){ fundo = b; acima = sec; }
+    });
+    for(var el = acima; el; el = el.parentElement){
+      var m = getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
+      if(m && (m.length < 4 || +m[3] > .5)){
+        rod.style.setProperty('--cor-acima', getComputedStyle(el).backgroundColor);   // o céu nasce da cor da seção de cima
+        if((.2126 * m[0] + .7152 * m[1] + .0722 * m[2]) / 255 < .35){ rod.classList.add('sobre-escuro'); }
+        break;
+      }
+    }
+  })();
+
+  // políticas (texto cadastrado na Shopify): índice "Nesta página" a partir dos títulos do texto
+  document.querySelectorAll('[data-pol]').forEach(function(art){
+    var corpo = art.querySelector('.shopify-policy__body') || art;
+    var toc = document.querySelector('[data-pol-toc]');
+    var tits = Array.prototype.slice.call(corpo.querySelectorAll('h2, h3'));
+    if(tits.length < 3){
+      // muitas políticas usam parágrafos só em negrito como títulos
+      corpo.querySelectorAll('p').forEach(function(p){
+        var txt = p.textContent.trim(), b = p.querySelector('strong, b');
+        if(b && txt && b.textContent.trim() === txt && txt.length < 90){ p.classList.add('pol-titulo'); tits.push(p); }
+      });
+      tits.sort(function(a, b){ return a.compareDocumentPosition(b) & 4 ? -1 : 1; });
+    }
+    if(!toc || tits.length < 3) return;
+    var lista = toc.querySelector('ol'), links = [];
+    tits.forEach(function(t, i){
+      if(!t.id){ t.id = 'secao-' + (i + 1) + '-' + t.textContent.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40); }
+      var li = document.createElement('li'), a = document.createElement('a');
+      a.href = '#' + t.id; a.textContent = t.textContent.trim().replace(/[:.]$/, '');
+      li.appendChild(a); lista.appendChild(li); links.push(a);
+    });
+    toc.hidden = false;
+    if('IntersectionObserver' in window){
+      var vis = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ links.forEach(function(a){ a.classList.toggle('ativo', a.getAttribute('href') === '#' + en.target.id); }); }
+        });
+      }, {rootMargin: '-110px 0px -70% 0px'});
+      tits.forEach(function(t){ vis.observe(t); });
     }
   });
 

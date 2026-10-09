@@ -1,0 +1,50 @@
+{%- comment -%}
+  O nosso compromisso com você: selo giratório "Garantia de satisfação" + lista de compromissos (blocos "item": ícone + texto).
+  Fica depois das avaliações, nas páginas dos cafés e nas homes.
+{%- endcomment -%}
+<div class="tml">
+  <section class="garantia-sec" id="garantia">
+    <div class="wrap gar-grid">
+      <div class="gar-selo reveal" aria-hidden="true">
+        <svg class="gar-anel" viewBox="0 0 200 200">
+          <defs><path id="gar-circ-{{ section.id }}" d="M100 100m-80 0a80 80 0 1 1 160 0a80 80 0 1 1-160 0"/></defs>
+          <text><textPath href="#gar-circ-{{ section.id }}" textLength="500" lengthAdjust="spacing">{{ section.settings.anel }}</textPath></text>
+        </svg>
+        <div class="gar-centro"><b>{{ section.settings.selo }}</b><span>{{ section.settings.selo_rotulo }}</span></div>
+      </div>
+      <div class="gar-texto reveal">
+        <h2>{{ section.settings.titulo }}</h2>
+        {%- if section.settings.texto != blank -%}<p class="lead">{{ section.settings.texto }}</p>{%- endif -%}
+        <ul class="gar-lista">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}><span class="gar-ic">{% render 'tml-icone', nome: block.settings.icone %}</span><span>{{ block.settings.texto }}</span></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Compromisso",
+  "settings": [
+    { "type": "text", "id": "titulo", "label": "Título", "default": "O nosso compromisso com você" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "selo", "label": "Selo: destaque", "default": "100%" },
+    { "type": "text", "id": "selo_rotulo", "label": "Selo: rótulo", "default": "satisfação" },
+    { "type": "text", "id": "anel", "label": "Selo: texto em volta", "default": "GARANTIA DE SATISFAÇÃO • TEMALLI® • " }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Compromisso", "settings": [
+      { "type": "select", "id": "icone", "label": "Ícone", "default": "check", "options": [
+        { "value": "garantia", "label": "Escudo" }, { "value": "frete", "label": "Caminhão" }, { "value": "whats", "label": "WhatsApp" },
+        { "value": "cadeado", "label": "Cadeado" }, { "value": "check", "label": "Check" }, { "value": "recorrente", "label": "Recorrente" }
+      ]},
+      { "type": "text", "id": "texto", "label": "Texto", "info": "Aceita <b>negrito</b>." }
+    ]}
+  ],
+  "max_blocks": 6,
+  "presets": [ { "name": "T • Compromisso" } ]
+}
+{% endschema %}

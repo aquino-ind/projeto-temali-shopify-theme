@@ -19,7 +19,7 @@
           {%- endif -%}
         {%- endif -%}
         <a href="{{ routes.cart_url }}" class="nav-carrinho" aria-label="Carrinho, {{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}itens{% endif %}">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7h14l-1.2 12.2a2 2 0 01-2 1.8H8.2a2 2 0 01-2-1.8z"/><path d="M9 7a3 3 0 016 0"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14v11a2 2 0 01-2 2H7a2 2 0 01-2-2z"/><path d="M8.5 11V7a3.5 3.5 0 017 0v4"/></svg>
           {%- if cart.item_count > 0 -%}<span>{{ cart.item_count }}</span>{%- endif -%}
         </a>
         {%- if section.settings.cta_texto != blank -%}
