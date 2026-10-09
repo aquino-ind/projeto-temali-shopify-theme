@@ -1,0 +1,165 @@
+{
+  "sections": {
+    "s1": {
+      "type": "tml-metodos-indice",
+      "settings": {
+        "texto": "Receitas testadas e passo a passo para os 7 métodos mais usados no Brasil. Escolha o seu e tire o melhor do Temalli® Clássico.",
+        "tabela_texto": "Use como ponto de partida. A regra geral é de 1:13 a 1:17 (1g de café para 13 a 17ml de água) nos métodos coados, e 1:2 no espresso."
+      },
+      "blocks": {
+        "b1": {
+          "type": "metodo",
+          "settings": {
+            "nome": "V60",
+            "url": "/pages/como-fazer-cafe-na-v60",
+            "foto_padrao": "tml-preparo-v60.jpg",
+            "tempo": "3 min",
+            "dificuldade": "Média",
+            "cafe": "15g",
+            "agua": "250ml",
+            "moagem": "Média-fina"
+          }
+        },
+        "b2": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Coador de pano",
+            "url": "/pages/como-fazer-cafe-no-coador-de-pano",
+            "foto_padrao": "tml-preparo-coador-de-pano.jpg",
+            "tempo": "4 min",
+            "dificuldade": "Fácil",
+            "cafe": "30g (3 colheres de sopa cheias)",
+            "agua": "400ml",
+            "moagem": "Média"
+          }
+        },
+        "b3": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Prensa francesa",
+            "url": "/pages/como-fazer-cafe-na-prensa-francesa",
+            "foto_padrao": "tml-preparo-prensa-francesa.jpg",
+            "tempo": "5 min",
+            "dificuldade": "Fácil",
+            "cafe": "20g",
+            "agua": "300ml",
+            "moagem": "Grossa"
+          }
+        },
+        "b4": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Aeropress",
+            "url": "/pages/como-fazer-cafe-na-aeropress",
+            "foto_padrao": "tml-preparo-aeropress.jpg",
+            "tempo": "2 min",
+            "dificuldade": "Fácil",
+            "cafe": "15g",
+            "agua": "200ml",
+            "moagem": "Média-fina"
+          }
+        },
+        "b5": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Cafeteira italiana",
+            "url": "/pages/como-fazer-cafe-na-cafeteira-italiana",
+            "foto_padrao": "tml-preparo-cafeteira-italiana.jpg",
+            "tempo": "5 a 6 min",
+            "dificuldade": "Fácil",
+            "cafe": "Funil cheio, sem compactar (≈ 15 a 17g na de 3 xícaras)",
+            "agua": "Até a válvula (≈ 150ml na de 3 xícaras)",
+            "moagem": "Média-fina"
+          }
+        },
+        "b6": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Espresso",
+            "url": "/pages/como-fazer-espresso-em-casa",
+            "foto_padrao": "tml-preparo-espresso-em-casa.jpg",
+            "tempo": "2 min",
+            "dificuldade": "Avançada",
+            "cafe": "18g (dose dupla)",
+            "agua": "≈ 36g de bebida",
+            "moagem": "Fina"
+          }
+        },
+        "b7": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Cafeteira elétrica",
+            "url": "/pages/como-fazer-cafe-na-cafeteira-eletrica",
+            "foto_padrao": "tml-preparo-cafeteira-eletrica.jpg",
+            "tempo": "6 a 8 min",
+            "dificuldade": "Fácil",
+            "cafe": "60g por litro (≈ 6 colheres de sopa cheias)",
+            "agua": "Filtrada, fria",
+            "moagem": "Média"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
+    },
+    "s2": {
+      "type": "tml-pilares",
+      "settings": {
+        "eyebrow": "Regras que valem para todos",
+        "titulo": "O básico de um bom café",
+        "escuro": false
+      },
+      "blocks": {
+        "b1": {
+          "type": "pilar",
+          "settings": {
+            "icone": "gota",
+            "titulo": "Água filtrada",
+            "texto": "A água é mais de 98% da xícara. Se tem gosto de cloro, o café também terá."
+          }
+        },
+        "b2": {
+          "type": "pilar",
+          "settings": {
+            "icone": "relogio",
+            "titulo": "Água quente, não fervendo",
+            "texto": "Entre 90 e 96 °C. Desligue quando começar a ferver e espere uns 30 segundos."
+          }
+        },
+        "b3": {
+          "type": "pilar",
+          "settings": {
+            "icone": "secagem",
+            "titulo": "Moagem certa",
+            "texto": "Quanto mais rápido o método, mais fina a moagem. Prensa pede grossa; espresso, fina."
+          }
+        },
+        "b4": {
+          "type": "pilar",
+          "settings": {
+            "icone": "folha",
+            "titulo": "Café fresco",
+            "texto": "Guarde o pacote bem fechado, longe da luz e do calor. Em grão, o aroma dura mais."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    }
+  },
+  "order": [
+    "s1",
+    "s2"
+  ]
+}

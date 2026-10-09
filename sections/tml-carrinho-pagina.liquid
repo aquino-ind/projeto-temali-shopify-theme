@@ -1,0 +1,18 @@
+{%- comment -%} Página /cart com o mesmo conteúdo da gaveta (desenhado pelo tml.js). {%- endcomment -%}
+<div class="tml">
+  <div class="carrinho-pagina" data-carrinho-pagina>
+    <h1>Seu carrinho<small data-gav-count></small></h1>
+    <div data-gav-frete></div>
+    <div data-gav-corpo>
+      <noscript>
+        {%- for item in cart.items -%}<p>{{ item.quantity }}× {{ item.product.title }} ({{ item.variant.title }}) — {{ item.final_line_price | money }}</p>{%- endfor -%}
+        <a class="btn" href="{{ routes.root_url }}checkout">Finalizar compra</a>
+      </noscript>
+    </div>
+    <div data-gav-rodape></div>
+  </div>
+</div>
+
+{% schema %}
+{ "name": "T • Página do carrinho" }
+{% endschema %}

@@ -1,0 +1,214 @@
+{
+  "sections": {
+    "s1": {
+      "type": "tml-metodo",
+      "settings": {
+        "nome": "Prensa francesa",
+        "termo": "prensa francesa",
+        "artigo": "a",
+        "titulo": "Como fazer café na prensa francesa: receita e passo a passo",
+        "resumo": "Para fazer café na prensa francesa, use 20g de café em moagem grossa para 300ml de água a cerca de 94 °C. Despeje a água, mexa, tampe sem descer o filtro e espere 4 minutos. Depois, desça o êmbolo devagar e sirva tudo na hora.",
+        "foto_padrao": "tml-preparo-prensa-francesa.jpg",
+        "tempo_txt": "5 min",
+        "tempo_min": 5,
+        "dificuldade": "Fácil",
+        "rende": "1 a 2 xícaras (300ml)",
+        "titulo_oque": "O que é a prensa francesa",
+        "intro": "<p>A prensa francesa, ou French press, faz o café por infusão: o pó fica mergulhado na água o tempo todo e depois é separado por uma tela de metal.</p><p>Como a tela deixa passar os óleos naturais do café, a bebida fica encorpada, intensa e com textura aveludada. É um dos métodos mais fáceis de acertar, porque depende pouco de técnica.</p>",
+        "titulo_passos": "Como fazer café na prensa francesa: passo a passo",
+        "cafe_1": "cafe-torra-media-84-pontos",
+        "cafe_1_estilo": "classico",
+        "cafe_1_texto": "O Clássico ganha corpo e destaca o chocolate na prensa. Peça em grão e moa grosso na hora.",
+        "assinatura_url": "/pages/assinatura",
+        "indice_url": "/pages/como-preparar",
+        "outros": "V60 | /pages/como-fazer-cafe-na-v60 | tml-preparo-v60.jpg | 3 min • Média\nCoador de pano | /pages/como-fazer-cafe-no-coador-de-pano | tml-preparo-coador-de-pano.jpg | 4 min • Fácil\nAeropress | /pages/como-fazer-cafe-na-aeropress | tml-preparo-aeropress.jpg | 2 min • Fácil\nCafeteira italiana | /pages/como-fazer-cafe-na-cafeteira-italiana | tml-preparo-cafeteira-italiana.jpg | 5 a 6 min • Fácil\nEspresso | /pages/como-fazer-espresso-em-casa | tml-preparo-espresso-em-casa.jpg | 2 min • Avançada\nCafeteira elétrica | /pages/como-fazer-cafe-na-cafeteira-eletrica | tml-preparo-cafeteira-eletrica.jpg | 6 a 8 min • Fácil"
+      },
+      "blocks": {
+        "b1": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Café",
+            "valor": "20g"
+          }
+        },
+        "b2": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Água",
+            "valor": "300ml"
+          }
+        },
+        "b3": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Proporção",
+            "valor": "1:15"
+          }
+        },
+        "b4": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Temperatura",
+            "valor": "92 a 96 °C"
+          }
+        },
+        "b5": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Moagem",
+            "valor": "Grossa"
+          }
+        },
+        "b6": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Tempo de infusão",
+            "valor": "4 min"
+          }
+        },
+        "b7": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Prensa francesa"
+          }
+        },
+        "b8": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Chaleira"
+          }
+        },
+        "b9": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Colher de madeira ou plástico"
+          }
+        },
+        "b10": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Balança ou colher medidora"
+          }
+        },
+        "b11": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "20g de café Temalli em grão, moído grosso"
+          }
+        },
+        "b12": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Aqueça a prensa",
+            "texto": "Escalde a prensa com água quente e descarte. Assim o café não perde temperatura."
+          }
+        },
+        "b13": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Coloque o café",
+            "texto": "Adicione 20g de café em moagem grossa, parecida com sal grosso."
+          }
+        },
+        "b14": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Despeje a água",
+            "texto": "Despeje 300ml de água a cerca de 94 °C, molhando todo o pó."
+          }
+        },
+        "b15": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Mexa e tampe",
+            "texto": "Mexa suavemente 3 ou 4 vezes, coloque a tampa com o êmbolo para cima, sem descer o filtro."
+          }
+        },
+        "b16": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Espere 4 minutos",
+            "texto": "Deixe em infusão por 4 minutos. Se quiser uma bebida mais limpa, quebre a crosta da superfície com a colher e retire a espuma antes de prensar."
+          }
+        },
+        "b17": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Prense e sirva tudo",
+            "texto": "Desça o êmbolo devagar, em uns 20 segundos, e sirva na hora. Café que fica na prensa continua extraindo e amarga."
+          }
+        },
+        "b18": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café com muita borra no fundo",
+            "solucao": "A moagem está fina demais. Use moagem grossa e não force o êmbolo."
+          }
+        },
+        "b19": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café amargo",
+            "solucao": "O café ficou tempo demais na prensa. Sirva tudo logo depois de prensar."
+          }
+        },
+        "b20": {
+          "type": "erro",
+          "settings": {
+            "problema": "O êmbolo está muito duro de descer",
+            "solucao": "Moagem fina demais. Engrosse a moagem."
+          }
+        },
+        "b21": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Posso usar café moído comum na prensa francesa?",
+            "resposta": "Pode, mas a moagem de coado é mais fina do que o ideal, e passa mais borra para a xícara. Para o melhor resultado, compre em grão e moa grosso."
+          }
+        },
+        "b22": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Quanto tempo deixar o café na prensa?",
+            "resposta": "4 minutos é o ponto de partida. Menos que isso deixa o café fraco; mais que isso começa a amargar."
+          }
+        },
+        "b23": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Qual a proporção de café na prensa francesa?",
+            "resposta": "1:15, ou seja, cerca de 20g de café para 300ml de água. Para 1 litro, use uns 65g."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16",
+        "b17",
+        "b18",
+        "b19",
+        "b20",
+        "b21",
+        "b22",
+        "b23"
+      ]
+    }
+  },
+  "order": [
+    "s1"
+  ]
+}

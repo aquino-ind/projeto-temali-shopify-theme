@@ -1,0 +1,176 @@
+{%- liquid
+  assign p = section.settings.produto | default: product
+  assign preco = p.price
+  assign minimo = settings.tml_frete_minimo | times: 100
+  assign v_grao = p.selected_or_first_available_variant.id
+  assign v_moido = v_grao
+  for v in p.variants
+    assign t = v.title | downcase
+    if t contains 'mo'
+      assign v_moido = v.id
+    else
+      assign v_grao = v.id
+    endif
+  endfor
+  assign nome = section.settings.nome | default: p.title
+  assign fonte_av = section.settings.produto_avaliacoes | default: p
+  assign nota = fonte_av.metafields.reviews.rating.value.rating
+  assign total_av = fonte_av.metafields.reviews.rating_count
+  assign kit_un = preco | times: 3 | divided_by: 4.0 | round
+-%}
+<div class="tml">
+  <section class="lp-hero" id="comprar">
+    <div class="wrap lp-grid">
+      <div class="galeria" data-galeria>
+        <div class="principal">
+          {%- assign primeira = p.featured_media -%}
+          {%- if primeira -%}
+            {%- assign alt_img = primeira.alt | default: nome -%}
+            {{ primeira | image_url: width: 1100 | image_tag: loading: 'eager', alt: alt_img, sizes: '(max-width: 900px) 100vw, 55vw', widths: '500,800,1100' }}
+          {%- endif -%}
+          {%- if p.media.size > 1 -%}<button type="button" class="gal-nav ant" data-gal-ant aria-label="Foto anterior">‹</button><button type="button" class="gal-nav prox" data-gal-prox aria-label="Próxima foto">›</button><span class="gal-cont">1 / {{ p.media.size }}</span>{%- endif -%}
+          {%- if section.settings.selo != blank -%}<div class="selo-84" aria-label="{{ section.settings.selo }} pontos na escala SCA"><b>{{ section.settings.selo }}</b><span>pontos SCA</span></div>{%- endif -%}
+        </div>
+        {%- if p.media.size > 1 -%}
+          <div class="thumbs">
+            {%- for m in p.media limit: 15 -%}
+              {%- if m.media_type == 'image' -%}
+                {%- assign alt_img = m.alt | default: nome -%}
+                <button type="button" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}" data-src="{{ m | image_url: width: 1100 }}">{{ m | image_url: width: 200 | image_tag: alt: alt_img, loading: 'lazy' }}</button>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="compra">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h1>{{ nome }}</h1>
+        {%- if total_av > 0 -%}
+          <div class="avaliacao"><span class="estrelas" aria-hidden="true">★★★★★</span>
+            {{ nota | times: 1.0 | round: 2 | replace: '.', ',' }} • <a href="#avaliacoes">{{ total_av }} {{ section.settings.avaliacao_rotulo }}</a>
+          </div>
+        {%- endif -%}
+        <div class="sub">{% render 'tml-texto', t: section.settings.subtitulo %}</div>
+
+        <div class="ficha">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'ficha' -%}<div {{ block.shopify_attributes }}><small>{% render 'tml-texto', t: block.settings.rotulo %}</small><b>{{ block.settings.valor }}</b></div>{%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <form data-buybox data-preco="{{ preco | divided_by: 100.0 }}" data-grao="{{ v_grao }}" data-moido="{{ v_moido }}" onsubmit="return false">
+          <fieldset class="grupo">
+            <legend>Quantidade</legend>
+            <div class="opcoes-qtd">
+              <label class="opcao">
+                <input type="radio" name="qtd" value="1">
+                <span class="radio"></span>
+                <span class="opcao-txt"><b>1 unidade • {{ section.settings.peso_1 }}</b><small>{{ section.settings.rende_1 }}</small></span>
+                <span class="valor"><b>{{ preco | money }}</b></span>
+              </label>
+              <label class="opcao">
+                <input type="radio" name="qtd" value="2">
+                <span class="radio"></span>
+                <span class="opcao-txt"><b>2 unidades • {{ section.settings.peso_2 }}</b><small>{{ section.settings.rende_2 }}{% assign dois = preco | times: 2 %}{% if dois >= minimo %} • frete grátis{% endif %}</small></span>
+                <span class="valor"><b>{{ preco | times: 2 | money }}</b></span>
+              </label>
+              <label class="opcao kit">
+                <input type="radio" name="qtd" value="4" checked>
+                <span class="kit-faixa">{{ section.settings.kit_faixa }}</span>
+                <span class="kit-corpo">
+                  <span class="radio"></span>
+                  <span class="opcao-txt"><b>Kit 4 unidades • {{ section.settings.peso_kit }}</b><small>Só {{ kit_un | money }} por pacote</small>
+                    <span class="kit-selos"><span class="selo-eco">Economize {{ preco | money }}</span><span class="selo-frete">{% render 'tml-icone', nome: 'frete' %}Frete grátis para todo o Brasil</span></span>
+                  </span>
+                  <span class="valor"><em>25% OFF</em><s>{{ preco | times: 4 | money }}</s><b>{{ preco | times: 3 | money }}</b></span>
+                </span>
+                <span class="kit-pacotes" aria-hidden="true">
+                  {%- for i in (1..3) -%}<span class="pac">{% render 'tml-icone', nome: 'pacote' %}</span>{%- endfor -%}
+                  <span class="pac gratis">{% render 'tml-icone', nome: 'pacote' %}<i>Grátis</i></span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          {%- if p.variants.size > 1 -%}
+            <fieldset class="grupo">
+              <legend>Formato<button type="button" class="info" data-termo="graos">i</button></legend>
+              <div class="opcoes-formato">
+                <label class="opcao"><input type="radio" name="formato" value="grao" checked><span class="radio"></span>{% render 'tml-imagem', img: section.settings.img_grao, asset: section.settings.img_grao_padrao, alt: '', largura: 80, altura: 80 %}Em grãos</label>
+                <label class="opcao"><input type="radio" name="formato" value="moido"><span class="radio"></span>{% render 'tml-imagem', img: section.settings.img_moido, asset: section.settings.img_moido_padrao, alt: '', largura: 80, altura: 80 %}Moído</label>
+              </div>
+            </fieldset>
+          {%- else -%}
+            <input type="radio" name="formato" value="grao" checked hidden>
+          {%- endif -%}
+
+          <div class="resumo"><span>Total<small data-economia></small></span><b data-total>{{ preco | times: 3 | money }}</b></div>
+          <button type="button" class="btn btn-bloco" data-cta>Adicionar ao carrinho</button>
+        </form>
+
+        <ul class="garantias">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'garantia' -%}<li {{ block.shopify_attributes }}>{% render 'tml-icone', nome: 'check' %}<span>{% render 'tml-texto', t: block.settings.texto %}</span></li>{%- endif -%}
+          {%- endfor -%}
+        </ul>
+
+        {%- if section.settings.degustacao_url != blank -%}
+          <a class="ass-mini deg-mini" href="{{ section.settings.degustacao_url }}">{% render 'tml-icone', nome: 'presente' %}<span>{{ section.settings.degustacao_texto }}</span></a>
+        {%- endif -%}
+        {%- if section.settings.assinatura_url != blank -%}
+          <a class="ass-mini" href="{{ section.settings.assinatura_url }}">{% render 'tml-icone', nome: 'recorrente' %}<span>{{ section.settings.assinatura_texto }}</span></a>
+        {%- endif -%}
+        <a class="whats-mini" href="https://wa.me/{{ settings.tml_whats_numero }}?text={{ 'Olá! Tenho uma dúvida sobre o ' | append: nome | url_encode }}" target="_blank" rel="noopener">{% render 'tml-icone', nome: 'whats' %}<span>{{ section.settings.whats_texto }} Atendimento humano: {{ settings.tml_whats_horario }}.</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="buybar" aria-label="Compra rápida">
+    <div class="p"><small data-buybar-info>{{ section.settings.kit_faixa }}</small><b data-buybar-preco>{{ preco | times: 3 | money }}</b></div>
+    <button type="button" class="btn" data-buybar-cta>Comprar</button>
+  </div>
+</div>
+<script type="application/ld+json">{{ p | structured_data }}</script>
+
+{% schema %}
+{
+  "name": "T • Compra do produto",
+  "settings": [
+{ "type": "product", "id": "produto", "label": "Produto", "info": "Na página de produto, deixe vazio (usa o produto da página). Em outras páginas, como a home, escolha o café." },
+    { "type": "text", "id": "nome", "label": "Nome exibido", "info": "Se vazio, usa o título do produto." },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "O original • Serra da Canastra" },
+    { "type": "product", "id": "produto_avaliacoes", "label": "Nota e total de avaliações de", "info": "Produto do Judge.me usado na nota. Se vazio, usa o próprio produto." },
+    { "type": "text", "id": "avaliacao_rotulo", "label": "Texto após o total", "default": "avaliações de clientes" },
+    { "type": "richtext", "id": "subtitulo", "label": "Descrição curta" },
+    { "type": "text", "id": "selo", "label": "Selo de pontuação", "default": "84+" },
+    { "type": "header", "content": "Quantidades" },
+    { "type": "text", "id": "peso_1", "label": "Peso de 1 unidade", "default": "500g" },
+    { "type": "text", "id": "rende_1", "label": "Rendimento de 1 unidade", "default": "Cerca de 50 xícaras" },
+    { "type": "text", "id": "peso_2", "label": "Peso de 2 unidades", "default": "1kg" },
+    { "type": "text", "id": "rende_2", "label": "Rendimento de 2 unidades", "default": "Cerca de 100 xícaras" },
+    { "type": "text", "id": "peso_kit", "label": "Peso do kit de 4", "default": "2kg" },
+    { "type": "text", "id": "kit_faixa", "label": "Faixa do kit", "default": "Pague 3, leve 4 + frete grátis" },
+    { "type": "header", "content": "Formato (miniaturas)" },
+    { "type": "image_picker", "id": "img_grao", "label": "Foto do grão" },
+    { "type": "text", "id": "img_grao_padrao", "label": "Foto do grão padrão (arquivo do tema)" },
+    { "type": "image_picker", "id": "img_moido", "label": "Foto do moído" },
+    { "type": "text", "id": "img_moido_padrao", "label": "Foto do moído padrão (arquivo do tema)" },
+    { "type": "header", "content": "Atalhos" },
+    { "type": "url", "id": "degustacao_url", "label": "Link do Kit Degustação" },
+    { "type": "text", "id": "degustacao_texto", "label": "Texto do Kit Degustação", "default": "Quer provar os dois? Kit Degustação Clássico + Arara com frete grátis." },
+    { "type": "url", "id": "assinatura_url", "label": "Link da assinatura" },
+    { "type": "text", "id": "assinatura_texto", "label": "Texto da assinatura", "default": "Toma todo mês? Assine e receba em casa com frete grátis, a cada 1, 2 ou 3 meses." },
+    { "type": "text", "id": "whats_texto", "label": "Texto do WhatsApp", "info": "Aceita <b>negrito</b>.", "default": "Ficou com dúvida? <b>Fale com a gente no WhatsApp</b>." }
+  ],
+  "blocks": [
+    { "type": "ficha", "name": "Ficha (destaque)", "limit": 4, "settings": [
+      { "type": "text", "id": "rotulo", "label": "Rótulo", "info": "Aceita [i:sca] etc." },
+      { "type": "text", "id": "valor", "label": "Valor" }
+    ]},
+    { "type": "garantia", "name": "Garantia", "settings": [
+      { "type": "text", "id": "texto", "label": "Texto", "info": "Aceita [i:suspensa] etc." }
+    ]}
+  ]
+}
+{% endschema %}

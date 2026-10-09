@@ -1,0 +1,76 @@
+{% render 'temalli-assets' %}
+
+<div class="tml">
+  <section class="metodos">
+    <div class="wrap-estreito reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h2>{{ section.settings.titulo }}</h2>
+      {{ section.settings.texto }}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="metodos-lista">
+          {%- for block in section.blocks -%}
+            <span {{ block.shopify_attributes }}>{{ block.settings.nome }}</span>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.video != blank -%}
+        <div class="video-wrap">
+          {{ section.settings.video | video_tag: controls: true, playsinline: true, preload: 'metadata' }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.dica != blank -%}
+        <div class="dica">{{ section.settings.dica }}</div>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • Métodos",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Chapéu", "default": "Extrações" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Funciona no seu método, seja ele qual for" },
+    {
+      "type": "richtext",
+      "id": "texto",
+      "label": "Texto",
+      "default": "<p>A torra média do Temalli® foi pensada pra extrair bem em todos os métodos mais usados no Brasil:</p>"
+    },
+    { "type": "video", "id": "video", "label": "Vídeo de extração", "info": "Opcional." },
+    {
+      "type": "richtext",
+      "id": "dica",
+      "label": "Caixa de dica",
+      "info": "Use negrito para destacar em verde.",
+      "default": "<p><strong>Dica de ouro:</strong> água filtrada, fora da fervura, na proporção de 10g de café pra 100ml de água.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "metodo",
+      "name": "Método",
+      "settings": [{ "type": "text", "id": "nome", "label": "Nome" }]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Temalli • Métodos",
+      "blocks": [
+        { "type": "metodo", "settings": { "nome": "Coador de pano" } },
+        { "type": "metodo", "settings": { "nome": "Cafeteira italiana" } },
+        { "type": "metodo", "settings": { "nome": "Prensa francesa" } },
+        { "type": "metodo", "settings": { "nome": "V60" } },
+        { "type": "metodo", "settings": { "nome": "Cafeteira elétrica" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

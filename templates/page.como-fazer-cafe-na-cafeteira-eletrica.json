@@ -1,0 +1,221 @@
+{
+  "sections": {
+    "s1": {
+      "type": "tml-metodo",
+      "settings": {
+        "nome": "Cafeteira elétrica",
+        "termo": "cafeteira elétrica",
+        "artigo": "a",
+        "titulo": "Como fazer café na cafeteira elétrica: receita e dicas",
+        "resumo": "Para fazer café na cafeteira elétrica, use cerca de 60g de café em moagem média por litro de água filtrada (6 colheres de sopa cheias). Enxágue o filtro de papel, distribua o pó por igual e, quando terminar, tire a jarra da placa quente e sirva ou passe para uma garrafa térmica.",
+        "foto_padrao": "tml-preparo-cafeteira-eletrica.jpg",
+        "tempo_txt": "6 a 8 min",
+        "tempo_min": 8,
+        "dificuldade": "Fácil",
+        "rende": "Até a capacidade da jarra (1 litro ≈ 6 a 7 xícaras)",
+        "titulo_oque": "O que é a cafeteira elétrica",
+        "intro": "<p>A cafeteira elétrica é o jeito mais prático de fazer café para várias pessoas: ela aquece a água e despeja sobre o pó sozinha.</p><p>Com um café especial e três cuidados (proporção certa, água filtrada e não deixar a jarra na placa), a cafeteira elétrica faz uma xícara muito melhor do que muita gente imagina.</p>",
+        "titulo_passos": "Como fazer café na cafeteira elétrica: passo a passo",
+        "cafe_1": "cafe-torra-media-84-pontos",
+        "cafe_1_estilo": "classico",
+        "cafe_1_texto": "O Clássico moído é ótimo na elétrica: equilibrado, com chocolate e caramelo, agrada a casa toda.",
+        "assinatura_url": "/pages/assinatura",
+        "indice_url": "/pages/como-preparar",
+        "outros": "V60 | /pages/como-fazer-cafe-na-v60 | tml-preparo-v60.jpg | 3 min • Média\nCoador de pano | /pages/como-fazer-cafe-no-coador-de-pano | tml-preparo-coador-de-pano.jpg | 4 min • Fácil\nPrensa francesa | /pages/como-fazer-cafe-na-prensa-francesa | tml-preparo-prensa-francesa.jpg | 5 min • Fácil\nAeropress | /pages/como-fazer-cafe-na-aeropress | tml-preparo-aeropress.jpg | 2 min • Fácil\nCafeteira italiana | /pages/como-fazer-cafe-na-cafeteira-italiana | tml-preparo-cafeteira-italiana.jpg | 5 a 6 min • Fácil\nEspresso | /pages/como-fazer-espresso-em-casa | tml-preparo-espresso-em-casa.jpg | 2 min • Avançada"
+      },
+      "blocks": {
+        "b1": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Café",
+            "valor": "60g por litro (≈ 6 colheres de sopa cheias)"
+          }
+        },
+        "b2": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Água",
+            "valor": "Filtrada, fria"
+          }
+        },
+        "b3": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Proporção",
+            "valor": "1:16 a 1:17"
+          }
+        },
+        "b4": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Moagem",
+            "valor": "Média"
+          }
+        },
+        "b5": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Filtro",
+            "valor": "Papel nº 102 ou 103, enxaguado"
+          }
+        },
+        "b6": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Tempo total",
+            "valor": "6 a 8 min"
+          }
+        },
+        "b7": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Cafeteira elétrica"
+          }
+        },
+        "b8": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Filtro de papel (nº 102 ou 103)"
+          }
+        },
+        "b9": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Água filtrada"
+          }
+        },
+        "b10": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Colher de sopa ou balança"
+          }
+        },
+        "b11": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Garrafa térmica (opcional)"
+          }
+        },
+        "b12": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Café Temalli moído"
+          }
+        },
+        "b13": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Use água filtrada",
+            "texto": "Coloque água filtrada fria no reservatório. A água é mais de 98% do café: se tem gosto de cloro, o café também terá."
+          }
+        },
+        "b14": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Enxágue o filtro",
+            "texto": "Coloque o filtro de papel e molhe com um pouco de água quente para tirar o gosto de papel. Descarte a água."
+          }
+        },
+        "b15": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Coloque o café",
+            "texto": "Use cerca de 6 colheres de sopa cheias (60g) para 1 litro, ou 1 colher cheia para cada 160ml. Nivele o pó."
+          }
+        },
+        "b16": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Ligue a cafeteira",
+            "texto": "Ligue e deixe passar toda a água."
+          }
+        },
+        "b17": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Tire da placa",
+            "texto": "Assim que terminar, tire a jarra da placa quente. Café que fica esquentando amarga em poucos minutos."
+          }
+        },
+        "b18": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Sirva ou guarde na térmica",
+            "texto": "Sirva na hora ou passe para uma garrafa térmica preaquecida."
+          }
+        },
+        "b19": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café amargo ou com gosto de queimado",
+            "solucao": "A jarra ficou na placa quente. Desligue e transfira para uma garrafa térmica."
+          }
+        },
+        "b20": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café com gosto estranho",
+            "solucao": "Cafeteira com resíduo de calcário. Faça uma limpeza com água e vinagre branco (metade de cada) a cada mês, passando depois 2 ciclos só com água."
+          }
+        },
+        "b21": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café fraco",
+            "solucao": "Faltou café ou a moagem está grossa. Aumente a dose para 60 a 70g por litro."
+          }
+        },
+        "b22": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Quantas colheres de café por xícara na cafeteira elétrica?",
+            "resposta": "Cerca de 1 colher de sopa cheia (10g) para cada 160ml de água, ou 6 colheres para 1 litro."
+          }
+        },
+        "b23": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Posso deixar o café na placa quente para manter aquecido?",
+            "resposta": "Não é recomendado. Em 15 a 20 minutos o café já começa a amargar. Use uma garrafa térmica."
+          }
+        },
+        "b24": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "De quanto em quanto tempo limpar a cafeteira elétrica?",
+            "resposta": "Lave a jarra e o porta-filtro todos os dias. Uma vez por mês, faça a descalcificação com água e vinagre branco."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16",
+        "b17",
+        "b18",
+        "b19",
+        "b20",
+        "b21",
+        "b22",
+        "b23",
+        "b24"
+      ]
+    }
+  },
+  "order": [
+    "s1"
+  ]
+}

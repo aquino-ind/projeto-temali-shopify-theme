@@ -1,0 +1,214 @@
+{
+  "sections": {
+    "s1": {
+      "type": "tml-metodo",
+      "settings": {
+        "nome": "Cafeteira italiana",
+        "termo": "cafeteira italiana",
+        "artigo": "a",
+        "titulo": "Como fazer café na cafeteira italiana (moka): receita e passo a passo",
+        "resumo": "Para fazer café na cafeteira italiana, encha a base com água já quente até a altura da válvula, coloque o café em moagem média-fina no funil sem compactar e leve ao fogo baixo com a tampa aberta. Tire do fogo assim que o café começar a borbulhar e esfrie a base num pano úmido.",
+        "foto_padrao": "tml-preparo-cafeteira-italiana.jpg",
+        "tempo_txt": "5 a 6 min",
+        "tempo_min": 6,
+        "dificuldade": "Fácil",
+        "rende": "Depende do tamanho (3 xícaras ≈ 150ml)",
+        "titulo_oque": "O que é a cafeteira italiana",
+        "intro": "<p>A cafeteira italiana, ou moka, foi criada na Itália nos anos 1930. Ela usa a pressão do vapor da água da base para empurrar a água quente pelo pó e fazer subir um café forte e concentrado.</p><p>Não é um espresso, mas fica perto: a bebida é intensa e encorpada. Com fogo baixo e água pré-aquecida, ela faz um café doce, sem o amargor que muita gente associa ao método.</p>",
+        "titulo_passos": "Como fazer café na cafeteira italiana: passo a passo",
+        "cafe_1": "cafe-torra-media-84-pontos",
+        "cafe_1_estilo": "classico",
+        "cafe_1_texto": "O Clássico, que é um café pensado para espresso, fica excelente na italiana: encorpado, com chocolate e caramelo.",
+        "assinatura_url": "/pages/assinatura",
+        "indice_url": "/pages/como-preparar",
+        "outros": "V60 | /pages/como-fazer-cafe-na-v60 | tml-preparo-v60.jpg | 3 min • Média\nCoador de pano | /pages/como-fazer-cafe-no-coador-de-pano | tml-preparo-coador-de-pano.jpg | 4 min • Fácil\nPrensa francesa | /pages/como-fazer-cafe-na-prensa-francesa | tml-preparo-prensa-francesa.jpg | 5 min • Fácil\nAeropress | /pages/como-fazer-cafe-na-aeropress | tml-preparo-aeropress.jpg | 2 min • Fácil\nEspresso | /pages/como-fazer-espresso-em-casa | tml-preparo-espresso-em-casa.jpg | 2 min • Avançada\nCafeteira elétrica | /pages/como-fazer-cafe-na-cafeteira-eletrica | tml-preparo-cafeteira-eletrica.jpg | 6 a 8 min • Fácil"
+      },
+      "blocks": {
+        "b1": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Café",
+            "valor": "Funil cheio, sem compactar (≈ 15 a 17g na de 3 xícaras)"
+          }
+        },
+        "b2": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Água",
+            "valor": "Até a válvula (≈ 150ml na de 3 xícaras)"
+          }
+        },
+        "b3": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Temperatura",
+            "valor": "Água já quente na base"
+          }
+        },
+        "b4": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Moagem",
+            "valor": "Média-fina"
+          }
+        },
+        "b5": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Fogo",
+            "valor": "Baixo"
+          }
+        },
+        "b6": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Tempo total",
+            "valor": "5 a 6 min"
+          }
+        },
+        "b7": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Cafeteira italiana (moka)"
+          }
+        },
+        "b8": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Chaleira"
+          }
+        },
+        "b9": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Fogão"
+          }
+        },
+        "b10": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Pano úmido"
+          }
+        },
+        "b11": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Café Temalli suficiente para encher o funil"
+          }
+        },
+        "b12": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Aqueça a água antes",
+            "texto": "Aqueça a água na chaleira e coloque na base da cafeteira até logo abaixo da válvula. Começar com água quente encurta o tempo no fogo e evita o gosto de “queimado”."
+          }
+        },
+        "b13": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Encha o funil",
+            "texto": "Encha o funil com café em moagem média-fina, um pouco mais grossa que a de espresso. Nivele com o dedo, sem apertar."
+          }
+        },
+        "b14": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Monte com cuidado",
+            "texto": "Encaixe o funil e rosqueie a parte de cima segurando com um pano, porque a base está quente."
+          }
+        },
+        "b15": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Fogo baixo, tampa aberta",
+            "texto": "Leve ao fogo baixo com a tampa aberta, para ver o café subir."
+          }
+        },
+        "b16": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Tire na hora certa",
+            "texto": "Quando o café começar a sair claro e borbulhando, tire do fogo. A última parte é a que amarga."
+          }
+        },
+        "b17": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Esfrie a base e sirva",
+            "texto": "Apoie a base num pano úmido ou passe na água fria para parar a extração. Mexa o café na parte de cima e sirva."
+          }
+        },
+        "b18": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café amargo ou com gosto de queimado",
+            "solucao": "Fogo alto ou café deixado no fogo até o fim. Use fogo baixo, água pré-aquecida e tire assim que borbulhar."
+          }
+        },
+        "b19": {
+          "type": "erro",
+          "settings": {
+            "problema": "O café não sobe ou sai devagar",
+            "solucao": "Café compactado ou moagem fina demais. Não aperte o pó e use moagem média-fina."
+          }
+        },
+        "b20": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café escapando pela rosca",
+            "solucao": "A borracha de vedação está gasta ou a rosca está suja de pó. Limpe a borda e troque a borracha."
+          }
+        },
+        "b21": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Precisa compactar o café na cafeteira italiana?",
+            "resposta": "Não. Compactar trava a passagem da água e aumenta a pressão. Só nivele o pó com o dedo."
+          }
+        },
+        "b22": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Como limpar a cafeteira italiana?",
+            "resposta": "Só com água, sem detergente, principalmente se for de alumínio. Desmonte, enxágue, seque bem e guarde desmontada."
+          }
+        },
+        "b23": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Por que meu café da italiana fica amargo?",
+            "resposta": "Geralmente por fogo alto ou por deixar no fogo até o final. Comece com água quente, use fogo baixo e tire assim que o café começar a borbulhar."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16",
+        "b17",
+        "b18",
+        "b19",
+        "b20",
+        "b21",
+        "b22",
+        "b23"
+      ]
+    }
+  },
+  "order": [
+    "s1"
+  ]
+}

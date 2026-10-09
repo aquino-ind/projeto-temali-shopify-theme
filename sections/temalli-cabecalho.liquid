@@ -1,0 +1,59 @@
+{% render 'temalli-assets' %}
+
+{%- if section.settings.layout_limpo -%}
+  <script>document.body.classList.add('tml-limpo');</script>
+{%- endif -%}
+
+<div class="tml">
+  {%- if section.settings.aviso != blank -%}
+    <div class="topbar">{{ section.settings.aviso }}</div>
+  {%- endif -%}
+
+  {%- if section.settings.mostrar_logo -%}
+    <header class="site">
+      <a href="{{ routes.root_url }}" class="logo">
+        {%- if section.settings.logo != blank -%}
+          {{ section.settings.logo | image_url: width: 400 | image_tag: alt: shop.name, loading: 'eager' }}
+        {%- else -%}
+          {{ section.settings.texto_logo }}
+        {%- endif -%}
+      </a>
+    </header>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • Cabeçalho",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "aviso",
+      "label": "Barra de aviso",
+      "info": "Use negrito para destacar em caramelo.",
+      "default": "<p><strong>Frete grátis</strong> no combo Pague 3 Leve 4 • Torra fresca enviada em até 48h</p>"
+    },
+    { "type": "header", "content": "Logo" },
+    { "type": "checkbox", "id": "mostrar_logo", "label": "Mostrar logo", "default": true },
+    { "type": "image_picker", "id": "logo", "label": "Imagem do logo" },
+    {
+      "type": "text",
+      "id": "texto_logo",
+      "label": "Logo em texto",
+      "info": "Usado quando não há imagem.",
+      "default": "Temalli® Café"
+    },
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "checkbox",
+      "id": "layout_limpo",
+      "label": "Esconder cabeçalho e rodapé do tema",
+      "info": "Recomendado em página de vendas: remove o menu do Dawn para não roubar cliques.",
+      "default": true
+    }
+  ],
+  "presets": [{ "name": "Temalli • Cabeçalho" }]
+}
+{% endschema %}

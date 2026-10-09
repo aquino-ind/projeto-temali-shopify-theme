@@ -1,0 +1,54 @@
+<div class="tml">
+  <section style="background:var(--creme-2)">
+    <div class="estreito reveal">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.titulo }}</h2>
+      {%- if section.settings.texto != blank -%}<p>{{ section.settings.texto }}</p>{%- endif -%}
+      <div class="metodos-lista">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'metodo' -%}<a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.nome }}</a>{%- endif -%}
+        {%- endfor -%}
+      </div>
+      {%- if section.settings.dica != blank -%}<div class="dica">{{ section.settings.dica }}</div>{%- endif -%}
+      {%- assign tem_video = false -%}
+      {%- for block in section.blocks -%}{%- if block.type == 'video' -%}{%- assign tem_video = true -%}{%- endif -%}{%- endfor -%}
+      {%- if tem_video -%}
+        <div class="videos-grid">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'video' -%}<div {{ block.shopify_attributes }}>{% render 'tml-video', url: block.settings.url, legenda: block.settings.legenda %}</div>{%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == '@app' -%}<div class="metodos-app">{% render block %}</div>{%- endif -%}
+      {%- endfor -%}
+      {%- if section.settings.botao != blank -%}<p style="margin-top:18px"><a href="{{ section.settings.botao_url }}" class="btn btn-contorno">{{ section.settings.botao }}</a></p>{%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Métodos de preparo",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Extrações" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Funciona no seu método, qualquer que seja" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "inline_richtext", "id": "dica", "label": "Dica", "info": "Comece com <b>Dica:</b>" },
+    { "type": "text", "id": "botao", "label": "Botão", "default": "Ver receitas e passo a passo de cada método" },
+    { "type": "url", "id": "botao_url", "label": "Link do botão" }
+  ],
+  "blocks": [
+    { "type": "metodo", "name": "Método", "settings": [
+      { "type": "text", "id": "nome", "label": "Nome" },
+      { "type": "url", "id": "url", "label": "Página do guia" }
+    ]},
+    { "type": "video", "name": "Vídeo do YouTube", "settings": [
+      { "type": "text", "id": "url", "label": "Link do YouTube", "info": "Aceita vídeos normais e Shorts." },
+      { "type": "text", "id": "legenda", "label": "Legenda" }
+    ]},
+    { "type": "@app" }
+  ],
+  "presets": [ { "name": "T • Métodos de preparo" } ]
+}
+{% endschema %}

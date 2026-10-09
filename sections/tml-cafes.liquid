@@ -1,0 +1,66 @@
+<div class="tml">
+  <section id="{{ section.settings.ancora | default: 'cafes' }}">
+    <div class="wrap">
+      <div class="centro reveal">
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h2>{{ section.settings.titulo }}</h2>
+        {%- if section.settings.texto != blank -%}<p class="lead">{{ section.settings.texto }}</p>{%- endif -%}
+      </div>
+      <div class="produtos-grid">
+        {%- for block in section.blocks -%}
+          {%- assign p = block.settings.produto -%}
+          {%- assign estilo = block.settings.estilo -%}
+          <article class="card-prod {{ estilo }} reveal" {{ block.shopify_attributes }}>
+            <div class="topo">
+              <div><span class="eyebrow">{{ block.settings.eyebrow }}</span><h3>{{ block.settings.titulo }}</h3></div>
+              <span class="peso">{{ block.settings.peso }}</span>
+            </div>
+            <div class="foto">{% render 'tml-imagem', img: block.settings.imagem, asset: block.settings.imagem_padrao, produto: p, alt: block.settings.titulo, largura: 900 %}</div>
+            <div class="corpo">
+              <p class="desc">{{ block.settings.descricao }}</p>
+              {%- assign notas = block.settings.notas | split: ',' -%}
+              <ul class="notas" aria-label="Notas sensoriais">{% for n in notas %}<li>{{ n | strip }}</li>{% endfor %}</ul>
+              {%- if p != blank -%}
+                <div class="precos">
+                  <div class="preco-box"><small>1 unidade</small><b>{{ p.price | money }}</b></div>
+                  <div class="preco-box kit"><small>Pague 3, Leve 4 + frete grátis</small><b>{{ p.price | times: 3 | money }}</b><s>{{ p.price | times: 4 | money }}</s></div>
+                </div>
+              {%- endif -%}
+              <div class="acoes">
+                <a href="{{ p.url | default: '#' }}#comprar" class="btn btn-{{ estilo }}">Comprar {{ block.settings.titulo | split: ' ' | last }}</a>
+                <a href="{{ p.url | default: '#' }}" class="btn btn-contorno">Conhecer</a>
+              </div>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Nossos cafés",
+  "settings": [
+    { "type": "text", "id": "ancora", "label": "Âncora (id)", "default": "cafes" },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Nossos cafés" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Escolha o seu Temalli®" },
+    { "type": "inline_richtext", "id": "texto", "label": "Texto" }
+  ],
+  "blocks": [
+    { "type": "cafe", "name": "Café", "settings": [
+      { "type": "product", "id": "produto", "label": "Produto" },
+      { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "O original" },
+      { "type": "text", "id": "titulo", "label": "Nome", "default": "Temalli Clássico" },
+      { "type": "text", "id": "peso", "label": "Peso", "default": "500g" },
+      { "type": "textarea", "id": "descricao", "label": "Descrição" },
+      { "type": "text", "id": "notas", "label": "Notas (separadas por vírgula)", "default": "Caramelo, Mel, Chocolate, Frutas" },
+      { "type": "select", "id": "estilo", "label": "Cor", "options": [ { "value": "classico", "label": "Azul (Clássico)" }, { "value": "arara", "label": "Verde (Arara)" } ], "default": "classico" },
+      { "type": "image_picker", "id": "imagem", "label": "Imagem" },
+      { "type": "text", "id": "imagem_padrao", "label": "Imagem padrão (arquivo do tema)" }
+    ]}
+  ],
+  "max_blocks": 3,
+  "presets": [ { "name": "T • Nossos cafés" } ]
+}
+{% endschema %}

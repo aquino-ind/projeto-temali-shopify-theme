@@ -1,0 +1,171 @@
+{
+  "sections": {
+    "s1": {
+      "type": "tml-ass-hero",
+      "settings": {
+        "texto": "Escolha os cafés e a frequência: mensal, bimestral ou trimestral. A gente envia no prazo combinado, sem você precisar lembrar de comprar e sem pagar frete.",
+        "produto_a": "cafe-torra-media-84-pontos",
+        "imagem_b_padrao": "tml-preparo-espresso-em-casa.jpg"
+      },
+      "blocks": {
+        "b1": {
+          "type": "beneficio",
+          "settings": {
+            "icone": "frete",
+            "texto": "Frete grátis em todas as entregas"
+          }
+        },
+        "b2": {
+          "type": "beneficio",
+          "settings": {
+            "icone": "check",
+            "texto": "Grão ou moído, na quantidade que quiser"
+          }
+        },
+        "b3": {
+          "type": "beneficio",
+          "settings": {
+            "icone": "relogio",
+            "texto": "A cada 1, 2 ou 3 meses"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "s2": {
+      "type": "tml-passos",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Escolha o café",
+            "texto": "Temalli Clássico, na quantidade que quiser, em grão ou moído."
+          }
+        },
+        "b2": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Escolha a frequência",
+            "texto": "Receba a cada mês, a cada dois meses ou a cada três meses."
+          }
+        },
+        "b3": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Chame no WhatsApp",
+            "texto": "Sua escolha vai pronta na mensagem. A gente confirma os detalhes e o pagamento com você."
+          }
+        },
+        "b4": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Receba em casa",
+            "texto": "Seu café chega no prazo combinado, sempre com frete grátis."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "s3": {
+      "type": "tml-montador",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "cafe",
+          "settings": {
+            "produto": "cafe-torra-media-84-pontos",
+            "nome": "Temalli Clássico",
+            "peso": "500g",
+            "notas": "caramelo, mel, chocolate",
+            "estilo": "classico",
+            "qtd": 1
+          }
+        }
+      },
+      "block_order": [
+        "b1"
+      ]
+    },
+    "s4": {
+      "type": "tml-cta-final",
+      "settings": {
+        "eyebrow": "Vocês pediram",
+        "citacao": "Provamos e aprovamos. Tem alguma assinatura para clientes?",
+        "citacao_autor": "Raoni A. • compra verificada • dez/2025",
+        "citacao_estrelas": "★★★★☆",
+        "titulo": "Agora tem.",
+        "botao": "Montar minha assinatura",
+        "url": "#montar",
+        "micro": ""
+      }
+    },
+    "s5": {
+      "type": "tml-faq",
+      "settings": {
+        "eyebrow": "Dúvidas sobre a assinatura"
+      },
+      "blocks": {
+        "b1": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Por que a assinatura é feita pelo WhatsApp?",
+            "resposta": "<p>Para ser do seu jeito. Pelo WhatsApp a gente combina com você os cafés, a frequência, o melhor dia de envio e a forma de pagamento, com atendimento de uma pessoa da equipe e não de um robô.</p>"
+          }
+        },
+        "b2": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "O frete é grátis mesmo?",
+            "resposta": "<p>Sim. Na assinatura, todas as entregas têm frete grátis.</p>"
+          }
+        },
+        "b3": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Posso trocar os cafés ou a frequência depois?",
+            "resposta": "<p>Pode. É só mandar uma mensagem no WhatsApp antes do próximo envio.</p>"
+          }
+        },
+        "b4": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Qual frequência escolher?",
+            "resposta": "<p>Cada xícara usa cerca de 10g de café. Um pacote de 500g do Clássico rende umas 50 xícaras. Quem toma 1 a 2 xícaras por dia costuma ir bem com 1 Clássico por mês.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "s6": {
+      "type": "tml-whatsapp",
+      "settings": {
+        "titulo": "Prefere conversar antes?",
+        "texto": "Chame a gente no WhatsApp e tire suas dúvidas sobre a assinatura.",
+        "mensagem": "Olá! Quero saber mais sobre a assinatura Temalli."
+      }
+    }
+  },
+  "order": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+  ]
+}

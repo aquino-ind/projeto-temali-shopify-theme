@@ -1,0 +1,69 @@
+{%- liquid
+  assign a = section.settings.produto_a
+  assign b = section.settings.produto_b
+  assign total = a.price | plus: b.price
+  assign minimo = settings.tml_frete_minimo | times: 100
+-%}
+<div class="tml">
+  <section class="degustacao" id="degustacao">
+    <div class="wrap deg-grid reveal">
+      <div class="deg-img">
+        {% render 'tml-imagem', img: section.settings.imagem_a, asset: section.settings.imagem_a_padrao, produto: a, alt: a.title, largura: 700 %}
+        {% render 'tml-imagem', img: section.settings.imagem_b, asset: section.settings.imagem_b_padrao, produto: b, alt: b.title, largura: 700 %}
+        <span class="deg-mais" aria-hidden="true">+</span>
+      </div>
+      <div class="deg-compra" data-degustacao>
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+        <p class="lead">{{ section.settings.texto }}</p>
+        <ul class="deg-itens">
+          {%- for p in (1..2) -%}
+            {%- if forloop.first -%}{%- assign prod = a -%}{%- assign desc = section.settings.desc_a -%}{%- assign nome_cafe = section.settings.nome_a -%}{%- else -%}{%- assign prod = b -%}{%- assign desc = section.settings.desc_b -%}{%- assign nome_cafe = section.settings.nome_b -%}{%- endif -%}
+            {%- assign v_grao = prod.variants.first.id -%}{%- assign v_moido = prod.variants.first.id -%}
+            {%- for v in prod.variants -%}
+              {%- assign t = v.title | downcase -%}
+              {%- if t contains 'mo' -%}{%- assign v_moido = v.id -%}{%- else -%}{%- assign v_grao = v.id -%}{%- endif -%}
+            {%- endfor -%}
+            <li data-grao="{{ v_grao }}" data-moido="{{ v_moido }}">
+              <span><b>1× {{ nome_cafe }}</b><small>{{ desc }}</small></span>
+              <div class="m-formato" role="group" aria-label="Formato">
+                <button type="button" data-formato="grao" aria-pressed="true">Grão</button>
+                <button type="button" data-formato="moido" aria-pressed="false">Moído</button>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+        <div class="deg-preco">
+          <b>{{ total | money }}</b>
+          {%- if total >= minimo -%}<span class="selo-frete">{% render 'tml-icone', nome: 'frete' %}Frete grátis para todo o Brasil</span>{%- endif -%}
+        </div>
+        <button type="button" class="btn btn-bloco" data-deg-cta>{{ section.settings.botao }}</button>
+        <p class="micro">{{ section.settings.micro }}</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Kit Degustação",
+  "settings": [
+    { "type": "product", "id": "produto_a", "label": "Café 1" },
+    { "type": "text", "id": "nome_a", "label": "Café 1 (nome)", "default": "Temalli Clássico" },
+    { "type": "text", "id": "desc_a", "label": "Café 1 (descrição curta)", "default": "500g • caramelo, mel, chocolate" },
+    { "type": "image_picker", "id": "imagem_a", "label": "Café 1 (imagem)" },
+    { "type": "text", "id": "imagem_a_padrao", "label": "Café 1 (imagem padrão do tema)" },
+    { "type": "product", "id": "produto_b", "label": "Café 2" },
+    { "type": "text", "id": "nome_b", "label": "Café 2 (nome)", "default": "Temalli Arara" },
+    { "type": "text", "id": "desc_b", "label": "Café 2 (descrição curta)", "default": "250g • mel, açúcar mascavo, frutas amarelas" },
+    { "type": "image_picker", "id": "imagem_b", "label": "Café 2 (imagem)" },
+    { "type": "text", "id": "imagem_b_padrao", "label": "Café 2 (imagem padrão do tema)", "default": "tml-arara-ambiente.webp" },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Kit Degustação" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Na dúvida? Prove os dois." },
+    { "type": "textarea", "id": "texto", "label": "Texto", "default": "Um Clássico e um Arara para comparar lado a lado e descobrir o seu preferido. São cerca de 75 xícaras de café especial, com frete grátis." },
+    { "type": "text", "id": "botao", "label": "Botão", "default": "Comprar Kit Degustação" },
+    { "type": "text", "id": "micro", "label": "Texto abaixo do botão", "default": "Envio em até 48h após a compra • Atendimento humano no WhatsApp" }
+  ],
+  "presets": [ { "name": "T • Kit Degustação" } ]
+}
+{% endschema %}

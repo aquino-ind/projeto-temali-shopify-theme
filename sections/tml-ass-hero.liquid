@@ -1,0 +1,46 @@
+<div class="tml">
+  <section class="ass-hero escuro">
+    <div class="wrap ass-hero-grid">
+      <div>
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h1>{{ section.settings.titulo }}</h1>
+        <p class="lead">{{ section.settings.texto }}</p>
+        <div class="hero-ctas" style="justify-content:flex-start">
+          <a href="#montar" class="btn btn-luz">{{ section.settings.botao }}</a>
+          <a href="#como-funciona" class="btn btn-contorno">Como funciona</a>
+        </div>
+        <ul class="ass-beneficios">
+          {%- for block in section.blocks -%}<li {{ block.shopify_attributes }}>{% render 'tml-icone', nome: block.settings.icone %}{{ block.settings.texto }}</li>{%- endfor -%}
+        </ul>
+      </div>
+      <div class="ass-hero-img">
+        {% render 'tml-imagem', img: section.settings.imagem_a, asset: section.settings.imagem_a_padrao, produto: section.settings.produto_a, alt: section.settings.produto_a.title, largura: 700, carregar: 'eager' %}
+        {% render 'tml-imagem', img: section.settings.imagem_b, asset: section.settings.imagem_b_padrao, produto: section.settings.produto_b, alt: section.settings.produto_b.title, largura: 700, carregar: 'eager' %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Assinatura: topo",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Assinatura Temalli®" },
+    { "type": "inline_richtext", "id": "titulo", "label": "Título", "default": "Seu café especial chega sozinho. <em>Com frete grátis.</em>" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "botao", "label": "Botão", "default": "Montar minha assinatura" },
+    { "type": "product", "id": "produto_a", "label": "Imagem 1 (produto)" },
+    { "type": "image_picker", "id": "imagem_a", "label": "Imagem 1" },
+    { "type": "text", "id": "imagem_a_padrao", "label": "Imagem 1 padrão (arquivo do tema)" },
+    { "type": "product", "id": "produto_b", "label": "Imagem 2 (produto)" },
+    { "type": "image_picker", "id": "imagem_b", "label": "Imagem 2" },
+    { "type": "text", "id": "imagem_b_padrao", "label": "Imagem 2 padrão (arquivo do tema)", "default": "tml-arara-ambiente.webp" }
+  ],
+  "blocks": [ { "type": "beneficio", "name": "Benefício", "settings": [
+    { "type": "select", "id": "icone", "label": "Ícone", "default": "check", "options": [ { "value": "check", "label": "Check" }, { "value": "frete", "label": "Caminhão" }, { "value": "relogio", "label": "Relógio" } ] },
+    { "type": "text", "id": "texto", "label": "Texto" }
+  ]}],
+  "max_blocks": 4,
+  "presets": [ { "name": "T • Assinatura: topo" } ]
+}
+{% endschema %}

@@ -1,0 +1,40 @@
+<div class="tml">
+  <section class="escuro kit-sec">
+    <div class="wrap reveal">
+      {%- if section.settings.xicara -%}{% render 'tml-xicara' %}{%- endif -%}
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <div class="kit-num">3 = 4</div>
+      <h2>{{ section.settings.titulo }}</h2>
+      <p class="lead">{{ section.settings.texto }}</p>
+      <div class="kit-cards">
+        {%- for block in section.blocks -%}
+          {%- assign p = block.settings.produto -%}
+          {%- if p != blank -%}
+            <a href="{{ p.url }}#comprar" {{ block.shopify_attributes }}><small>{{ block.settings.rotulo }}</small><b>{{ p.price | times: 3 | money }}</b><span>{%- assign un = p.price | times: 3 | divided_by: 4.0 | round -%}{{ un | money }} por pacote • {{ block.settings.peso }} • frete grátis</span></a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Oferta Pague 3 Leve 4",
+  "settings": [
+    { "type": "checkbox", "id": "xicara", "label": "Xícara com vapor", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Oferta permanente" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Pague 3, leve 4 + frete grátis. Em qualquer Temalli®." },
+    { "type": "textarea", "id": "texto", "label": "Texto", "default": "Leve quatro pacotes, pague três e receba em casa sem pagar frete, em qualquer lugar do Brasil." }
+  ],
+  "blocks": [
+    { "type": "kit", "name": "Kit", "settings": [
+      { "type": "product", "id": "produto", "label": "Produto" },
+      { "type": "text", "id": "rotulo", "label": "Rótulo", "default": "Kit Clássico • 4 × 500g" },
+      { "type": "text", "id": "peso", "label": "Peso total", "default": "2kg" }
+    ]}
+  ],
+  "max_blocks": 3,
+  "presets": [ { "name": "T • Oferta Pague 3 Leve 4" } ]
+}
+{% endschema %}

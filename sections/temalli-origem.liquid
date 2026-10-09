@@ -1,0 +1,65 @@
+{% render 'temalli-assets' %}
+
+<div class="tml">
+  <section class="origem">
+    <div class="wrap origem-grid reveal">
+      <div class="origem-img" {% if section.settings.imagem_direita %}style="order:2"{% endif %}>
+        {%- if section.settings.imagem != blank -%}
+          {{
+            section.settings.imagem
+            | image_url: width: 1440
+            | image_tag:
+              loading: 'lazy',
+              sizes: '(min-width: 820px) 45vw, 100vw',
+              widths: '480, 720, 960, 1440',
+              alt: section.settings.imagem.alt | default: section.settings.titulo
+          }}
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        {%- endif -%}
+        <h2>{{ section.settings.titulo }}</h2>
+        {{ section.settings.texto }}
+        {%- if section.settings.assinatura != blank -%}
+          <p class="assina">{{ section.settings.assinatura }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • Origem",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    { "type": "image_picker", "id": "imagem", "label": "Imagem" },
+    { "type": "checkbox", "id": "imagem_direita", "label": "Imagem à direita", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Chapéu", "default": "Origem única" },
+    {
+      "type": "text",
+      "id": "titulo",
+      "label": "Título",
+      "default": "Um café com endereço: Fazenda Maria Ângela, Serra da Canastra"
+    },
+    {
+      "type": "richtext",
+      "id": "texto",
+      "label": "Texto",
+      "default": "<p>A maioria dos cafés de mercado é uma mistura anônima de grãos de várias origens, comprados de quem vender mais barato, torrados até o carvão pra esconder defeito.</p><p>O Temalli® nasce em um único lugar: a <strong>Fazenda Maria Ângela</strong>, na <strong>Serra da Canastra</strong>, em Minas Gerais. A mesma serra que produz o queijo mais premiado do Brasil, com altitude, clima e solo que o mundo inteiro reconhece.</p><p>Cada lote é colhido, selecionado e torrado no ponto exato, aquele que revela o sabor do grão em vez de mascará-lo. É por isso que na xícara você encontra caramelo, mel e chocolate de verdade, sem aromatizante nenhum.</p>"
+    },
+    {
+      "type": "text",
+      "id": "assinatura",
+      "label": "Frase de assinatura",
+      "default": "Você sabe de onde vem o seu café. Poucos podem dizer isso."
+    }
+  ],
+  "presets": [{ "name": "Temalli • Origem" }]
+}
+{% endschema %}

@@ -1,0 +1,91 @@
+{%- assign whats = 'https://wa.me/' | append: settings.tml_whats_numero -%}
+<div class="tml">
+  <footer class="site">
+    <div class="wrap">
+      <div class="rodape-grid">
+        <div>
+          {% render 'tml-logo' %}
+          {%- if section.settings.descricao != blank -%}<p style="margin-top:16px;max-width:22em">{{ section.settings.descricao }}</p>{%- endif -%}
+        </div>
+        {%- for block in section.blocks -%}
+          <div {{ block.shopify_attributes }}>
+            <h4>{{ block.settings.titulo }}</h4>
+            <ul>
+              {%- assign linhas = block.settings.links | newline_to_br | split: '<br />' -%}
+              {%- for linha in linhas -%}
+                {%- assign partes = linha | strip | split: '|' -%}
+                {%- if partes.size == 2 -%}
+                  {%- assign destino = partes[1] | strip -%}
+                  {%- if destino == 'whatsapp' -%}{%- assign destino = whats -%}{%- endif -%}
+                  <li><a href="{{ destino }}">{{ partes[0] | strip }}</a></li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="rodape-fim">
+        <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos os direitos reservados.{% if section.settings.empresa != blank %} {{ section.settings.empresa }}{% endif %}</span>
+        <span>{{ section.settings.selos }}</span>
+      </div>
+    </div>
+  </footer>
+
+<dialog class="gaveta tml" data-gaveta aria-labelledby="gav-titulo">
+  <div class="gav-topo"><h2 id="gav-titulo">Seu carrinho<small data-gav-count></small></h2><button type="button" class="gav-fechar" data-gav-fechar aria-label="Fechar carrinho">×</button></div>
+  <div data-gav-frete></div>
+  <div class="gav-corpo" data-gav-corpo></div>
+  <div data-gav-rodape></div>
+</dialog>
+  {%- liquid
+    assign s1 = section.settings.sugestao_1
+    assign s2 = section.settings.sugestao_2
+  -%}
+  <script>
+    window.TML_CARRINHO = {
+      freteMinimo: {{ settings.tml_frete_minimo | times: 100 }},
+      checkout: {{ routes.root_url | append: 'checkout' | replace: '//', '/' | json }},
+      kits: [{% if s1 %}{{ s1.id }}{% endif %}{% if s1 and s2 %},{% endif %}{% if s2 %}{{ s2.id }}{% endif %}],
+      sugestoes: [
+        {%- for p in (1..2) -%}
+          {%- if forloop.first -%}{%- assign sp = s1 -%}{%- assign sd = section.settings.sugestao_1_desc -%}{%- else -%}{%- assign sp = s2 -%}{%- assign sd = section.settings.sugestao_2_desc -%}{%- endif -%}
+          {%- if sp -%}{"produtoId": {{ sp.id }}, "variantId": {{ sp.selected_or_first_available_variant.id }}, "titulo": {{ sp.title | split: '•' | first | strip | json }}, "descricao": {{ sd | json }}, "preco": {{ sp.price }}, "img": {{ sp.featured_image | image_url: width: 160 | json }}, "url": {{ sp.url | json }}}{% unless forloop.last %},{% endunless %}{%- endif -%}
+        {%- endfor -%}
+      ],
+      links: [
+        {%- if s1 -%}{"texto": {{ s1.title | split: '•' | first | strip | json }}, "url": {{ s1.url | json }}, "classe": "btn-classico"}{%- endif -%}{%- if s1 and s2 -%},{%- endif -%}
+        {%- if s2 -%}{"texto": {{ s2.title | split: '•' | first | strip | json }}, "url": {{ s2.url | json }}, "classe": "btn-arara"}{%- endif -%}
+      ]
+    };
+  </script>
+
+  {%- if settings.tml_whats_fixo -%}
+    <a class="whats-fixo" href="{{ whats }}?text={{ settings.tml_whats_mensagem | url_encode }}" target="_blank" rel="noopener" aria-label="Falar com a Temalli no WhatsApp">
+      {% render 'tml-icone', nome: 'whats' %}<span>Fale com a gente<small>{{ settings.tml_whats_horario }}</small></span>
+    </a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "T • Rodapé",
+  "class": "tml-secao-footer",
+  "settings": [
+    { "type": "text", "id": "descricao", "label": "Descrição", "default": "Cafés especiais 84+ SCA da Serra da Canastra, Piumhi (MG)." },
+    { "type": "text", "id": "empresa", "label": "Razão social, CNPJ e endereço", "info": "Obrigatório para lojas online (Decreto 7.962/2013)." },
+    { "type": "text", "id": "selos", "label": "Texto à direita", "default": "Compra segura • Atendimento humano" },
+    { "type": "header", "content": "Gaveta de carrinho" },
+    { "type": "product", "id": "sugestao_1", "label": "Café 1 (sugestão e Pague 3, Leve 4)" },
+    { "type": "text", "id": "sugestao_1_desc", "label": "Café 1 (descrição curta)", "default": "500g • Grãos" },
+    { "type": "product", "id": "sugestao_2", "label": "Café 2 (sugestão e Pague 3, Leve 4)" },
+    { "type": "text", "id": "sugestao_2_desc", "label": "Café 2 (descrição curta)", "default": "250g • Grãos" }
+  ],
+  "blocks": [
+    { "type": "coluna", "name": "Coluna de links", "settings": [
+      { "type": "text", "id": "titulo", "label": "Título", "default": "Links" },
+      { "type": "textarea", "id": "links", "label": "Links", "info": "Um por linha, no formato: Texto | /link. Use \"whatsapp\" como link para abrir o WhatsApp." }
+    ]}
+  ],
+  "max_blocks": 4
+}
+{% endschema %}

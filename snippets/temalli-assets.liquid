@@ -1,0 +1,6 @@
+{%- comment -%}
+  CSS/JS da landing Temalli. Renderizado por todas as seções `temalli-*`.
+  O link duplicado é deduplicado pelo browser e o JS tem guard contra dupla inicialização.
+{%- endcomment -%}
+{{ 'temalli.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'temalli.js' | asset_url }}" defer="defer"></script>

@@ -1,0 +1,28 @@
+{% render 'temalli-assets' %}
+
+<div class="tml">
+  <footer class="site">
+    {%- if section.settings.texto_logo != blank -%}
+      <div class="logo">{{ section.settings.texto_logo }}</div>
+    {%- endif -%}
+    {{ section.settings.texto }}
+  </footer>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • Rodapé",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    { "type": "text", "id": "texto_logo", "label": "Logo em texto", "default": "Temalli® Café" },
+    {
+      "type": "richtext",
+      "id": "texto",
+      "label": "Texto",
+      "default": "<p>© Temalli® Café • Fazenda Maria Ângela, Serra da Canastra (MG)</p>"
+    }
+  ],
+  "presets": [{ "name": "Temalli • Rodapé" }]
+}
+{% endschema %}

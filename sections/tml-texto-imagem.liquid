@@ -1,0 +1,46 @@
+{%- comment -%} Texto ao lado de um mosaico de até 3 fotos (origem, história). {%- endcomment -%}
+<div class="tml">
+  <section{% if section.settings.ancora != blank %} id="{{ section.settings.ancora }}"{% endif %}{% if section.settings.escuro %} class="escuro"{% endif %}>
+    <div class="wrap split{% if section.settings.inverter %} inverte{% endif %} reveal">
+      <div class="mosaico">
+        {%- for block in section.blocks limit: 3 -%}
+          <figure {{ block.shopify_attributes }}>
+            {% render 'tml-imagem', img: block.settings.imagem, asset: block.settings.imagem_padrao, alt: block.settings.alt, largura: 900 %}
+            {%- if block.settings.legenda != blank -%}<figcaption>{{ block.settings.legenda }}</figcaption>{%- endif -%}
+          </figure>
+        {%- endfor -%}
+      </div>
+      <div>
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+        {% render 'tml-texto', t: section.settings.texto %}
+        {%- if section.settings.assinatura != blank -%}<p class="assina">{{ section.settings.assinatura }}</p>{%- endif -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Texto e fotos",
+  "settings": [
+    { "type": "text", "id": "ancora", "label": "Âncora (id)", "default": "origem" },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Nossa origem" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Do coração da Serra da Canastra para a sua xícara" },
+    { "type": "richtext", "id": "texto", "label": "Texto", "info": "Aceita [i:arara] etc. para o ícone (i)." },
+    { "type": "text", "id": "assinatura", "label": "Frase de assinatura", "default": "Temalli® Café: feito com respeito à terra e amor à vida." },
+    { "type": "checkbox", "id": "inverter", "label": "Fotos à direita", "default": false },
+    { "type": "checkbox", "id": "escuro", "label": "Fundo escuro", "default": false }
+  ],
+  "blocks": [
+    { "type": "foto", "name": "Foto", "settings": [
+      { "type": "image_picker", "id": "imagem", "label": "Imagem" },
+      { "type": "text", "id": "imagem_padrao", "label": "Imagem padrão (arquivo do tema)" },
+      { "type": "text", "id": "alt", "label": "Descrição da imagem (acessibilidade)" },
+      { "type": "text", "id": "legenda", "label": "Legenda" }
+    ]}
+  ],
+  "max_blocks": 3,
+  "presets": [ { "name": "T • Texto e fotos" } ]
+}
+{% endschema %}

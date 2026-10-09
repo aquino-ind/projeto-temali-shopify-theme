@@ -1,0 +1,95 @@
+{%- liquid
+  assign p = section.settings.produto
+  assign nota = p.metafields.reviews.rating.value.rating | default: section.settings.nota
+  assign total = p.metafields.reviews.rating_count | default: section.settings.total
+  assign dist = section.settings.distribuicao | split: ','
+  assign soma = 0
+  for d in dist
+    assign soma = soma | plus: d
+  endfor
+  if soma == 0
+    assign soma = 1
+  endif
+-%}
+<div class="tml">
+  <section class="dep" id="{{ section.settings.ancora | default: 'depoimentos' }}">
+    <div class="wrap">
+      <div class="dep-topo reveal">
+        <div class="dep-nota"><b>{{ nota | times: 1.0 | round: 2 | replace: '.', ',' }}</b><span class="estrelas" aria-hidden="true">★★★★★</span><small>{{ total }} avaliações reais</small></div>
+        <div><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.titulo }}</h2></div>
+        <div class="histo" aria-label="Distribuição das notas">
+          {%- for d in dist -%}
+            {%- assign estrela = 6 | minus: forloop.index -%}
+            {%- assign pct = d | times: 100 | divided_by: soma -%}
+            <div><span>{{ estrela }} ★</span><i style="--v:{{ pct }}%"></i><span>{{ d | strip }}</span></div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="dep-fotos reveal">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'foto' -%}
+            <figure {{ block.shopify_attributes }}>
+              {% render 'tml-imagem', img: block.settings.imagem, asset: block.settings.imagem_padrao, alt: block.settings.alt, largura: 600 %}
+              <figcaption>“{{ block.settings.legenda }}”<b>{{ block.settings.nome }} • {{ block.settings.data }}</b></figcaption>
+            </figure>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="dep-grid reveal">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'depoimento' -%}
+            {%- assign n = block.settings.estrelas -%}
+            <article class="dep-card" {{ block.shopify_attributes }}>
+              <span class="estrelas" aria-label="{{ n }} de 5 estrelas">{% for i in (1..5) %}{% if i <= n %}★{% else %}☆{% endif %}{% endfor %}</span>
+              <p>“{{ block.settings.texto }}”</p>
+              <footer><b>{{ block.settings.nome }}</b><span>{{ block.settings.data }}</span>
+                {%- if block.settings.verificado -%}<span class="verif">{% render 'tml-icone', nome: 'check' %}Compra verificada</span>{%- endif -%}
+              </footer>
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="dep-acoes"><button type="button" class="btn" data-abrir-avaliacoes>Ver todas as {{ total }} avaliações</button></div>
+      {%- if section.settings.aviso != blank -%}<p class="dep-aviso">{{ section.settings.aviso }}</p>{%- endif -%}
+    </div>
+  </section>
+</div>
+<script>window.TML_AV_BASE = {{ 'tml-avaliacoes.js' | asset_url | split: 'tml-avaliacoes.js' | first | json }};</script>
+<script src="{{ 'tml-avaliacoes.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "T • Depoimentos",
+  "settings": [
+    { "type": "text", "id": "ancora", "label": "Âncora (id)", "default": "depoimentos" },
+    { "type": "product", "id": "produto", "label": "Produto das avaliações", "info": "A nota e o total vêm do Judge.me deste produto." },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Depoimentos" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Quem toma Temalli®, volta" },
+    { "type": "text", "id": "nota", "label": "Nota (se o Judge.me não informar)", "default": "4.96" },
+    { "type": "text", "id": "total", "label": "Total (se o Judge.me não informar)", "default": "49" },
+    { "type": "text", "id": "distribuicao", "label": "Quantidade de 5, 4, 3, 2 e 1 estrelas", "default": "47,2,0,0,0" },
+    { "type": "text", "id": "aviso", "label": "Aviso abaixo", "default": "Depoimentos reais de clientes, publicados no Judge.me, a plataforma de avaliações da nossa loja." }
+  ],
+  "blocks": [
+    { "type": "foto", "name": "Foto de cliente", "settings": [
+      { "type": "image_picker", "id": "imagem", "label": "Foto" },
+      { "type": "text", "id": "imagem_padrao", "label": "Foto padrão (arquivo do tema)" },
+      { "type": "text", "id": "alt", "label": "Descrição da foto" },
+      { "type": "text", "id": "legenda", "label": "Frase" },
+      { "type": "text", "id": "nome", "label": "Nome" },
+      { "type": "text", "id": "data", "label": "Data", "default": "jan/2026" }
+    ]},
+    { "type": "depoimento", "name": "Depoimento", "settings": [
+      { "type": "textarea", "id": "texto", "label": "Texto" },
+      { "type": "text", "id": "nome", "label": "Nome" },
+      { "type": "text", "id": "data", "label": "Data", "default": "jan/2026" },
+      { "type": "range", "id": "estrelas", "label": "Estrelas", "min": 1, "max": 5, "step": 1, "default": 5 },
+      { "type": "checkbox", "id": "verificado", "label": "Compra verificada", "default": false }
+    ]}
+  ],
+  "presets": [ { "name": "T • Depoimentos" } ]
+}
+{% endschema %}

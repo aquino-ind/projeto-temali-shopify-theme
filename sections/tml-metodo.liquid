@@ -1,0 +1,196 @@
+{%- comment -%}
+  Guia de preparo (uma página por método). Conteúdo gerado por projeto-websitev2/ferramentas/gerar_tema.py,
+  editável no editor de temas. Inclui dados estruturados HowTo, FAQPage e BreadcrumbList.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign url_pagina = shop.url | append: request.path
+  assign indice_url = s.indice_url | default: '/pages/como-preparar'
+-%}
+<div class="tml">
+  <nav class="migalhas wrap" aria-label="Você está em"><ol><li><a href="{{ routes.root_url }}">Início</a></li><li><a href="{{ indice_url }}">Como preparar</a></li><li aria-current="page">{{ s.nome }}</li></ol></nav>
+  <article class="met">
+    <header class="wrap met-hero">
+      <div>
+        <span class="eyebrow">Guia de preparo • {{ s.nome }}</span>
+        <h1>{{ s.titulo }}</h1>
+        <div class="met-meta"><span>Tempo: <b>{{ s.tempo_txt }}</b></span><span>Dificuldade: <b>{{ s.dificuldade }}</b></span><span>Rende: <b>{{ s.rende }}</b></span></div>
+        <div class="resposta"><b>Resposta rápida</b><p>{{ s.resumo }}</p></div>
+      </div>
+      {% render 'tml-imagem', img: s.foto, asset: s.foto_padrao, alt: s.titulo, largura: 960, classe: 'met-foto', carregar: 'eager', sizes: '(max-width: 860px) 100vw, 40vw' %}
+    </header>
+
+    <section class="met-sec">
+      <div class="wrap met-grid">
+        <div class="met-texto">
+          <h2>{{ s.titulo_oque }}</h2>
+          {{ s.intro }}
+          <h2>O que você precisa</h2>
+          <ul class="met-lista">
+            {%- for block in section.blocks -%}{%- if block.type == 'equipamento' -%}<li {{ block.shopify_attributes }}>{{ block.settings.texto }}</li>{%- endif -%}{%- endfor -%}
+          </ul>
+        </div>
+        <aside class="receita" aria-labelledby="receita-tit">
+          <span class="eyebrow">Receita Temalli</span>
+          <h2 id="receita-tit">Receita para {{ s.termo }}</h2>
+          <dl>
+            {%- for block in section.blocks -%}{%- if block.type == 'receita' -%}<div {{ block.shopify_attributes }}><dt>{{ block.settings.rotulo }}</dt><dd>{{ block.settings.valor }}</dd></div>{%- endif -%}{%- endfor -%}
+          </dl>
+          <p class="micro">Ponto de partida. Ajuste ao seu gosto: mais café para mais intensidade, menos para mais leveza.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="met-sec met-passos-sec">
+      <div class="wrap">
+        <span class="eyebrow">Passo a passo</span>
+        <h2>{{ s.titulo_passos }}</h2>
+        <ol class="met-passos">
+          {%- assign n = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'passo' -%}{%- assign n = n | plus: 1 -%}
+              <li id="passo-{{ n }}" {{ block.shopify_attributes }}><span class="n">{{ n }}</span><div><h3>{{ block.settings.titulo }}</h3><p>{{ block.settings.texto }}</p></div></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ol>
+      </div>
+    </section>
+
+    <section class="met-sec">
+      <div class="wrap">
+        <span class="eyebrow">Ajustes</span>
+        <h2>Erros comuns e como corrigir</h2>
+        <div class="tabela-wrap"><table class="met-erros"><thead><tr><th scope="col">Problema</th><th scope="col">Como corrigir</th></tr></thead><tbody>
+          {%- for block in section.blocks -%}{%- if block.type == 'erro' -%}<tr {{ block.shopify_attributes }}><th scope="row">{{ block.settings.problema }}</th><td>{{ block.settings.solucao }}</td></tr>{%- endif -%}{%- endfor -%}
+        </tbody></table></div>
+      </div>
+    </section>
+
+    <section class="met-sec met-temalli-sec">
+      <div class="wrap">
+        <span class="eyebrow">Qual café usar</span>
+        <h2>O melhor Temalli para {{ s.artigo }} {{ s.termo }}</h2>
+        {%- if s.cafe_2 != blank -%}
+          <p class="lead">Os dois são 100% arábica, 84+ pontos SCA, da Serra da Canastra. Funcionam neste método, cada um com a sua personalidade.</p>
+        {%- else -%}
+          <p class="lead">100% arábica, 84+ pontos SCA, da Serra da Canastra.</p>
+        {%- endif -%}
+        <div class="met-cafes">
+          {%- for i in (1..2) -%}
+            {%- if i == 1 -%}{%- assign p = s.cafe_1 -%}{%- assign txt = s.cafe_1_texto -%}{%- assign est = s.cafe_1_estilo -%}{%- else -%}{%- assign p = s.cafe_2 -%}{%- assign txt = s.cafe_2_texto -%}{%- assign est = s.cafe_2_estilo -%}{%- endif -%}
+            {%- if p != blank -%}
+              <div class="met-cafe {{ est }}">
+                {%- if i == 1 and s.cafe_2 != blank -%}<span class="met-ideal">Mais indicado</span>{%- endif -%}
+                <b>{{ p.title | split: '•' | first | strip }}</b><small>{{ p.price | money }}</small>
+                <p>{{ txt }}</p>
+                <a class="btn btn-{{ est }}" href="{{ p.url }}#comprar">Comprar</a>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- if s.assinatura_url != blank -%}
+          <a class="ass-mini" href="{{ s.assinatura_url }}">{% render 'tml-icone', nome: 'recorrente' %}<span>Faz café todo dia? <b>Assine e receba em casa com frete grátis</b>, a cada 1, 2 ou 3 meses.</span></a>
+        {%- endif -%}
+      </div>
+    </section>
+
+    {%- assign tem_video = false -%}
+    {%- for block in section.blocks -%}{%- if block.type == 'video' -%}{%- assign tem_video = true -%}{%- endif -%}{%- endfor -%}
+    {%- if tem_video -%}
+      <section class="met-sec">
+        <div class="wrap">
+          <span class="eyebrow">Na prática</span>
+          <h2>Veja o preparo com Temalli</h2>
+          <div class="videos-grid">
+            {%- for block in section.blocks -%}{%- if block.type == 'video' -%}<div {{ block.shopify_attributes }}>{% render 'tml-video', url: block.settings.url, legenda: block.settings.legenda %}</div>{%- endif -%}{%- endfor -%}
+          </div>
+        </div>
+      </section>
+    {%- endif -%}
+
+    <section class="faq met-sec" id="faq">
+      <div class="estreito">
+        <span class="eyebrow">Dúvidas</span>
+        <h2>Perguntas frequentes sobre {{ s.artigo }} {{ s.termo }}</h2>
+        {%- for block in section.blocks -%}{%- if block.type == 'pergunta' -%}<details {{ block.shopify_attributes }}><summary>{{ block.settings.pergunta }}</summary><div class="resp"><p>{{ block.settings.resposta }}</p></div></details>{%- endif -%}{%- endfor -%}
+      </div>
+    </section>
+
+    {%- if s.outros != blank -%}
+      <section class="met-sec">
+        <div class="wrap">
+          <span class="eyebrow">Outros métodos</span>
+          <h2>Veja como preparar em outros métodos</h2>
+          <div class="met-cards">
+            {%- assign linhas = s.outros | newline_to_br | split: '<br />' -%}
+            {%- for linha in linhas -%}
+              {%- assign c = linha | strip | split: '|' -%}
+              {%- if c.size >= 4 -%}
+                <a class="met-card" href="{{ c[1] | strip }}"><img class="met-card-foto" src="{{ c[2] | strip | asset_url }}" alt="" loading="lazy" width="960" height="1200"><span class="met-card-txt"><b>{{ c[0] | strip }}</b><small>{{ c[3] | strip }}</small></span></a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <p style="margin-top:24px"><a href="{{ indice_url }}" class="btn btn-contorno">Ver o guia completo de preparo</a></p>
+        </div>
+      </section>
+    {%- endif -%}
+  </article>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "HowTo",
+  "name": {{ s.titulo | json }}, "description": {{ s.resumo | json }},
+  "totalTime": "PT{{ s.tempo_min }}M", "yield": {{ s.rende | json }},
+  {%- if s.foto != blank -%}"image": {{ s.foto | image_url: width: 1200 | prepend: 'https:' | json }},{%- elsif s.foto_padrao != blank -%}"image": {{ s.foto_padrao | asset_url | prepend: 'https:' | json }},{%- endif -%}
+  "tool": [{%- assign primeiro = true -%}{%- for block in section.blocks -%}{%- if block.type == 'equipamento' -%}{% unless primeiro %},{% endunless %}{"@type":"HowToTool","name":{{ block.settings.texto | json }}}{%- assign primeiro = false -%}{%- endif -%}{%- endfor -%}],
+  "step": [{%- assign primeiro = true -%}{%- assign n = 0 -%}{%- for block in section.blocks -%}{%- if block.type == 'passo' -%}{%- assign n = n | plus: 1 -%}{% unless primeiro %},{% endunless %}{"@type":"HowToStep","position":{{ n }},"name":{{ block.settings.titulo | json }},"text":{{ block.settings.texto | json }},"url":{{ url_pagina | append: '#passo-' | append: n | json }}}{%- assign primeiro = false -%}{%- endif -%}{%- endfor -%}]
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{%- assign primeiro = true -%}{%- for block in section.blocks -%}{%- if block.type == 'pergunta' -%}{% unless primeiro %},{% endunless %}{"@type":"Question","name":{{ block.settings.pergunta | json }},"acceptedAnswer":{"@type":"Answer","text":{{ block.settings.resposta | json }}}}{%- assign primeiro = false -%}{%- endif -%}{%- endfor -%}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":{{ shop.url | json }}},{"@type":"ListItem","position":2,"name":"Como preparar","item":{{ shop.url | append: indice_url | json }}},{"@type":"ListItem","position":3,"name":{{ s.nome | json }},"item":{{ url_pagina | json }}}]}
+</script>
+
+{% schema %}
+{
+  "name": "T • Guia de preparo",
+  "settings": [
+    { "type": "text", "id": "nome", "label": "Método", "default": "V60" },
+    { "type": "text", "id": "termo", "label": "Método no meio da frase", "default": "V60", "info": "Ex.: V60, coador de pano, espresso" },
+    { "type": "text", "id": "artigo", "label": "Artigo (o/a)", "default": "a" },
+    { "type": "text", "id": "titulo", "label": "Título (H1)" },
+    { "type": "textarea", "id": "resumo", "label": "Resposta rápida" },
+    { "type": "image_picker", "id": "foto", "label": "Foto" },
+    { "type": "text", "id": "foto_padrao", "label": "Foto padrão (arquivo do tema)" },
+    { "type": "text", "id": "tempo_txt", "label": "Tempo (texto)", "default": "3 min" },
+    { "type": "number", "id": "tempo_min", "label": "Tempo em minutos (Google)", "default": 3 },
+    { "type": "text", "id": "dificuldade", "label": "Dificuldade", "default": "Fácil" },
+    { "type": "text", "id": "rende", "label": "Rende" },
+    { "type": "text", "id": "titulo_oque", "label": "Título 'O que é'" },
+    { "type": "richtext", "id": "intro", "label": "Texto 'O que é'" },
+    { "type": "text", "id": "titulo_passos", "label": "Título do passo a passo" },
+    { "type": "header", "content": "Qual café usar" },
+    { "type": "product", "id": "cafe_1", "label": "Café mais indicado" },
+    { "type": "select", "id": "cafe_1_estilo", "label": "Cor", "options": [ { "value": "classico", "label": "Azul" }, { "value": "arara", "label": "Verde" } ], "default": "classico" },
+    { "type": "textarea", "id": "cafe_1_texto", "label": "Texto" },
+    { "type": "product", "id": "cafe_2", "label": "Segundo café" },
+    { "type": "select", "id": "cafe_2_estilo", "label": "Cor", "options": [ { "value": "classico", "label": "Azul" }, { "value": "arara", "label": "Verde" } ], "default": "arara" },
+    { "type": "textarea", "id": "cafe_2_texto", "label": "Texto" },
+    { "type": "url", "id": "assinatura_url", "label": "Página da assinatura" },
+    { "type": "header", "content": "Links" },
+    { "type": "text", "id": "indice_url", "label": "Página 'Como preparar'", "default": "/pages/como-preparar" },
+    { "type": "textarea", "id": "outros", "label": "Outros métodos", "info": "Um por linha: Nome | /pages/link | arquivo-da-foto.jpg | 3 min • Fácil" }
+  ],
+  "blocks": [
+    { "type": "receita", "name": "Receita (linha)", "settings": [ { "type": "text", "id": "rotulo", "label": "Rótulo" }, { "type": "text", "id": "valor", "label": "Valor" } ] },
+    { "type": "equipamento", "name": "O que você precisa", "settings": [ { "type": "text", "id": "texto", "label": "Item" } ] },
+    { "type": "passo", "name": "Passo", "settings": [ { "type": "text", "id": "titulo", "label": "Título" }, { "type": "textarea", "id": "texto", "label": "Texto" } ] },
+    { "type": "erro", "name": "Erro comum", "settings": [ { "type": "text", "id": "problema", "label": "Problema" }, { "type": "textarea", "id": "solucao", "label": "Como corrigir" } ] },
+    { "type": "pergunta", "name": "Pergunta", "settings": [ { "type": "text", "id": "pergunta", "label": "Pergunta" }, { "type": "textarea", "id": "resposta", "label": "Resposta" } ] },
+    { "type": "video", "name": "Vídeo do YouTube", "settings": [ { "type": "text", "id": "url", "label": "Link" }, { "type": "text", "id": "legenda", "label": "Legenda" } ] }
+  ]
+}
+{% endschema %}

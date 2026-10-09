@@ -1,0 +1,39 @@
+{%- assign prod = section.settings.produto | default: product -%}
+<div class="tml">
+  <section class="faq" id="faq">
+    <div class="estreito reveal">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.titulo }}</h2>
+      {%- for block in section.blocks -%}
+        <details {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.pergunta }}</summary>
+          <div class="resp">{% render 'tml-texto', t: block.settings.resposta, p: prod %}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </section>
+</div>
+{%- if section.settings.dados_estruturados and section.blocks.size > 0 -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{%- for block in section.blocks -%}{"@type":"Question","name":{{ block.settings.pergunta | json }},"acceptedAnswer":{"@type":"Answer","text":{% capture r %}{% render 'tml-texto', t: block.settings.resposta, p: prod %}{% endcapture %}{{ r | strip_html | json }}}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]}
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "T • Perguntas frequentes",
+  "settings": [
+    { "type": "product", "id": "produto", "label": "Produto", "info": "Na página de produto, deixe vazio (usa o produto da página). Em outras páginas, como a home, escolha o café." },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Dúvidas comuns" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Perguntas frequentes" },
+    { "type": "checkbox", "id": "dados_estruturados", "label": "Enviar ao Google como FAQ (dados estruturados)", "default": true }
+  ],
+  "blocks": [
+    { "type": "pergunta", "name": "Pergunta", "settings": [
+      { "type": "text", "id": "pergunta", "label": "Pergunta" },
+      { "type": "richtext", "id": "resposta", "label": "Resposta", "info": "Em página de produto, aceita {preco}, {kit}, {kit_de}, {kit_un}, {economia}, calculados pelo preço cadastrado." }
+    ]}
+  ],
+  "presets": [ { "name": "T • Perguntas frequentes" } ]
+}
+{% endschema %}

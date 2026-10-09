@@ -1,0 +1,214 @@
+{
+  "sections": {
+    "s1": {
+      "type": "tml-metodo",
+      "settings": {
+        "nome": "Aeropress",
+        "termo": "Aeropress",
+        "artigo": "a",
+        "titulo": "Como fazer café na Aeropress: receita e passo a passo",
+        "resumo": "Para fazer café na Aeropress, use 15g de café em moagem média-fina para 200ml de água entre 88 e 92 °C. Coloque o pó, despeje a água, mexa por 10 segundos, espere 1 minuto e pressione devagar por cerca de 30 segundos. O preparo leva uns 2 minutos.",
+        "foto_padrao": "tml-preparo-aeropress.jpg",
+        "tempo_txt": "2 min",
+        "tempo_min": 2,
+        "dificuldade": "Fácil",
+        "rende": "1 xícara (200ml)",
+        "titulo_oque": "O que é a Aeropress",
+        "intro": "<p>A Aeropress é uma cafeteira manual que junta infusão e pressão: o café fica em contato com a água por pouco tempo e depois é empurrado por um filtro de papel com a força das mãos.</p><p>O resultado é uma xícara limpa, doce e com bom corpo. É compacta, resistente e ótima para viagem, além de aceitar muitas variações de receita.</p>",
+        "titulo_passos": "Como fazer café na Aeropress: passo a passo",
+        "cafe_1": "cafe-torra-media-84-pontos",
+        "cafe_1_estilo": "classico",
+        "cafe_1_texto": "O Clássico fica redondo e encorpado. Para um “quase espresso”, use 18g para 100ml e complete com água quente depois.",
+        "assinatura_url": "/pages/assinatura",
+        "indice_url": "/pages/como-preparar",
+        "outros": "V60 | /pages/como-fazer-cafe-na-v60 | tml-preparo-v60.jpg | 3 min • Média\nCoador de pano | /pages/como-fazer-cafe-no-coador-de-pano | tml-preparo-coador-de-pano.jpg | 4 min • Fácil\nPrensa francesa | /pages/como-fazer-cafe-na-prensa-francesa | tml-preparo-prensa-francesa.jpg | 5 min • Fácil\nCafeteira italiana | /pages/como-fazer-cafe-na-cafeteira-italiana | tml-preparo-cafeteira-italiana.jpg | 5 a 6 min • Fácil\nEspresso | /pages/como-fazer-espresso-em-casa | tml-preparo-espresso-em-casa.jpg | 2 min • Avançada\nCafeteira elétrica | /pages/como-fazer-cafe-na-cafeteira-eletrica | tml-preparo-cafeteira-eletrica.jpg | 6 a 8 min • Fácil"
+      },
+      "blocks": {
+        "b1": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Café",
+            "valor": "15g"
+          }
+        },
+        "b2": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Água",
+            "valor": "200ml"
+          }
+        },
+        "b3": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Proporção",
+            "valor": "1:13"
+          }
+        },
+        "b4": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Temperatura",
+            "valor": "88 a 92 °C"
+          }
+        },
+        "b5": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Moagem",
+            "valor": "Média-fina"
+          }
+        },
+        "b6": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Tempo total",
+            "valor": "≈ 2 min"
+          }
+        },
+        "b7": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Aeropress com filtro de papel"
+          }
+        },
+        "b8": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Chaleira"
+          }
+        },
+        "b9": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Caneca resistente"
+          }
+        },
+        "b10": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Balança ou colher medidora"
+          }
+        },
+        "b11": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "15g de café Temalli"
+          }
+        },
+        "b12": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Prepare o filtro",
+            "texto": "Coloque o filtro de papel na tampa, molhe com água quente e encaixe na câmara. Apoie a Aeropress sobre a caneca."
+          }
+        },
+        "b13": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Coloque o café",
+            "texto": "Adicione 15g de café em moagem média-fina usando o funil."
+          }
+        },
+        "b14": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Despeje a água",
+            "texto": "Despeje 200ml de água entre 88 e 92 °C. A Aeropress pede água um pouco menos quente que outros métodos."
+          }
+        },
+        "b15": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Mexa",
+            "texto": "Mexa por 10 segundos para molhar todo o pó por igual."
+          }
+        },
+        "b16": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Espere 1 minuto",
+            "texto": "Encaixe o êmbolo levemente no topo, para segurar o vácuo e o café não pingar, e espere 1 minuto."
+          }
+        },
+        "b17": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Pressione devagar",
+            "texto": "Pressione com força constante por cerca de 30 segundos. Pare quando ouvir um chiado: é só ar."
+          }
+        },
+        "b18": {
+          "type": "erro",
+          "settings": {
+            "problema": "Muito difícil de pressionar",
+            "solucao": "A moagem está fina demais. Engrosse um pouco."
+          }
+        },
+        "b19": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café amargo",
+            "solucao": "Água quente demais ou tempo longo. Tente 88 °C e reduza a espera."
+          }
+        },
+        "b20": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café aguado",
+            "solucao": "Use moagem um pouco mais fina ou aumente para 16 a 17g de café."
+          }
+        },
+        "b21": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "O que é o método invertido na Aeropress?",
+            "resposta": "É montar a Aeropress de cabeça para baixo, com o êmbolo embaixo, para o café não pingar durante a infusão. Depois você encaixa o filtro e vira sobre a caneca. Deixa mais corpo, mas exige cuidado para não derramar."
+          }
+        },
+        "b22": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Aeropress faz espresso?",
+            "resposta": "Não exatamente: a pressão é bem menor que a de uma máquina. Mas com mais café e menos água ela faz uma bebida concentrada, ótima para cappuccino e café com leite."
+          }
+        },
+        "b23": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Posso reaproveitar o filtro de papel da Aeropress?",
+            "resposta": "Pode, enxaguando bem, algumas vezes. Mas o filtro novo garante um sabor mais limpo."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16",
+        "b17",
+        "b18",
+        "b19",
+        "b20",
+        "b21",
+        "b22",
+        "b23"
+      ]
+    }
+  },
+  "order": [
+    "s1"
+  ]
+}

@@ -1,0 +1,31 @@
+<div class="tml">
+  <section>
+    <div class="wrap">
+      <div class="centro reveal">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+        {%- if section.settings.texto != blank -%}<p class="lead">{{ section.settings.texto }}</p>{%- endif -%}
+      </div>
+      <div class="lancamento reveal">
+        {%- for block in section.blocks -%}<div {{ block.shopify_attributes }}><b>{{ block.settings.valor }}</b><p>{% render 'tml-texto', t: block.settings.texto %}</p></div>{%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Números em destaque",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo" },
+    { "type": "text", "id": "titulo", "label": "Título" },
+    { "type": "textarea", "id": "texto", "label": "Texto" }
+  ],
+  "blocks": [ { "type": "numero", "name": "Número", "settings": [
+    { "type": "text", "id": "valor", "label": "Valor" },
+    { "type": "text", "id": "texto", "label": "Texto", "info": "Aceita [i:mole] etc." }
+  ]}],
+  "max_blocks": 3,
+  "presets": [ { "name": "T • Números em destaque" } ]
+}
+{% endschema %}

@@ -1,0 +1,88 @@
+<div class="tml">
+  <section class="ass-montar" id="montar">
+    <div class="wrap">
+      <div class="centro reveal">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+        <p class="lead">{{ section.settings.texto }}</p>
+      </div>
+
+      <div class="montador" data-assinatura data-whats="{{ settings.tml_whats_numero }}">
+        <div class="montador-passos">
+          <fieldset class="m-bloco">
+            <legend><span>1</span>Quais cafés você quer receber?</legend>
+            {%- for block in section.blocks -%}
+              {%- assign p = block.settings.produto -%}
+              {%- if p != blank -%}
+                <div class="m-cafe {{ block.settings.estilo }}" data-cafe="{{ block.settings.nome }} {{ block.settings.peso }}" data-preco="{{ p.price | divided_by: 100.0 }}" {{ block.shopify_attributes }}>
+                  {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}
+                  <div class="m-info">
+                    <b>{{ block.settings.nome }}{% if block.settings.selo != blank %} <span class="m-novo">{{ block.settings.selo }}</span>{% endif %}</b>
+                    <small>{{ block.settings.peso }} • {{ block.settings.notas }} • {{ p.price | money }}</small>
+                    <div class="m-formato" role="group" aria-label="Formato do {{ block.settings.nome }}">
+                      <button type="button" data-formato="grão" aria-pressed="true">Grão</button>
+                      <button type="button" data-formato="moído" aria-pressed="false">Moído</button>
+                    </div>
+                  </div>
+                  <div class="m-qtd">
+                    <button type="button" data-menos aria-label="Menos um {{ block.settings.nome }}">−</button>
+                    <output aria-live="polite">{{ block.settings.qtd }}</output>
+                    <button type="button" data-mais aria-label="Mais um {{ block.settings.nome }}">+</button>
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if section.settings.dica != blank -%}<p class="m-dica">{{ section.settings.dica }}</p>{%- endif -%}
+          </fieldset>
+
+          <fieldset class="m-bloco">
+            <legend><span>2</span>De quanto em quanto tempo?</legend>
+            <div class="m-freq">
+              <label class="opcao"><input type="radio" name="freq" value="Mensal" checked><span class="radio"></span><span class="opcao-txt"><b>Mensal</b><small>Uma entrega por mês</small></span></label>
+              <label class="opcao"><input type="radio" name="freq" value="Bimestral"><span class="radio"></span><span class="opcao-txt"><b>Bimestral</b><small>A cada 2 meses</small></span></label>
+              <label class="opcao"><input type="radio" name="freq" value="Trimestral"><span class="radio"></span><span class="opcao-txt"><b>Trimestral</b><small>A cada 3 meses</small></span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <aside class="m-resumo" aria-label="Resumo da assinatura">
+          <span class="eyebrow">Sua assinatura</span>
+          <ul data-resumo-itens></ul>
+          <dl>
+            <div><dt>Frequência</dt><dd data-resumo-freq>Mensal</dd></div>
+            <div><dt>Frete</dt><dd class="m-gratis">Grátis</dd></div>
+            <div class="m-total"><dt>Cafés por entrega</dt><dd data-resumo-total></dd></div>
+          </dl>
+          <p class="m-obs">{{ section.settings.obs }}</p>
+          <a href="#" class="btn btn-bloco btn-whats" data-assinar target="_blank" rel="noopener">{% render 'tml-icone', nome: 'whats' %} Assinar pelo WhatsApp</a>
+          <p class="m-aviso" data-aviso hidden>Escolha pelo menos um café.</p>
+          <p class="micro" style="text-align:center">Atendimento humano: {{ settings.tml_whats_horario }}</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Montador da assinatura",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Monte sua assinatura" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Do seu jeito, no seu ritmo" },
+    { "type": "textarea", "id": "texto", "label": "Texto", "default": "Escolha abaixo e clique em “Assinar pelo WhatsApp”. A mensagem já vai pronta." },
+    { "type": "inline_richtext", "id": "dica", "label": "Dica de consumo", "default": "<b>Quanto café eu preciso?</b> Cada xícara usa cerca de 10g. Quem toma 2 xícaras por dia gasta uns 600g por mês, ou seja, 1 Clássico e 1 Arara." },
+    { "type": "text", "id": "obs", "label": "Observação sobre o valor", "default": "Valor dos cafés pelo preço do site. O valor final e a forma de pagamento são confirmados no WhatsApp." }
+  ],
+  "blocks": [ { "type": "cafe", "name": "Café", "settings": [
+    { "type": "product", "id": "produto", "label": "Produto" },
+    { "type": "text", "id": "nome", "label": "Nome", "default": "Temalli Clássico" },
+    { "type": "text", "id": "peso", "label": "Peso", "default": "500g" },
+    { "type": "text", "id": "notas", "label": "Notas", "default": "caramelo, mel, chocolate" },
+    { "type": "text", "id": "selo", "label": "Selo (ex.: Novo)" },
+    { "type": "select", "id": "estilo", "label": "Cor", "options": [ { "value": "classico", "label": "Azul (Clássico)" }, { "value": "arara", "label": "Verde (Arara)" } ], "default": "classico" },
+    { "type": "range", "id": "qtd", "label": "Quantidade inicial", "min": 0, "max": 5, "step": 1, "default": 0 }
+  ]}],
+  "max_blocks": 4,
+  "presets": [ { "name": "Montador da assinatura" } ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+{%- assign prod = section.settings.produto | default: product -%}
+<div class="tml">
+  <section class="escuro conta">
+    <div class="estreito reveal">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.titulo }}</h2>
+      {% render 'tml-texto', t: section.settings.intro, p: prod, xic: section.settings.xicaras_kit %}
+      {%- if section.settings.destaque != blank -%}<div class="conta-mat">{% render 'tml-texto', t: section.settings.destaque, p: prod, xic: section.settings.xicaras_kit %}</div>{%- endif -%}
+      <ul>
+        {%- for block in section.blocks -%}<li {{ block.shopify_attributes }}>{{ block.settings.texto }}</li>{%- endfor -%}
+      </ul>
+      {%- if section.settings.fecho != blank -%}<p class="fecho">{{ section.settings.fecho }}</p>{%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Conta da xícara",
+  "settings": [
+    { "type": "product", "id": "produto", "label": "Produto", "info": "Na página de produto, deixe vazio (usa o produto da página). Em outras páginas, como a home, escolha o café." },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "A conta que ninguém faz" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Café especial custa menos do que parece" },
+    { "type": "richtext", "id": "intro", "label": "Texto" },
+    { "type": "inline_richtext", "id": "destaque", "label": "Conta em destaque", "info": "Aceita {kit} e {por_xicara}, calculados pelo preço do produto." },
+    { "type": "number", "id": "xicaras_kit", "label": "Xícaras no kit de 4", "default": 200 },
+    { "type": "inline_richtext", "id": "fecho", "label": "Frase final" }
+  ],
+  "blocks": [ { "type": "item", "name": "Comparação", "settings": [ { "type": "inline_richtext", "id": "texto", "label": "Texto" } ] } ],
+  "presets": [ { "name": "T • Conta da xícara" } ]
+}
+{% endschema %}

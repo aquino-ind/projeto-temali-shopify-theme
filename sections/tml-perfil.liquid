@@ -1,0 +1,49 @@
+<div class="tml">
+  <section class="escuro">
+    <div class="wrap perfil-grid">
+      <div class="reveal">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+        <p class="lead">{{ section.settings.texto }}</p>
+        <div class="notas-grandes">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'nota' -%}
+              <div {{ block.shopify_attributes }}><span class="nota-img">{% render 'tml-imagem', img: block.settings.imagem, asset: block.settings.imagem_padrao, alt: '', largura: 200 %}</span><b>{{ block.settings.nome }}</b></div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="barras reveal">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'barra' -%}
+            <div class="barra" {{ block.shopify_attributes }}><small>{% render 'tml-texto', t: block.settings.nome %} <span>{{ block.settings.descricao }}</span></small><div class="trilho"><i style="--v:{{ block.settings.valor }}%"></i></div></div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Perfil sensorial",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Na xícara" },
+    { "type": "text", "id": "titulo", "label": "Título" },
+    { "type": "textarea", "id": "texto", "label": "Texto" }
+  ],
+  "blocks": [
+    { "type": "nota", "name": "Nota sensorial", "limit": 3, "settings": [
+      { "type": "text", "id": "nome", "label": "Nome" },
+      { "type": "image_picker", "id": "imagem", "label": "Imagem" },
+      { "type": "text", "id": "imagem_padrao", "label": "Imagem padrão (arquivo do tema)" }
+    ]},
+    { "type": "barra", "name": "Barra", "settings": [
+      { "type": "text", "id": "nome", "label": "Atributo", "info": "Aceita [i:acidez] etc." },
+      { "type": "text", "id": "descricao", "label": "Descrição" },
+      { "type": "range", "id": "valor", "label": "Intensidade", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 60 }
+    ]}
+  ],
+  "presets": [ { "name": "T • Perfil sensorial" } ]
+}
+{% endschema %}

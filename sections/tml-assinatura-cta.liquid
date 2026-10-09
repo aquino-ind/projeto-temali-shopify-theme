@@ -1,0 +1,31 @@
+<div class="tml">
+  <section>
+    <div class="wrap">
+      <div class="cta-ass reveal">
+        <div class="ic">{% render 'tml-icone', nome: 'recorrente' %}</div>
+        <div>
+          <h2>{{ section.settings.titulo }}</h2>
+          <p>{{ section.settings.texto }}</p>
+          <div class="freqs"><span>Mensal</span><span>Bimestral</span><span>Trimestral</span><span>Frete grátis</span></div>
+        </div>
+        <div class="acoes">
+          <a href="{{ section.settings.url }}" class="btn btn-luz">{{ section.settings.botao }}</a>
+          <a href="{{ section.settings.url }}#como-funciona" class="btn btn-contorno">Como funciona</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Chamada da assinatura",
+  "settings": [
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Assinatura Temalli®: o café chega antes de acabar" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "botao", "label": "Botão", "default": "Montar minha assinatura" },
+    { "type": "url", "id": "url", "label": "Página da assinatura" }
+  ],
+  "presets": [ { "name": "T • Chamada da assinatura" } ]
+}
+{% endschema %}

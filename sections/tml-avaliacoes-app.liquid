@@ -1,0 +1,24 @@
+{%- comment -%} Área para o widget de avaliações do Judge.me (bloco de app) dentro do visual Temalli. {%- endcomment -%}
+<div class="tml">
+  <section class="dep jdgm-area" id="avaliacoes-produto">
+    <div class="wrap">
+      <div class="centro">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+      </div>
+      {%- for block in section.blocks -%}{% render block %}{%- endfor -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Avaliações (Judge.me)",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Avaliações" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Quem toma, recomenda" }
+  ],
+  "blocks": [ { "type": "@app" } ],
+  "presets": [ { "name": "T • Avaliações (Judge.me)" } ]
+}
+{% endschema %}

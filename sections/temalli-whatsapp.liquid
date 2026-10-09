@@ -1,0 +1,61 @@
+{% render 'temalli-assets' %}
+
+{%- liquid
+  assign numero = section.settings.numero | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '+'
+  assign mensagem = section.settings.mensagem | url_encode
+-%}
+
+<div class="tml">
+  <section class="whats">
+    <div class="wrap reveal">
+      <h2>{{ section.settings.titulo }}</h2>
+      {{ section.settings.texto }}
+      {%- if numero != blank -%}
+        <a
+          href="https://wa.me/{{ numero }}{% if mensagem != blank %}?text={{ mensagem }}{% endif %}"
+          class="btn"
+          target="_blank"
+          rel="noopener"
+        >
+          {{ section.settings.texto_botao }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.micro != blank -%}
+        <p class="micro">{{ section.settings.micro }}</p>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • WhatsApp",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Ficou com alguma dúvida?" },
+    {
+      "type": "richtext",
+      "id": "texto",
+      "label": "Texto",
+      "default": "<p>Fala com a gente no WhatsApp. Do outro lado tem gente de verdade, não robô.</p>"
+    },
+    {
+      "type": "text",
+      "id": "numero",
+      "label": "Número do WhatsApp",
+      "info": "Com código do país, só dígitos. Ex.: 5517920049117",
+      "default": "5517920049117"
+    },
+    { "type": "text", "id": "mensagem", "label": "Mensagem pré-preenchida", "default": "Iniciar Atendimento" },
+    { "type": "text", "id": "texto_botao", "label": "Texto do botão", "default": "Falar no WhatsApp" },
+    {
+      "type": "text",
+      "id": "micro",
+      "label": "Microcopy",
+      "default": "Atendimento humano de segunda a sexta, das 9h às 16h"
+    }
+  ],
+  "presets": [{ "name": "Temalli • WhatsApp" }]
+}
+{% endschema %}

@@ -1,0 +1,23 @@
+<div class="tml">
+  <section class="whats">
+    <div class="wrap reveal">
+      <h2>{{ section.settings.titulo }}</h2>
+      <p class="lead">{{ section.settings.texto }}</p>
+      <a href="https://wa.me/{{ settings.tml_whats_numero }}?text={{ section.settings.mensagem | url_encode }}" class="btn btn-whats" target="_blank" rel="noopener">{{ section.settings.botao }}</a>
+      <p class="micro">Atendimento humano: {{ settings.tml_whats_horario }}</p>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Chamada do WhatsApp",
+  "settings": [
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Ainda em dúvida?" },
+    { "type": "textarea", "id": "texto", "label": "Texto", "default": "Fale com a gente pelo WhatsApp. Quem responde é uma pessoa da equipe." },
+    { "type": "text", "id": "botao", "label": "Botão", "default": "Falar no WhatsApp" },
+    { "type": "text", "id": "mensagem", "label": "Mensagem pronta", "default": "Olá! Vim pelo site da Temalli e tenho uma dúvida." }
+  ],
+  "presets": [ { "name": "T • Chamada do WhatsApp" } ]
+}
+{% endschema %}

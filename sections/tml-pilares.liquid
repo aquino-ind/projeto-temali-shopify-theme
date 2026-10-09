@@ -1,0 +1,43 @@
+<div class="tml">
+  <section{% if section.settings.escuro %} class="escuro"{% endif %}>
+    <div class="wrap">
+      <div class="centro reveal">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+      </div>
+      <div class="pilares reveal">
+        {%- for block in section.blocks -%}
+          <div class="pilar" {{ block.shopify_attributes }}>
+            <div class="ic">{% render 'tml-icone', nome: block.settings.icone %}</div>
+            <b>{% render 'tml-texto', t: block.settings.titulo %}</b>
+            <p>{{ block.settings.texto }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Pilares",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "O padrão Temalli®" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "O que vale para os dois cafés" },
+    { "type": "checkbox", "id": "escuro", "label": "Fundo escuro", "default": true }
+  ],
+  "blocks": [
+    { "type": "pilar", "name": "Pilar", "settings": [
+      { "type": "select", "id": "icone", "label": "Ícone", "default": "selo", "options": [
+        { "value": "selo", "label": "Selo" }, { "value": "gota", "label": "Gota" }, { "value": "frete", "label": "Caminhão" },
+        { "value": "folha", "label": "Folha" }, { "value": "mao", "label": "Mão" }, { "value": "secagem", "label": "Secagem" },
+        { "value": "relogio", "label": "Relógio" }, { "value": "presente", "label": "Presente" }, { "value": "recorrente", "label": "Recorrente" }
+      ]},
+      { "type": "text", "id": "titulo", "label": "Título", "info": "Aceita [i:sca] etc." },
+      { "type": "textarea", "id": "texto", "label": "Texto" }
+    ]}
+  ],
+  "max_blocks": 4,
+  "presets": [ { "name": "T • Pilares" } ]
+}
+{% endschema %}

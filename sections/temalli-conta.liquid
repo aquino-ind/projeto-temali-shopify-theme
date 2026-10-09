@@ -1,0 +1,82 @@
+{% render 'temalli-assets' %}
+
+<div class="tml">
+  <section class="conta">
+    <div class="wrap-estreito reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow" style="color:var(--caramelo)">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h2>{{ section.settings.titulo }}</h2>
+      {%- if section.settings.intro != blank -%}{{ section.settings.intro }}{%- endif -%}
+
+      {%- if section.settings.conta != blank -%}
+        <div class="conta-mat">{{ section.settings.conta }}</div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul>
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>{{ block.settings.texto }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.fecho != blank -%}
+        <p class="fecho">{{ section.settings.fecho }}</p>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • Conta da xícara",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Chapéu", "default": "A conta que ninguém faz" },
+    {
+      "type": "text",
+      "id": "titulo",
+      "label": "Título",
+      "default": "Faça a conta antes de dizer que café especial é caro"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introdução",
+      "default": "<p>Um pacote de 500g do Temalli® rende cerca de 50 xícaras.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "conta",
+      "label": "Destaque da conta",
+      "info": "Use negrito para destacar em caramelo.",
+      "default": "<p>R$ 84,90 ÷ 50 xícaras = <strong>menos de R$ 1,70 por xícara</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "fecho",
+      "label": "Frase de fechamento",
+      "default": "Caro é pagar todo dia por um café que precisa de açúcar pra descer."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Comparação",
+      "settings": [{ "type": "richtext", "id": "texto", "label": "Texto" }]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Temalli • Conta da xícara",
+      "blocks": [
+        { "type": "item", "settings": { "texto": "<p><strong>Cápsula de café:</strong> R$ 2,50 a R$ 4,00 por dose pequena</p>" } },
+        { "type": "item", "settings": { "texto": "<p><strong>Café na padaria:</strong> R$ 6 a R$ 10 a xícara</p>" } },
+        { "type": "item", "settings": { "texto": "<p><strong>Café de supermercado:</strong> mais barato no rótulo, mas torrado escuro pra esconder grão defeituoso, palha e mistura</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,221 @@
+{
+  "sections": {
+    "s1": {
+      "type": "tml-metodo",
+      "settings": {
+        "nome": "V60",
+        "termo": "V60",
+        "artigo": "a",
+        "titulo": "Como fazer café na V60: receita e passo a passo",
+        "resumo": "Para fazer café na V60, use 15g de café em moagem média-fina para 250ml de água entre 90 e 94 °C. Enxágue o filtro, faça a pré-infusão com 30ml por 30 segundos e despeje o resto da água em círculos, em 2 ou 3 etapas. O preparo leva cerca de 3 minutos.",
+        "foto_padrao": "tml-preparo-v60.jpg",
+        "tempo_txt": "3 min",
+        "tempo_min": 3,
+        "dificuldade": "Média",
+        "rende": "1 xícara grande (250ml)",
+        "titulo_oque": "O que é a V60",
+        "intro": "<p>A V60 é um coador cônico criado pela marca japonesa Hario. O nome vem do formato: um “V” com ângulo de 60 graus. As ranhuras em espiral na parede e o furo grande no fundo deixam a água passar rápido, e quem controla a extração é você, pela velocidade com que despeja.</p><p>O resultado é uma xícara limpa, leve e aromática, que deixa aparecer as notas mais delicadas do café. Por isso é um dos métodos preferidos para cafés especiais.</p>",
+        "titulo_passos": "Como fazer café na V60: passo a passo",
+        "cafe_1": "cafe-torra-media-84-pontos",
+        "cafe_1_estilo": "classico",
+        "cafe_1_texto": "O Clássico fica equilibrado e achocolatado, com corpo um pouco mais leve que no coador de pano.",
+        "assinatura_url": "/pages/assinatura",
+        "indice_url": "/pages/como-preparar",
+        "outros": "Coador de pano | /pages/como-fazer-cafe-no-coador-de-pano | tml-preparo-coador-de-pano.jpg | 4 min • Fácil\nPrensa francesa | /pages/como-fazer-cafe-na-prensa-francesa | tml-preparo-prensa-francesa.jpg | 5 min • Fácil\nAeropress | /pages/como-fazer-cafe-na-aeropress | tml-preparo-aeropress.jpg | 2 min • Fácil\nCafeteira italiana | /pages/como-fazer-cafe-na-cafeteira-italiana | tml-preparo-cafeteira-italiana.jpg | 5 a 6 min • Fácil\nEspresso | /pages/como-fazer-espresso-em-casa | tml-preparo-espresso-em-casa.jpg | 2 min • Avançada\nCafeteira elétrica | /pages/como-fazer-cafe-na-cafeteira-eletrica | tml-preparo-cafeteira-eletrica.jpg | 6 a 8 min • Fácil"
+      },
+      "blocks": {
+        "b1": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Café",
+            "valor": "15g"
+          }
+        },
+        "b2": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Água",
+            "valor": "250ml"
+          }
+        },
+        "b3": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Proporção",
+            "valor": "1:16"
+          }
+        },
+        "b4": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Temperatura",
+            "valor": "90 a 94 °C"
+          }
+        },
+        "b5": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Moagem",
+            "valor": "Média-fina"
+          }
+        },
+        "b6": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Tempo total",
+            "valor": "2:30 a 3:00"
+          }
+        },
+        "b7": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Suporte V60 (tamanho 01 ou 02)"
+          }
+        },
+        "b8": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Filtro de papel para V60"
+          }
+        },
+        "b9": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Chaleira, de preferência bico de ganso"
+          }
+        },
+        "b10": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Balança de cozinha (ou colher medidora)"
+          }
+        },
+        "b11": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Xícara ou jarra de servir"
+          }
+        },
+        "b12": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "15g de café Temalli"
+          }
+        },
+        "b13": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Aqueça a água",
+            "texto": "Aqueça cerca de 400ml de água filtrada até 90 a 94 °C. Sem termômetro: desligue quando começar a ferver e espere 30 segundos."
+          }
+        },
+        "b14": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Enxágue o filtro",
+            "texto": "Coloque o filtro de papel na V60, apoie sobre a xícara e molhe todo o papel com água quente. Isso tira o gosto de papel e aquece tudo. Descarte essa água."
+          }
+        },
+        "b15": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Coloque o café",
+            "texto": "Adicione 15g de café em moagem média-fina, parecida com sal fino. Dê leves batidinhas para nivelar a superfície."
+          }
+        },
+        "b16": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Faça a pré-infusão",
+            "texto": "Despeje cerca de 30ml de água, só o suficiente para molhar todo o pó, e espere 30 segundos. O café vai “estufar”: é o gás carbônico saindo, o que deixa a extração mais uniforme."
+          }
+        },
+        "b17": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Despeje em etapas",
+            "texto": "Despeje a água devagar, em círculos do centro para fora, sem jogar direto no papel. Vá até 150ml, espere baixar um pouco e complete até 250ml."
+          }
+        },
+        "b18": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Espere escoar e sirva",
+            "texto": "Deixe a água passar toda. O total deve ficar entre 2:30 e 3 minutos. Gire a xícara para misturar e sirva."
+          }
+        },
+        "b19": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café amargo ou adstringente",
+            "solucao": "A extração passou do ponto. Use moagem um pouco mais grossa ou água um pouco menos quente."
+          }
+        },
+        "b20": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café aguado ou azedo",
+            "solucao": "Faltou extração. Use moagem mais fina, despeje mais devagar ou aumente um pouco a dose de café."
+          }
+        },
+        "b21": {
+          "type": "erro",
+          "settings": {
+            "problema": "Demora mais de 4 minutos",
+            "solucao": "A moagem está fina demais e entupiu o filtro. Engrosse a moagem."
+          }
+        },
+        "b22": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Qual a proporção de café e água na V60?",
+            "resposta": "A proporção mais usada é 1:16, ou seja, 15g de café para 250ml de água. Para um café mais forte, use 1:15 (17g para 250ml)."
+          }
+        },
+        "b23": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Precisa de balança para usar a V60?",
+            "resposta": "Ajuda muito, porque a V60 é sensível à dose. Sem balança, uma colher de sopa rasa de café moído tem cerca de 7g: use 2 colheres para 250ml."
+          }
+        },
+        "b24": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Posso usar café já moído na V60?",
+            "resposta": "Pode. O ideal é moagem média-fina, mas um café moído para coado funciona. Se escoar rápido demais e ficar aguado, despeje mais devagar."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16",
+        "b17",
+        "b18",
+        "b19",
+        "b20",
+        "b21",
+        "b22",
+        "b23",
+        "b24"
+      ]
+    }
+  },
+  "order": [
+    "s1"
+  ]
+}

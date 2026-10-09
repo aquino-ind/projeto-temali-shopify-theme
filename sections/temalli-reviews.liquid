@@ -1,0 +1,66 @@
+{% render 'temalli-assets' %}
+
+<div class="tml">
+  <section class="reviews">
+    <div class="wrap reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow centro">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h2 class="centro">{{ section.settings.titulo }}</h2>
+
+      <div class="reviews-grid">
+        {%- for block in section.blocks -%}
+          <blockquote {{ block.shopify_attributes }}>
+            {{ block.settings.texto }}
+            {%- if block.settings.autor != blank -%}
+              <footer>{{ block.settings.autor }}</footer>
+            {%- endif -%}
+          </blockquote>
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.fecho != blank -%}
+        <p class="fecho">{{ section.settings.fecho }}</p>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • Depoimentos",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Chapéu", "default": "Prova social" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "O que dizem nossos clientes" },
+    {
+      "type": "text",
+      "id": "fecho",
+      "label": "Frase de fechamento",
+      "default": "Tem gente atravessando fronteira com Temalli® na mala. Isso diz mais que qualquer propaganda."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Depoimento",
+      "settings": [
+        { "type": "textarea", "id": "texto", "label": "Depoimento" },
+        { "type": "text", "id": "autor", "label": "Autor", "default": "Cliente Temalli®" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Temalli • Depoimentos",
+      "blocks": [
+        { "type": "review", "settings": { "texto": "\"O melhor café especial que já tomei. Estou levando de presente para amigos nos EUA.\"", "autor": "Cliente Temalli®" } },
+        { "type": "review", "settings": { "texto": "\"Café com aroma muito bom e depois de passado na cafeteira italiana ficou melhor ainda.\"", "autor": "Cliente Temalli®" } },
+        { "type": "review", "settings": { "texto": "\"A cor homogênea do café mostra que não há contaminação com outros vegetais. Acredito que a torrefação foi exata.\"", "autor": "Cliente Temalli®" } },
+        { "type": "review", "settings": { "texto": "\"Café muito gostoso. Parabéns pelo excelente atendimento e pela rápida resolução do problema.\"", "autor": "Cliente Temalli®" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

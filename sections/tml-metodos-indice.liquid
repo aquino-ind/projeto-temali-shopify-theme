@@ -1,0 +1,65 @@
+<div class="tml">
+  <nav class="migalhas wrap" aria-label="Você está em"><ol><li><a href="{{ routes.root_url }}">Início</a></li><li aria-current="page">Como preparar</li></ol></nav>
+  <section class="met-indice-hero">
+    <div class="wrap">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h1>{{ section.settings.titulo }}</h1>
+      <p class="lead">{{ section.settings.texto }}</p>
+    </div>
+  </section>
+  <section class="met-sec" style="padding-top:20px">
+    <div class="wrap">
+      <div class="met-cards grande">
+        {%- for block in section.blocks -%}
+          <a class="met-card" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>
+            {% render 'tml-imagem', img: block.settings.foto, asset: block.settings.foto_padrao, alt: '', largura: 600, classe: 'met-card-foto', sizes: '(max-width: 480px) 100vw, 25vw' %}
+            <span class="met-card-txt"><b>{{ block.settings.nome }}</b><small>{{ block.settings.tempo }} • {{ block.settings.dificuldade }}</small></span>
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+  <section class="met-sec" style="background:var(--papel)">
+    <div class="wrap">
+      <span class="eyebrow">Tabela de proporções</span>
+      <h2>{{ section.settings.tabela_titulo }}</h2>
+      <p class="lead">{{ section.settings.tabela_texto }}</p>
+      <div class="tabela-wrap"><table class="tabela met-proporcoes">
+        <thead><tr><th scope="col">Método</th><th scope="col">Café</th><th scope="col">Água</th><th scope="col">Moagem</th><th scope="col">Tempo</th></tr></thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr><th scope="row"><a href="{{ block.settings.url }}">{{ block.settings.nome }}</a></th><td data-p="Café">{{ block.settings.cafe }}</td><td data-p="Água">{{ block.settings.agua }}</td><td data-p="Moagem">{{ block.settings.moagem }}</td><td data-p="Tempo">{{ block.settings.tempo }}</td></tr>
+          {%- endfor -%}
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+</div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ItemList","name":{{ section.settings.titulo | json }},"itemListElement":[{%- for block in section.blocks -%}{"@type":"ListItem","position":{{ forloop.index }},"name":{{ block.settings.nome | json }},"url":{{ shop.url | append: block.settings.url | json }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]}
+</script>
+
+{% schema %}
+{
+  "name": "T • Índice dos guias",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Guia de preparo" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Como preparar café especial em casa" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "tabela_titulo", "label": "Título da tabela", "default": "Quanto café usar em cada método" },
+    { "type": "textarea", "id": "tabela_texto", "label": "Texto da tabela" }
+  ],
+  "blocks": [ { "type": "metodo", "name": "Método", "settings": [
+    { "type": "text", "id": "nome", "label": "Nome" },
+    { "type": "text", "id": "url", "label": "Link da página", "info": "Ex.: /pages/como-fazer-cafe-na-v60" },
+    { "type": "image_picker", "id": "foto", "label": "Foto" },
+    { "type": "text", "id": "foto_padrao", "label": "Foto padrão (arquivo do tema)" },
+    { "type": "text", "id": "tempo", "label": "Tempo" },
+    { "type": "text", "id": "dificuldade", "label": "Dificuldade" },
+    { "type": "text", "id": "cafe", "label": "Café (tabela)" },
+    { "type": "text", "id": "agua", "label": "Água (tabela)" },
+    { "type": "text", "id": "moagem", "label": "Moagem (tabela)" }
+  ]}],
+  "presets": [ { "name": "T • Índice dos guias" } ]
+}
+{% endschema %}

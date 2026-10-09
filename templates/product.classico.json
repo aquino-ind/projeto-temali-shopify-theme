@@ -1,0 +1,828 @@
+{
+  "sections": {
+    "s1": {
+      "type": "tml-produto",
+      "settings": {
+        "nome": "Temalli Clássico",
+        "eyebrow": "O original • Serra da Canastra",
+        "produto_avaliacoes": "cafe-torra-media-84-pontos",
+        "avaliacao_rotulo": "avaliações de clientes",
+        "subtitulo": "<p>Para quem não aceita mais café comum. Torra média, corpo equilibrado e finalização limpa, com notas naturais de <strong>caramelo, mel, chocolate e frutas</strong>.</p>",
+        "peso_1": "500g",
+        "rende_1": "Cerca de 50 xícaras",
+        "peso_2": "1kg",
+        "rende_2": "Cerca de 100 xícaras",
+        "peso_kit": "2kg",
+        "degustacao_url": "",
+        "degustacao_texto": "Quer provar os dois? <b>Kit Degustação Clássico + Arara</b> com frete grátis.",
+        "assinatura_url": "/pages/assinatura",
+        "assinatura_texto": "Toma Clássico todo mês? <b>Assine e receba em casa com frete grátis</b>, a cada 1, 2 ou 3 meses.",
+        "whats_texto": "Ficou com dúvida? <b>Fale com a gente no WhatsApp</b>.",
+        "img_grao_padrao": "tml-formato-classico-graos.jpg",
+        "img_moido_padrao": "tml-formato-classico-moido.jpg"
+      },
+      "blocks": {
+        "b1": {
+          "type": "ficha",
+          "settings": {
+            "rotulo": "Pontuação[i:sca]",
+            "valor": "84+ SCA"
+          }
+        },
+        "b2": {
+          "type": "ficha",
+          "settings": {
+            "rotulo": "Torra[i:torra]",
+            "valor": "Média"
+          }
+        },
+        "b3": {
+          "type": "ficha",
+          "settings": {
+            "rotulo": "Peso",
+            "valor": "500g"
+          }
+        },
+        "b4": {
+          "type": "garantia",
+          "settings": {
+            "texto": "Envio em até 48h após o pedido"
+          }
+        },
+        "b5": {
+          "type": "garantia",
+          "settings": {
+            "texto": "Frete grátis acima de R$ 150"
+          }
+        },
+        "b6": {
+          "type": "garantia",
+          "settings": {
+            "texto": "100% arábica, zero aditivos[i:arabica]"
+          }
+        },
+        "b7": {
+          "type": "garantia",
+          "settings": {
+            "texto": "Compra segura"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
+    },
+    "s2": {
+      "type": "tml-perfil",
+      "settings": {
+        "titulo": "Equilibrado do primeiro gole ao último",
+        "texto": "Aroma marcante, doçura sutil e acidez harmoniosa. O Clássico é redondo, sem o amargor de queimado do café de mercado, e não precisa de açúcar."
+      },
+      "blocks": {
+        "b1": {
+          "type": "nota",
+          "settings": {
+            "nome": "Caramelo e mel",
+            "imagem_padrao": "tml-nota-classico-caramelo-mel.jpg"
+          }
+        },
+        "b2": {
+          "type": "nota",
+          "settings": {
+            "nome": "Chocolate",
+            "imagem_padrao": "tml-nota-classico-chocolate.jpg"
+          }
+        },
+        "b3": {
+          "type": "nota",
+          "settings": {
+            "nome": "Frutas",
+            "imagem_padrao": "tml-nota-classico-frutas.jpg"
+          }
+        },
+        "b4": {
+          "type": "barra",
+          "settings": {
+            "nome": "Doçura[i:docura]",
+            "descricao": "Natural",
+            "valor": 72
+          }
+        },
+        "b5": {
+          "type": "barra",
+          "settings": {
+            "nome": "Acidez[i:acidez]",
+            "descricao": "Equilibrada",
+            "valor": 50
+          }
+        },
+        "b6": {
+          "type": "barra",
+          "settings": {
+            "nome": "Corpo[i:corpo]",
+            "descricao": "Médio, equilibrado",
+            "valor": 66
+          }
+        },
+        "b7": {
+          "type": "barra",
+          "settings": {
+            "nome": "Finalização[i:finalizacao]",
+            "descricao": "Limpa",
+            "valor": 70
+          }
+        },
+        "b8": {
+          "type": "barra",
+          "settings": {
+            "nome": "Torra[i:torra]",
+            "descricao": "Média",
+            "valor": 55
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8"
+      ]
+    },
+    "s3": {
+      "type": "tml-texto-imagem",
+      "settings": {
+        "ancora": "historia",
+        "eyebrow": "Origem",
+        "titulo": "Um café com endereço: Serra da Canastra",
+        "texto": "<p>A maioria dos cafés de mercado mistura grãos de várias origens e torra escuro para disfarçar os defeitos. O Clássico segue o caminho oposto: café com origem conhecida, em <strong>Piumhi, na Serra da Canastra (MG)</strong>, acima de 900 m de altitude.</p><p>Os grãos são colhidos no ponto de maturação, selecionados e torrados em torra média[i:torra], que revela o sabor do grão em vez de escondê-lo. Por isso o caramelo, o mel e o chocolate que você sente vêm do próprio café.</p>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-origem-florada.webp",
+            "alt": "Galho de cafeeiro coberto de flores brancas",
+            "legenda": "Florada do cafezal"
+          }
+        },
+        "b2": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-origem-mudas-1.webp",
+            "alt": "Mudas jovens de café em saquinhos de terra vermelha",
+            "legenda": "Mudas de café"
+          }
+        },
+        "b3": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-origem-viveiro.webp",
+            "alt": "Viveiro com tela de sombreamento e fileiras de mudas",
+            "legenda": "Viveiro de mudas"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "s4": {
+      "type": "tml-familia",
+      "settings": {
+        "eyebrow": "Nossa história",
+        "titulo": "Uma família, três gerações de café",
+        "texto": "O Temalli® nasceu numa fazenda ao pé da Serra da Canastra, de uma família que planta café desde 1985.",
+        "nome_texto": "Temalli é a família em três sílabas: TE de Téo, filho do casal, MA de Mateus e LLI de Lyvia. Um nome que carrega tradição, família e o cuidado de quem planta café desde 1985."
+      },
+      "blocks": {
+        "b1": {
+          "type": "marco",
+          "settings": {
+            "ano": "1985",
+            "titulo": "Onde tudo começou",
+            "texto": "Orfeu Manenti Filho planta os primeiros pés de café em Piumhi (MG), ao pé da Serra da Canastra, acima de 900 m de altitude. A fazenda ganha o nome da esposa: Maria Ângela."
+          }
+        },
+        "b2": {
+          "type": "marco",
+          "settings": {
+            "ano": "De pai para filho",
+            "titulo": "O ofício passado adiante",
+            "texto": "Mateus Baggio Manenti cresce na lavoura aprendendo com o pai o que o café exige: paciência, colheita seletiva, secagem em terreiro suspenso[i:suspensa] e grãos escolhidos à mão."
+          }
+        },
+        "b3": {
+          "type": "marco",
+          "settings": {
+            "ano": "Hoje",
+            "titulo": "O café que ia para fora",
+            "texto": "Por muitos anos, os melhores cafés do Brasil foram embarcados para fora do país. Mateus e Lyvia Mendes criaram o Temalli® para servir aqui o café de padrão exportação: aquele que não precisa de açúcar para ser apreciado."
+          }
+        },
+        "b4": {
+          "type": "silaba",
+          "settings": {
+            "silaba": "TE",
+            "nome": "Téo"
+          }
+        },
+        "b5": {
+          "type": "silaba",
+          "settings": {
+            "silaba": "MA",
+            "nome": "Mateus"
+          }
+        },
+        "b6": {
+          "type": "silaba",
+          "settings": {
+            "silaba": "LLI",
+            "nome": "Lyvia"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ]
+    },
+    "s5": {
+      "type": "tml-pilares",
+      "settings": {
+        "eyebrow": "O padrão do Clássico",
+        "titulo": "Quatro motivos para trocar o seu café"
+      },
+      "blocks": {
+        "b1": {
+          "type": "pilar",
+          "settings": {
+            "icone": "selo",
+            "titulo": "84+ pontos SCA[i:sca]",
+            "texto": "Avaliado na escala internacional de cafés especiais."
+          }
+        },
+        "b2": {
+          "type": "pilar",
+          "settings": {
+            "icone": "gota",
+            "titulo": "Zero aditivos",
+            "texto": "Sem açúcar, aromatizante ou conservante. Só café 100% arábica."
+          }
+        },
+        "b3": {
+          "type": "pilar",
+          "settings": {
+            "icone": "folha",
+            "titulo": "Origem conhecida[i:terroir]",
+            "texto": "Piumhi, na Serra da Canastra (MG)."
+          }
+        },
+        "b4": {
+          "type": "pilar",
+          "settings": {
+            "icone": "frete",
+            "titulo": "Envio em até 48h",
+            "texto": "Seu pedido sai em até 48h após a compra."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "s6": {
+      "type": "tml-piramide",
+      "settings": {
+        "texto": "Todo café vendido no Brasil cabe em uma destas faixas. O que separa uma da outra é a quantidade de defeitos[i:defeitos] no grão e, no topo, a nota dada por provadores da SCA[i:sca].",
+        "selo": "84+",
+        "selo_rotulo": "Temalli Clássico está aqui",
+        "fecho": "Quanto mais defeitos, mais escura a torra precisa ser para disfarçar. Por isso o café tradicional amarga e pede açúcar.",
+        "fonte": "Fontes: SCA (Specialty Coffee Association) para o café especial; ABIC (Associação Brasileira da Indústria de Café) para as categorias Gourmet, Superior, Tradicional e Extraforte."
+      },
+      "blocks": {
+        "b1": {
+          "type": "nivel",
+          "settings": {
+            "nome": "Especial",
+            "criterio": "80+ pontos SCA • até 5 defeitos em 350 g",
+            "descricao": "Avaliado por provadores certificados na escala da Specialty Coffee Association. Grãos selecionados, sem defeitos graves, com doçura natural e sabor limpo. É aqui que está o Temalli."
+          }
+        },
+        "b2": {
+          "type": "nivel",
+          "settings": {
+            "nome": "Gourmet",
+            "criterio": "até 25 defeitos",
+            "descricao": "Boa seleção de grãos e sabor agradável, mas sem a avaliação sensorial que define um café especial."
+          }
+        },
+        "b3": {
+          "type": "nivel",
+          "settings": {
+            "nome": "Superior",
+            "criterio": "até 86 defeitos",
+            "descricao": "Qualidade intermediária. Já admite grãos verdes, quebrados e ardidos na mistura."
+          }
+        },
+        "b4": {
+          "type": "nivel",
+          "settings": {
+            "nome": "Tradicional",
+            "criterio": "até 360 defeitos",
+            "descricao": "A maior parte do café de supermercado. Mistura grãos pretos, ardidos e brocados, e por isso é torrado bem escuro para disfarçar o sabor."
+          }
+        },
+        "b5": {
+          "type": "nivel",
+          "settings": {
+            "nome": "Extraforte",
+            "criterio": "até 360 defeitos • torra muito escura",
+            "descricao": "Mesma faixa de qualidade do tradicional, com torra ainda mais escura. O amargor forte esconde os defeitos, mas também todo o sabor natural do grão."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ]
+    },
+    "s7": {
+      "type": "tml-ficha-tecnica",
+      "settings": {
+        "titulo": "O Clássico em detalhes",
+        "texto": ""
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "rotulo": "Origem[i:terroir]",
+            "valor": "Piumhi, Serra da Canastra (MG)"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "rotulo": "Espécie[i:arabica]",
+            "valor": "100% Arábica"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "rotulo": "Pontuação[i:sca]",
+            "valor": "84+ SCA"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "rotulo": "Torra[i:torra]",
+            "valor": "Média"
+          }
+        },
+        "b5": {
+          "type": "item",
+          "settings": {
+            "rotulo": "Notas[i:notas]",
+            "valor": "Caramelo, mel, chocolate, frutas"
+          }
+        },
+        "b6": {
+          "type": "item",
+          "settings": {
+            "rotulo": "Corpo[i:corpo]",
+            "valor": "Equilibrado"
+          }
+        },
+        "b7": {
+          "type": "item",
+          "settings": {
+            "rotulo": "Formatos[i:graos]",
+            "valor": "Grão ou moído"
+          }
+        },
+        "b8": {
+          "type": "item",
+          "settings": {
+            "rotulo": "Rendimento",
+            "valor": "~50 xícaras / 500g"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8"
+      ]
+    },
+    "s8": {
+      "type": "tml-conta",
+      "settings": {
+        "titulo": "Café especial custa menos do que parece",
+        "intro": "<p>Um pacote de 500g do Clássico rende cerca de 50 xícaras (10g de café para 100ml de água).</p>",
+        "destaque": "No kit: {kit} ÷ 200 xícaras = <strong>{por_xicara} por xícara</strong>",
+        "xicaras_kit": 200,
+        "fecho": "Caro é pagar todo dia por um café que precisa de açúcar para descer."
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "texto": "<strong>Cápsula:</strong> R$ 2,50 a R$ 4,00 por dose pequena"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "texto": "<strong>Padaria:</strong> R$ 6 a R$ 10 a xícara"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "texto": "<strong>Café de supermercado:</strong> parece economia no rótulo, mas costuma ser torrado escuro para esconder grão defeituoso e mistura"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "s9": {
+      "type": "tml-metodos-lista",
+      "settings": {
+        "titulo": "Funciona no seu método, qualquer que seja",
+        "texto": "A torra média do Clássico extrai bem nos métodos mais usados no Brasil. No espresso, entrega crema e corpo. No coado, fica limpo e adocicado.",
+        "dica": "<b>Dica:</b> use água filtrada, logo antes de ferver (90 a 96 °C), na proporção de 10g de café para 100ml de água.",
+        "botao_url": "/pages/como-preparar"
+      },
+      "blocks": {
+        "b1": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Espresso",
+            "url": "/pages/como-fazer-espresso-em-casa"
+          }
+        },
+        "b2": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Coador de pano",
+            "url": "/pages/como-fazer-cafe-no-coador-de-pano"
+          }
+        },
+        "b3": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Cafeteira italiana",
+            "url": "/pages/como-fazer-cafe-na-cafeteira-italiana"
+          }
+        },
+        "b4": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Prensa francesa",
+            "url": "/pages/como-fazer-cafe-na-prensa-francesa"
+          }
+        },
+        "b5": {
+          "type": "metodo",
+          "settings": {
+            "nome": "V60",
+            "url": "/pages/como-fazer-cafe-na-v60"
+          }
+        },
+        "b6": {
+          "type": "metodo",
+          "settings": {
+            "nome": "Cafeteira elétrica",
+            "url": "/pages/como-fazer-cafe-na-cafeteira-eletrica"
+          }
+        },
+        "b7": {
+          "type": "video",
+          "settings": {
+            "url": "https://www.youtube.com/watch?v=_LARnL7S7Pk",
+            "legenda": "Coado na Chemex"
+          }
+        },
+        "b8": {
+          "type": "video",
+          "settings": {
+            "url": "https://youtube.com/shorts/XWsuN8E1Mjk",
+            "legenda": "Espresso: dose no porta-filtro"
+          }
+        },
+        "b9": {
+          "type": "video",
+          "settings": {
+            "url": "https://www.youtube.com/watch?v=1Lm46OppvG0",
+            "legenda": "Coado no filtro de papel"
+          }
+        },
+        "b10": {
+          "type": "video",
+          "settings": {
+            "url": "https://youtube.com/shorts/2brlQZu_hHg",
+            "legenda": "Espresso na máquina"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10"
+      ]
+    },
+    "s10": {
+      "type": "tml-depoimentos",
+      "settings": {
+        "ancora": "avaliacoes",
+        "produto": "cafe-torra-media-84-pontos",
+        "eyebrow": "Depoimentos",
+        "titulo": "Quem toma, recomenda",
+        "aviso": "Depoimentos reais de clientes, publicados no Judge.me, a plataforma de avaliações da nossa loja."
+      },
+      "blocks": {
+        "b1": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-av-2026-03-11-fl-vio-s-1.jpg",
+            "alt": "Foto enviada por Flávio S.",
+            "legenda": "Torra na medida certa para espresso e coado",
+            "nome": "Flávio S.",
+            "data": "mar/2026"
+          }
+        },
+        "b2": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-av-2026-01-19-an-nimo-1.jpg",
+            "alt": "Foto enviada por Anônimo",
+            "legenda": "Até meu pai, que só tomava adoçado, agora toma",
+            "nome": "Anônimo",
+            "data": "jan/2026"
+          }
+        },
+        "b3": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-av-2026-02-10-talita-m-1.jpg",
+            "alt": "Foto enviada por Talita M.",
+            "legenda": "Muito bom, um ótimo café",
+            "nome": "Talita M.",
+            "data": "fev/2026"
+          }
+        },
+        "b4": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-av-2026-08-28-pietra-f-1.jpg",
+            "alt": "Foto enviada por Pietra F.",
+            "legenda": "Perfeito",
+            "nome": "Pietra F.",
+            "data": "ago/2026"
+          }
+        },
+        "b5": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Café delicioso, o aroma que sobe desde quando estou moendo ele, a crema que ele produz na máquina espresso e o sabor final, todo mundo aqui em casa ama, até meu pai que tinha medo de tomar café sem adoçar, agora está tomando.",
+            "nome": "Anônimo",
+            "data": "jan/2026",
+            "estrelas": 5,
+            "verificado": true
+          }
+        },
+        "b6": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Aqui só tomamos Temalli... Café equilibrado, forte na medida certa. Seja pra coado ou espresso agradou demais por aqui.",
+            "nome": "Lucas U.",
+            "data": "jun/2026",
+            "estrelas": 5,
+            "verificado": false
+          }
+        },
+        "b7": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "O melhor café especial que já tomei. Estou levando de presente para amigos nos EUA.",
+            "nome": "Tarcísio I.",
+            "data": "mai/2026",
+            "estrelas": 5,
+            "verificado": true
+          }
+        },
+        "b8": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Excelente café, grãos selecionados e torra na medida certa tanto para o espresso quanto para um método coado! Um café versátil que agrada o paladar!",
+            "nome": "Flávio S.",
+            "data": "mar/2026",
+            "estrelas": 5,
+            "verificado": true
+          }
+        },
+        "b9": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "O melhor café que já provei, amo ter sempre em casa. Qualidade sem igual. Indico muito",
+            "nome": "Karolinafbischoff",
+            "data": "jul/2026",
+            "estrelas": 5,
+            "verificado": false
+          }
+        },
+        "b10": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Ótimo café e ótimo atendimento, mandam atualizações desde o início da compra até a chegada.",
+            "nome": "Renatosbueno",
+            "data": "ago/2026",
+            "estrelas": 5,
+            "verificado": true
+          }
+        },
+        "b11": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "O melhor café brasileiro. Grãos bonitos, torra perfeita.",
+            "nome": "Mariana G.",
+            "data": "mar/2026",
+            "estrelas": 5,
+            "verificado": true
+          }
+        },
+        "b12": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Café com aroma muito bom e depois de passado na cafeteira italiana ficou melhor ainda. A cor homogênea do café mostra que não há contaminação c outros vegetais. Sabor muito bom!",
+            "nome": "Brauliohd",
+            "data": "jun/2026",
+            "estrelas": 5,
+            "verificado": false
+          }
+        },
+        "b13": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Café gostoso, suave, perfeito para beber a qualquer hora! Atendimento rápido e eficiente. Entrega no prazo em embalagem bem protegida!",
+            "nome": "Anônimo",
+            "data": "jul/2026",
+            "estrelas": 5,
+            "verificado": false
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13"
+      ]
+    },
+    "s11": {
+      "type": "tml-avaliacoes-app",
+      "settings": {
+        "eyebrow": "Avaliações",
+        "titulo": "Todas as avaliações do Clássico"
+      }
+    },
+    "s12": {
+      "type": "tml-assinatura-cta",
+      "settings": {
+        "url": "/pages/assinatura",
+        "titulo": "Nunca mais fique sem o seu Clássico",
+        "texto": "Assine e receba o Temalli Clássico em casa a cada 1, 2 ou 3 meses, com frete grátis em todas as entregas."
+      }
+    },
+    "s13": {
+      "type": "tml-faq",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "O que torna o Clássico diferente do café de supermercado?",
+            "resposta": "<p>Café de mercado costuma misturar grãos de várias origens, com defeitos e palha, e é torrado escuro para disfarçar. O Clássico é 100% arábica de origem conhecida, com 84+ pontos SCA e torra no ponto certo. A cor homogênea do pó, que os próprios clientes notam, mostra essa pureza.</p>"
+          }
+        },
+        "b2": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Como funciona o Pague 3, Leve 4?",
+            "resposta": "<p>Escolha o kit de 4 unidades e pague o preço de 3: {kit} no lugar de {kit_de}. Cada pacote sai por {kit_un}, e o kit ainda tem frete grátis para todo o Brasil.</p><p>Também dá para misturar: a cada 4 pacotes de café Temalli no carrinho, o de menor valor sai de graça.</p>"
+          }
+        },
+        "b3": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Grão ou moído?",
+            "resposta": "<p>Se você tem moedor, escolha <strong>grão</strong>: moer na hora preserva mais aroma. O <strong>moído</strong> funciona bem em coador, cafeteira elétrica, italiana e prensa francesa.</p>"
+          }
+        },
+        "b4": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Tem açúcar, aromatizante ou conservante?",
+            "resposta": "<p>Não. Zero aditivos. A doçura que você sente vem do próprio grão e da torra correta.</p>"
+          }
+        },
+        "b5": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Qual o prazo de envio?",
+            "resposta": "<p>O pedido é enviado em até 48h após a compra, conforme a modalidade de frete escolhida. Compras acima de R$ 150 têm frete grátis para todo o Brasil.</p>"
+          }
+        },
+        "b6": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "O que significa o nome Temalli?",
+            "resposta": "<p>É o nome da família em três sílabas: <strong>TE</strong> de Téo, <strong>MA</strong> de Mateus e <strong>LLI</strong> de Lyvia. Mateus e Lyvia criaram a marca; o Téo é o filho do casal. A fazenda, em Piumhi (MG), está com a família desde 1985.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ]
+    },
+    "s14": {
+      "type": "tml-cta-final",
+      "settings": {
+        "titulo": "Seu próximo café pode ser o melhor do mês",
+        "texto": "Leve 4 pacotes do Clássico e pague 3. São 2kg de café especial, e o frete é por nossa conta.",
+        "botao": "Quero o kit Clássico",
+        "url": "#comprar"
+      }
+    }
+  },
+  "order": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14"
+  ]
+}

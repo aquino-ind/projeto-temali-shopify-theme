@@ -1,0 +1,33 @@
+{%- assign p = section.settings.produto -%}
+<div class="tml">
+  <section>
+    <div class="wrap">
+      <a href="{{ p.url | default: '#' }}" class="cross para-{{ section.settings.estilo }} reveal">
+        <div class="txt">
+          <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+          <h2>{{ section.settings.titulo }}</h2>
+          <p>{{ section.settings.texto }}</p>
+          <span class="btn btn-luz">{{ section.settings.botao }} →</span>
+        </div>
+        <div class="img">{% render 'tml-imagem', img: section.settings.imagem, asset: section.settings.imagem_padrao, produto: p, alt: p.title, largura: 900 %}</div>
+      </a>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Conheça o outro café",
+  "settings": [
+    { "type": "product", "id": "produto", "label": "Produto" },
+    { "type": "select", "id": "estilo", "label": "Cor", "options": [ { "value": "classico", "label": "Azul (Clássico)" }, { "value": "arara", "label": "Verde (Arara)" } ], "default": "arara" },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Novo na família" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Conheça o Temalli Arara" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "botao", "label": "Botão", "default": "Conhecer o Arara" },
+    { "type": "image_picker", "id": "imagem", "label": "Imagem" },
+    { "type": "text", "id": "imagem_padrao", "label": "Imagem padrão (arquivo do tema)" }
+  ],
+  "presets": [ { "name": "T • Conheça o outro café" } ]
+}
+{% endschema %}

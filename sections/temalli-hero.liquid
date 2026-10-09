@@ -1,0 +1,107 @@
+{% render 'temalli-assets' %}
+
+<div class="tml">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        {%- endif -%}
+        <h1>{{ section.settings.titulo }}</h1>
+        {%- if section.settings.subtitulo != blank -%}
+          <p class="sub">{{ section.settings.subtitulo }}</p>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul>
+            {%- for block in section.blocks -%}
+              <li {{ block.shopify_attributes }}>{{ block.settings.texto }}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.texto_botao != blank -%}
+          <a href="{{ section.settings.link_botao | default: '#oferta' }}" class="btn">
+            {{ section.settings.texto_botao }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.micro != blank -%}
+          <p class="micro" style="text-align:left">{{ section.settings.micro }}</p>
+        {%- endif -%}
+      </div>
+
+      <div class="hero-img">
+        {%- if section.settings.imagem != blank -%}
+          {{
+            section.settings.imagem
+            | image_url: width: 1440
+            | image_tag:
+              loading: 'eager',
+              fetchpriority: 'high',
+              sizes: '(min-width: 820px) 45vw, 100vw',
+              widths: '480, 720, 960, 1440',
+              alt: section.settings.imagem.alt | default: section.settings.titulo
+          }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag }}
+        {%- endif -%}
+
+        {%- if section.settings.selo_numero != blank -%}
+          <div class="selo" aria-label="{{ section.settings.selo_numero }} {{ section.settings.selo_texto }}">
+            <b>{{ section.settings.selo_numero }}</b>
+            <span>{{ section.settings.selo_texto }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • Hero",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Chapéu", "default": "Café especial • Serra da Canastra" },
+    {
+      "type": "text",
+      "id": "titulo",
+      "label": "Título",
+      "default": "Para quem parou de aceitar café comum."
+    },
+    {
+      "type": "richtext",
+      "id": "subtitulo",
+      "label": "Subtítulo",
+      "default": "<p>Café especial <strong>84+ pontos SCA</strong>, 100% arábica da Serra da Canastra. Torra média com notas naturais de caramelo, mel e chocolate. Da fazenda direto pra sua xícara.</p>"
+    },
+    { "type": "header", "content": "Botão" },
+    { "type": "text", "id": "texto_botao", "label": "Texto do botão", "default": "Quero meu Café Temalli®" },
+    { "type": "url", "id": "link_botao", "label": "Link do botão", "info": "Deixe vazio para rolar até a seção de oferta (#oferta)." },
+    { "type": "text", "id": "micro", "label": "Microcopy", "default": "Compra segura • Envio em até 48h • Atendimento humano" },
+    { "type": "header", "content": "Imagem e selo" },
+    { "type": "image_picker", "id": "imagem", "label": "Imagem do produto" },
+    { "type": "text", "id": "selo_numero", "label": "Selo — número", "default": "84+" },
+    { "type": "text", "id": "selo_texto", "label": "Selo — legenda", "default": "pontos SCA" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item da lista",
+      "settings": [{ "type": "text", "id": "texto", "label": "Texto" }]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Temalli • Hero",
+      "blocks": [
+        { "type": "item", "settings": { "texto": "Certificado 84+ pontos na escala da Specialty Coffee Association" } },
+        { "type": "item", "settings": { "texto": "Grão puro, sem mistura, sem aditivos, sem aromatizante" } },
+        { "type": "item", "settings": { "texto": "Torra fresca sob demanda, enviada em até 48h" } },
+        { "type": "item", "settings": { "texto": "Origem única: Fazenda Maria Ângela, Serra da Canastra (MG)" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,38 @@
+<div class="tml">
+  <section class="escuro centro">
+    <div class="estreito reveal">
+      {%- if section.settings.xicara -%}{% render 'tml-xicara' %}{%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.citacao != blank -%}
+        <blockquote class="ass-pedido">
+          <span class="estrelas" aria-hidden="true">{{ section.settings.citacao_estrelas }}</span>
+          <p>“{{ section.settings.citacao }}”</p>
+          <footer>{{ section.settings.citacao_autor }}</footer>
+        </blockquote>
+      {%- endif -%}
+      <h2{% if section.settings.citacao != blank %} style="margin-top:28px"{% endif %}>{{ section.settings.titulo }}</h2>
+      {%- if section.settings.texto != blank -%}<p class="lead" style="margin-bottom:28px">{{ section.settings.texto }}</p>{%- endif -%}
+      <a href="{{ section.settings.url | default: '#comprar' }}" class="btn btn-luz">{{ section.settings.botao }}</a>
+      {%- if section.settings.micro != blank -%}<p class="micro">{{ section.settings.micro }}</p>{%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Chamada final",
+  "settings": [
+    { "type": "checkbox", "id": "xicara", "label": "Xícara com vapor", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo" },
+    { "type": "text", "id": "citacao", "label": "Citação (opcional)" },
+    { "type": "text", "id": "citacao_autor", "label": "Autor da citação" },
+    { "type": "text", "id": "citacao_estrelas", "label": "Estrelas da citação", "default": "★★★★★" },
+    { "type": "text", "id": "titulo", "label": "Título" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "botao", "label": "Botão", "default": "Quero o kit" },
+    { "type": "text", "id": "url", "label": "Link do botão", "default": "#comprar", "info": "Pode ser uma âncora da página, como #comprar." },
+    { "type": "text", "id": "micro", "label": "Texto pequeno", "default": "Compra segura • Envio em até 48h • Atendimento humano" }
+  ],
+  "presets": [ { "name": "T • Chamada final" } ]
+}
+{% endschema %}

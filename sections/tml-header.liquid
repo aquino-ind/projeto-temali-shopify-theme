@@ -1,0 +1,51 @@
+<div class="tml">
+  {%- if section.settings.topbar != blank -%}
+    <div class="topbar">{{ section.settings.topbar }}</div>
+  {%- endif -%}
+  <header class="site">
+    <nav class="wrap nav" aria-label="Principal">
+      {% render 'tml-logo' %}
+      <ul class="nav-links">
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}><a href="{{ block.settings.url }}"{% if block.settings.url == request.path %} aria-current="page"{% endif %}>{{ block.settings.texto }}</a></li>
+        {%- endfor -%}
+      </ul>
+      <div class="nav-acoes">
+        {%- if shop.customer_accounts_enabled -%}
+          {%- if customer -%}
+            <a href="{{ routes.account_url }}" class="nav-conta logado" aria-label="Minha conta e pedidos" title="Minha conta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg></a>
+          {%- else -%}
+            <a href="{{ routes.account_login_url }}" class="nav-conta" aria-label="Entrar na minha conta" title="Entrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg></a>
+          {%- endif -%}
+        {%- endif -%}
+        <a href="{{ routes.cart_url }}" class="nav-carrinho" aria-label="Carrinho, {{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}itens{% endif %}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7h14l-1.2 12.2a2 2 0 01-2 1.8H8.2a2 2 0 01-2-1.8z"/><path d="M9 7a3 3 0 016 0"/></svg>
+          {%- if cart.item_count > 0 -%}<span>{{ cart.item_count }}</span>{%- endif -%}
+        </a>
+        {%- if section.settings.cta_texto != blank -%}
+          <a href="{{ section.settings.cta_url }}" class="btn btn-nav">{{ section.settings.cta_texto }}</a>
+        {%- endif -%}
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "T • Cabeçalho",
+  "class": "tml-secao-header",
+  "settings": [
+    { "type": "inline_richtext", "id": "topbar", "label": "Faixa do topo", "default": "<b>Pague 3, Leve 4 + frete grátis</b> • Envio em até 48h após a compra" },
+    { "type": "text", "id": "cta_texto", "label": "Botão (texto)", "default": "Comprar" },
+    { "type": "url", "id": "cta_url", "label": "Botão (link)" }
+  ],
+  "blocks": [
+    { "type": "link", "name": "Link do menu", "settings": [
+      { "type": "text", "id": "texto", "label": "Texto", "default": "Link" },
+      { "type": "url", "id": "url", "label": "Link" }
+    ]}
+  ],
+  "max_blocks": 8
+}
+{% endschema %}

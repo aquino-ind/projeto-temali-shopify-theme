@@ -1,0 +1,29 @@
+<div class="tml">
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="centro reveal">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+      </div>
+      <ol class="passos reveal">
+        {%- for block in section.blocks -%}<li {{ block.shopify_attributes }}><b>{{ forloop.index }}</b><h3>{{ block.settings.titulo }}</h3><p>{{ block.settings.texto }}</p></li>{%- endfor -%}
+      </ol>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Passo a passo",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Como funciona" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Quatro passos, e o café não acaba mais" }
+  ],
+  "blocks": [ { "type": "passo", "name": "Passo", "settings": [
+    { "type": "text", "id": "titulo", "label": "Título" },
+    { "type": "textarea", "id": "texto", "label": "Texto" }
+  ]}],
+  "max_blocks": 4,
+  "presets": [ { "name": "T • Passo a passo" } ]
+}
+{% endschema %}

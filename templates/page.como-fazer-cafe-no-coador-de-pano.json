@@ -1,0 +1,214 @@
+{
+  "sections": {
+    "s1": {
+      "type": "tml-metodo",
+      "settings": {
+        "nome": "Coador de pano",
+        "termo": "coador de pano",
+        "artigo": "o",
+        "titulo": "Como fazer café no coador de pano: receita e passo a passo",
+        "resumo": "Para fazer café no coador de pano, use 30g de café em moagem média para 400ml de água entre 92 e 95 °C. Molhe o pano com água quente, coloque o pó, despeje um pouco de água para a pré-infusão e depois o restante, devagar e em círculos. Não ferva o café nem mexa o pó dentro do pano.",
+        "foto_padrao": "tml-preparo-coador-de-pano.jpg",
+        "tempo_txt": "4 min",
+        "tempo_min": 4,
+        "dificuldade": "Fácil",
+        "rende": "2 a 3 xícaras (400ml)",
+        "titulo_oque": "O que é o coador de pano",
+        "intro": "<p>O coador de pano é o método mais tradicional do Brasil e o jeito de fazer café de muitas casas. O tecido de algodão segura os óleos do café de um jeito diferente do papel, e por isso a bebida fica mais encorpada e com um sabor redondo.</p><p>Com um café especial e alguns cuidados simples, o coador de pano faz uma das melhores xícaras que existem.</p>",
+        "titulo_passos": "Como fazer café no coador de pano: passo a passo",
+        "cafe_1": "cafe-torra-media-84-pontos",
+        "cafe_1_estilo": "classico",
+        "cafe_1_texto": "O Clássico é o par perfeito do coador de pano: corpo equilibrado, chocolate e caramelo, o café de todo dia.",
+        "assinatura_url": "/pages/assinatura",
+        "indice_url": "/pages/como-preparar",
+        "outros": "V60 | /pages/como-fazer-cafe-na-v60 | tml-preparo-v60.jpg | 3 min • Média\nPrensa francesa | /pages/como-fazer-cafe-na-prensa-francesa | tml-preparo-prensa-francesa.jpg | 5 min • Fácil\nAeropress | /pages/como-fazer-cafe-na-aeropress | tml-preparo-aeropress.jpg | 2 min • Fácil\nCafeteira italiana | /pages/como-fazer-cafe-na-cafeteira-italiana | tml-preparo-cafeteira-italiana.jpg | 5 a 6 min • Fácil\nEspresso | /pages/como-fazer-espresso-em-casa | tml-preparo-espresso-em-casa.jpg | 2 min • Avançada\nCafeteira elétrica | /pages/como-fazer-cafe-na-cafeteira-eletrica | tml-preparo-cafeteira-eletrica.jpg | 6 a 8 min • Fácil"
+      },
+      "blocks": {
+        "b1": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Café",
+            "valor": "30g (3 colheres de sopa cheias)"
+          }
+        },
+        "b2": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Água",
+            "valor": "400ml"
+          }
+        },
+        "b3": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Proporção",
+            "valor": "1:13"
+          }
+        },
+        "b4": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Temperatura",
+            "valor": "92 a 95 °C"
+          }
+        },
+        "b5": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Moagem",
+            "valor": "Média"
+          }
+        },
+        "b6": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Tempo total",
+            "valor": "3 a 4 min"
+          }
+        },
+        "b7": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Coador de pano com suporte"
+          }
+        },
+        "b8": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Bule ou garrafa térmica"
+          }
+        },
+        "b9": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Chaleira"
+          }
+        },
+        "b10": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Colher de sopa ou balança"
+          }
+        },
+        "b11": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "30g de café Temalli"
+          }
+        },
+        "b12": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Aqueça a água",
+            "texto": "Aqueça 500ml de água filtrada. Desligue quando começar a ferver e espere cerca de 30 segundos. Água fervendo queima o café."
+          }
+        },
+        "b13": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Escalde o pano",
+            "texto": "Molhe o coador com água quente e descarte. Isso tira resíduos, aquece o pano e o bule."
+          }
+        },
+        "b14": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Coloque o café",
+            "texto": "Adicione 30g de café em moagem média, cerca de 3 colheres de sopa cheias."
+          }
+        },
+        "b15": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Faça a pré-infusão",
+            "texto": "Despeje um pouco de água, só para molhar todo o pó, e espere 30 segundos."
+          }
+        },
+        "b16": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Despeje o restante",
+            "texto": "Despeje o resto da água devagar, em círculos, até completar 400ml. Não mexa o pó com a colher: isso entope o pano e amarga o café."
+          }
+        },
+        "b17": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Sirva logo",
+            "texto": "Sirva assim que terminar de passar. Se for guardar, use garrafa térmica, nunca o fogo."
+          }
+        },
+        "b18": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café com gosto de “velho” ou rançoso",
+            "solucao": "O pano está com resíduo de óleo. Lave só com água quente, sem sabão, e guarde na geladeira dentro de um pote com água."
+          }
+        },
+        "b19": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café amargo",
+            "solucao": "A água estava fervendo, ou o café ficou no fogo depois de pronto. Espere a água baixar um pouco e não reaqueça o café."
+          }
+        },
+        "b20": {
+          "type": "erro",
+          "settings": {
+            "problema": "Café fraco",
+            "solucao": "Faltou café. Mantenha a proporção de 10g de café para cada 100 a 130ml de água."
+          }
+        },
+        "b21": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Como lavar o coador de pano?",
+            "resposta": "Só com água quente, sem sabão nem detergente, que deixam gosto no café. Depois, guarde na geladeira dentro de um pote com água, para não pegar cheiro nem mofar."
+          }
+        },
+        "b22": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Quando trocar o coador de pano?",
+            "resposta": "Quando o pano ficar muito escuro, com cheiro forte ou passando o café devagar demais. Em uso diário, isso costuma acontecer a cada 2 ou 3 meses."
+          }
+        },
+        "b23": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Quantas colheres de café por litro no coador de pano?",
+            "resposta": "Cerca de 8 a 10 colheres de sopa cheias (80 a 100g) para 1 litro de água. Ajuste ao seu gosto."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16",
+        "b17",
+        "b18",
+        "b19",
+        "b20",
+        "b21",
+        "b22",
+        "b23"
+      ]
+    }
+  },
+  "order": [
+    "s1"
+  ]
+}

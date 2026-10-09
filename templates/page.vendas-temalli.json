@@ -1,0 +1,247 @@
+{
+  "sections": {
+    "cabecalho": {
+      "type": "temalli-cabecalho",
+      "settings": {
+        "aviso": "<p><strong>Frete grátis<\/strong> no combo Pague 3 Leve 4 • Torra fresca enviada em até 48h<\/p>",
+        "mostrar_logo": true,
+        "texto_logo": "Temalli® Café",
+        "layout_limpo": true
+      }
+    },
+    "hero": {
+      "type": "temalli-hero",
+      "blocks": {
+        "b1": { "type": "item", "settings": { "texto": "Certificado 84+ pontos na escala da Specialty Coffee Association" } },
+        "b2": { "type": "item", "settings": { "texto": "Grão puro, sem mistura, sem aditivos, sem aromatizante" } },
+        "b3": { "type": "item", "settings": { "texto": "Torra fresca sob demanda, enviada em até 48h" } },
+        "b4": { "type": "item", "settings": { "texto": "Origem única: Fazenda Maria Ângela, Serra da Canastra (MG)" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {
+        "eyebrow": "Café especial • Serra da Canastra",
+        "titulo": "Para quem parou de aceitar café comum.",
+        "subtitulo": "<p>Café especial <strong>84+ pontos SCA<\/strong>, 100% arábica da Serra da Canastra. Torra média com notas naturais de caramelo, mel e chocolate. Da fazenda direto pra sua xícara.<\/p>",
+        "texto_botao": "Quero meu Café Temalli®",
+        "micro": "Compra segura • Envio em até 48h • Atendimento humano",
+        "selo_numero": "84+",
+        "selo_texto": "pontos SCA"
+      }
+    },
+    "oferta": {
+      "type": "temalli-oferta",
+      "blocks": {
+        "p1": {
+          "type": "plano",
+          "settings": {
+            "titulo": "1 unidade • 500g",
+            "qtd": 1,
+            "preco": "R$ 84,90",
+            "obs": "Sai a menos de R$ 1,70 por xícara"
+          }
+        },
+        "p2": {
+          "type": "plano",
+          "settings": {
+            "titulo": "2 unidades • 500g",
+            "qtd": 2,
+            "preco_antigo": "R$ 169,80",
+            "preco": "R$ 145,80",
+            "obs": "R$ 72,90 por pacote",
+            "tag": "14% OFF"
+          }
+        },
+        "p3": {
+          "type": "plano",
+          "settings": {
+            "titulo": "4 unidades • 500g",
+            "qtd": 4,
+            "preco_antigo": "R$ 339,60",
+            "preco": "R$ 254,70",
+            "obs": "Equivale a R$ 63,68 por pacote. Estoque pro mês inteiro.",
+            "tag": "Pague 3, Leve 4 + Frete Grátis",
+            "destaque": true,
+            "padrao": true
+          }
+        }
+      },
+      "block_order": ["p1", "p2", "p3"],
+      "settings": {
+        "eyebrow": "Oferta atual",
+        "titulo": "Escolha sua quantidade",
+        "texto_botao": "Quero meu Café Temalli®",
+        "micro": "Compra segura • Envio em até 48h • Atendimento humano via WhatsApp"
+      }
+    },
+    "conta": {
+      "type": "temalli-conta",
+      "blocks": {
+        "c1": { "type": "item", "settings": { "texto": "<p><strong>Cápsula de café:<\/strong> R$ 2,50 a R$ 4,00 por dose pequena<\/p>" } },
+        "c2": { "type": "item", "settings": { "texto": "<p><strong>Café na padaria:<\/strong> R$ 6 a R$ 10 a xícara<\/p>" } },
+        "c3": { "type": "item", "settings": { "texto": "<p><strong>Café de supermercado:<\/strong> mais barato no rótulo, mas torrado escuro pra esconder grão defeituoso, palha e mistura<\/p>" } }
+      },
+      "block_order": ["c1", "c2", "c3"],
+      "settings": {
+        "eyebrow": "A conta que ninguém faz",
+        "titulo": "Faça a conta antes de dizer que café especial é caro",
+        "intro": "<p>Um pacote de 500g do Temalli® rende cerca de 50 xícaras.<\/p>",
+        "conta": "<p>R$ 84,90 ÷ 50 xícaras = <strong>menos de R$ 1,70 por xícara<\/strong><\/p>",
+        "fecho": "Caro é pagar todo dia por um café que precisa de açúcar pra descer."
+      }
+    },
+    "origem": {
+      "type": "temalli-origem",
+      "settings": {
+        "imagem_direita": false,
+        "eyebrow": "Origem única",
+        "titulo": "Um café com endereço: Fazenda Maria Ângela, Serra da Canastra",
+        "texto": "<p>A maioria dos cafés de mercado é uma mistura anônima de grãos de várias origens, comprados de quem vender mais barato, torrados até o carvão pra esconder defeito.<\/p><p>O Temalli® nasce em um único lugar: a <strong>Fazenda Maria Ângela<\/strong>, na <strong>Serra da Canastra<\/strong>, em Minas Gerais. A mesma serra que produz o queijo mais premiado do Brasil, com altitude, clima e solo que o mundo inteiro reconhece.<\/p><p>Cada lote é colhido, selecionado e torrado no ponto exato, aquele que revela o sabor do grão em vez de mascará-lo. É por isso que na xícara você encontra caramelo, mel e chocolate de verdade, sem aromatizante nenhum.<\/p>",
+        "assinatura": "Você sabe de onde vem o seu café. Poucos podem dizer isso."
+      }
+    },
+    "sca": {
+      "type": "temalli-sca",
+      "settings": {
+        "selo_numero": "84+",
+        "selo_texto": "pontos SCA",
+        "eyebrow": "Qualidade medida",
+        "titulo": "84+ pontos SCA: qualidade medida, não prometida",
+        "texto": "<p>A Specialty Coffee Association avalia cafés do mundo inteiro numa escala de 0 a 100. Só quem passa de 80 pontos pode se chamar <strong>café especial<\/strong>. A imensa maioria dos cafés vendidos no Brasil nem chega perto.<\/p><p>O Temalli® é avaliado em <strong>84+ pontos<\/strong>: aroma envolvente, corpo equilibrado, doçura natural e finalização limpa, sem amargor de queimado.<\/p><p><em>Não é a gente dizendo que o café é bom. É a régua internacional do café dizendo.<\/em><\/p>"
+      }
+    },
+    "reviews": {
+      "type": "temalli-reviews",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "texto": "\"O melhor café especial que já tomei. Estou levando de presente para amigos nos EUA.\"", "autor": "Cliente Temalli®" } },
+        "r2": { "type": "review", "settings": { "texto": "\"Café com aroma muito bom e depois de passado na cafeteira italiana ficou melhor ainda.\"", "autor": "Cliente Temalli®" } },
+        "r3": { "type": "review", "settings": { "texto": "\"A cor homogênea do café mostra que não há contaminação com outros vegetais. Acredito que a torrefação foi exata.\"", "autor": "Cliente Temalli®" } },
+        "r4": { "type": "review", "settings": { "texto": "\"Café muito gostoso. Parabéns pelo excelente atendimento e pela rápida resolução do problema.\"", "autor": "Cliente Temalli®" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"],
+      "settings": {
+        "eyebrow": "Prova social",
+        "titulo": "O que dizem nossos clientes",
+        "fecho": "Tem gente atravessando fronteira com Temalli® na mala. Isso diz mais que qualquer propaganda."
+      }
+    },
+    "metodos": {
+      "type": "temalli-metodos",
+      "blocks": {
+        "m1": { "type": "metodo", "settings": { "nome": "Coador de pano" } },
+        "m2": { "type": "metodo", "settings": { "nome": "Cafeteira italiana" } },
+        "m3": { "type": "metodo", "settings": { "nome": "Prensa francesa" } },
+        "m4": { "type": "metodo", "settings": { "nome": "V60" } },
+        "m5": { "type": "metodo", "settings": { "nome": "Cafeteira elétrica" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5"],
+      "settings": {
+        "eyebrow": "Extrações",
+        "titulo": "Funciona no seu método, seja ele qual for",
+        "texto": "<p>A torra média do Temalli® foi pensada pra extrair bem em todos os métodos mais usados no Brasil:<\/p>",
+        "dica": "<p><strong>Dica de ouro:<\/strong> água filtrada, fora da fervura, na proporção de 10g de café pra 100ml de água.<\/p>"
+      }
+    },
+    "whatsapp": {
+      "type": "temalli-whatsapp",
+      "settings": {
+        "titulo": "Ficou com alguma dúvida?",
+        "texto": "<p>Fala com a gente no WhatsApp. Do outro lado tem gente de verdade, não robô.<\/p>",
+        "numero": "5517920049117",
+        "mensagem": "Iniciar Atendimento",
+        "texto_botao": "Falar no WhatsApp",
+        "micro": "Atendimento humano de segunda a sexta, das 9h às 16h"
+      }
+    },
+    "faq": {
+      "type": "temalli-faq",
+      "blocks": {
+        "f1": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "O que torna o Temalli® diferente do café de supermercado?",
+            "resposta": "<p>Café de mercado costuma ser mistura de grãos de origens diferentes, com defeitos, palha e às vezes até outros vegetais, torrado escuro pra disfarçar. O Temalli® é grão 100% arábica de origem única, da Serra da Canastra, com 84+ pontos SCA e torra no ponto exato. A cor homogênea do pó, que nossos próprios clientes notam, é a prova visível da pureza.<\/p>"
+          }
+        },
+        "f2": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Por que custa R$ 84,90?",
+            "resposta": "<p>Porque é café especial de verdade, e mesmo assim custa menos do que parece. São 500g que rendem cerca de 50 xícaras: menos de R$ 1,70 por xícara, mais barato que cápsula e muito mais barato que padaria.<\/p><p>No combo Pague 3 Leve 4, o pacote sai por R$ 63,68 com frete grátis. Você não está pagando por embalagem nem por marca famosa. Está pagando pelo grão.<\/p>"
+          }
+        },
+        "f3": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Tem açúcar, aromatizante ou conservante?",
+            "resposta": "<p>Não. Zero aditivos. Apenas café 100% puro e fresco. A doçura de caramelo e mel que você sente é natural do grão e da torra correta.<\/p>"
+          }
+        },
+        "f4": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Qual o melhor jeito de preparar?",
+            "resposta": "<p>O Temalli® vai bem em qualquer método: coado, italiana, prensa francesa, V60 ou elétrica. Use água filtrada fora da fervura e a proporção de 10g de café pra 100ml de água. Escolha grãos se você mói em casa, ou moído se prefere praticidade.<\/p>"
+          }
+        },
+        "f5": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Quanto tempo demora pra chegar?",
+            "resposta": "<p>Seu pedido é processado em até 48h úteis, com torra fresca. O prazo de entrega varia conforme sua região e a modalidade de frete escolhida no checkout.<\/p>"
+          }
+        },
+        "f6": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "E se eu não gostar?",
+            "resposta": "<p>Fala com a gente no WhatsApp. Nosso atendimento é humano e resolve rápido, e isso não é promessa: está escrito nos nossos próprios reviews.<\/p>"
+          }
+        }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
+      "settings": {
+        "eyebrow": "Dúvidas comuns",
+        "titulo": "Perguntas frequentes"
+      }
+    },
+    "cta_final": {
+      "type": "temalli-cta-final",
+      "settings": {
+        "titulo": "Amanhã de manhã você vai tomar café de qualquer jeito.",
+        "texto": "<p>A única pergunta é: vai ser o café de sempre, ou o melhor café especial que você já tomou?<\/p>",
+        "texto_botao": "Quero meu Café Temalli®",
+        "micro": "Pague 3, Leve 4 com frete grátis • Envio em até 48h"
+      }
+    },
+    "rodape": {
+      "type": "temalli-rodape",
+      "settings": {
+        "texto_logo": "Temalli® Café",
+        "texto": "<p>© Temalli® Café • Fazenda Maria Ângela, Serra da Canastra (MG)<\/p>"
+      }
+    },
+    "buybar": {
+      "type": "temalli-buybar",
+      "settings": {
+        "rotulo": "Pague 3, Leve 4",
+        "preco": "R$ 254,70",
+        "texto_botao": "Comprar agora"
+      }
+    }
+  },
+  "order": [
+    "cabecalho",
+    "hero",
+    "oferta",
+    "conta",
+    "origem",
+    "sca",
+    "reviews",
+    "metodos",
+    "whatsapp",
+    "faq",
+    "cta_final",
+    "rodape",
+    "buybar"
+  ]
+}

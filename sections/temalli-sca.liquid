@@ -1,0 +1,45 @@
+{% render 'temalli-assets' %}
+
+<div class="tml">
+  <section class="sca">
+    <div class="wrap sca-grid reveal">
+      <div class="selo-grande" aria-label="{{ section.settings.selo_numero }} {{ section.settings.selo_texto }}">
+        <b>{{ section.settings.selo_numero }}</b>
+        <span>{{ section.settings.selo_texto }}</span>
+      </div>
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        {%- endif -%}
+        <h2>{{ section.settings.titulo }}</h2>
+        {{ section.settings.texto }}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • Pontuação SCA",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    { "type": "text", "id": "selo_numero", "label": "Selo — número", "default": "84+" },
+    { "type": "text", "id": "selo_texto", "label": "Selo — legenda", "default": "pontos SCA" },
+    { "type": "text", "id": "eyebrow", "label": "Chapéu", "default": "Qualidade medida" },
+    {
+      "type": "text",
+      "id": "titulo",
+      "label": "Título",
+      "default": "84+ pontos SCA: qualidade medida, não prometida"
+    },
+    {
+      "type": "richtext",
+      "id": "texto",
+      "label": "Texto",
+      "default": "<p>A Specialty Coffee Association avalia cafés do mundo inteiro numa escala de 0 a 100. Só quem passa de 80 pontos pode se chamar <strong>café especial</strong>. A imensa maioria dos cafés vendidos no Brasil nem chega perto.</p><p>O Temalli® é avaliado em <strong>84+ pontos</strong>: aroma envolvente, corpo equilibrado, doçura natural e finalização limpa, sem amargor de queimado.</p><p><em>Não é a gente dizendo que o café é bom. É a régua internacional do café dizendo.</em></p>"
+    }
+  ],
+  "presets": [{ "name": "Temalli • Pontuação SCA" }]
+}
+{% endschema %}

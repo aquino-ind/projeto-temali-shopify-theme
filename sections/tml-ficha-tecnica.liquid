@@ -1,0 +1,35 @@
+<div class="tml">
+  <section>
+    <div class="wrap">
+      <div class="centro reveal">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+        {%- if section.settings.texto != blank -%}<div class="lead">{% render 'tml-texto', t: section.settings.texto %}</div>{%- endif -%}
+      </div>
+      <div class="tecnica reveal">
+        {%- for block in section.blocks -%}
+          <div {{ block.shopify_attributes }}><small>{% render 'tml-texto', t: block.settings.rotulo %}</small><b>{{ block.settings.valor }}</b></div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Ficha técnica",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Ficha técnica" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Qualidade medida, não prometida" },
+    { "type": "richtext", "id": "texto", "label": "Texto" }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Item", "settings": [
+      { "type": "text", "id": "rotulo", "label": "Rótulo", "info": "Aceita [i:sca] etc." },
+      { "type": "text", "id": "valor", "label": "Valor" }
+    ]}
+  ],
+  "max_blocks": 8,
+  "presets": [ { "name": "T • Ficha técnica" } ]
+}
+{% endschema %}

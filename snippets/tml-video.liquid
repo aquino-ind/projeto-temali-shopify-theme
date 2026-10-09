@@ -1,0 +1,22 @@
+{%- comment -%}
+  Vídeo do YouTube (normal ou Shorts) que só carrega ao clicar. Uso: {% render 'tml-video', url: block.settings.url, legenda: block.settings.legenda %}
+{%- endcomment -%}
+{%- liquid
+  assign id = ''
+  if url contains 'watch?v='
+    assign id = url | split: 'watch?v=' | last | split: '&' | first
+  elsif url contains 'shorts/'
+    assign id = url | split: 'shorts/' | last | split: '?' | first
+  elsif url contains 'youtu.be/'
+    assign id = url | split: 'youtu.be/' | last | split: '?' | first
+  endif
+-%}
+{%- if id != blank -%}
+  <figure class="video-yt">
+    <button type="button" class="video-capa" data-yt="{{ id }}" aria-label="Assistir: {{ legenda | escape }}">
+      <img src="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+      <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+    </button>
+    {%- if legenda != blank -%}<figcaption>{{ legenda }}</figcaption>{%- endif -%}
+  </figure>
+{%- endif -%}

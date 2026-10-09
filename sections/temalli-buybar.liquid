@@ -1,0 +1,33 @@
+{% render 'temalli-assets' %}
+
+{%- comment -%}
+  Barra fixa de compra (só mobile). O preço acompanha o plano selecionado
+  na seção de oferta — ver sincronizarPreco() em temalli.js.
+{%- endcomment -%}
+
+<div class="tml">
+  <div class="buybar">
+    <div class="p">
+      <small data-tml-buybar-rotulo>{{ section.settings.rotulo }}</small>
+      <b data-tml-buybar-preco>{{ section.settings.preco }}</b>
+    </div>
+    <a href="{{ section.settings.link_botao | default: '#oferta' }}" class="btn">
+      {{ section.settings.texto_botao }}
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • Barra de compra",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    { "type": "text", "id": "rotulo", "label": "Rótulo", "default": "Pague 3, Leve 4" },
+    { "type": "text", "id": "preco", "label": "Preço", "default": "R$ 254,70" },
+    { "type": "text", "id": "texto_botao", "label": "Texto do botão", "default": "Comprar agora" },
+    { "type": "url", "id": "link_botao", "label": "Link do botão", "info": "Vazio = rola até a oferta (#oferta)." }
+  ],
+  "presets": [{ "name": "Temalli • Barra de compra" }]
+}
+{% endschema %}

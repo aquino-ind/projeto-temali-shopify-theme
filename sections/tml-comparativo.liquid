@@ -1,0 +1,62 @@
+{%- assign a = section.settings.produto_a -%}
+{%- assign b = section.settings.produto_b -%}
+<div class="tml">
+  <section class="comparar" id="comparar">
+    <div class="wrap">
+      <div class="centro reveal">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+        {%- if section.settings.texto != blank -%}<p class="lead">{{ section.settings.texto }}</p>{%- endif -%}
+      </div>
+      <div class="tabela-wrap reveal">
+        <table class="tabela">
+          <thead><tr><th scope="col"><span class="sr">Característica</span></th><th scope="col">{{ section.settings.nome_a }}</th><th scope="col">{{ section.settings.nome_b }}</th></tr></thead>
+          <tbody>
+            {%- for block in section.blocks -%}
+              <tr {{ block.shopify_attributes }}><th scope="row">{% render 'tml-texto', t: block.settings.rotulo %}</th><td data-p="{{ section.settings.nome_a }}">{% render 'tml-texto', t: block.settings.valor_a %}</td><td data-p="{{ section.settings.nome_b }}">{% render 'tml-texto', t: block.settings.valor_b %}</td></tr>
+            {%- endfor -%}
+            {%- if a != blank and b != blank -%}
+              <tr><th scope="row">Preço</th><td data-p="{{ section.settings.nome_a }}">{{ a.price | money }} • kit 4 por {{ a.price | times: 3 | money }}</td><td data-p="{{ section.settings.nome_b }}">{{ b.price | money }} • kit 4 por {{ b.price | times: 3 | money }}</td></tr>
+            {%- endif -%}
+          </tbody>
+        </table>
+      </div>
+      <div class="indicacao reveal">
+        <div><b>{{ section.settings.ind_a_titulo }}</b><p>{{ section.settings.ind_a_texto }}</p></div>
+        <div><b>{{ section.settings.ind_b_titulo }}</b><p>{{ section.settings.ind_b_texto }}</p></div>
+      </div>
+      {%- if section.settings.botao != blank -%}
+        <p class="centro" style="margin-top:28px"><a href="{{ section.settings.botao_url }}" class="btn btn-contorno">{{ section.settings.botao }}</a></p>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Comparativo",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Lado a lado" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Qual Temalli® é o seu?" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "nome_a", "label": "Café 1 (coluna)", "default": "Clássico" },
+    { "type": "product", "id": "produto_a", "label": "Café 1 (produto, para o preço)" },
+    { "type": "text", "id": "nome_b", "label": "Café 2 (coluna)", "default": "Arara" },
+    { "type": "product", "id": "produto_b", "label": "Café 2 (produto, para o preço)" },
+    { "type": "text", "id": "ind_a_titulo", "label": "Indicação café 1 (título)", "default": "Escolha o Clássico se…" },
+    { "type": "textarea", "id": "ind_a_texto", "label": "Indicação café 1 (texto)" },
+    { "type": "text", "id": "ind_b_titulo", "label": "Indicação café 2 (título)", "default": "Escolha o Arara se…" },
+    { "type": "textarea", "id": "ind_b_texto", "label": "Indicação café 2 (texto)" },
+    { "type": "text", "id": "botao", "label": "Botão", "default": "Ainda na dúvida? Leve os dois no Kit Degustação" },
+    { "type": "url", "id": "botao_url", "label": "Link do botão" }
+  ],
+  "blocks": [
+    { "type": "linha", "name": "Linha", "settings": [
+      { "type": "text", "id": "rotulo", "label": "Característica", "info": "Aceita [i:corpo] etc. para o ícone (i)." },
+      { "type": "text", "id": "valor_a", "label": "Café 1" },
+      { "type": "text", "id": "valor_b", "label": "Café 2" }
+    ]}
+  ],
+  "presets": [ { "name": "T • Comparativo" } ]
+}
+{% endschema %}

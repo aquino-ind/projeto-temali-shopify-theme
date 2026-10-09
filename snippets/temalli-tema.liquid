@@ -1,0 +1,77 @@
+{%- comment -%}
+  Identidade Temalli aplicada ao tema inteiro.
+  Sobrescreve os design tokens do Dawn e carrega o CSS das seções Temalli (tml.css).
+  Precisa ser incluído DEPOIS de base.css.
+
+  As fontes são self-hosted (Fraunces não existe na biblioteca do Shopify, então
+  não dá pra usar font_picker). Ambas são variáveis: um arquivo cobre 300–800.
+{%- endcomment -%}
+
+{%- assign fonte_display = 'fraunces-variable.woff2' | asset_url -%}
+{%- assign fonte_corpo = 'archivo-variable.woff2' | asset_url -%}
+
+{%- comment -%}
+  Fonte precisa de crossorigin no preload, que o filtro preload_tag não emite.
+  O próprio Dawn silencia a regra pelo mesmo motivo (ver layout/theme.liquid).
+{%- endcomment -%}
+{% comment %}theme-check-disable AssetPreload{% endcomment %}
+<link rel="preload" as="font" href="{{ fonte_display }}" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="{{ fonte_corpo }}" type="font/woff2" crossorigin>
+{% comment %}theme-check-enable AssetPreload{% endcomment %}
+
+{% style %}
+  @font-face {
+    font-family: 'Fraunces';
+    font-style: normal;
+    font-weight: 300 800;
+    font-display: swap;
+    src: url({{ fonte_display }}) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 300 800;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url({{ fonte_corpo }}) format('woff2');
+  }
+
+  :root {
+    /* tipografia: Fraunces nos títulos, Archivo no corpo (vale também para carrinho, conta, busca) */
+    --font-heading-family: 'Fraunces', Georgia, serif;
+    --font-heading-style: normal;
+    --font-heading-weight: 500;
+    --font-heading-scale: 1;
+
+    --font-body-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body-style: normal;
+    --font-body-weight: 400;
+    --font-body-weight-bold: 700;
+  }
+
+  /* Títulos do Dawn com o mesmo aperto óptico das seções Temalli. */
+  h1, h2, h3,
+  .h0, .h1, .h2, .h3 {
+    letter-spacing: -0.015em;
+    line-height: 1.12;
+  }
+
+  /* Botões das páginas do Dawn (carrinho, conta): caixa alta, como os da Temalli. */
+  .button,
+  .shopify-challenge__button,
+  .customer button {
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    min-height: 4.8rem;
+  }
+
+  *:focus-visible {
+    outline: 3px solid #C8A15A;
+    outline-offset: 3px;
+  }
+{% endstyle %}
+
+{{ 'tml.css' | asset_url | stylesheet_tag }}

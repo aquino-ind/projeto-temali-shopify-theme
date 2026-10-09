@@ -1,0 +1,111 @@
+{% render 'temalli-assets' %}
+
+<div class="tml">
+  <section class="faq">
+    <div class="wrap-estreito reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h2>{{ section.settings.titulo }}</h2>
+
+      {%- for block in section.blocks -%}
+        <details {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.pergunta }}</summary>
+          <div class="resp">{{ block.settings.resposta }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </section>
+</div>
+
+{%- if section.blocks.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.pergunta | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ block.settings.resposta | strip_html | json }}
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Temalli • FAQ",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Chapéu", "default": "Dúvidas comuns" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Perguntas frequentes" }
+  ],
+  "blocks": [
+    {
+      "type": "pergunta",
+      "name": "Pergunta",
+      "settings": [
+        { "type": "text", "id": "pergunta", "label": "Pergunta" },
+        { "type": "richtext", "id": "resposta", "label": "Resposta" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Temalli • FAQ",
+      "blocks": [
+        {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "O que torna o Temalli® diferente do café de supermercado?",
+            "resposta": "<p>Café de mercado costuma ser mistura de grãos de origens diferentes, com defeitos, palha e às vezes até outros vegetais, torrado escuro pra disfarçar. O Temalli® é grão 100% arábica de origem única, da Serra da Canastra, com 84+ pontos SCA e torra no ponto exato. A cor homogênea do pó, que nossos próprios clientes notam, é a prova visível da pureza.</p>"
+          }
+        },
+        {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Por que custa R$ 84,90?",
+            "resposta": "<p>Porque é café especial de verdade, e mesmo assim custa menos do que parece. São 500g que rendem cerca de 50 xícaras: menos de R$ 1,70 por xícara, mais barato que cápsula e muito mais barato que padaria.</p><p>No combo Pague 3 Leve 4, o pacote sai por R$ 63,68 com frete grátis. Você não está pagando por embalagem nem por marca famosa. Está pagando pelo grão.</p>"
+          }
+        },
+        {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Tem açúcar, aromatizante ou conservante?",
+            "resposta": "<p>Não. Zero aditivos. Apenas café 100% puro e fresco. A doçura de caramelo e mel que você sente é natural do grão e da torra correta.</p>"
+          }
+        },
+        {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Qual o melhor jeito de preparar?",
+            "resposta": "<p>O Temalli® vai bem em qualquer método: coado, italiana, prensa francesa, V60 ou elétrica. Use água filtrada fora da fervura e a proporção de 10g de café pra 100ml de água. Escolha grãos se você mói em casa, ou moído se prefere praticidade.</p>"
+          }
+        },
+        {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Quanto tempo demora pra chegar?",
+            "resposta": "<p>Seu pedido é processado em até 48h úteis, com torra fresca. O prazo de entrega varia conforme sua região e a modalidade de frete escolhida no checkout.</p>"
+          }
+        },
+        {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "E se eu não gostar?",
+            "resposta": "<p>Fala com a gente no WhatsApp. Nosso atendimento é humano e resolve rápido, e isso não é promessa: está escrito nos nossos próprios reviews.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

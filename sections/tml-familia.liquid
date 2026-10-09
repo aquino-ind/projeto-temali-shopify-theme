@@ -1,0 +1,66 @@
+{%- comment -%}
+  Nossa história: linha do tempo da família (blocos "marco") e o nome Temalli em sílabas (blocos "silaba": TE de Téo, MA de Mateus, LLI de Lyvia).
+  Sem fotos: tudo tipográfico. A linha do tempo se desenha e as sílabas se juntam quando a seção aparece.
+{%- endcomment -%}
+<div class="tml">
+  <section class="familia-sec" id="{{ section.settings.ancora | default: 'familia' }}">
+    <div class="wrap">
+      <div class="centro reveal">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+        {%- if section.settings.texto != blank -%}<p class="lead">{% render 'tml-texto', t: section.settings.texto %}</p>{%- endif -%}
+      </div>
+      <div class="familia-grid">
+        <ol class="linha-tempo reveal">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'marco' -%}
+              <li {{ block.shopify_attributes }}>
+                <span class="lt-ano">{{ block.settings.ano }}</span>
+                <h3>{{ block.settings.titulo }}</h3>
+                <p>{% render 'tml-texto', t: block.settings.texto %}</p>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ol>
+        <div class="nome-card reveal">
+          <span class="eyebrow">{{ section.settings.nome_eyebrow }}</span>
+          <div class="nome-silabas" aria-label="Temalli">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'silaba' -%}
+                <span {{ block.shopify_attributes }}><b>{{ block.settings.silaba }}</b><small>{{ block.settings.nome }}</small></span>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          {%- if section.settings.nome_texto != blank -%}<p>{{ section.settings.nome_texto }}</p>{%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Nossa história",
+  "settings": [
+    { "type": "text", "id": "ancora", "label": "Âncora (id)", "default": "familia" },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Nossa história" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Uma família, três gerações de café" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "nome_eyebrow", "label": "Sobretítulo do nome", "default": "O nome" },
+    { "type": "textarea", "id": "nome_texto", "label": "Texto do nome" }
+  ],
+  "blocks": [
+    { "type": "marco", "name": "Marco", "settings": [
+      { "type": "text", "id": "ano", "label": "Ano ou etapa" },
+      { "type": "text", "id": "titulo", "label": "Título" },
+      { "type": "textarea", "id": "texto", "label": "Texto", "info": "Aceita [i:suspensa] etc." }
+    ]},
+    { "type": "silaba", "name": "Sílaba do nome", "settings": [
+      { "type": "text", "id": "silaba", "label": "Sílaba" },
+      { "type": "text", "id": "nome", "label": "De quem" }
+    ]}
+  ],
+  "max_blocks": 8,
+  "presets": [ { "name": "T • Nossa história" } ]
+}
+{% endschema %}

@@ -1,0 +1,230 @@
+{
+  "sections": {
+    "s1": {
+      "type": "tml-metodo",
+      "settings": {
+        "nome": "Espresso",
+        "termo": "espresso",
+        "artigo": "o",
+        "titulo": "Como fazer espresso em casa: receita e passo a passo",
+        "resumo": "Para fazer espresso, use 18g de café em moagem fina para tirar cerca de 36g de bebida (proporção 1:2) em 25 a 30 segundos, com a água entre 92 e 94 °C. Distribua o pó, compacte de forma nivelada e extraia logo. Se sair rápido demais, afine a moagem; se demorar, engrosse.",
+        "foto_padrao": "tml-preparo-espresso-em-casa.jpg",
+        "tempo_txt": "2 min",
+        "tempo_min": 2,
+        "dificuldade": "Avançada",
+        "rende": "1 espresso duplo (≈ 36g)",
+        "titulo_oque": "O que é o espresso",
+        "intro": "<p>O espresso é feito forçando água quente, sob alta pressão, por uma camada compacta de café moído fino. Em menos de 30 segundos sai uma bebida curta, intensa, com corpo denso e a crema dourada por cima.</p><p>É o método mais exigente: pequenas mudanças de moagem, dose ou tempo mudam o sabor. Mas, com uma receita base e ajustes simples, dá para tirar um ótimo espresso na máquina de casa.</p>",
+        "titulo_passos": "Como fazer espresso em casa: passo a passo",
+        "cafe_1": "cafe-torra-media-84-pontos",
+        "cafe_1_estilo": "classico",
+        "cafe_1_texto": "O Clássico foi feito para espresso: crema bonita, corpo e notas de chocolate e caramelo. Bebida doce mesmo sem açúcar.",
+        "assinatura_url": "/pages/assinatura",
+        "indice_url": "/pages/como-preparar",
+        "outros": "V60 | /pages/como-fazer-cafe-na-v60 | tml-preparo-v60.jpg | 3 min • Média\nCoador de pano | /pages/como-fazer-cafe-no-coador-de-pano | tml-preparo-coador-de-pano.jpg | 4 min • Fácil\nPrensa francesa | /pages/como-fazer-cafe-na-prensa-francesa | tml-preparo-prensa-francesa.jpg | 5 min • Fácil\nAeropress | /pages/como-fazer-cafe-na-aeropress | tml-preparo-aeropress.jpg | 2 min • Fácil\nCafeteira italiana | /pages/como-fazer-cafe-na-cafeteira-italiana | tml-preparo-cafeteira-italiana.jpg | 5 a 6 min • Fácil\nCafeteira elétrica | /pages/como-fazer-cafe-na-cafeteira-eletrica | tml-preparo-cafeteira-eletrica.jpg | 6 a 8 min • Fácil"
+      },
+      "blocks": {
+        "b1": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Café",
+            "valor": "18g (dose dupla)"
+          }
+        },
+        "b2": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Bebida na xícara",
+            "valor": "≈ 36g"
+          }
+        },
+        "b3": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Proporção",
+            "valor": "1:2"
+          }
+        },
+        "b4": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Temperatura",
+            "valor": "92 a 94 °C"
+          }
+        },
+        "b5": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Moagem",
+            "valor": "Fina"
+          }
+        },
+        "b6": {
+          "type": "receita",
+          "settings": {
+            "rotulo": "Tempo de extração",
+            "valor": "25 a 30 s"
+          }
+        },
+        "b7": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Máquina de espresso"
+          }
+        },
+        "b8": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Moedor (moagem fina e ajustável)"
+          }
+        },
+        "b9": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Tamper (compactador)"
+          }
+        },
+        "b10": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "Balança com precisão de 0,1g (recomendado)"
+          }
+        },
+        "b11": {
+          "type": "equipamento",
+          "settings": {
+            "texto": "18g de café Temalli em grão"
+          }
+        },
+        "b12": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Aqueça a máquina",
+            "texto": "Ligue a máquina pelo menos 15 minutos antes, com o porta-filtro encaixado, para tudo chegar à temperatura certa."
+          }
+        },
+        "b13": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Moa e dose",
+            "texto": "Moa 18g de café na hora, em moagem fina, parecida com açúcar de confeiteiro mais áspero. Café moído para espresso perde aroma em minutos."
+          }
+        },
+        "b14": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Distribua",
+            "texto": "Dê leves batidas no porta-filtro e nivele o pó para não ter falhas ou montes."
+          }
+        },
+        "b15": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Compacte",
+            "texto": "Compacte com o tamper, reto e com firmeza, uma vez só. A superfície tem que ficar plana."
+          }
+        },
+        "b16": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Extraia",
+            "texto": "Encaixe e comece a extração logo. Busque cerca de 36g na xícara em 25 a 30 segundos."
+          }
+        },
+        "b17": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Prove e ajuste",
+            "texto": "Saiu rápido e azedo? Afine a moagem. Demorou e amargou? Engrosse. Mude uma coisa de cada vez."
+          }
+        },
+        "b18": {
+          "type": "erro",
+          "settings": {
+            "problema": "Espresso aguado, ácido e rápido (menos de 20 s)",
+            "solucao": "Moagem grossa demais ou pouco café. Afine a moagem."
+          }
+        },
+        "b19": {
+          "type": "erro",
+          "settings": {
+            "problema": "Espresso amargo, lento (mais de 35 s)",
+            "solucao": "Moagem fina demais. Engrosse um pouco."
+          }
+        },
+        "b20": {
+          "type": "erro",
+          "settings": {
+            "problema": "Crema fina ou inexistente",
+            "solucao": "Café moído há muito tempo ou dose baixa. Moa na hora e confira a dose."
+          }
+        },
+        "b21": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Posso usar café moído pronto no espresso?",
+            "resposta": "Não é o ideal. O espresso precisa de moagem fina e ajustada à sua máquina, e o café moído perde aroma rápido. Prefira comprar em grão e moer na hora."
+          }
+        },
+        "b22": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Qual a diferença entre espresso e café de cafeteira italiana?",
+            "resposta": "A máquina de espresso trabalha com cerca de 9 bar de pressão e faz uma bebida com crema. A italiana usa só a pressão do vapor, bem menor, e faz um café forte, mas sem crema de espresso."
+          }
+        },
+        "b23": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Quantos gramas de café para um espresso simples?",
+            "resposta": "Entre 7 e 10g para cerca de 20 a 30ml. Hoje, a maioria das cafeterias usa dose dupla (18g) como base."
+          }
+        },
+        "b24": {
+          "type": "video",
+          "settings": {
+            "url": "https://youtube.com/shorts/XWsuN8E1Mjk",
+            "legenda": "Espresso: dose no porta-filtro"
+          }
+        },
+        "b25": {
+          "type": "video",
+          "settings": {
+            "url": "https://youtube.com/shorts/2brlQZu_hHg",
+            "legenda": "Espresso na máquina"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16",
+        "b17",
+        "b18",
+        "b19",
+        "b20",
+        "b21",
+        "b22",
+        "b23",
+        "b24",
+        "b25"
+      ]
+    }
+  },
+  "order": [
+    "s1"
+  ]
+}

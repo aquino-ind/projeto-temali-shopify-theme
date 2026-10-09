@@ -8,6 +8,50 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Temalli",
+    "settings": [
+      {
+        "type": "header",
+        "content": "WhatsApp"
+      },
+      {
+        "type": "text",
+        "id": "tml_whats_numero",
+        "label": "Número do WhatsApp",
+        "info": "Só números, com DDI e DDD. Ex.: 5517920049117",
+        "default": "5517920049117"
+      },
+      {
+        "type": "text",
+        "id": "tml_whats_mensagem",
+        "label": "Mensagem padrão",
+        "default": "Olá! Vim pelo site da Temalli e tenho uma dúvida."
+      },
+      {
+        "type": "text",
+        "id": "tml_whats_horario",
+        "label": "Horário de atendimento",
+        "default": "Seg a sex, 9h às 16h"
+      },
+      {
+        "type": "checkbox",
+        "id": "tml_whats_fixo",
+        "label": "Mostrar botão fixo do WhatsApp",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Frete"
+      },
+      {
+        "type": "number",
+        "id": "tml_frete_minimo",
+        "label": "Frete grátis a partir de (R$)",
+        "default": 150
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {

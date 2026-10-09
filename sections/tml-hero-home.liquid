@@ -1,0 +1,56 @@
+<div class="tml">
+  <section class="hero-home">
+    <div class="wrap">
+      <div class="texto">
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h1>{{ section.settings.titulo }}</h1>
+        {%- if section.settings.texto != blank -%}<p class="lead">{{ section.settings.texto }}</p>{%- endif -%}
+        <div class="hero-ctas">
+          {%- if section.settings.botao1 != blank -%}<a href="{{ section.settings.botao1_url }}" class="btn">{{ section.settings.botao1 }}</a>{%- endif -%}
+          {%- if section.settings.botao2 != blank -%}<a href="{{ section.settings.botao2_url }}" class="btn btn-contorno">{{ section.settings.botao2 }}</a>{%- endif -%}
+        </div>
+      </div>
+      <div class="duo-palco">
+        {%- for block in section.blocks -%}
+          {%- assign p = block.settings.produto -%}
+          <a href="{{ p.url | default: '#' }}" class="palco{% if block.settings.estilo == 'arara' %} palco-arara{% endif %}" {{ block.shopify_attributes }}>
+            {%- if block.settings.selo != blank -%}<span class="novo">{{ block.settings.selo }}</span>{%- endif -%}
+            {% render 'tml-imagem', img: block.settings.imagem, asset: block.settings.imagem_padrao, produto: p, alt: p.title, largura: 1200, carregar: 'eager' %}
+            <div class="rotulo">
+              <div><b>{{ block.settings.titulo }}</b><span>{{ block.settings.subtitulo }}</span></div>
+              <span class="seta" aria-hidden="true">→</span>
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Destaque da home",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Cafés especiais • Serra da Canastra, MG" },
+    { "type": "text", "id": "titulo", "label": "Título", "info": "Aceita <em>destaque dourado</em> e <br> para quebrar a linha.", "default": "Dois cafés. <em>Uma origem.</em><br>Nenhum café comum." },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "botao1", "label": "Botão principal", "default": "Escolher meu café" },
+    { "type": "url", "id": "botao1_url", "label": "Link do botão principal" },
+    { "type": "text", "id": "botao2", "label": "Botão secundário", "default": "Qual é o meu?" },
+    { "type": "url", "id": "botao2_url", "label": "Link do botão secundário" }
+  ],
+  "blocks": [
+    { "type": "palco", "name": "Café em destaque", "settings": [
+      { "type": "product", "id": "produto", "label": "Produto" },
+      { "type": "text", "id": "titulo", "label": "Nome", "default": "Clássico" },
+      { "type": "text", "id": "subtitulo", "label": "Subtítulo", "default": "500g • equilibrado e achocolatado" },
+      { "type": "text", "id": "selo", "label": "Selo (ex.: Lançamento)" },
+      { "type": "select", "id": "estilo", "label": "Cor", "options": [ { "value": "classico", "label": "Azul (Clássico)" }, { "value": "arara", "label": "Verde (Arara)" } ], "default": "classico" },
+      { "type": "image_picker", "id": "imagem", "label": "Imagem" },
+      { "type": "text", "id": "imagem_padrao", "label": "Imagem padrão (arquivo do tema)", "info": "Usada se nenhuma imagem for escolhida." }
+    ]}
+  ],
+  "max_blocks": 2,
+  "presets": [ { "name": "T • Destaque da home" } ]
+}
+{% endschema %}

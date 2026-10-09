@@ -1,0 +1,59 @@
+{%- comment -%}
+  Pirâmide da qualidade do café (Tradicional → Especial) com o selo do Temalli no topo.
+  Os níveis são construídos de baixo para cima quando a seção aparece; tocar/passar o mouse mostra a explicação.
+{%- endcomment -%}
+<div class="tml">
+  <section class="piramide-sec" id="piramide">
+    <div class="wrap">
+      <div class="centro reveal">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.titulo }}</h2>
+        {%- if section.settings.texto != blank -%}<p class="lead">{% render 'tml-texto', t: section.settings.texto %}</p>{%- endif -%}
+      </div>
+      <div class="piramide-grid" data-piramide>
+        <div class="piramide reveal">
+          <div class="pir-selo" aria-hidden="true"><b>{{ section.settings.selo }}</b><span>Temalli</span></div>
+          {%- for block in section.blocks -%}
+            <button type="button" class="pir-nivel pir-n{{ forloop.index }}" aria-pressed="false"
+              data-nome="{{ block.settings.nome | escape }}" data-criterio="{{ block.settings.criterio | escape }}" data-desc="{{ block.settings.descricao | escape }}" {{ block.shopify_attributes }}>
+              <span class="pir-nome"><b>{{ block.settings.nome }}</b><span class="pir-i" aria-hidden="true">i</span></span><small>{{ block.settings.criterio | split: '•' | first | strip }}</small>
+            </button>
+            {%- if forloop.first and section.settings.selo_rotulo != blank -%}<span class="pir-aqui">{{ section.settings.selo_rotulo }}</span>{%- endif -%}
+          {%- endfor -%}
+          <p class="pir-dica"><span class="pir-i" aria-hidden="true">i</span><span class="so-mouse">Passe o mouse ou clique em cada faixa para entender o nível</span><span class="so-toque">Toque em cada faixa para entender o nível</span></p>
+        </div>
+        <span class="pir-ponte" aria-hidden="true"></span>
+        <div class="pir-info reveal" aria-live="polite">
+          <span class="eyebrow">Nível</span>
+          <h3 data-pir-nome></h3>
+          <p class="pir-criterio" data-pir-criterio></p>
+          <p data-pir-desc></p>
+          {%- if section.settings.fecho != blank -%}<p class="pir-fecho">{{ section.settings.fecho }}</p>{%- endif -%}
+          {%- if section.settings.fonte != blank -%}<p class="pir-fonte">{{ section.settings.fonte }}</p>{%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "T • Pirâmide da qualidade",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Qualidade medida, não prometida" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Onde o Temalli está na pirâmide do café" },
+    { "type": "textarea", "id": "texto", "label": "Texto", "info": "Aceita [i:defeitos], [i:sca] etc." },
+    { "type": "text", "id": "selo", "label": "Selo no topo", "default": "84+" },
+    { "type": "text", "id": "selo_rotulo", "label": "Texto ao lado do topo", "default": "Temalli Clássico está aqui" },
+    { "type": "textarea", "id": "fecho", "label": "Frase final" },
+    { "type": "textarea", "id": "fonte", "label": "Fontes" }
+  ],
+  "blocks": [ { "type": "nivel", "name": "Nível", "settings": [
+    { "type": "text", "id": "nome", "label": "Nome" },
+    { "type": "text", "id": "criterio", "label": "Critério" },
+    { "type": "textarea", "id": "descricao", "label": "Explicação" }
+  ]}],
+  "max_blocks": 5,
+  "presets": [ { "name": "T • Pirâmide da qualidade" } ]
+}
+{% endschema %}

@@ -1,0 +1,49 @@
+{% render 'temalli-assets' %}
+
+<div class="tml">
+  <section class="final">
+    <div class="wrap reveal">
+      <h2>{{ section.settings.titulo }}</h2>
+      {{ section.settings.texto }}
+      {%- if section.settings.texto_botao != blank -%}
+        <a href="{{ section.settings.link_botao | default: '#oferta' }}" class="btn">
+          {{ section.settings.texto_botao }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.micro != blank -%}
+        <p class="micro">{{ section.settings.micro }}</p>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • CTA final",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    {
+      "type": "text",
+      "id": "titulo",
+      "label": "Título",
+      "default": "Amanhã de manhã você vai tomar café de qualquer jeito."
+    },
+    {
+      "type": "richtext",
+      "id": "texto",
+      "label": "Texto",
+      "default": "<p>A única pergunta é: vai ser o café de sempre, ou o melhor café especial que você já tomou?</p>"
+    },
+    { "type": "text", "id": "texto_botao", "label": "Texto do botão", "default": "Quero meu Café Temalli®" },
+    { "type": "url", "id": "link_botao", "label": "Link do botão", "info": "Vazio = rola até a oferta (#oferta)." },
+    {
+      "type": "text",
+      "id": "micro",
+      "label": "Microcopy",
+      "default": "Pague 3, Leve 4 com frete grátis • Envio em até 48h"
+    }
+  ],
+  "presets": [{ "name": "Temalli • CTA final" }]
+}
+{% endschema %}

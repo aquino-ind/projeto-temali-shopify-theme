@@ -1,0 +1,17 @@
+{%- comment -%}
+  Imagem das seções Temalli. Ordem: imagem escolhida no editor > arquivo padrão do tema (asset) > imagem do produto.
+  Parâmetros: img (image), asset (nome do arquivo em /assets), produto (product), alt, largura (px), classe, carregar ('lazy'|'eager'), sizes
+{%- endcomment -%}
+{%- liquid
+  assign w = largura | default: 1200
+  assign l = carregar | default: 'lazy'
+  assign s = sizes | default: '(max-width: 760px) 100vw, 50vw'
+-%}
+{%- if img != blank -%}
+  {{- img | image_url: width: w | image_tag: loading: l, alt: alt, class: classe, sizes: s, widths: '400,700,1000,1400' -}}
+{%- elsif asset != blank -%}
+  {%- comment -%} arquivos do tema não têm dimensão conhecida: largura/altura informadas evitam salto de layout (o CSS ajusta) {%- endcomment -%}
+  <img src="{{ asset | asset_url }}" alt="{{ alt | escape }}" loading="{{ l }}" width="{{ w }}" height="{{ altura | default: w }}"{% if classe %} class="{{ classe }}"{% endif %}>
+{%- elsif produto.featured_image -%}
+  {{- produto.featured_image | image_url: width: w | image_tag: loading: l, alt: alt, class: classe, sizes: s, widths: '400,700,1000,1400' -}}
+{%- endif -%}

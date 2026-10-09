@@ -1,0 +1,178 @@
+{% render 'temalli-assets' %}
+
+{%- liquid
+  assign produto = section.settings.produto
+  # o plano marcado por padrão; cai no primeiro bloco se nenhum for marcado
+  assign idx_padrao = 0
+  for block in section.blocks
+    if block.settings.padrao
+      assign idx_padrao = forloop.index0
+    endif
+  endfor
+-%}
+
+<div class="tml">
+  <section class="oferta" id="oferta">
+    <div class="wrap">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow centro">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h2 class="centro">{{ section.settings.titulo }}</h2>
+
+      <form action="{{ routes.cart_add_url }}" method="post" id="tml-form-{{ section.id }}">
+        <input type="hidden" name="return_to" value="{{ routes.cart_url }}">
+
+        {%- comment -%} Quantidade: cada plano é um radio que já vai no POST. {%- endcomment -%}
+        <fieldset class="planos">
+          <legend class="visually-hidden">Escolha a quantidade</legend>
+          {%- for block in section.blocks -%}
+            <label
+              class="plano{% if block.settings.destaque %} destaque{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              <input
+                type="radio"
+                name="quantity"
+                value="{{ block.settings.qtd | default: 1 }}"
+                data-preco="{{ block.settings.preco | escape }}"
+                data-rotulo="{{ block.settings.tag | default: block.settings.titulo | escape }}"
+                {% if forloop.index0 == idx_padrao %}checked{% endif %}
+              >
+              {%- if block.settings.tag != blank -%}
+                <span class="tag">{{ block.settings.tag }}</span>
+              {%- endif -%}
+              <h3>{{ block.settings.titulo }}</h3>
+              {%- if block.settings.preco_antigo != blank -%}
+                <span class="preco-antigo">{{ block.settings.preco_antigo }}</span>
+              {%- endif -%}
+              <span class="preco">{{ block.settings.preco }}</span>
+              {%- if block.settings.obs != blank -%}
+                <small>{{ block.settings.obs }}</small>
+              {%- endif -%}
+            </label>
+          {%- endfor -%}
+        </fieldset>
+
+        {%- comment -%} Formato: cada variante do produto vira uma opção. {%- endcomment -%}
+        {%- if produto != blank and produto.variants.size > 0 -%}
+          <fieldset class="formatos">
+            <legend class="visually-hidden">Escolha o formato</legend>
+            {%- assign primeira_disponivel = produto.selected_or_first_available_variant -%}
+            {%- for variante in produto.variants -%}
+              <label>
+                <input
+                  type="radio"
+                  name="id"
+                  value="{{ variante.id }}"
+                  {% unless variante.available %}disabled{% endunless %}
+                  {% if variante.id == primeira_disponivel.id %}checked{% endif %}
+                >
+                {{ variante.title }}
+                {%- unless variante.available %} — esgotado{% endunless -%}
+              </label>
+            {%- endfor -%}
+          </fieldset>
+        {%- endif -%}
+
+        <div class="form-compra">
+          {%- if produto != blank and produto.available -%}
+            <button type="submit" class="btn btn-bloco">{{ section.settings.texto_botao }}</button>
+          {%- elsif produto != blank -%}
+            <button type="button" class="btn btn-bloco" disabled>Esgotado</button>
+          {%- else -%}
+            <button type="button" class="btn btn-bloco" disabled>Selecione um produto na seção</button>
+          {%- endif -%}
+          {%- if section.settings.micro != blank -%}
+            <p class="micro">{{ section.settings.micro }}</p>
+          {%- endif -%}
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Temalli • Oferta",
+  "tag": "section",
+  "class": "temalli-secao",
+  "settings": [
+    {
+      "type": "product",
+      "id": "produto",
+      "label": "Produto",
+      "info": "As variantes do produto (grãos / moído) viram as opções de formato."
+    },
+    { "type": "text", "id": "eyebrow", "label": "Chapéu", "default": "Oferta atual" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Escolha sua quantidade" },
+    { "type": "text", "id": "texto_botao", "label": "Texto do botão", "default": "Quero meu Café Temalli®" },
+    {
+      "type": "text",
+      "id": "micro",
+      "label": "Microcopy",
+      "default": "Compra segura • Envio em até 48h • Atendimento humano via WhatsApp"
+    },
+    {
+      "type": "paragraph",
+      "content": "Os preços abaixo são apenas o texto exibido. O desconto real precisa ser criado em Descontos → desconto automático (ex.: Pague 3 Leve 4)."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "plano",
+      "name": "Plano",
+      "settings": [
+        { "type": "text", "id": "titulo", "label": "Título", "default": "1 unidade • 500g" },
+        { "type": "number", "id": "qtd", "label": "Quantidade adicionada ao carrinho", "default": 1 },
+        { "type": "text", "id": "preco_antigo", "label": "Preço riscado" },
+        { "type": "text", "id": "preco", "label": "Preço", "default": "R$ 84,90" },
+        { "type": "text", "id": "obs", "label": "Observação" },
+        { "type": "text", "id": "tag", "label": "Selo (etiqueta no topo)" },
+        { "type": "checkbox", "id": "destaque", "label": "Destacar este plano", "default": false },
+        { "type": "checkbox", "id": "padrao", "label": "Selecionado por padrão", "default": false }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Temalli • Oferta",
+      "blocks": [
+        {
+          "type": "plano",
+          "settings": {
+            "titulo": "1 unidade • 500g",
+            "qtd": 1,
+            "preco": "R$ 84,90",
+            "obs": "Sai a menos de R$ 1,70 por xícara"
+          }
+        },
+        {
+          "type": "plano",
+          "settings": {
+            "titulo": "2 unidades • 500g",
+            "qtd": 2,
+            "preco_antigo": "R$ 169,80",
+            "preco": "R$ 145,80",
+            "obs": "R$ 72,90 por pacote",
+            "tag": "14% OFF"
+          }
+        },
+        {
+          "type": "plano",
+          "settings": {
+            "titulo": "4 unidades • 500g",
+            "qtd": 4,
+            "preco_antigo": "R$ 339,60",
+            "preco": "R$ 254,70",
+            "obs": "Equivale a R$ 63,68 por pacote. Estoque pro mês inteiro.",
+            "tag": "Pague 3, Leve 4 + Frete Grátis",
+            "destaque": true,
+            "padrao": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

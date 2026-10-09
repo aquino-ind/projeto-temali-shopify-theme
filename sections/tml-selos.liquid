@@ -1,0 +1,23 @@
+<div class="tml">
+  <div class="selos">
+    <ul class="wrap">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}><b>{{ block.settings.valor }}</b><span>{% render 'tml-texto', t: block.settings.texto %}</span></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "T • Faixa de números",
+  "blocks": [
+    { "type": "selo", "name": "Número", "settings": [
+      { "type": "text", "id": "valor", "label": "Valor", "default": "84+" },
+      { "type": "text", "id": "texto", "label": "Texto", "info": "Aceita [i:sca] etc. para o ícone (i).", "default": "pontos na escala SCA[i:sca]" }
+    ]}
+  ],
+  "max_blocks": 4,
+  "presets": [ { "name": "T • Faixa de números" } ]
+}
+{% endschema %}
