@@ -72,12 +72,6 @@
         "b8": {
           "type": "garantia",
           "settings": {
-            "texto": "Garantia de satisfação: não gostou, devolvemos o seu dinheiro"
-          }
-        },
-        "b9": {
-          "type": "garantia",
-          "settings": {
             "texto": "Colheita manual, secagem suspensa[i:suspensa]"
           }
         }
@@ -90,8 +84,7 @@
         "b5",
         "b6",
         "b7",
-        "b8",
-        "b9"
+        "b8"
       ]
     },
     "s2": {

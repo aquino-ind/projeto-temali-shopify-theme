@@ -474,7 +474,9 @@
       var unit = g.original / g.quantidade;
       if(unit < menor){ menor = unit; varBrinde = g.it.variant_id; }
     });
-    if(totalKit % 4 !== 3){ varBrinde = null; }
+    // quantos pacotes faltam para o próximo 4º grátis (1, 2 ou 3); 0 = o kit já fechou
+    var falta = totalKit ? (4 - totalKit % 4) % 4 : 0;
+    if(!falta){ varBrinde = null; }
     var brindesAntes = brindesVistos; brindesVistos = {};
     var itens = grupos.map(function(g){
       var it = g.it, v = it.variant_id, unit = g.original / g.quantidade;
@@ -482,7 +484,9 @@
       brindesVistos[v] = gratis;
       // compre 3, ganhe 1 (vale misturado): faltando 1 pacote, o aviso fica no café mais barato, que é o que sai de graça
       var aviso = v === varBrinde
-        ? '<button type="button" class="gav-brinde" data-gav-acao="mais" data-gav-var="' + v + '"><span>Adicione o ' + (totalKit + 1) + 'º pacote de graça</span><b>Pague 3, Leve 4</b></button>' : '';
+        ? '<button type="button" class="gav-brinde" data-gav-acao="mais" data-gav-n="' + falta + '" data-gav-var="' + v + '"><span>' +
+          (falta === 1 ? 'Adicione o ' + (totalKit + 1) + 'º pacote de graça' : 'Leve mais ' + falta + ' e o 4º sai de graça, com frete grátis') +
+          '</span><b>' + (falta === 1 ? 'Pague 3, Leve 4' : '+ ' + falta + ' pacotes') + '</b></button>' : '';
       var presente = gratis
         ? '<div class="gav-presente' + (gratis > (brindesAntes[v] || 0) && brindesAntes._pronto ? ' novo' : '') + '"><span class="gav-presente-ic" aria-hidden="true">' + ICONE_PRESENTE + '</span>' +
           '<div><b>' + gratis + (gratis > 1 ? ' unidades' : ' unidade') + ' de brinde</b><small>Pague 3, Leve 4</small></div>' +
@@ -530,16 +534,16 @@
       if(add){
         p = API.adicionar([{id: +add.dataset.gavAdd, quantity: 1}]).then(API.carrinho);
       } else {
-        var v = +ac.dataset.gavVar, acao = ac.dataset.gavAcao;
+        var v = +ac.dataset.gavVar, acao = ac.dataset.gavAcao, n = +ac.dataset.gavN || 1;
         // linhas reais desse café no carrinho (a Shopify pode ter dividido em várias)
         var linhas = ultimo.items.map(function(it, i){ return {linha: i + 1, q: it.quantity, v: it.variant_id, chave: it.key}; }).filter(function(l){ return l.v === v; });
         var total = linhas.reduce(function(s, l){ return s + l.q; }, 0), ult = linhas[linhas.length - 1];
         // resposta na hora: o número muda já e só o preço desse café fica esperando a Shopify (nada de apagar a gaveta inteira)
         var item = raiz.querySelector('[data-gav-item="' + v + '"]'), out = item && item.querySelector('output');
         if(item){ item.classList.add('gav-atualizando'); }
-        if(out){ out.textContent = acao === 'mais' ? total + 1 : acao === 'menos' ? Math.max(0, total - 1) : 0; }
+        if(out){ out.textContent = acao === 'mais' ? total + n : acao === 'menos' ? Math.max(0, total - 1) : 0; }
         if(!ult){ p = API.carrinho(); }
-        else if(acao === 'mais'){ p = API.alterar(ult.linha, ult.q + 1); }
+        else if(acao === 'mais'){ p = API.alterar(ult.linha, ult.q + n); }
         else if(acao === 'menos'){ p = API.alterar(ult.linha, ult.q - 1); }
         else { p = API.remover(linhas.map(function(l){ return l.chave; }), v); }
       }

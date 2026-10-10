@@ -67,13 +67,13 @@
               <label class="opcao">
                 <input type="radio" name="qtd" value="1">
                 <span class="radio"></span>
-                <span class="opcao-txt"><b>1 unidade • {{ section.settings.peso_1 }}</b><small>{{ section.settings.rende_1 }}</small></span>
+                <span class="opcao-txt"><b>1 unidade • {{ section.settings.peso_1 }}</b><small>{{ section.settings.rende_1 }}{% if preco >= minimo %} • frete grátis{% else %} + frete{% endif %}</small></span>
                 <span class="valor"><b>{{ preco | money }}</b></span>
               </label>
               <label class="opcao">
                 <input type="radio" name="qtd" value="2">
                 <span class="radio"></span>
-                <span class="opcao-txt"><b>2 unidades • {{ section.settings.peso_2 }}</b><small>{{ section.settings.rende_2 }}{% assign dois = preco | times: 2 %}{% if dois >= minimo %} • frete grátis{% endif %}</small></span>
+                <span class="opcao-txt"><b>2 unidades • {{ section.settings.peso_2 }}</b><small>{{ section.settings.rende_2 }}{% assign dois = preco | times: 2 %}{% if dois >= minimo %} • frete grátis{% else %} + frete{% endif %}</small></span>
                 <span class="valor"><b>{{ preco | times: 2 | money }}</b></span>
               </label>
               <label class="opcao kit">
@@ -81,7 +81,7 @@
                 <span class="kit-faixa">{{ section.settings.kit_faixa }}</span>
                 <span class="kit-corpo">
                   <span class="radio"></span>
-                  <span class="opcao-txt"><b>Kit 4 unidades • {{ section.settings.peso_kit }}</b><small>Só {{ kit_un | money }} por pacote</small>
+                  <span class="opcao-txt">{%- if section.settings.kit_selo != blank -%}<span class="selo-escolhido">{{ section.settings.kit_selo }}</span>{%- endif -%}<b>Kit 4 unidades • {{ section.settings.peso_kit }}</b><small>Só {{ kit_un | money }} por pacote</small>
                     <span class="kit-selos"><span class="selo-eco">Economize {{ preco | money }}</span><span class="selo-frete">{% render 'tml-icone', nome: 'frete' %}Frete grátis</span></span>
                   </span>
                   <span class="valor"><em>25% OFF</em><s>{{ preco | times: 4 | money }}</s><b>{{ preco | times: 3 | money }}</b></span>
@@ -108,6 +108,8 @@
 
           <div class="resumo"><span>Total<small data-economia></small></span><b data-total>{{ preco | times: 3 | money }}</b></div>
           <button type="button" class="btn btn-bloco" data-cta>Adicionar ao carrinho</button>
+          {%- comment -%} a garantia logo abaixo do botão: tira o medo do primeiro pedido {%- endcomment -%}
+          {%- if section.settings.cta_garantia != blank -%}<p class="cta-garantia">{% render 'tml-icone', nome: 'garantia' %}<span>{{ section.settings.cta_garantia }}</span></p>{%- endif -%}
         </form>
 
         <ul class="garantias">
@@ -153,6 +155,8 @@
     { "type": "text", "id": "rende_2", "label": "Rendimento de 2 unidades", "default": "Cerca de 100 xícaras" },
     { "type": "text", "id": "peso_kit", "label": "Peso do kit de 4", "default": "2kg" },
     { "type": "text", "id": "kit_faixa", "label": "Faixa do kit", "default": "Pague 3, leve 4 + frete grátis" },
+    { "type": "text", "id": "kit_selo", "label": "Selo do kit", "default": "Mais escolhido", "info": "Deixe vazio para esconder." },
+    { "type": "inline_richtext", "id": "cta_garantia", "label": "Garantia abaixo do botão", "default": "<b>Não gostou?</b> Devolvemos o seu dinheiro." },
     { "type": "header", "content": "Formato (miniaturas)" },
     { "type": "image_picker", "id": "img_grao", "label": "Foto do grão" },
     { "type": "text", "id": "img_grao_padrao", "label": "Foto do grão padrão (arquivo do tema)" },
