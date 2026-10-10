@@ -338,6 +338,7 @@
 
   // glossário (i): textos num lugar só; o HTML usa <button class="info" data-termo="sca">
   var GLOSSARIO = {
+    garantia: ['Garantia de satisfação', 'É uma política da Temalli®: se o café não agradar, devolvemos o seu dinheiro. Fazemos isso porque confiamos no que plantamos, torramos e enviamos. Vale para qualquer produto da loja. É só falar com a gente.'],
     catuai: ['Catuaí', 'Uma das variedades de arábica mais tradicionais do Brasil, desenvolvida pelo Instituto Agronômico de Campinas. Dá cafés doces, equilibrados e de corpo médio, com notas de caramelo e chocolate.'],
     natural: ['Processo natural', 'O fruto do café seca inteiro, com a casca, antes de o grão ser retirado. Durante a secagem o grão absorve açúcares da polpa, o que deixa a bebida mais doce e encorpada.'],
     sca: ['SCA', 'Specialty Coffee Association, entidade internacional que define como cafés são avaliados. Provadores certificados dão notas de 0 a 100. A partir de 80 pontos o café é considerado especial; a maioria do café vendido no mercado fica abaixo disso.'],

@@ -109,7 +109,7 @@
           <div class="resumo"><span>Total<small data-economia></small></span><b data-total>{{ preco | times: 3 | money }}</b></div>
           <button type="button" class="btn btn-bloco" data-cta>Adicionar ao carrinho</button>
           {%- comment -%} a garantia logo abaixo do botão: tira o medo do primeiro pedido {%- endcomment -%}
-          {%- if section.settings.cta_garantia != blank -%}<p class="cta-garantia">{% render 'tml-icone', nome: 'garantia' %}<span>{{ section.settings.cta_garantia }}</span></p>{%- endif -%}
+          {%- if section.settings.cta_garantia != blank -%}<p class="cta-garantia">{% render 'tml-icone', nome: 'garantia' %}<span>{% render 'tml-texto', t: section.settings.cta_garantia %}</span></p>{%- endif -%}
         </form>
 
         <ul class="garantias">
@@ -156,7 +156,7 @@
     { "type": "text", "id": "peso_kit", "label": "Peso do kit de 4", "default": "2kg" },
     { "type": "text", "id": "kit_faixa", "label": "Faixa do kit", "default": "Pague 3, leve 4 + frete grátis" },
     { "type": "text", "id": "kit_selo", "label": "Selo do kit", "default": "Mais escolhido", "info": "Deixe vazio para esconder." },
-    { "type": "inline_richtext", "id": "cta_garantia", "label": "Garantia abaixo do botão", "default": "<b>Não gostou?</b> Devolvemos o seu dinheiro." },
+    { "type": "inline_richtext", "id": "cta_garantia", "label": "Garantia abaixo do botão", "default": "<b>Não gostou?</b> Devolvemos o seu dinheiro.[i:garantia]", "info": "Aceita [i:garantia] para o (i) com a explicação." },
     { "type": "header", "content": "Formato (miniaturas)" },
     { "type": "image_picker", "id": "img_grao", "label": "Foto do grão" },
     { "type": "text", "id": "img_grao_padrao", "label": "Foto do grão padrão (arquivo do tema)" },

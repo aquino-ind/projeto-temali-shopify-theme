@@ -1154,3 +1154,6 @@ body.tpl-arara .tml .selo-escolhido{color:var(--mata-fundo)}
 .tml .gav-up-btn{display:block;width:100%;margin-top:12px;padding:12px;border:0;border-radius:10px;background:var(--kit-faixa);color:var(--marinho-fundo);font:inherit;font-size:14px;font-weight:800;letter-spacing:.02em;cursor:pointer;transition:filter .2s}
 .tml .gav-up-btn:hover{filter:brightness(1.06)}
 body.tpl-arara .tml .gav-up-btn{color:var(--mata-fundo)}
+
+/* (i) da garantia abaixo do botão */
+.tml .cta-garantia button.info{margin-left:6px;vertical-align:-3px}
