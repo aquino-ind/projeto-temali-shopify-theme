@@ -91,6 +91,25 @@
     });
   }
 
+  // cabeçalho fixo só ao rolar para cima: some ao descer (mais espaço para ler) e volta no primeiro movimento para cima.
+  // No topo da página e com o menu aberto ele fica sempre visível. Tema: o bloco fixo é .tml-secao-header; protótipo: header.site
+  var cab = document.querySelector('.tml-secao-header') || document.querySelector('header.site');
+  if(cab){
+    var ultimoY = window.scrollY, pendenteCab = false;
+    window.addEventListener('scroll', function(){
+      if(pendenteCab){ return; }
+      pendenteCab = true;
+      requestAnimationFrame(function(){
+        var y = window.scrollY, delta = y - ultimoY, menuAberto = document.querySelector('.nav.aberto');
+        if(y < cab.offsetHeight + 40 || menuAberto){ cab.classList.remove('cab-oculto'); }
+        else if(delta > 8){ cab.classList.add('cab-oculto'); }
+        else if(delta < -8){ cab.classList.remove('cab-oculto'); }
+        if(Math.abs(delta) > 8){ ultimoY = y; }
+        pendenteCab = false;
+      });
+    }, {passive: true});
+  }
+
   // caixa de compra: quantidade (1 ou kit 4) + formato (grão/moído) -> link de carrinho
   document.querySelectorAll('[data-buybox]').forEach(function(box){
     var preco = parseFloat(box.dataset.preco);
