@@ -813,12 +813,12 @@ body:has(.buybar.on) .whats-fixo{bottom:88px}}
 
 /* RODAPÉ-SERRA início: gerado por ferramentas/serra_rodape.py (não editar à mão). Dia, entardecer e noite pela hora de quem visita; sobre-escuro = seção de cima escura */
 .tml footer.site{position:relative;padding-top:460px;background:linear-gradient(to bottom,var(--cor-acima,var(--creme)) 0,var(--cor-acima,var(--creme)) 140px,var(--marinho-fundo) 140px)}
-.tml footer.site::before{content:"";position:absolute;left:0;right:0;top:0;bottom:auto;height:450px;background:url("tml-serra-noite-claro.svg") center bottom/cover no-repeat;pointer-events:none}
-.tml footer.site.sobre-escuro::before{background-image:url("tml-serra-noite-escuro.svg")}
-.tml footer.site.ceu-entardecer::before{background-image:url("tml-serra-entardecer-claro.svg")}
-.tml footer.site.ceu-entardecer.sobre-escuro::before{background-image:url("tml-serra-entardecer-escuro.svg")}
-.tml footer.site.ceu-dia::before{background-image:url("tml-serra-dia-claro.svg")}
-.tml footer.site.ceu-dia.sobre-escuro::before{background-image:url("tml-serra-dia-escuro.svg")}
+.tml footer.site::before{content:"";position:absolute;left:0;right:0;top:0;bottom:auto;height:450px;background:url("tml-serra-noite-claro.svg?v=c6d73b3e") center bottom/cover no-repeat;pointer-events:none}
+.tml footer.site.sobre-escuro::before{background-image:url("tml-serra-noite-escuro.svg?v=52aa8f98")}
+.tml footer.site.ceu-entardecer::before{background-image:url("tml-serra-entardecer-claro.svg?v=4006159e")}
+.tml footer.site.ceu-entardecer.sobre-escuro::before{background-image:url("tml-serra-entardecer-escuro.svg?v=06ae8663")}
+.tml footer.site.ceu-dia::before{background-image:url("tml-serra-dia-claro.svg?v=95e9a1af")}
+.tml footer.site.ceu-dia.sobre-escuro::before{background-image:url("tml-serra-dia-escuro.svg?v=e9713ae7")}
 @media(max-width:760px){.tml footer.site{padding-top:260px;background:linear-gradient(to bottom,var(--cor-acima,var(--creme)) 0,var(--cor-acima,var(--creme)) 76px,var(--marinho-fundo) 76px)}.tml footer.site::before{height:250px;background-position:64% 100%}}
 /* RODAPÉ-SERRA fim */
 

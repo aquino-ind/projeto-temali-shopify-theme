@@ -610,20 +610,21 @@
     var h = new Date().getHours(), forcado = (location.search.match(/[?&]ceu=(dia|entardecer|noite)/) || [])[1];
     var momento = forcado || (h >= 6 && h < 17 ? 'dia' : h >= 17 && h < 19 ? 'entardecer' : 'noite');
     if(momento !== 'noite'){ rod.classList.add('ceu-' + momento); }
-    var topo = rod.getBoundingClientRect().top + window.scrollY, acima = null, fundo = 0;
-    document.querySelectorAll('section').forEach(function(sec){
-      if(rod.contains(sec)) return;
-      var r = sec.getBoundingClientRect(), b = r.bottom + window.scrollY;
-      if(r.height && b <= topo + 2 && b >= fundo){ fundo = b; acima = sec; }
-    });
-    for(var el = acima; el; el = el.parentElement){
-      var m = getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
-      if(m && (m.length < 4 || +m[3] > .5)){
-        rod.style.setProperty('--cor-acima', getComputedStyle(el).backgroundColor);   // o céu nasce da cor da seção de cima
-        if((.2126 * m[0] + .7152 * m[1] + .0722 * m[2]) / 255 < .35){ rod.classList.add('sobre-escuro'); }
-        break;
-      }
+    // cor do que encosta no rodapé: desce da <main> sempre pelo filho que chega até a borda do rodapé
+    // e guarda o último fundo opaco de largura total (body se nenhum). Não depende de ser <section>.
+    var topo = rod.getBoundingClientRect().top, fundoAcima = getComputedStyle(document.body).backgroundColor;
+    for(var el = document.querySelector('main') || document.body; el; ){
+      var cs = getComputedStyle(el), m = cs.backgroundColor.match(/[\d.]+/g);
+      if(m && (m.length < 4 || +m[3] > .5) && el.getBoundingClientRect().width >= window.innerWidth * .9){ fundoAcima = cs.backgroundColor; }
+      var filhos = Array.prototype.filter.call(el.children, function(c){
+        var r = c.getBoundingClientRect(), p = getComputedStyle(c).position;
+        return r.height > 0 && r.bottom >= topo - 4 && p !== 'fixed' && p !== 'absolute';
+      });
+      el = filhos[filhos.length - 1];
     }
+    var rgb = fundoAcima.match(/[\d.]+/g) || [255, 255, 255];
+    rod.style.setProperty('--cor-acima', fundoAcima);   // o céu nasce da cor do que está logo acima
+    if((.2126 * rgb[0] + .7152 * rgb[1] + .0722 * rgb[2]) / 255 < .35){ rod.classList.add('sobre-escuro'); }
   })();
 
   // políticas (texto cadastrado na Shopify): índice "Nesta página" a partir dos títulos do texto
