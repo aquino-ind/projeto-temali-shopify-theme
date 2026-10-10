@@ -321,7 +321,7 @@
     catuai: ['Catuaí', 'Uma das variedades de arábica mais tradicionais do Brasil, desenvolvida pelo Instituto Agronômico de Campinas. Dá cafés doces, equilibrados e de corpo médio, com notas de caramelo e chocolate.'],
     natural: ['Processo natural', 'O fruto do café seca inteiro, com a casca, antes de o grão ser retirado. Durante a secagem o grão absorve açúcares da polpa, o que deixa a bebida mais doce e encorpada.'],
     sca: ['SCA', 'Specialty Coffee Association, entidade internacional que define como cafés são avaliados. Provadores certificados dão notas de 0 a 100. A partir de 80 pontos o café é considerado especial; a maioria do café vendido no mercado fica abaixo disso.'],
-    mole: ['Bebida mole', 'Classificação brasileira da prova de xícara. Da melhor para a pior: estritamente mole, mole, apenas mole, dura, riada e rio. “Mole” indica um café suave e adocicado, sem aspereza ou adstringência.'],
+    mole: ['Bebida mole', 'Classificação brasileira da prova de xícara, feita por provadores. “Mole” indica um café suave e adocicado, sem aspereza nem adstringência. É o oposto das bebidas “dura” e “rio”, de gosto áspero e medicinal, comuns nos cafés de mercado.'],
     corpo: ['Corpo', 'É a textura e o “peso” do café na boca, como a diferença entre leite desnatado e integral. Corpo cremoso é denso e aveludado; equilibrado fica no meio, nem ralo nem pesado.'],
     acidez: ['Acidez', 'Não é azedume nem causa azia: é a vivacidade que dá brilho ao sabor, como numa fruta madura. Acidez equilibrada aparece sem dominar a xícara.'],
     torra: ['Torra média', 'Ponto entre a torra clara e a escura. Preserva a doçura e as notas naturais do grão, sem o amargor de queimado das torras escuras usadas para disfarçar grãos de baixa qualidade.'],
