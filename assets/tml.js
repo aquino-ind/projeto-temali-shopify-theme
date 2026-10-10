@@ -517,7 +517,7 @@
     rodape.innerHTML = '<div class="gav-rodape">' +
       (c.total_discount ? '<div class="gav-eco"><span>Você economiza</span><span>' + dinheiro(c.total_discount) + '</span></div>' : '') +
       '<div class="gav-total"><span>Total</span><b>' + dinheiro(c.total_price) + '</b></div>' +
-      '<p class="gav-nota">' + (c.total_price >= minimo ? 'Frete grátis. ' : 'Frete calculado no checkout. ') + 'Pague com Pix ou cartão no checkout seguro da Shopify.</p>' +
+      '<p class="gav-nota">' + (c.total_price >= minimo ? 'Frete grátis. ' : 'Frete calculado na próxima etapa. ') + 'Pague com Pix ou cartão em ambiente 100% seguro.</p>' +
       '<a class="btn btn-bloco" href="' + esc(API.checkout(c)) + '" data-gav-checkout>Finalizar compra</a>' +
       (naGaveta ? '<button type="button" class="gav-continuar" data-gav-fechar>Continuar comprando</button>' : '') + '</div>';
   }

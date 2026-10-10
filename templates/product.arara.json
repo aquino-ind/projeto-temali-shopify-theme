@@ -904,7 +904,7 @@
           "type": "item",
           "settings": {
             "icone": "cadeado",
-            "texto": "<b>Compra segura</b> no checkout da Shopify, com Pix ou cartão."
+            "texto": "<b>Compra segura</b>, com Pix ou cartão, em ambiente protegido."
           }
         }
       },
