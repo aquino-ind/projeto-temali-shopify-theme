@@ -8,6 +8,7 @@
         "produto_avaliacoes": "cafe-torra-media-84-pontos",
         "avaliacao_rotulo": "avaliações de clientes",
         "subtitulo": "<p>Uma preciosidade da Serra da Canastra. A bebida é mole, doce e cremosa, com notas de <strong>mel, açúcar mascavo e frutas amarelas</strong> e um final longo e elegante.</p>",
+        "nota_qtd": "Pacote de 250g: por ser uma variedade rara, o Arara vem em embalagem menor.",
         "peso_1": "250g",
         "rende_1": "Cerca de 25 xícaras",
         "peso_2": "500g",
@@ -19,8 +20,7 @@
         "assinatura_texto": "<b>O seu café chega sozinho, sem precisar lembrar de comprar.</b> Assine com frete grátis e receba a cada 1, 2 ou 3 meses.",
         "whats_texto": "Ficou com dúvida? <b>Fale com a gente no WhatsApp</b>.",
         "img_grao_padrao": "tml-formato-arara-graos.jpg",
-        "img_moido_padrao": "tml-formato-arara-moido.jpg",
-        "nota_qtd": "Pacote de 250g: por ser uma variedade rara, o Arara vem em embalagem menor."
+        "img_moido_padrao": "tml-formato-arara-moido.jpg"
       },
       "blocks": {
         "b1": {
@@ -764,6 +764,49 @@
       }
     },
     "s13": {
+      "type": "tml-garantia",
+      "settings": {
+        "titulo": "O nosso compromisso com você",
+        "texto": "Café especial é uma escolha de confiança. Por isso, o que prometemos está escrito aqui."
+      },
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "icone": "garantia",
+            "texto": "<b>Não gostou? Devolvemos o seu dinheiro.</b> A garantia de satisfação vale para qualquer produto da loja."
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "icone": "frete",
+            "texto": "<b>Envio em até 48h</b> após a compra, com frete grátis acima de R$ 150."
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "icone": "whats",
+            "texto": "<b>Atendimento humano</b> pelo WhatsApp, de segunda a sexta, das 9h às 16h."
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "icone": "cadeado",
+            "texto": "<b>Compra segura</b>, com Pix ou cartão, em ambiente protegido."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "s14": {
       "type": "tml-assinatura-cta",
       "settings": {
         "url": "/pages/assinatura",
@@ -771,7 +814,7 @@
         "texto": "Assine e receba o Temalli Arara em casa a cada 1, 2 ou 3 meses, com frete grátis em todas as entregas. Quer variar? Misture com o Clássico."
       }
     },
-    "s14": {
+    "s15": {
       "type": "tml-cross",
       "settings": {
         "produto": "cafe-torra-media-84-pontos",
@@ -782,7 +825,7 @@
         "texto": "O Temalli Clássico é equilibrado e achocolatado, com 84+ pontos SCA. Vem em pacote de 500g e tem nota 4,96 em 49 avaliações."
       }
     },
-    "s15": {
+    "s16": {
       "type": "tml-faq",
       "settings": {},
       "blocks": {
@@ -862,58 +905,14 @@
         "b9"
       ]
     },
-    "s16": {
+    "s17": {
       "type": "tml-cta-final",
       "settings": {
         "titulo": "Prove uma variedade que pouca gente conhece",
         "texto": "Leve 4 pacotes do Arara, pague 3 e não pague frete. Dá para guardar um e presentear quem gosta de café.",
         "botao": "Quero o kit Arara",
-        "url": "#comprar",
-        "micro": "Compra segura • Envio em até 48h • Atendimento humano • Garantia de satisfação"
+        "url": "#comprar"
       }
-    },
-    "garantia": {
-      "type": "tml-garantia",
-      "settings": {
-        "titulo": "O nosso compromisso com você",
-        "texto": "Café especial é uma escolha de confiança. Por isso, o que prometemos está escrito aqui."
-      },
-      "blocks": {
-        "b1": {
-          "type": "item",
-          "settings": {
-            "icone": "garantia",
-            "texto": "<b>Não gostou? Devolvemos o seu dinheiro.</b> A garantia de satisfação vale para qualquer produto da loja."
-          }
-        },
-        "b2": {
-          "type": "item",
-          "settings": {
-            "icone": "frete",
-            "texto": "<b>Envio em até 48h</b> após a compra, com frete grátis acima de R$ 150."
-          }
-        },
-        "b3": {
-          "type": "item",
-          "settings": {
-            "icone": "whats",
-            "texto": "<b>Atendimento humano</b> pelo WhatsApp, de segunda a sexta, das 9h às 16h."
-          }
-        },
-        "b4": {
-          "type": "item",
-          "settings": {
-            "icone": "cadeado",
-            "texto": "<b>Compra segura</b>, com Pix ou cartão, em ambiente protegido."
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3",
-        "b4"
-      ]
     }
   },
   "order": [
@@ -929,10 +928,10 @@
     "s10",
     "s11",
     "s12",
-    "garantia",
     "s13",
     "s14",
     "s15",
-    "s16"
+    "s16",
+    "s17"
   ]
 }
