@@ -1,6 +1,8 @@
 {%- assign whats = 'https://wa.me/' | append: settings.tml_whats_numero -%}
 <div class="tml">
   <footer class="site">
+    {%- comment -%} frase no céu da paisagem: deixa claro que o desenho é a Serra da Canastra {%- endcomment -%}
+    {%- if section.settings.serra_texto != blank -%}<p class="rodape-serra reveal">{{ section.settings.serra_texto }}</p>{%- endif -%}
     <div class="wrap">
       <div class="rodape-grid">
         <div>
@@ -79,6 +81,7 @@
   "settings": [
     { "type": "text", "id": "descricao", "label": "Descrição", "default": "Cafés especiais 84+ SCA da Serra da Canastra, Piumhi (MG)." },
     { "type": "text", "id": "empresa", "label": "Razão social, CNPJ e endereço", "info": "Obrigatório para lojas online (Decreto 7.962/2013)." },
+    { "type": "text", "id": "serra_texto", "label": "Frase no céu da serra", "default": "Direto da Serra da Canastra" },
     { "type": "text", "id": "selos", "label": "Texto à direita", "default": "Compra segura • Atendimento humano" },
     { "type": "header", "content": "Gaveta de carrinho" },
     { "type": "product", "id": "sugestao_1", "label": "Café 1 (sugestão e Pague 3, Leve 4)" },

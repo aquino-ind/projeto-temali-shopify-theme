@@ -1096,3 +1096,12 @@ body.tpl-arara .tml .pir-selo{background:var(--amarelo);color:var(--mata-fundo);
 .tml .gar-texto.reveal.on .gar-lista li:nth-child(3){transition-delay:.24s}
 .tml .gar-texto.reveal.on .gar-lista li:nth-child(4){transition-delay:.36s}}
 @keyframes gar-gira{to{transform:rotate(360deg)}}
+
+/* rodapé: frase no céu */
+.tml .rodape-serra{position:absolute;left:0;right:0;top:178px;z-index:1;margin:0;padding:0 16px;text-align:center;pointer-events:none;
+  font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(2.4rem,3vw,4rem);line-height:1.1;letter-spacing:.01em;
+  color:rgba(251,249,244,.92);text-shadow:0 1px 18px rgba(17,28,51,.35)}
+.tml footer.site.ceu-dia .rodape-serra{color:#fff;text-shadow:0 1px 14px rgba(28,46,82,.45)}
+@media(max-width:760px){.tml .rodape-serra{top:88px;font-size:2rem}}
+@media(prefers-reduced-motion:no-preference){.tml .rodape-serra.reveal{opacity:0;transform:translateY(10px)}
+.tml .rodape-serra.reveal.on{opacity:1;transform:none;transition:opacity 1.2s ease .2s,transform 1.2s cubic-bezier(.2,.8,.2,1) .2s}}
