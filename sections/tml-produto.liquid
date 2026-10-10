@@ -86,10 +86,6 @@
                   </span>
                   <span class="valor"><em>25% OFF</em><s>{{ preco | times: 4 | money }}</s><b>{{ preco | times: 3 | money }}</b></span>
                 </span>
-                <span class="kit-pacotes" aria-hidden="true">
-                  {%- for i in (1..3) -%}<span class="pac">{% render 'tml-icone', nome: 'pacote' %}</span>{%- endfor -%}
-                  <span class="pac gratis">{% render 'tml-icone', nome: 'pacote' %}<i>Grátis</i></span>
-                </span>
               </label>
             </div>
           </fieldset>

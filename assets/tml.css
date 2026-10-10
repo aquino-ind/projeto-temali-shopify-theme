@@ -1157,3 +1157,6 @@ body.tpl-arara .tml .gav-up-btn{color:var(--mata-fundo)}
 
 /* (i) da garantia abaixo do botão */
 .tml .cta-garantia button.info{margin-left:5px;vertical-align:middle;position:relative;top:-1px}
+
+/* kit sem a fileira de pacotinhos: respiro igual em cima e embaixo */
+.tml .kit-corpo{padding-bottom:18px}
