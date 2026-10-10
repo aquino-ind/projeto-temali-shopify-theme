@@ -347,7 +347,7 @@
     acidez: ['Acidez', 'Não é azedume nem causa azia: é a vivacidade que dá brilho ao sabor, como numa fruta madura. Acidez equilibrada aparece sem dominar a xícara.'],
     torra: ['Torra média', 'Ponto entre a torra clara e a escura. Preserva a doçura e as notas naturais do grão, sem o amargor de queimado das torras escuras usadas para disfarçar grãos de baixa qualidade.'],
     arabica: ['100% Arábica', 'Coffea arabica, a espécie de café mais valorizada do mundo. É mais aromática e doce que o robusta (conilon), com menos amargor. Todo café especial é arábica.'],
-    notas: ['Notas sensoriais', 'Aromas e sabores que o próprio grão revela, por causa da variedade, do solo, do clima e da torra. Nada é adicionado: o mel e o caramelo que você sente vêm do café.'],
+    notas: ['Notas sensoriais', 'Aromas e sabores que o próprio grão revela, por causa da variedade, do solo, do clima e da torra. Nada é adicionado: o caramelo e as frutas que você sente vêm do café.'],
     finalizacao: ['Finalização', 'Também chamada de retrogosto: é o sabor que fica na boca depois de engolir. Um final longo e limpo, sem amargor, é sinal de café de qualidade.'],
     docura: ['Doçura', 'Doçura natural do grão colhido maduro e bem torrado. Café especial bom costuma dispensar o açúcar.'],
     suspensa: ['Secagem suspensa', 'Os grãos secam sobre telas elevadas do chão, com o ar circulando por baixo. A secagem fica mais uniforme e limpa, o que preserva aromas e doçura.'],

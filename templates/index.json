@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "s1": {
@@ -72,7 +81,7 @@
         "eyebrow": "O original • Serra da Canastra",
         "produto_avaliacoes": "cafe-torra-media-84-pontos",
         "avaliacao_rotulo": "avaliações de clientes",
-        "subtitulo": "<p>Café especial 84+ cultivado pela nossa família na <strong>Fazenda Maria Ângela</strong>, na Serra da Canastra. Torra média, doce e equilibrado, com notas de <strong>caramelo, mel, chocolate e frutas</strong>.</p>",
+        "subtitulo": "<p>Café especial 84+ cultivado pela nossa família na <strong>Fazenda Maria Ângela</strong>, na Serra da Canastra. Torra média, doce e equilibrado, com notas de <strong>caramelo, chocolate e frutas</strong>.</p>",
         "selo": "84+",
         "peso_1": "500g",
         "rende_1": "Cerca de 50 xícaras",
@@ -96,7 +105,7 @@
         "b1": {
           "type": "nota",
           "settings": {
-            "nome": "Caramelo e mel",
+            "nome": "Caramelo",
             "imagem_padrao": "tml-nota-classico-caramelo-mel.jpg"
           }
         },
@@ -208,7 +217,7 @@
         "ancora": "historia",
         "eyebrow": "Origem",
         "titulo": "Um café com endereço: Serra da Canastra",
-        "texto": "<p>A maioria dos cafés de mercado mistura grãos de várias origens e torra escuro para disfarçar os defeitos. O Clássico segue o caminho oposto: café com origem conhecida, em <strong>Piumhi, na Serra da Canastra (MG)</strong>, acima de 900m de altitude.</p><p>Os grãos são colhidos no ponto de maturação, selecionados e torrados em torra média[i:torra], que revela o sabor do grão em vez de escondê-lo. Por isso o caramelo, o mel e o chocolate que você sente vêm do próprio café.</p>",
+        "texto": "<p>A maioria dos cafés de mercado mistura grãos de várias origens e torra escuro para disfarçar os defeitos. O Clássico segue o caminho oposto: café com origem conhecida, em <strong>Piumhi, na Serra da Canastra (MG)</strong>, acima de 900m de altitude.</p><p>Os grãos são colhidos no ponto de maturação, selecionados e torrados em torra média[i:torra], que revela o sabor do grão em vez de escondê-lo. Por isso o caramelo, o chocolate e as frutas que você sente vêm do próprio café.</p>",
         "assinatura": "Temalli® Café: feito com respeito à terra e amor à vida.",
         "inverter": false,
         "escuro": false
@@ -424,7 +433,7 @@
           "type": "item",
           "settings": {
             "rotulo": "Notas[i:notas]",
-            "valor": "Caramelo, mel, chocolate, frutas"
+            "valor": "Caramelo, chocolate, frutas"
           }
         },
         "b6": {
