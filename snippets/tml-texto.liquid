@@ -1,6 +1,6 @@
 {%- comment -%}
   Texto com os botões (i) do glossário. Nos campos de texto do editor, escreva [i:sca], [i:mole] etc.
-  Termos: sca, mole, corpo, acidez, torra, arabica, notas, finalizacao, docura, suspensa, arara, colheita, terroir, graos.
+  Qualquer termo do GLOSSARIO (assets/tml.js) funciona: sca, mole, torra, catuai, natural, terroir, defeitos...
   Preços (só em página de produto, passando p: product): {preco} {dois} {kit} {kit_de} {kit_un} {economia} {por_xicara}
   ({por_xicara} usa o parâmetro xic = número de xícaras do kit). Assim os textos acompanham o preço cadastrado.
   Uso: {% render 'tml-texto', t: section.settings.texto %}  ou  {% render 'tml-texto', t: texto, p: product, xic: 200 %}
@@ -21,11 +21,17 @@
   {%- assign saida = saida | replace: '{kit_de}', m_kit_de | replace: '{kit_un}', m_kit_un | replace: '{kit}', m_kit | replace: '{por_xicara}', m_xic -%}
 {%- endif -%}
 {%- if saida contains '[i:' -%}
-  {%- assign termos = 'sca,mole,corpo,acidez,torra,arabica,notas,finalizacao,docura,suspensa,arara,colheita,terroir,graos,defeitos' | split: ',' -%}
-  {%- for termo in termos -%}
-    {%- assign marca = '[i:' | append: termo | append: ']' -%}
-    {%- assign botao = '<button type="button" class="info" data-termo="' | append: termo | append: '">i</button>' -%}
-    {%- assign saida = saida | replace: marca, botao -%}
-  {%- endfor -%}
+  {%- comment -%} qualquer [i:termo] vira o botão (i): não depende de lista fixa (o texto de cada termo fica no GLOSSARIO do tml.js) {%- endcomment -%}
+  {%- assign partes = saida | split: '[i:' -%}
+  {%- capture saida -%}
+    {{- partes[0] -}}
+    {%- for parte in partes offset: 1 -%}
+      {%- if parte contains ']' -%}
+        {%- assign termo = parte | split: ']' | first -%}
+        {%- assign resto = parte | remove_first: termo | remove_first: ']' -%}
+        <button type="button" class="info" data-termo="{{ termo | strip | escape }}">i</button>{{- resto -}}
+      {%- else -%}[i:{{ parte }}{%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
 {%- endif -%}
 {{- saida -}}
