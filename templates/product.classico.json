@@ -819,7 +819,7 @@
           "type": "pergunta",
           "settings": {
             "pergunta": "Como funciona o Pague 3, Leve 4?",
-            "resposta": "<p>Escolha o kit de 4 unidades e pague o preço de 3: {kit} no lugar de {kit_de}. Cada pacote sai por {kit_un}, e o kit ainda tem frete grátis para todo o Brasil.</p><p>Também dá para misturar: a cada 4 pacotes de café Temalli no carrinho, o de menor valor sai de graça.</p>"
+            "resposta": "<p>Escolha o kit de 4 unidades e pague o preço de 3: {kit} no lugar de {kit_de}. Cada pacote sai por {kit_un}, e o kit ainda tem frete grátis para todo o Brasil.</p><p>Também dá para misturar cafés: a cada 4 pacotes no carrinho, um sai de graça, e é sempre o de menor valor.</p>"
           }
         },
         "b3": {

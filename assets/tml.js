@@ -477,6 +477,10 @@
     });
     // quantos pacotes faltam para o próximo 4º grátis (1, 2 ou 3); 0 = o kit já fechou
     var falta = totalKit ? (4 - totalKit % 4) % 4 : 0;
+    // cafés de preços diferentes no carrinho: avisar que o grátis é sempre o de menor valor (regra do desconto)
+    var precosKit = {};
+    grupos.forEach(function(g){ if(ehKit(g.it.product_id)){ precosKit[Math.round(g.original / g.quantidade)] = 1; } });
+    var misto = Object.keys(precosKit).length > 1;
     if(!falta){ varBrinde = null; }
     var brindesAntes = brindesVistos; brindesVistos = {};
     var itens = grupos.map(function(g){
@@ -499,7 +503,7 @@
       }
       var presente = gratis
         ? '<div class="gav-presente' + (gratis > (brindesAntes[v] || 0) && brindesAntes._pronto ? ' novo' : '') + '"><span class="gav-presente-ic" aria-hidden="true">' + ICONE_PRESENTE + '</span>' +
-          '<div><b>' + gratis + (gratis > 1 ? ' unidades' : ' unidade') + ' de brinde</b><small>Pague 3, Leve 4</small></div>' +
+          '<div><b>' + gratis + (gratis > 1 ? ' unidades' : ' unidade') + ' de brinde</b><small>' + (misto ? 'Pague 3, Leve 4 • sai grátis o de menor valor' : 'Pague 3, Leve 4') + '</small></div>' +
           '<div class="gav-presente-valor"><s>' + dinheiro(g.desc) + '</s><span>Grátis</span></div></div>' : '';
       return '<div class="gav-item" data-gav-item="' + v + '"><img src="' + esc(miniatura(it.image)) + '" alt="" width="76" height="76" loading="eager" decoding="async"><div class="gav-info">' +
         '<div class="gav-linha1"><div><a class="gav-nome" href="' + esc(it.url) + '">' + esc(nomeCurto(it.product_title)) + '</a><span class="gav-var">' + esc(bonito(it.variant_title)) + '</span></div>' +
