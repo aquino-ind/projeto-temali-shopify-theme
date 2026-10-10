@@ -12,7 +12,6 @@
     {%- endif -%}
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
     <title>
@@ -278,7 +277,24 @@
       }
     {% endstyle %}
 
-    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {%- liquid
+      # Páginas Temalli (home, cafés, páginas tml-* e políticas) quase não usam o base.css do Dawn:
+      # ele carrega sem bloquear a primeira pintura. Medido: sem ele, só o link "pular para o conteúdo" muda
+      # (as regras dele vão inline abaixo). Páginas do Dawn (contato, busca, conta...) continuam como antes.
+      assign base_sem_bloquear = false
+      if template.name == 'index' or template.suffix == 'classico' or template.suffix == 'arara' or request.page_type == 'policy'
+        assign base_sem_bloquear = true
+      elsif template.name == 'page' and template.suffix != blank and template.suffix != 'contact'
+        assign base_sem_bloquear = true
+      endif
+    -%}
+    {%- if base_sem_bloquear -%}
+      <style>.visually-hidden{position:absolute!important;overflow:hidden;width:1px;height:1px;margin:-1px;padding:0;border:0;clip:rect(0 0 0 0);word-wrap:normal!important}.visually-hidden--inline{margin:0;height:1em}.skip-to-content-link:focus{z-index:9999;position:inherit;overflow:auto;width:auto;height:auto;clip:auto}</style>
+      <link rel="stylesheet" href="{{ 'base.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript>{{ 'base.css' | asset_url | stylesheet_tag }}</noscript>
+    {%- else -%}
+      {{ 'base.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
 
     {%- comment -%} Identidade Temalli: sobrescreve os tokens do Dawn. {%- endcomment -%}
     {% render 'temalli-tema' %}

@@ -5,7 +5,19 @@
       <div class="mosaico">
         {%- for block in section.blocks limit: 3 -%}
           <figure {{ block.shopify_attributes }}>
-            {% render 'tml-imagem', img: block.settings.imagem, asset: block.settings.imagem_padrao, alt: block.settings.alt, largura: 900 %}
+            {%- liquid
+              # fotos da origem têm uma versão de 480px (-p) para o celular; a primeira do mosaico ocupa duas linhas (é maior)
+              assign menor = blank
+              if block.settings.imagem_padrao contains 'tml-origem-'
+                assign menor = block.settings.imagem_padrao | replace: '.webp', '-p.webp'
+              endif
+              if forloop.first
+                assign tam = '(max-width: 760px) 55vw, 440px'
+              else
+                assign tam = '(max-width: 760px) 42vw, 280px'
+              endif
+            -%}
+            {% render 'tml-imagem', img: block.settings.imagem, asset: block.settings.imagem_padrao, asset_p: menor, sizes: tam, alt: block.settings.alt, largura: 900 %}
             {%- if block.settings.legenda != blank -%}<figcaption>{{ block.settings.legenda }}</figcaption>{%- endif -%}
           </figure>
         {%- endfor -%}
