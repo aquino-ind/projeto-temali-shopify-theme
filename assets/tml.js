@@ -140,7 +140,8 @@
       principal.alt = b.querySelector('img').alt;
       thumbs.forEach(function(x, j){ x.setAttribute('aria-pressed', j === atual ? 'true' : 'false'); });
       var trilho = b.parentNode;
-      trilho.scrollTo({left: b.offsetLeft - trilho.clientWidth / 2 + b.clientWidth / 2, behavior: 'smooth'});
+      // centraliza a miniatura ativa: na horizontal (computador) ou na vertical (celular, coluna à esquerda)
+      trilho.scrollTo({left: b.offsetLeft - trilho.clientWidth / 2 + b.clientWidth / 2, top: b.offsetTop - trilho.clientHeight / 2 + b.clientHeight / 2, behavior: 'smooth'});
       if(cont){ cont.textContent = (atual + 1) + ' / ' + thumbs.length; }
     }
     thumbs.forEach(function(b, i){ b.addEventListener('click', function(){ mostra(i); }); });
