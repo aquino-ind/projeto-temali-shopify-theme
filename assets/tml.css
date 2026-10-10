@@ -1160,3 +1160,8 @@ body.tpl-arara .tml .gav-up-btn{color:var(--mata-fundo)}
 
 /* kit sem a fileira de pacotinhos: respiro igual em cima e embaixo */
 .tml .kit-corpo{padding-bottom:18px}
+
+/* topo da home: linha de prova social (nota + avaliações + garantia) */
+.tml .hero-prova{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin:-6px 0 24px;font-size:14px;color:var(--tinta-2)}
+.tml .hero-prova .estrelas{color:var(--dourado);letter-spacing:2px;font-size:15px}
+.tml .hero-prova b{color:var(--tinta)}

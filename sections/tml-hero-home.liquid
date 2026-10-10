@@ -5,6 +5,16 @@
         {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
         <h1>{{ section.settings.titulo }}</h1>
         {%- if section.settings.texto != blank -%}<p class="lead">{{ section.settings.texto }}</p>{%- endif -%}
+        {%- comment -%} prova social: nota e total do Judge.me (do 1º café do palco) + frase curta {%- endcomment -%}
+        {%- assign p_av = section.blocks.first.settings.produto -%}
+        {%- assign nota = p_av.metafields.reviews.rating.value.rating -%}
+        {%- assign total_av = p_av.metafields.reviews.rating_count -%}
+        {%- if nota or section.settings.prova != blank -%}
+          <p class="hero-prova">
+            {%- if nota -%}<span class="estrelas" aria-hidden="true">★★★★★</span><b>{{ nota | times: 1.0 | round: 2 | replace: '.', ',' }}</b><span>• {{ total_av }} avaliações</span>{%- endif -%}
+            {%- if section.settings.prova != blank -%}<span>{% if nota %}• {% endif %}{{ section.settings.prova }}</span>{%- endif -%}
+          </p>
+        {%- endif -%}
         <div class="hero-ctas">
           {%- if section.settings.botao1 != blank -%}<a href="{{ section.settings.botao1_url }}" class="btn">{{ section.settings.botao1 }}</a>{%- endif -%}
           {%- if section.settings.botao2 != blank -%}<a href="{{ section.settings.botao2_url }}" class="btn btn-contorno">{{ section.settings.botao2 }}</a>{%- endif -%}
@@ -31,12 +41,13 @@
 {
   "name": "T • Destaque da home",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Cafés especiais • Serra da Canastra, MG" },
-    { "type": "text", "id": "titulo", "label": "Título", "info": "Aceita <em>destaque dourado</em> e <br> para quebrar a linha.", "default": "Dois cafés. <em>Uma origem.</em><br>Nenhum café comum." },
+    { "type": "text", "id": "eyebrow", "label": "Sobretítulo", "default": "Da Fazenda Maria Ângela, na Serra da Canastra" },
+    { "type": "text", "id": "titulo", "label": "Título", "info": "Aceita <em>destaque dourado</em> e <br> para quebrar a linha.", "default": "Um para todo dia.<br><em>Outro para surpreender.</em>" },
     { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "prova", "label": "Frase ao lado da nota", "default": "Garantia de satisfação" },
     { "type": "text", "id": "botao1", "label": "Botão principal", "default": "Escolher meu café" },
     { "type": "url", "id": "botao1_url", "label": "Link do botão principal" },
-    { "type": "text", "id": "botao2", "label": "Botão secundário", "default": "Qual é o meu?" },
+    { "type": "text", "id": "botao2", "label": "Botão secundário", "default": "Comparar os dois" },
     { "type": "url", "id": "botao2_url", "label": "Link do botão secundário" }
   ],
   "blocks": [
