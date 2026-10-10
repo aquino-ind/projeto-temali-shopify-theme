@@ -434,6 +434,7 @@
   var VAZIO_XICARA = '<span class="xicara-vapor" aria-hidden="true"><span class="vapor"><i></i><i></i><i></i></span><svg viewBox="0 0 44 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6h26v10a11 11 0 01-11 11h-4A11 11 0 016 16z"/><path d="M32 9h3a5 5 0 010 10h-3"/><path d="M3 31h34"/></svg></span>';
 
   var ultimo = {items: []};   // último carrinho recebido: as ações da gaveta usam as linhas reais dele
+  var ICONE_PACOTE = '<svg viewBox="0 0 24 32"><path d="M5 4h14l2 26H3z" fill="currentColor"/><path d="M5 4h14v3H5z" fill="currentColor" opacity=".55"/></svg>';
   var brindesVistos = {};     // brindes por café no desenho anterior (para destacar quando ganha um novo)
   var ICONE_PRESENTE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v7a1 1 0 001 1h12a1 1 0 001-1v-7M12 8.5v12"/><path d="M12 8.5C10.5 5 7 4.5 7 6.6 7 8.5 12 8.5 12 8.5zM12 8.5c1.5-3.5 5-4 5-1.9 0 1.9-5 1.9-5 1.9z"/></svg>';
   function desenha(c, raiz, naGaveta){
@@ -483,10 +484,19 @@
       var gratis = g.desc ? Math.round(g.desc / unit) : 0;
       brindesVistos[v] = gratis;
       // compre 3, ganhe 1 (vale misturado): faltando 1 pacote, o aviso fica no café mais barato, que é o que sai de graça
-      var aviso = v === varBrinde
-        ? '<button type="button" class="gav-brinde" data-gav-acao="mais" data-gav-n="' + falta + '" data-gav-var="' + v + '"><span>' +
-          (falta === 1 ? 'Adicione o ' + (totalKit + 1) + 'º pacote de graça' : 'Leve mais ' + falta + ' e o 4º sai de graça, com frete grátis') +
-          '</span><b>' + (falta === 1 ? 'Pague 3, Leve 4' : '+ ' + falta + ' pacotes') + '</b></button>' : '';
+      // upsell do kit: 4 pacotinhos mostram onde a pessoa está (tem / faltam / o grátis) e o botão diz quanto custa a mais.
+      // O 4º sai de graça, então completar o kit custa (faltam - 1) pacotes.
+      var aviso = '';
+      if(v === varBrinde){
+        var tem = 4 - falta, extra = (falta - 1) * unit;
+        var pacs = '';
+        for(var k = 0; k < 4; k++){ pacs += '<i class="' + (k === 3 ? 'gratis' : k < tem ? 'tem' : 'falta') + '">' + ICONE_PACOTE + '</i>'; }
+        aviso = '<div class="gav-upsell"><div class="gav-up-topo"><span class="gav-up-pacs" aria-hidden="true">' + pacs + '</span><div>' +
+          '<b>' + (falta === 1 ? 'Falta 1 para o kit: ele sai de graça' : 'Complete o kit e ganhe o 4º pacote') + '</b>' +
+          '<small>Pague 3, leve 4 + frete grátis</small></div></div>' +
+          '<button type="button" class="gav-up-btn" data-gav-acao="mais" data-gav-n="' + falta + '" data-gav-var="' + v + '">' +
+          (falta === 1 ? 'Adicionar o 4º pacote grátis' : 'Adicionar ' + falta + ' pacotes • + ' + dinheiro(extra)) + '</button></div>';
+      }
       var presente = gratis
         ? '<div class="gav-presente' + (gratis > (brindesAntes[v] || 0) && brindesAntes._pronto ? ' novo' : '') + '"><span class="gav-presente-ic" aria-hidden="true">' + ICONE_PRESENTE + '</span>' +
           '<div><b>' + gratis + (gratis > 1 ? ' unidades' : ' unidade') + ' de brinde</b><small>Pague 3, Leve 4</small></div>' +
