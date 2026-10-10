@@ -96,7 +96,7 @@
             "produto": "cafe-torra-media-84-pontos",
             "nome": "Temalli Clássico",
             "peso": "500g",
-            "notas": "caramelo, chocolate, frutas",
+            "notas": "caramelo, mel, chocolate",
             "estilo": "classico",
             "qtd": 1
           }
@@ -150,7 +150,7 @@
           "type": "pergunta",
           "settings": {
             "pergunta": "Qual frequência escolher?",
-            "resposta": "<p>Cada xícara usa cerca de 10g de café. Um pacote de 500g do Clássico rende umas 50 xícaras. Quem toma 1 a 2 xícaras por dia costuma ir bem com 1 Clássico por mês.</p>"
+            "resposta": "<p>Cada xícara usa cerca de 10g de café. Um pacote de 500g do Temalli Clássico rende umas 50 xícaras. Quem toma 1 a 2 xícaras por dia costuma ir bem com 1 Clássico por mês.</p>"
           }
         }
       },

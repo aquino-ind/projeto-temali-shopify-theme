@@ -16,7 +16,7 @@
         "eyebrow": "O original • Serra da Canastra",
         "produto_avaliacoes": "cafe-torra-media-84-pontos",
         "avaliacao_rotulo": "avaliações de clientes",
-        "subtitulo": "<p>Café especial 84+ cultivado pela nossa família na <strong>Fazenda Maria Ângela</strong>, na Serra da Canastra. Torra média, doce e equilibrado, com notas de <strong>caramelo, chocolate e frutas</strong>.</p>",
+        "subtitulo": "<p>Café especial 84+ cultivado pela nossa família na <strong>Fazenda Maria Ângela</strong>, na Serra da Canastra. Torra média, doce e equilibrado, com notas de <strong>caramelo, mel, chocolate e frutas</strong>.</p>",
         "peso_1": "500g",
         "rende_1": "Cerca de 50 xícaras",
         "peso_2": "1kg",
@@ -100,13 +100,13 @@
       "type": "tml-perfil",
       "settings": {
         "titulo": "Equilibrado do primeiro gole ao último",
-        "texto": "Aroma marcante, doçura sutil e acidez harmoniosa. O Clássico é redondo, sem o amargor de queimado do café de mercado, e não precisa de açúcar."
+        "texto": "Aroma marcante, doçura sutil e acidez harmoniosa. O Temalli Clássico é redondo, sem o amargor de queimado do café de mercado, e não precisa de açúcar."
       },
       "blocks": {
         "b1": {
           "type": "nota",
           "settings": {
-            "nome": "Caramelo",
+            "nome": "Caramelo e mel",
             "imagem_padrao": "tml-nota-classico-caramelo-mel.jpg"
           }
         },
@@ -182,7 +182,7 @@
         "ancora": "historia",
         "eyebrow": "Origem",
         "titulo": "Um café com endereço: Serra da Canastra",
-        "texto": "<p>A maioria dos cafés de mercado mistura grãos de várias origens e torra escuro para disfarçar os defeitos. O Clássico segue o caminho oposto: café com origem conhecida, em <strong>Piumhi, na Serra da Canastra (MG)</strong>, acima de 900m de altitude.</p><p>Os grãos são colhidos no ponto de maturação, selecionados e torrados em torra média[i:torra], que revela o sabor do grão em vez de escondê-lo. Por isso o caramelo, o chocolate e as frutas que você sente vêm do próprio café.</p>"
+        "texto": "<p>A maioria dos cafés de mercado mistura grãos de várias origens e torra escuro para disfarçar os defeitos. O Temalli Clássico segue o caminho oposto: café com origem conhecida, em <strong>Piumhi, na Serra da Canastra (MG)</strong>, acima de 900m de altitude.</p><p>Os grãos são colhidos no ponto de maturação, selecionados e torrados em torra média[i:torra], que revela o sabor do grão em vez de escondê-lo. Por isso o caramelo, o mel e o chocolate que você sente vêm do próprio café.</p>"
       },
       "blocks": {
         "b1": {
@@ -425,7 +425,7 @@
           "type": "item",
           "settings": {
             "rotulo": "Notas[i:notas]",
-            "valor": "Caramelo, chocolate, frutas"
+            "valor": "Caramelo, mel, chocolate, frutas"
           }
         },
         "b6": {
@@ -465,7 +465,7 @@
       "type": "tml-conta",
       "settings": {
         "titulo": "Café especial custa menos do que parece",
-        "intro": "<p>Um pacote de 500g do Clássico rende cerca de 50 xícaras (10g de café para 100ml de água).</p>",
+        "intro": "<p>Um pacote de 500g do Temalli Clássico rende cerca de 50 xícaras (10g de café para 100ml de água).</p>",
         "destaque": "No kit: {kit} ÷ 200 xícaras = <strong>{por_xicara} por xícara</strong>",
         "xicaras_kit": 200,
         "fecho": "Caro é pagar todo dia por um café que precisa de açúcar para descer."
@@ -552,7 +552,7 @@
       "type": "tml-metodos-lista",
       "settings": {
         "titulo": "Funciona no seu método, qualquer que seja",
-        "texto": "A torra média do Clássico extrai bem nos métodos mais usados no Brasil. No espresso, entrega crema e corpo. No coado, fica limpo e adocicado.",
+        "texto": "A torra média do Temalli Clássico extrai bem nos métodos mais usados no Brasil. No espresso, entrega crema e corpo. No coado, fica limpo e adocicado.",
         "dica": "",
         "botao_url": "/pages/como-preparar"
       },
@@ -820,7 +820,7 @@
         "b1": {
           "type": "pergunta",
           "settings": {
-            "pergunta": "O que torna o Clássico diferente do café de supermercado?",
+            "pergunta": "O que torna o Temalli Clássico diferente do café de supermercado?",
             "resposta": "<p>Café de mercado costuma misturar grãos de várias origens, com defeitos e palha, e é torrado escuro para disfarçar. O Clássico é 100% arábica de origem conhecida, com 84+ pontos SCA e torra no ponto certo. A cor homogênea do pó, que os próprios clientes notam, mostra essa pureza.</p>"
           }
         },
@@ -881,7 +881,7 @@
       "type": "tml-cta-final",
       "settings": {
         "titulo": "Seu próximo café merece ser especial",
-        "texto": "Leve 4 pacotes do Clássico e pague 3. São 2kg de café especial, e o frete é por nossa conta.",
+        "texto": "Leve 4 pacotes do Temalli Clássico e pague 3. São 2kg de café especial, e o frete é por nossa conta.",
         "botao": "Quero o kit Clássico",
         "url": "#comprar",
         "micro": "Compra segura • Envio em até 48h • Atendimento humano • Garantia de satisfação"

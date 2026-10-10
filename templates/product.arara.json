@@ -8,7 +8,7 @@
         "produto_avaliacoes": "cafe-torra-media-84-pontos",
         "avaliacao_rotulo": "avaliações de clientes",
         "subtitulo": "<p>Uma preciosidade da Serra da Canastra. A bebida é mole, doce e cremosa, com notas de <strong>mel, açúcar mascavo e frutas amarelas</strong> e um final longo e elegante.</p>",
-        "nota_qtd": "Pacote de 250g: por ser uma variedade rara, o Arara vem em embalagem menor.",
+        "nota_qtd": "Pacote de 250g: por ser uma variedade rara, o Temalli Arara vem em embalagem menor.",
         "peso_1": "250g",
         "rende_1": "Cerca de 25 xícaras",
         "peso_2": "500g",
@@ -91,7 +91,7 @@
       "type": "tml-perfil",
       "settings": {
         "titulo": "Doce, cremoso e com final que fica na boca",
-        "texto": "A bebida do Arara é limpa e doce, com acidez equilibrada e notas sensoriais suaves. A torra média valoriza o que ele tem de melhor: suavidade e complexidade na mesma xícara."
+        "texto": "A bebida do Temalli Arara é limpa e doce, com acidez equilibrada e notas sensoriais suaves. A torra média valoriza o que ele tem de melhor: suavidade e complexidade na mesma xícara."
       },
       "blocks": {
         "b1": {
@@ -456,7 +456,7 @@
       "type": "tml-conta",
       "settings": {
         "titulo": "Café especial custa menos do que parece",
-        "intro": "<p>Um pacote de 250g do Arara rende cerca de 25 xícaras (10g de café para 100ml de água). O pacote menor acaba enquanto o café ainda está no auge do frescor.</p>",
+        "intro": "<p>Um pacote de 250g do Temalli Arara rende cerca de 25 xícaras (10g de café para 100ml de água). O pacote menor acaba enquanto o café ainda está no auge do frescor.</p>",
         "destaque": "No kit: {kit} ÷ 100 xícaras = <strong>{por_xicara} por xícara</strong>",
         "xicaras_kit": 100,
         "fecho": "Caro é pagar todo dia por um café que precisa de açúcar para descer."
@@ -639,7 +639,7 @@
         "produto": "cafe-torra-media-84-pontos",
         "eyebrow": "A família Temalli®",
         "titulo": "O Arara é novo. A confiança na Temalli®, não.",
-        "aviso": "O Arara acabou de chegar. Estas avaliações são do Temalli Clássico, publicadas no Judge.me, e mostram o cuidado que a Temalli® tem com todos os seus cafés."
+        "aviso": "O Temalli Arara acabou de chegar. Estas avaliações são do Temalli Clássico, publicadas no Judge.me, e mostram o cuidado que a Temalli® tem com todos os seus cafés."
       },
       "blocks": {
         "b1": {
@@ -811,7 +811,7 @@
       "settings": {
         "url": "/pages/assinatura",
         "titulo": "Receba o Arara sem precisar lembrar",
-        "texto": "Assine e receba o Temalli Arara em casa a cada 1, 2 ou 3 meses, com frete grátis em todas as entregas. Quer variar? Misture com o Clássico."
+        "texto": "Assine e receba o Temalli Arara em casa a cada 1, 2 ou 3 meses, com frete grátis em todas as entregas. Quer variar? Misture com o Temalli Clássico."
       }
     },
     "s15": {
@@ -846,7 +846,7 @@
         "b3": {
           "type": "pergunta",
           "settings": {
-            "pergunta": "Por que o Arara custa menos que o Clássico?",
+            "pergunta": "Por que o Temalli Arara custa menos que o Clássico?",
             "resposta": "<p>Porque o pacote é menor: o Arara vem em <strong>250g</strong>, e o Clássico, em 500g. Comparando o mesmo peso, o Arara é o café mais exclusivo da casa. Por ser uma variedade rara, ele vem em embalagem menor.</p>"
           }
         },
@@ -909,7 +909,7 @@
       "type": "tml-cta-final",
       "settings": {
         "titulo": "Prove uma variedade que pouca gente conhece",
-        "texto": "Leve 4 pacotes do Arara, pague 3 e não pague frete. Dá para guardar um e presentear quem gosta de café.",
+        "texto": "Leve 4 pacotes do Temalli Arara, pague 3 e não pague frete. Dá para guardar um e presentear quem gosta de café.",
         "botao": "Quero o kit Arara",
         "url": "#comprar"
       }
