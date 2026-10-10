@@ -26,7 +26,7 @@
           {%- assign primeira = p.featured_media -%}
           {%- if primeira -%}
             {%- assign alt_img = primeira.alt | default: nome -%}
-            {{ primeira | image_url: width: 1100 | image_tag: loading: 'eager', alt: alt_img, sizes: '(max-width: 900px) 100vw, 55vw', widths: '500,800,1100' }}
+            {{ primeira | image_url: width: 1100 | image_tag: loading: 'eager', fetchpriority: 'high', preload: true, alt: alt_img, sizes: '(max-width: 900px) 100vw, 55vw', widths: '400,600,800,1100' }}
           {%- endif -%}
           {%- if p.media.size > 1 -%}<button type="button" class="gal-nav ant" data-gal-ant aria-label="Foto anterior">‹</button><button type="button" class="gal-nav prox" data-gal-prox aria-label="Próxima foto">›</button><span class="gal-cont">1 / {{ p.media.size }}</span>{%- endif -%}
           {%- if section.settings.selo != blank -%}<div class="selo-84" aria-label="{{ section.settings.selo }} pontos na escala SCA"><b>{{ section.settings.selo }}</b><span>pontos SCA</span></div>{%- endif -%}

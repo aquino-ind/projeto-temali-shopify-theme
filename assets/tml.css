@@ -801,7 +801,7 @@ body:has(.buybar.on) .whats-fixo{bottom:88px}}
 .tml .lp-hero{position:relative;overflow:clip}
 .tml .lp-hero::before{content:"";position:absolute;left:0;right:0;bottom:0;height:220px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 200%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 120 L120 112 L210 118 L300 96 L338 70 L520 66 L598 74 L640 98 L760 104 L860 86 L898 60 L1120 56 L1178 70 L1220 92 L1340 100 L1440 94%22 fill=%22none%22 stroke=%22%23C8A15A%22 stroke-opacity=%220.55%22 stroke-width=%221.4%22 stroke-linejoin=%22round%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M0 150 L160 140 L260 146 L380 128 L418 110 L560 108 L620 122 L700 138 L840 132 L940 118 L978 102 L1100 100 L1160 116 L1260 134 L1440 128%22 fill=%22none%22 stroke=%22%23C8A15A%22 stroke-opacity=%220.4%22 stroke-width=%221.4%22 stroke-linejoin=%22round%22 vector-effect=%22non-scaling-stroke%22/%3E%3Cpath d=%22M0 182 L140 174 L300 178 L420 166 L520 158 L640 164 L780 176 L920 170 L1040 160 L1180 164 L1300 174 L1440 170%22 fill=%22none%22 stroke=%22%23C8A15A%22 stroke-opacity=%220.28%22 stroke-width=%221.4%22 stroke-linejoin=%22round%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") center/100% 100% no-repeat;pointer-events:none;opacity:.8}
 .tml .lp-hero .wrap{position:relative;z-index:1}
-@media(prefers-reduced-motion:no-preference){.tml .escuro{animation:topo-deriva 120s linear infinite}
+@media(prefers-reduced-motion:no-preference){
 .tml .hero-home::before,.tml .lp-hero::before{animation:serra-respira 9s ease-in-out infinite}}
 @keyframes topo-deriva{from{background-position:0 0}to{background-position:640px 480px}}
 @keyframes serra-respira{0%,100%{opacity:.75}50%{opacity:1}}
