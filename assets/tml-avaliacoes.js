@@ -281,7 +281,7 @@ window.TEMALLI_AVALIACOES = [
 "n": "Brauliohd",
 "d": "2026-06-17",
 "r": 5,
-"t": "Café com aroma muito bom e depois de passado na cafeteira italiana ficou melhor ainda. A cor homogênea do café mostra que não há contaminação c outros vegetais. Sabor muito bom ! Acredito que a torrefação foi exara Meu paladar não é exigente, mas posso afirmar e ponho fé neste café.",
+"t": "Café com aroma muito bom e depois de passado na cafeteira italiana ficou melhor ainda. A cor homogênea do café mostra que não há contaminação com outros vegetais. Sabor muito bom ! Acredito que a torrefação foi exara Meu paladar não é exigente, mas posso afirmar e ponho fé neste café.",
 "v": false,
 "f": []
 },

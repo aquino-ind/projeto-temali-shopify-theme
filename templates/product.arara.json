@@ -53,7 +53,7 @@
         "b5": {
           "type": "garantia",
           "settings": {
-            "texto": "Envio em até 48h após o pedido"
+            "texto": "Envio em até 48h após a compra"
           }
         },
         "b6": {
@@ -71,7 +71,7 @@
         "b8": {
           "type": "garantia",
           "settings": {
-            "texto": "Garantia de satisfação: não gostou, devolvemos seu dinheiro"
+            "texto": "Garantia de satisfação: não gostou, devolvemos o seu dinheiro"
           }
         },
         "b9": {
@@ -219,7 +219,7 @@
         "eyebrow": "Nossa história",
         "titulo": "Uma família, três gerações de café",
         "texto": "O Temalli® nasceu numa fazenda ao pé da Serra da Canastra, de uma família que planta café desde 1985.",
-        "nome_texto": "Temalli é a família em três sílabas: TE de Téo, filho do casal, MA de Mateus e LLI de Lyvia. Um nome que carrega tradição, família e o cuidado de quem planta café desde 1985."
+        "nome_texto": "Temalli é a família em três sílabas: TE de Téo, filho do casal, MA de Mateus e LLI de Lyvia. Um nome que carrega tradição, família e o cuidado de quem planta café."
       },
       "blocks": {
         "b1": {
@@ -227,7 +227,7 @@
           "settings": {
             "ano": "1985",
             "titulo": "Onde tudo começou",
-            "texto": "Orfeu Manenti Filho planta os primeiros pés de café em Piumhi (MG), ao pé da Serra da Canastra, acima de 900 m de altitude. A fazenda ganha o nome da esposa: Maria Ângela."
+            "texto": "Orfeu Manenti Filho planta os primeiros pés de café em Piumhi (MG), ao pé da Serra da Canastra. A fazenda ganha o nome da esposa: Maria Ângela."
           }
         },
         "b2": {
@@ -338,7 +338,7 @@
           "type": "nivel",
           "settings": {
             "nome": "Especial",
-            "criterio": "80+ pontos SCA • até 5 defeitos em 350 g",
+            "criterio": "80+ pontos SCA • até 5 defeitos em 350g",
             "descricao": "Avaliado por provadores certificados na escala da Specialty Coffee Association. Grãos selecionados, sem defeitos graves, com doçura natural e sabor limpo. É aqui que está o Temalli."
           }
         },
@@ -483,7 +483,7 @@
         "b3": {
           "type": "item",
           "settings": {
-            "texto": "<strong>Café de supermercado:</strong> parece economia no rótulo, mas costuma ser torrado escuro para esconder grão defeituoso e mistura"
+            "texto": "<strong>Café de supermercado:</strong> parece economia no rótulo, mas costuma ser torrado escuro para esconder defeitos e misturas"
           }
         }
       },
@@ -505,7 +505,7 @@
           "type": "passo",
           "settings": {
             "titulo": "Pese",
-            "texto": "Cerca de 10 g de café para cada 100 ml de água. A balança tira o acaso da receita.",
+            "texto": "Cerca de 10g de café para cada 100ml de água. A balança tira o acaso da receita.",
             "imagem_padrao": "tml-ritual-pese.webp",
             "alt": "Colher de grãos de café sendo despejada na balança"
           }
@@ -671,21 +671,21 @@
         "b3": {
           "type": "foto",
           "settings": {
-            "imagem_padrao": "tml-av-2026-02-10-talita-m-1.jpg",
-            "alt": "Foto enviada por Talita M.",
-            "legenda": "Muito bom, um ótimo café",
-            "nome": "Talita M.",
-            "data": "fev/2026"
+            "imagem_padrao": "tml-av-2026-07-19-japakobayashi-1.jpg",
+            "alt": "Foto enviada por Japakobayashi",
+            "legenda": "Café de excelência, neste pode confiar!!!",
+            "nome": "Japakobayashi",
+            "data": "jul/2026"
           }
         },
         "b4": {
           "type": "foto",
           "settings": {
-            "imagem_padrao": "tml-av-2026-08-28-pietra-f-1.jpg",
-            "alt": "Foto enviada por Pietra F.",
-            "legenda": "Perfeito",
-            "nome": "Pietra F.",
-            "data": "ago/2026"
+            "imagem_padrao": "tml-av-2025-10-10-eduarda-g-1.jpg",
+            "alt": "Foto enviada por Eduarda G.",
+            "legenda": "Perfeito, sabor incrível",
+            "nome": "Eduarda G.",
+            "data": "out/2025"
           }
         },
         "b5": {
@@ -817,7 +817,7 @@
           "type": "pergunta",
           "settings": {
             "pergunta": "Grão ou moído?",
-            "resposta": "<p>Se você tem moedor, escolha <strong>grão</strong>: moer na hora preserva mais aroma. O <strong>moído</strong> funciona bem em coador, cafeteira elétrica, italiana e prensa francesa.</p>"
+            "resposta": "<p>Se você tem moedor, escolha <strong>grão</strong>: moer na hora preserva mais aroma. O <strong>moído</strong> funciona bem em coador, cafeteira elétrica, italiana e prensa francesa. Para espresso, prefira <strong>grão</strong> e moa bem fino na hora.</p>"
           }
         },
         "b5": {
@@ -831,7 +831,7 @@
           "type": "pergunta",
           "settings": {
             "pergunta": "Qual o prazo de envio?",
-            "resposta": "<p>O pedido é enviado em até 48h após a compra, conforme a modalidade de frete escolhida. Compras acima de R$ 150 têm frete grátis para todo o Brasil.</p>"
+            "resposta": "<p>O pedido é enviado em até 48h após a compra, por transportadora. O prazo de entrega aparece no checkout, antes de você finalizar. Compras acima de R$ 150 têm frete grátis para todo o Brasil.</p>"
           }
         },
         "b7": {
@@ -866,7 +866,8 @@
         "titulo": "Prove uma variedade que pouca gente conhece",
         "texto": "Leve 4 pacotes do Arara, pague 3 e não pague frete. Dá para guardar um e presentear quem gosta de café.",
         "botao": "Quero o kit Arara",
-        "url": "#comprar"
+        "url": "#comprar",
+        "micro": "Compra segura • Envio em até 48h • Atendimento humano • Garantia de satisfação"
       }
     },
     "garantia": {

@@ -34,7 +34,7 @@
         "b5": {
           "type": "garantia",
           "settings": {
-            "texto": "Envio em até 48h após o pedido"
+            "texto": "Envio em até 48h após a compra"
           }
         },
         "b6": {
@@ -52,7 +52,7 @@
         "b8": {
           "type": "garantia",
           "settings": {
-            "texto": "Garantia de satisfação: não gostou, devolvemos seu dinheiro"
+            "texto": "Garantia de satisfação: não gostou, devolvemos o seu dinheiro"
           }
         },
         "b9": {
@@ -79,7 +79,7 @@
         "eyebrow": "O original • Serra da Canastra",
         "produto_avaliacoes": "cafe-torra-media-84-pontos",
         "avaliacao_rotulo": "avaliações de clientes",
-        "subtitulo": "<p>Para quem não aceita mais café comum. Torra média, corpo equilibrado e finalização limpa, com notas naturais de <strong>caramelo, mel, chocolate e frutas</strong>.</p>",
+        "subtitulo": "<p>Café especial 84+ da fazenda da família, na Serra da Canastra. Catuaí natural em torra média, com notas de <strong>caramelo, mel, chocolate e frutas</strong>.</p>",
         "selo": "84+",
         "peso_1": "500g",
         "rende_1": "Cerca de 50 xícaras",
@@ -214,7 +214,7 @@
         "ancora": "historia",
         "eyebrow": "Origem",
         "titulo": "Um café com endereço: Serra da Canastra",
-        "texto": "<p>A maioria dos cafés de mercado mistura grãos de várias origens e torra escuro para disfarçar os defeitos. O Clássico segue o caminho oposto: café com origem conhecida, em <strong>Piumhi, na Serra da Canastra (MG)</strong>, acima de 900 m de altitude.</p><p>Os grãos são colhidos no ponto de maturação, selecionados e torrados em torra média[i:torra], que revela o sabor do grão em vez de escondê-lo. Por isso o caramelo, o mel e o chocolate que você sente vêm do próprio café.</p>",
+        "texto": "<p>A maioria dos cafés de mercado mistura grãos de várias origens e torra escuro para disfarçar os defeitos. O Clássico segue o caminho oposto: café com origem conhecida, em <strong>Piumhi, na Serra da Canastra (MG)</strong>, acima de 900m de altitude.</p><p>Os grãos são colhidos no ponto de maturação, selecionados e torrados em torra média[i:torra], que revela o sabor do grão em vez de escondê-lo. Por isso o caramelo, o mel e o chocolate que você sente vêm do próprio café.</p>",
         "assinatura": "Temalli® Café: feito com respeito à terra e amor à vida.",
         "inverter": false,
         "escuro": false
@@ -228,7 +228,7 @@
           "settings": {
             "ano": "1985",
             "titulo": "Onde tudo começou",
-            "texto": "Orfeu Manenti Filho planta os primeiros pés de café em Piumhi (MG), ao pé da Serra da Canastra, acima de 900 m de altitude. A fazenda ganha o nome da esposa: Maria Ângela."
+            "texto": "Orfeu Manenti Filho planta os primeiros pés de café em Piumhi (MG), ao pé da Serra da Canastra. A fazenda ganha o nome da esposa: Maria Ângela."
           }
         },
         "b2": {
@@ -283,7 +283,7 @@
         "titulo": "Uma família, três gerações de café",
         "texto": "O Temalli® nasceu numa fazenda ao pé da Serra da Canastra, de uma família que planta café desde 1985.",
         "nome_eyebrow": "O nome",
-        "nome_texto": "Temalli é a família em três sílabas: TE de Téo, filho do casal, MA de Mateus e LLI de Lyvia. Um nome que carrega tradição, família e o cuidado de quem planta café desde 1985."
+        "nome_texto": "Temalli é a família em três sílabas: TE de Téo, filho do casal, MA de Mateus e LLI de Lyvia. Um nome que carrega tradição, família e o cuidado de quem planta café."
       }
     },
     "s5": {
@@ -309,8 +309,8 @@
           "type": "pilar",
           "settings": {
             "icone": "folha",
-            "titulo": "Origem conhecida[i:terroir]",
-            "texto": "Piumhi, na Serra da Canastra (MG)."
+            "titulo": "Catuaí natural[i:natural]",
+            "texto": "Variedade tradicional, seca dentro do próprio fruto: mais doçura e corpo."
           }
         },
         "b4": {
@@ -341,7 +341,7 @@
           "type": "nivel",
           "settings": {
             "nome": "Especial",
-            "criterio": "80+ pontos SCA • até 5 defeitos em 350 g",
+            "criterio": "80+ pontos SCA • até 5 defeitos em 350g",
             "descricao": "Avaliado por provadores certificados na escala da Specialty Coffee Association. Grãos selecionados, sem defeitos graves, com doçura natural e sabor limpo. É aqui que está o Temalli."
           }
         },
@@ -489,7 +489,7 @@
         "b3": {
           "type": "item",
           "settings": {
-            "texto": "<strong>Café de supermercado:</strong> parece economia no rótulo, mas costuma ser torrado escuro para esconder grão defeituoso e mistura"
+            "texto": "<strong>Café de supermercado:</strong> parece economia no rótulo, mas costuma ser torrado escuro para esconder defeitos e misturas"
           }
         }
       },
@@ -598,7 +598,7 @@
         "eyebrow": "Extrações",
         "titulo": "Funciona no seu método, qualquer que seja",
         "texto": "A torra média do Clássico extrai bem nos métodos mais usados no Brasil. No espresso, entrega crema e corpo. No coado, fica limpo e adocicado.",
-        "dica": "<b>Dica:</b> use água filtrada, logo antes de ferver (90 a 96 °C), na proporção de 10g de café para 100ml de água.",
+        "dica": "",
         "botao": "Ver receitas e passo a passo de cada método",
         "botao_url": "/pages/como-preparar"
       }
@@ -629,21 +629,21 @@
         "b3": {
           "type": "foto",
           "settings": {
-            "imagem_padrao": "tml-av-2026-02-10-talita-m-1.jpg",
-            "alt": "Foto enviada por Talita M.",
-            "legenda": "Muito bom, um ótimo café",
-            "nome": "Talita M.",
-            "data": "fev/2026"
+            "imagem_padrao": "tml-av-2026-07-19-japakobayashi-1.jpg",
+            "alt": "Foto enviada por Japakobayashi",
+            "legenda": "Café de excelência, neste pode confiar!!!",
+            "nome": "Japakobayashi",
+            "data": "jul/2026"
           }
         },
         "b4": {
           "type": "foto",
           "settings": {
-            "imagem_padrao": "tml-av-2026-08-28-pietra-f-1.jpg",
-            "alt": "Foto enviada por Pietra F.",
-            "legenda": "Perfeito",
-            "nome": "Pietra F.",
-            "data": "ago/2026"
+            "imagem_padrao": "tml-av-2025-10-10-eduarda-g-1.jpg",
+            "alt": "Foto enviada por Eduarda G.",
+            "legenda": "Perfeito, sabor incrível",
+            "nome": "Eduarda G.",
+            "data": "out/2025"
           }
         },
         "b5": {
@@ -719,7 +719,7 @@
         "b12": {
           "type": "depoimento",
           "settings": {
-            "texto": "Café com aroma muito bom e depois de passado na cafeteira italiana ficou melhor ainda. A cor homogênea do café mostra que não há contaminação c outros vegetais. Sabor muito bom!",
+            "texto": "Café com aroma muito bom e depois de passado na cafeteira italiana ficou melhor ainda. A cor homogênea do café mostra que não há contaminação com outros vegetais. Sabor muito bom!",
             "nome": "Brauliohd",
             "data": "jun/2026",
             "estrelas": 5,
@@ -793,7 +793,7 @@
           "type": "pergunta",
           "settings": {
             "pergunta": "Grão ou moído?",
-            "resposta": "<p>Se você tem moedor, escolha <strong>grão</strong>: moer na hora preserva mais aroma. O <strong>moído</strong> funciona bem em coador, cafeteira elétrica, italiana e prensa francesa.</p>"
+            "resposta": "<p>Se você tem moedor, escolha <strong>grão</strong>: moer na hora preserva mais aroma. O <strong>moído</strong> funciona bem em coador, cafeteira elétrica, italiana e prensa francesa. Para espresso, prefira <strong>grão</strong> e moa bem fino na hora.</p>"
           }
         },
         "b4": {
@@ -807,7 +807,7 @@
           "type": "pergunta",
           "settings": {
             "pergunta": "Qual o prazo de envio?",
-            "resposta": "<p>O pedido é enviado em até 48h após a compra, conforme a modalidade de frete escolhida. Compras acima de R$ 150 têm frete grátis para todo o Brasil.</p>"
+            "resposta": "<p>O pedido é enviado em até 48h após a compra, por transportadora. O prazo de entrega aparece no checkout, antes de você finalizar. Compras acima de R$ 150 têm frete grátis para todo o Brasil.</p>"
           }
         },
         "b6": {
@@ -849,11 +849,11 @@
         "citacao": "",
         "citacao_autor": "",
         "citacao_estrelas": "★★★★★",
-        "titulo": "Seu próximo café pode ser o melhor do mês",
+        "titulo": "Seu próximo café merece ser especial",
         "texto": "Leve 4 pacotes do Clássico e pague 3. São 2kg de café especial, e o frete é por nossa conta.",
         "botao": "Quero o kit Clássico",
         "url": "#comprar",
-        "micro": "Compra segura • Envio em até 48h • Atendimento humano"
+        "micro": "Compra segura • Envio em até 48h • Atendimento humano • Garantia de satisfação"
       }
     },
     "ritual": {
@@ -868,7 +868,7 @@
           "type": "passo",
           "settings": {
             "titulo": "Pese",
-            "texto": "Cerca de 10 g de café para cada 100 ml de água. A balança tira o acaso da receita.",
+            "texto": "Cerca de 10g de café para cada 100ml de água. A balança tira o acaso da receita.",
             "imagem_padrao": "tml-ritual-pese.webp",
             "alt": "Colher de grãos de café sendo despejada na balança"
           }
