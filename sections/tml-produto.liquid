@@ -62,6 +62,7 @@
         <form data-buybox data-preco="{{ preco | divided_by: 100.0 }}" data-grao="{{ v_grao }}" data-moido="{{ v_moido }}" onsubmit="return false">
           <fieldset class="grupo">
             <legend>Quantidade</legend>
+            {%- if section.settings.nota_qtd != blank -%}<p class="nota-qtd">{{ section.settings.nota_qtd }}</p>{%- endif -%}
             <div class="opcoes-qtd">
               <label class="opcao">
                 <input type="radio" name="qtd" value="1">
@@ -145,6 +146,7 @@
     { "type": "richtext", "id": "subtitulo", "label": "Descrição curta" },
     { "type": "text", "id": "selo", "label": "Selo de pontuação", "default": "84+" },
     { "type": "header", "content": "Quantidades" },
+    { "type": "text", "id": "nota_qtd", "label": "Nota abaixo de Quantidade", "info": "Ex.: explicar o tamanho do pacote." },
     { "type": "text", "id": "peso_1", "label": "Peso de 1 unidade", "default": "500g" },
     { "type": "text", "id": "rende_1", "label": "Rendimento de 1 unidade", "default": "Cerca de 50 xícaras" },
     { "type": "text", "id": "peso_2", "label": "Peso de 2 unidades", "default": "1kg" },

@@ -1117,3 +1117,6 @@ body.tpl-arara .tml .pir-selo{background:var(--amarelo);color:var(--mata-fundo);
 @keyframes ficha-info{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(2)}}
 
 .tml .hero-home::before,.tml .lp-hero::before{will-change:opacity}
+
+/* nota abaixo de "Quantidade" (ex.: Arara em pacote de 250g) */
+.tml .nota-qtd{margin:-2px 0 10px;font-size:13px;line-height:1.4;color:var(--tinta-2)}

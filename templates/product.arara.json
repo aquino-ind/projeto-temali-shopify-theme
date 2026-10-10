@@ -19,7 +19,8 @@
         "assinatura_texto": "<b>O seu café chega sozinho, sem precisar lembrar de comprar.</b> Assine com frete grátis e receba a cada 1, 2 ou 3 meses.",
         "whats_texto": "Ficou com dúvida? <b>Fale com a gente no WhatsApp</b>.",
         "img_grao_padrao": "tml-formato-arara-graos.jpg",
-        "img_moido_padrao": "tml-formato-arara-moido.jpg"
+        "img_moido_padrao": "tml-formato-arara-moido.jpg",
+        "nota_qtd": "Pacote de 250g: por ser uma variedade rara, o Arara vem em embalagem menor."
       },
       "blocks": {
         "b1": {
@@ -809,39 +810,46 @@
         "b3": {
           "type": "pergunta",
           "settings": {
+            "pergunta": "Por que o Arara custa menos que o Clássico?",
+            "resposta": "<p>Porque o pacote é menor: o Arara vem em <strong>250g</strong>, e o Clássico, em 500g. Comparando o mesmo peso, o Arara é o café mais exclusivo da casa. Por ser uma variedade rara, ele vem em embalagem menor.</p>"
+          }
+        },
+        "b4": {
+          "type": "pergunta",
+          "settings": {
             "pergunta": "Como funciona o Pague 3, Leve 4?",
             "resposta": "<p>Escolha o kit de 4 unidades e pague o preço de 3: {kit} no lugar de {kit_de}. Cada pacote sai por {kit_un}, e o kit ainda tem frete grátis para todo o Brasil.</p><p>Também dá para misturar: a cada 4 pacotes de café Temalli no carrinho, o de menor valor sai de graça.</p>"
           }
         },
-        "b4": {
+        "b5": {
           "type": "pergunta",
           "settings": {
             "pergunta": "Grão ou moído?",
             "resposta": "<p>Se você tem moedor, escolha <strong>grão</strong>: moer na hora preserva mais aroma. O <strong>moído</strong> funciona bem em coador, cafeteira elétrica, italiana e prensa francesa. Para espresso, prefira <strong>grão</strong> e moa bem fino na hora.</p>"
           }
         },
-        "b5": {
+        "b6": {
           "type": "pergunta",
           "settings": {
             "pergunta": "Tem açúcar, aromatizante ou conservante?",
             "resposta": "<p>Não. Zero aditivos. A doçura que você sente vem do próprio grão e da torra correta.</p>"
           }
         },
-        "b6": {
+        "b7": {
           "type": "pergunta",
           "settings": {
             "pergunta": "Qual o prazo de envio?",
             "resposta": "<p>O pedido é enviado em até 48h após a compra, por transportadora. O prazo de entrega aparece no checkout, antes de você finalizar. Compras acima de R$ 150 têm frete grátis para todo o Brasil.</p>"
           }
         },
-        "b7": {
+        "b8": {
           "type": "pergunta",
           "settings": {
             "pergunta": "E se eu não gostar do café?",
             "resposta": "<p>Devolvemos o seu dinheiro. Nossa garantia de satisfação vale para qualquer produto da loja: comprou e não gostou, é só falar com a gente.</p>"
           }
         },
-        "b8": {
+        "b9": {
           "type": "pergunta",
           "settings": {
             "pergunta": "O que significa o nome Temalli?",
@@ -857,7 +865,8 @@
         "b5",
         "b6",
         "b7",
-        "b8"
+        "b8",
+        "b9"
       ]
     },
     "s16": {

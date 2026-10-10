@@ -22,7 +22,7 @@
               <ul class="notas" aria-label="Notas sensoriais">{% for n in notas %}<li>{{ n | strip }}</li>{% endfor %}</ul>
               {%- if p != blank -%}
                 <div class="precos">
-                  <div class="preco-box"><small>1 unidade</small><b>{{ p.price | money }}</b></div>
+                  <div class="preco-box"><small>1 pacote de {{ block.settings.peso }}</small><b>{{ p.price | money }}</b></div>
                   <div class="preco-box kit"><small>Pague 3, Leve 4 + frete grátis</small><b>{{ p.price | times: 3 | money }}</b><s>{{ p.price | times: 4 | money }}</s></div>
                 </div>
               {%- endif -%}
