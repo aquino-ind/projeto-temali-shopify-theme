@@ -1126,3 +1126,6 @@ body.tpl-arara .tml .pir-selo{background:var(--amarelo);color:var(--mata-fundo);
 .tml .galeria .thumbs{order:-1;flex-direction:column;gap:6px;margin-top:0;height:0;min-height:100%;overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory;padding:0}
 .tml .galeria .thumbs button{flex:0 0 48px;width:48px;height:48px;border-radius:8px;scroll-snap-align:start}
 .tml .galeria .principal{border-radius:14px}}
+
+/* celular: menos espaço entre o cabeçalho e a galeria */
+@media(max-width:600px){.tml .lp-hero{padding-top:16px}}
