@@ -11,8 +11,22 @@
   {{- img | image_url: width: w | image_tag: loading: l, alt: alt, class: classe, sizes: s, widths: '400,700,1000,1400' -}}
 {%- elsif asset != blank -%}
   {%- comment -%} arquivos do tema não têm dimensão conhecida: largura/altura informadas evitam salto de layout (o CSS ajusta) {%- endcomment -%}
-  {%- comment -%} asset_p: versão menor do mesmo arquivo (480px), para o navegador escolher pela largura exibida {%- endcomment -%}
-  <img src="{{ asset | asset_url }}"{% if asset_p %} srcset="{{ asset_p | asset_url }} 480w, {{ asset | asset_url }} {{ w }}w" sizes="{{ s }}"{% endif %} alt="{{ alt | escape }}" loading="{{ l }}" width="{{ w }}" height="{{ altura | default: w }}"{% if classe %} class="{{ classe }}"{% endif %}>
+  {%- comment -%}
+    asset_p: versão menor do mesmo arquivo (480px), para o navegador escolher pela largura exibida.
+    Sem asset_p, a CDN da Shopify gera os tamanhos (&width=, o asset_url já traz ?v=): 360, 540, 720 e 900px até a largura pedida.
+  {%- endcomment -%}
+  {%- assign u = asset | asset_url -%}
+  {%- assign src = u -%}
+  {%- assign conj = '' -%}
+  {%- if asset_p -%}
+    {%- capture conj -%}{{ asset_p | asset_url }} 480w, {{ u }} {{ w }}w{%- endcapture -%}
+  {%- elsif w >= 500 -%}
+    {%- unless asset contains '.svg' -%}
+      {%- capture src -%}{{ u }}&width={{ w }}{%- endcapture -%}
+      {%- capture conj -%}{% for x in (1..4) %}{% assign lx = x | times: 180 | plus: 180 %}{% if lx < w %}{{ u }}&width={{ lx }} {{ lx }}w, {% endif %}{% endfor %}{{ src }} {{ w }}w{%- endcapture -%}
+    {%- endunless -%}
+  {%- endif -%}
+  <img src="{{ src }}"{% if conj != '' %} srcset="{{ conj }}" sizes="{{ s }}"{% endif %} alt="{{ alt | escape }}" loading="{{ l }}" width="{{ w }}" height="{{ altura | default: w }}"{% if classe %} class="{{ classe }}"{% endif %}>
 {%- elsif produto.featured_image -%}
   {{- produto.featured_image | image_url: width: w | image_tag: loading: l, alt: alt, class: classe, sizes: s, widths: '400,700,1000,1400' -}}
 {%- endif -%}

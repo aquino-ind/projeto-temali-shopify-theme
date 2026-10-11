@@ -456,7 +456,7 @@
       "type": "tml-conta",
       "settings": {
         "titulo": "Café especial custa menos do que parece",
-        "intro": "<p>Um pacote de 250g do Temalli Arara rende cerca de 25 xícaras (10g de café para 100ml de água). O pacote menor acaba enquanto o café ainda está no auge do frescor.</p>",
+        "intro": "<p>Um pacote de 250g do Temalli Arara rende cerca de 25 xícaras (10g de café por xícara de 150ml). O pacote menor acaba enquanto o café ainda está no auge do frescor.</p>",
         "destaque": "No kit: {kit} ÷ 100 xícaras = <strong>{por_xicara} por xícara</strong>",
         "xicaras_kit": 100,
         "fecho": "Caro é pagar todo dia por um café que precisa de açúcar para descer."
@@ -499,7 +499,7 @@
           "type": "passo",
           "settings": {
             "titulo": "Pese",
-            "texto": "Cerca de 10g de café para cada 100ml de água. A balança tira o acaso da receita.",
+            "texto": "Cerca de 10g de café para cada xícara de 150ml. A balança tira o acaso da receita.",
             "imagem_padrao": "tml-ritual-pese.webp",
             "alt": "Colher de grãos de café sendo despejada na balança"
           }

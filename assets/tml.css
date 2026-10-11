@@ -265,7 +265,7 @@ body.tpl-arara .tml .opcao .tag{background:var(--amarelo);color:var(--mata-fundo
 .tml .garantias li{display:flex;gap:8px;align-items:flex-start}
 .tml .garantias svg{width:18px;height:18px;flex-shrink:0;color:var(--acento);margin-top:1px}
 .tml .whats-mini{display:flex;align-items:center;gap:12px;margin-top:22px;padding:14px 16px;border-radius:12px;background:var(--creme-2);font-size:14px;text-decoration:none}
-.tml .whats-mini b{color:#1F7A4D}
+.tml .whats-mini b{color:#1A6E45}
 .tml .perfil-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 @media(max-width:860px){.tml .perfil-grid{grid-template-columns:1fr;gap:32px}}
 .tml .barras{display:grid;gap:20px}
@@ -405,7 +405,7 @@ body.tpl-arara .tml .kit-faixa{color:var(--mata-fundo)}
 .tml .opcao.kit .opcao-txt small{color:rgba(251,249,244,.8);font-size:14px}
 .tml .kit-selos{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .tml .selo-eco,.tml .selo-frete{font-size:11.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:6px;line-height:1.2}
-.tml .selo-eco{background:#2FA36B;color:#fff}
+.tml .selo-eco{background:#1F7A4D;color:#fff}
 .tml .selo-frete{background:rgba(251,249,244,.14);color:var(--papel);border:1px solid rgba(251,249,244,.35)}
 .tml .opcao.kit .valor s{color:rgba(251,249,244,.6)}
 .tml .opcao.kit .valor b{font-size:2.8rem;color:var(--papel)}
@@ -415,7 +415,7 @@ body.tpl-arara .tml .kit-faixa{color:var(--mata-fundo)}
 .tml .pac svg{width:22px;height:29px;display:block}
 .tml .pac.gratis{color:var(--kit-faixa)}
 .tml .pac.gratis i{position:absolute;left:30px;bottom:6px;font-style:normal;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--kit-faixa);white-space:nowrap}
-.tml .resumo span small{display:block;font-size:13px;font-weight:700;color:#1F8A55;margin-top:2px}
+.tml .resumo span small{display:block;font-size:13px;font-weight:700;color:#1A6E45;margin-top:2px}
 @media(max-width:420px){.tml .kit-corpo{flex-wrap:wrap}
 .tml .opcao.kit .valor{margin-left:34px}
 .tml .kit-faixa{font-size:11.5px;letter-spacing:.08em}}
@@ -515,7 +515,7 @@ body.tpl-arara .tml .selo-frete{color:var(--mata-fundo)}
 .tml .m-total{border-top:1px dashed rgba(243,239,230,.25);padding-top:10px;margin-top:4px}
 .tml .m-total dd{font-family:var(--display);font-size:2.56rem;font-weight:600}
 .tml .m-obs{font-size:12.5px;opacity:.65;margin:12px 0 18px}
-.tml .m-resumo .btn-whats{background:#25A162;box-shadow:0 10px 24px rgba(37,161,98,.35);font-size:15px}
+.tml .m-resumo .btn-whats{background:#1F7A4D;box-shadow:0 10px 24px rgba(31,122,77,.3);font-size:15px}
 .tml .m-resumo .btn-whats[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
 .tml .m-aviso{color:#FFB4A8;font-size:14px;font-weight:600;text-align:center;margin-top:10px}
 .tml .m-resumo .micro{color:rgba(243,239,230,.6)}
@@ -734,7 +734,7 @@ body:has(.buybar.on) .whats-fixo{bottom:88px}}
 .tml .gav-fechar{width:42px;height:42px;border-radius:50%;border:1px solid var(--linha);background:var(--creme);font-size:24px;line-height:1;cursor:pointer}
 .tml .gav-frete{padding:14px 20px;background:var(--papel);border-bottom:1px solid var(--linha);font-size:14px}
 .tml .gav-frete b{color:var(--marinho)}
-.tml .gav-frete.ok b{color:#1F8A55}
+.tml .gav-frete.ok b{color:#1A6E45}
 .tml .gav-trilho{height:7px;border-radius:99px;background:var(--creme-2);margin-top:9px;overflow:hidden}
 .tml .gav-trilho i{display:block;height:100%;border-radius:99px;background:var(--dourado);width:var(--p);transition:width .5s ease}
 .tml .gav-frete.ok .gav-trilho i{background:#2FA36B}
@@ -747,7 +747,7 @@ body:has(.buybar.on) .whats-fixo{bottom:88px}}
 .tml .gav-var{display:block;font-size:13px;color:var(--tinta-2);margin-top:2px}
 .tml .gav-preco{text-align:right;white-space:nowrap;font-weight:700}
 .tml .gav-preco s{display:block;font-size:12px;font-weight:500;color:var(--tinta-2)}
-.tml .gav-desc{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;color:#1F8A55;background:rgba(47,163,107,.1);padding:3px 8px;border-radius:6px}
+.tml .gav-desc{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;color:#1A6E45;background:rgba(47,163,107,.1);padding:3px 8px;border-radius:6px}
 .tml .gav-linha2{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
 .tml .gav-qtd{display:flex;align-items:center;border:1.5px solid var(--linha);border-radius:99px;background:var(--papel)}
 .tml .gav-qtd button{width:34px;height:34px;border:0;background:none;font-size:18px;cursor:pointer;color:var(--tinta)}
@@ -765,7 +765,7 @@ body:has(.buybar.on) .whats-fixo{bottom:88px}}
 .tml .gav-sug button{border:1.5px solid var(--tinta);background:none;border-radius:99px;padding:8px 14px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--tinta)}
 .tml .gav-sug button:hover{background:var(--tinta);color:var(--papel)}
 .tml .gav-rodape{padding:16px 20px calc(16px + env(safe-area-inset-bottom));border-top:1px solid var(--linha);background:var(--papel)}
-.tml .gav-eco{display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:#1F8A55;margin-bottom:6px}
+.tml .gav-eco{display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:#1A6E45;margin-bottom:6px}
 .tml .gav-total{display:flex;justify-content:space-between;align-items:baseline}
 .tml .gav-total span{font-size:14px;color:var(--tinta-2)}
 .tml .gav-total b{font-family:var(--display);font-size:3.04rem;font-weight:600}
@@ -1165,3 +1165,10 @@ body.tpl-arara .tml .gav-up-btn{color:var(--mata-fundo)}
 .tml .hero-prova{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin:-6px 0 24px;font-size:14px;color:var(--tinta-2)}
 .tml .hero-prova .estrelas{color:var(--dourado);letter-spacing:2px;font-size:15px}
 .tml .hero-prova b{color:var(--tinta)}
+.tml .preco-rapido{display:none}
+.tml #opcoes{scroll-margin-top:90px}
+@media(max-width:760px){.tml .preco-rapido{display:block;margin:-4px 0 14px;font-size:14px;color:var(--tinta-2);text-decoration:none}
+.tml .preco-rapido b{color:var(--tinta);font-size:15px}}
+.tml .av-topo,.tml .av-filtros{flex-shrink:0}
+/* editor da Shopify: seções sempre visíveis (a seção recarregada não passa pelo revelar ao rolar) */
+.shopify-design-mode .tml .reveal{opacity:1;transform:none}

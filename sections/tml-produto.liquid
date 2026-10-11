@@ -26,7 +26,7 @@
           {%- assign primeira = p.featured_media -%}
           {%- if primeira -%}
             {%- assign alt_img = primeira.alt | default: nome -%}
-            {{ primeira | image_url: width: 1100 | image_tag: loading: 'eager', fetchpriority: 'high', preload: true, alt: alt_img, sizes: '(max-width: 900px) 100vw, 55vw', widths: '400,600,800,1100' }}
+            {{ primeira | image_url: width: 1100 | image_tag: loading: 'eager', fetchpriority: 'high', preload: true, alt: alt_img, sizes: '(max-width: 760px) calc(100vw - 96px), (max-width: 900px) calc(100vw - 40px), 560px', widths: '400,600,800,900,1100' }}
           {%- endif -%}
           {%- if p.media.size > 1 -%}<button type="button" class="gal-nav ant" data-gal-ant aria-label="Foto anterior">‹</button><button type="button" class="gal-nav prox" data-gal-prox aria-label="Próxima foto">›</button><span class="gal-cont">1 / {{ p.media.size }}</span>{%- endif -%}
           {%- if section.settings.selo != blank -%}<div class="selo-84" aria-label="{{ section.settings.selo }} pontos na escala SCA"><b>{{ section.settings.selo }}</b><span>pontos SCA</span></div>{%- endif -%}
@@ -51,6 +51,8 @@
             {{ nota | times: 1.0 | round: 2 | replace: '.', ',' }} • <a href="#avaliacoes">{{ total_av }} {{ section.settings.avaliacao_rotulo }}</a>
           </div>
         {%- endif -%}
+        {%- comment -%} só no celular: o preço aparece já na primeira tela, com atalho para as opções {%- endcomment -%}
+        <a class="preco-rapido" href="#opcoes"><b>{{ preco | money }}</b> • no kit de 4, {{ kit_un | money }} por pacote</a>
         <div class="sub">{% render 'tml-texto', t: section.settings.subtitulo %}</div>
 
         <div class="ficha">
@@ -59,7 +61,7 @@
           {%- endfor -%}
         </div>
 
-        <form data-buybox data-preco="{{ preco | divided_by: 100.0 }}" data-grao="{{ v_grao }}" data-moido="{{ v_moido }}" onsubmit="return false">
+        <form id="opcoes" data-buybox data-preco="{{ preco | divided_by: 100.0 }}" data-grao="{{ v_grao }}" data-moido="{{ v_moido }}" onsubmit="return false">
           <fieldset class="grupo">
             <legend>Quantidade</legend>
             {%- if section.settings.nota_qtd != blank -%}<p class="nota-qtd">{{ section.settings.nota_qtd }}</p>{%- endif -%}

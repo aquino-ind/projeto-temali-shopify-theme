@@ -30,7 +30,7 @@
         {%- for block in section.blocks -%}
           {%- if block.type == 'foto' -%}
             <figure {{ block.shopify_attributes }}>
-              {% render 'tml-imagem', img: block.settings.imagem, asset: block.settings.imagem_padrao, alt: block.settings.alt, largura: 600 %}
+              {% render 'tml-imagem', img: block.settings.imagem, asset: block.settings.imagem_padrao, alt: block.settings.alt, largura: 600, altura: 800, sizes: '(max-width: 760px) 66vw, 270px' %}
               <figcaption>“{{ block.settings.legenda }}”<b>{{ block.settings.nome }} • {{ block.settings.data }}</b></figcaption>
             </figure>
           {%- endif -%}
