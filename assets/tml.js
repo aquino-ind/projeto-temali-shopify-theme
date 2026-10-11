@@ -689,10 +689,9 @@
   try {
     (function(){
       var rod = document.querySelector('footer.site'); if(!rod) return;
-      // céu pela hora de quem visita: dia 6h–17h, entardecer 17h–19h, noite no resto (?ceu=dia|entardecer|noite para testar)
-      var h = new Date().getHours(), forcado = (location.search.match(/[?&]ceu=(dia|entardecer|noite)/) || [])[1];
-      var momento = forcado || (h >= 6 && h < 17 ? 'dia' : h >= 17 && h < 19 ? 'entardecer' : 'noite');
-      if(momento !== 'noite'){ rod.classList.add('ceu-' + momento); }
+      // céu pela hora de quem visita: dia (creme) 6h–18h, noite no resto (?ceu=dia|noite para testar)
+      var h = new Date().getHours(), forcado = (location.search.match(/[?&]ceu=(dia|noite)/) || [])[1];
+      if((forcado || (h >= 6 && h < 18 ? 'dia' : 'noite')) === 'dia'){ rod.classList.add('ceu-dia'); }
       // cor do que encosta no rodapé: desce da <main> sempre pelo filho que chega até a borda do rodapé
       // e guarda o último fundo opaco de largura total (body se nenhum). Não depende de ser <section>.
       var topo = rod.getBoundingClientRect().top, fundoAcima = getComputedStyle(document.body).backgroundColor;

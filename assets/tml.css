@@ -811,15 +811,18 @@ body:has(.buybar.on) .whats-fixo{bottom:88px}}
 
 .tml footer.site::before{background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1440 60%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 44 L120 40 L210 44 L300 30 L338 14 L520 12 L598 18 L640 34 L760 38 L860 28 L898 10 L1120 8 L1178 18 L1220 32 L1340 36 L1440 32 L1440 60 L0 60 Z%22 fill=%22%23111C33%22/%3E%3Cpath d=%22M0 44 L120 40 L210 44 L300 30 L338 14 L520 12 L598 18 L640 34 L760 38 L860 28 L898 10 L1120 8 L1178 18 L1220 32 L1340 36 L1440 32%22 fill=%22none%22 stroke=%22%23C8A15A%22 stroke-opacity=%22.45%22 stroke-width=%221.2%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E") center bottom/100% 100% no-repeat}
 
-/* RODAPÉ-SERRA início: gerado por ferramentas/serra_rodape.py (não editar à mão). Dia, entardecer e noite pela hora de quem visita; sobre-escuro = seção de cima escura */
-.tml footer.site{position:relative;padding-top:460px;background:linear-gradient(to bottom,var(--cor-acima,var(--creme)) 0,var(--cor-acima,var(--creme)) 140px,var(--marinho-fundo) 140px)}
+/* RODAPÉ-SERRA início: gerado por ferramentas/serra_rodape.py (não editar à mão). Dia (creme) e noite pela hora de quem visita; sobre-escuro = seção de cima escura */
+.tml footer.site{position:relative;padding-top:460px;background:linear-gradient(to bottom,var(--cor-acima,var(--creme)) 0,var(--cor-acima,var(--creme)) 140px,var(--rodape-fundo,var(--marinho-fundo)) 140px)}
 .tml footer.site::before{content:"";position:absolute;left:0;right:0;top:0;bottom:auto;height:450px;background:url("tml-serra-noite-claro.svg?v=c6d73b3e") center bottom/cover no-repeat;pointer-events:none}
 .tml footer.site.sobre-escuro::before{background-image:url("tml-serra-noite-escuro.svg?v=52aa8f98")}
-.tml footer.site.ceu-entardecer::before{background-image:url("tml-serra-entardecer-claro.svg?v=4006159e")}
-.tml footer.site.ceu-entardecer.sobre-escuro::before{background-image:url("tml-serra-entardecer-escuro.svg?v=06ae8663")}
-.tml footer.site.ceu-dia::before{background-image:url("tml-serra-dia-claro.svg?v=95e9a1af")}
-.tml footer.site.ceu-dia.sobre-escuro::before{background-image:url("tml-serra-dia-escuro.svg?v=e9713ae7")}
-@media(max-width:760px){.tml footer.site{padding-top:260px;background:linear-gradient(to bottom,var(--cor-acima,var(--creme)) 0,var(--cor-acima,var(--creme)) 76px,var(--marinho-fundo) 76px)}.tml footer.site::before{height:250px;background-position:64% 100%}}
+.tml footer.site.ceu-dia::before{background-image:url("tml-serra-dia-claro.svg?v=f14208f5")}
+.tml footer.site.ceu-dia.sobre-escuro::before{background-image:url("tml-serra-dia-escuro.svg?v=da26822c")}
+.tml footer.site.ceu-dia{--rodape-fundo:#EEE8DB;color:var(--tinta-2)}
+.tml footer.site.ceu-dia .logo{color:var(--marinho)}
+.tml footer.site.ceu-dia h4{color:#7E5F27}
+.tml footer.site.ceu-dia a:hover,.tml footer.site.ceu-dia .rodape-pol a:hover{color:var(--tinta)}
+.tml footer.site.ceu-dia .rodape-fim{border-top-color:var(--linha)}
+@media(max-width:760px){.tml footer.site{padding-top:260px;background:linear-gradient(to bottom,var(--cor-acima,var(--creme)) 0,var(--cor-acima,var(--creme)) 76px,var(--rodape-fundo,var(--marinho-fundo)) 76px)}.tml footer.site::before{height:250px;background-position:64% 100%}}
 /* RODAPÉ-SERRA fim */
 
 /* ===== PIRÂMIDE DA QUALIDADE (espelho do protótipo) ===== */
@@ -1101,7 +1104,7 @@ body.tpl-arara .tml .pir-selo{background:var(--amarelo);color:var(--mata-fundo);
 .tml .rodape-serra{position:absolute;left:0;right:0;top:178px;z-index:1;margin:0;padding:0 16px;text-align:center;pointer-events:none;
   font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(2.4rem,3vw,4rem);line-height:1.1;letter-spacing:.01em;
   color:rgba(251,249,244,.92);text-shadow:0 1px 18px rgba(17,28,51,.35)}
-.tml footer.site.ceu-dia .rodape-serra{color:#fff;text-shadow:0 1px 14px rgba(28,46,82,.45)}
+.tml footer.site.ceu-dia .rodape-serra{color:var(--marinho);text-shadow:none}
 @media(max-width:760px){.tml .rodape-serra{top:88px;font-size:2rem}}
 @media(prefers-reduced-motion:no-preference){.tml .rodape-serra.reveal{opacity:0;transform:translateY(10px)}
 .tml .rodape-serra.reveal.on{opacity:1;transform:none;transition:opacity 1.2s ease .2s,transform 1.2s cubic-bezier(.2,.8,.2,1) .2s}}
