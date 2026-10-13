@@ -1204,3 +1204,5 @@ html.tml-ass-online .m-resumo dl div.so-online{display:flex!important;align-item
 .tml .m-online .m-resumo .m-total:not(.m-valor) dd{font-family:inherit;font-size:15px;font-weight:600}
 .tml .m-online .m-resumo .m-valor dt{opacity:1;font-weight:600}
 .tml .m-online .m-resumo .m-valor dd{font-size:3.36rem;color:var(--dourado-claro)}
+.tml .m-proxima{margin:-6px 0 14px;font-size:13px;line-height:1.45;color:var(--dourado-claro)}
+.tml .m-proxima[hidden]{display:none}

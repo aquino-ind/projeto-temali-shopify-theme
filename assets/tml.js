@@ -281,12 +281,17 @@
         return itens;
       }
       function freqAtual(){ return m.querySelector('input[name="freq"]:checked'); }
+      // Desconto do CRM: fixo (regras.desconto) ou progressivo pela quantidade de pacotes (regras.faixas)
+      function faixaPara(qtd){ var f = null; (regras && regras.faixas || []).forEach(function(x){ if(qtd >= x.minimo){ f = x; } }); return f; }
+      function proximaPara(qtd){ var f = null; (regras && regras.faixas || []).forEach(function(x){ if(!f && x.minimo > qtd){ f = x; } }); return f; }
       function conta(itens){
         var sub = itens.reduce(function(s, c){ return s + c.preco * c.qtd; }, 0);
-        var d = regras && regras.desconto, desc = 0;
+        var qtd = itens.reduce(function(s, c){ return s + c.qtd; }, 0);
+        var faixa = faixaPara(qtd);
+        var d = faixa ? { tipo: 'percentual', valor: faixa.percentual } : (regras && regras.desconto), desc = 0;
         if(d){ desc = d.tipo === 'percentual' ? sub * Math.min(d.valor, 100) / 100 : d.valor; desc = Math.round(Math.min(desc, sub) * 100) / 100; }
         var frete = regras ? regras.frete.valor : 0;
-        return { sub: sub, desc: desc, frete: frete, total: Math.round((sub - desc + frete) * 100) / 100 };
+        return { sub: sub, desc: desc, pct: d && d.tipo === 'percentual' ? d.valor : null, qtd: qtd, frete: frete, total: Math.round((sub - desc + frete) * 100) / 100 };
       }
       function atualiza(){
         var itens = estado();
@@ -300,7 +305,14 @@
         if(regras){
           var linhaDesc = m.querySelector('[data-resumo-desconto]');
           linhaDesc.hidden = !c.desc;
-          linhaDesc.querySelector('dt').textContent = regras.desconto ? regras.desconto.motivo : 'Desconto';
+          linhaDesc.querySelector('dt').textContent = (regras.desconto ? regras.desconto.motivo : (regras.descontoNome || 'Assinante')) + (c.pct ? ' · ' + String(c.pct).replace('.', ',') + '%' : '');
+          // Progressivo: mostra quanto falta para a próxima faixa
+          var avisoFaixa = m.querySelector('[data-proxima]'), prox = proximaPara(c.qtd);
+          if(avisoFaixa){
+            var falta = prox ? prox.minimo - c.qtd : 0;
+            avisoFaixa.hidden = !prox || !c.qtd;
+            if(prox){ avisoFaixa.textContent = 'Adicione mais ' + falta + (falta === 1 ? ' pacote' : ' pacotes') + ' e o desconto sobe para ' + String(prox.percentual).replace('.', ',') + '%.'; }
+          }
           linhaDesc.querySelector('dd').textContent = '−' + brl(c.desc);
           m.querySelector('[data-resumo-frete]').textContent = c.frete ? regras.frete.nome + ' · ' + brl(c.frete) : 'Grátis';
           m.querySelector('[data-resumo-valor]').textContent = brl(c.total);
