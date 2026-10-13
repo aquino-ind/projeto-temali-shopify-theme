@@ -108,6 +108,326 @@
       ]
     },
     "s4": {
+      "type": "tml-texto-imagem",
+      "settings": {
+        "ancora": "historia",
+        "eyebrow": "Origem",
+        "titulo": "Um café com endereço: Serra da Canastra",
+        "texto": "<p>A maioria dos cafés de mercado mistura grãos de várias origens e torra escuro para disfarçar os defeitos. O Temalli Clássico segue o caminho oposto: café com origem conhecida, em <strong>Piumhi, na Serra da Canastra (MG)</strong>, acima de 900m de altitude.</p><p>Os grãos são colhidos no ponto de maturação, selecionados e torrados em torra média[i:torra], que revela o sabor do grão em vez de escondê-lo. Por isso o caramelo, o chocolate e as frutas que você sente vêm do próprio café.</p>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-origem-florada.webp",
+            "alt": "Galho de cafeeiro coberto de flores brancas",
+            "legenda": "Florada do cafezal"
+          }
+        },
+        "b2": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-origem-mudas-1.webp",
+            "alt": "Mudas jovens de café em saquinhos de terra vermelha",
+            "legenda": "Mudas de café"
+          }
+        },
+        "b3": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-origem-viveiro.webp",
+            "alt": "Viveiro com tela de sombreamento e fileiras de mudas",
+            "legenda": "Viveiro de mudas"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "s5": {
+      "type": "tml-familia",
+      "settings": {
+        "eyebrow": "Nossa história",
+        "titulo": "Uma família, três gerações de café",
+        "texto": "O Temalli® nasceu numa fazenda ao pé da Serra da Canastra, de uma família que planta café desde 1985.",
+        "nome_texto": "Temalli é a família em três sílabas: TE de Téo, filho do casal, MA de Mateus e LLI de Lyvia. Um nome que carrega tradição, família e o cuidado de quem planta café."
+      },
+      "blocks": {
+        "b1": {
+          "type": "marco",
+          "settings": {
+            "ano": "1985",
+            "titulo": "Onde tudo começou",
+            "texto": "Orfeu Manenti Filho planta os primeiros pés de café em Piumhi (MG), ao pé da Serra da Canastra. A fazenda ganha o nome da esposa: Maria Ângela."
+          }
+        },
+        "b2": {
+          "type": "marco",
+          "settings": {
+            "ano": "De pai para filho",
+            "titulo": "O ofício passado adiante",
+            "texto": "Mateus Baggio Manenti cresce na lavoura aprendendo com o pai o que o café exige: paciência, colheita seletiva, secagem em terreiro suspenso[i:suspensa] e grãos escolhidos à mão."
+          }
+        },
+        "b3": {
+          "type": "marco",
+          "settings": {
+            "ano": "Hoje",
+            "titulo": "O café que ia para fora",
+            "texto": "Por muitos anos, os melhores cafés do Brasil foram embarcados para fora do país. Mateus e Lyvia Mendes criaram o Temalli® para servir aqui o café de padrão exportação: aquele que não precisa de açúcar para ser apreciado."
+          }
+        },
+        "b4": {
+          "type": "silaba",
+          "settings": {
+            "silaba": "TE",
+            "nome": "Téo"
+          }
+        },
+        "b5": {
+          "type": "silaba",
+          "settings": {
+            "silaba": "MA",
+            "nome": "Mateus"
+          }
+        },
+        "b6": {
+          "type": "silaba",
+          "settings": {
+            "silaba": "LLI",
+            "nome": "Lyvia"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ]
+    },
+    "s6": {
+      "type": "tml-piramide",
+      "settings": {
+        "texto": "Todo café vendido no Brasil cabe em uma destas faixas. O que separa uma da outra é a quantidade de defeitos[i:defeitos] no grão e, no topo, a nota dada por provadores da SCA[i:sca].",
+        "selo": "84+",
+        "selo_rotulo": "Temalli Clássico está aqui",
+        "fecho": "Quanto mais defeitos, mais escura a torra precisa ser para disfarçar. Por isso o café tradicional amarga e pede açúcar.",
+        "fonte": "Fontes: SCA (Specialty Coffee Association) para o café especial; ABIC (Associação Brasileira da Indústria de Café) para as categorias Gourmet, Superior, Tradicional e Extraforte."
+      },
+      "blocks": {
+        "b1": {
+          "type": "nivel",
+          "settings": {
+            "nome": "Especial",
+            "criterio": "80+ pontos SCA • até 5 defeitos em 350g",
+            "descricao": "Avaliado por provadores certificados na escala da Specialty Coffee Association. Grãos selecionados, sem defeitos graves, com doçura natural e sabor limpo. É aqui que está o Temalli."
+          }
+        },
+        "b2": {
+          "type": "nivel",
+          "settings": {
+            "nome": "Gourmet",
+            "criterio": "até 25 defeitos",
+            "descricao": "Boa seleção de grãos e sabor agradável, mas sem a avaliação sensorial que define um café especial."
+          }
+        },
+        "b3": {
+          "type": "nivel",
+          "settings": {
+            "nome": "Superior",
+            "criterio": "até 86 defeitos",
+            "descricao": "Qualidade intermediária. Já admite grãos verdes, quebrados e ardidos na mistura."
+          }
+        },
+        "b4": {
+          "type": "nivel",
+          "settings": {
+            "nome": "Tradicional",
+            "criterio": "até 360 defeitos",
+            "descricao": "A maior parte do café de supermercado. Mistura grãos pretos, ardidos e brocados, e por isso é torrado bem escuro para disfarçar o sabor."
+          }
+        },
+        "b5": {
+          "type": "nivel",
+          "settings": {
+            "nome": "Extraforte",
+            "criterio": "até 360 defeitos • torra muito escura",
+            "descricao": "Mesma faixa de qualidade do tradicional, com torra ainda mais escura. O amargor forte esconde os defeitos, mas também todo o sabor natural do grão."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ]
+    },
+    "s7": {
+      "type": "tml-depoimentos",
+      "settings": {
+        "ancora": "depoimentos",
+        "produto": "cafe-torra-media-84-pontos",
+        "eyebrow": "Depoimentos",
+        "titulo": "Quem toma, recomenda",
+        "aviso": "Depoimentos reais de clientes, publicados no Judge.me, a plataforma de avaliações da nossa loja."
+      },
+      "blocks": {
+        "b1": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-av-2026-03-11-fl-vio-s-1.jpg",
+            "alt": "Foto enviada por Flávio S.",
+            "legenda": "Torra na medida certa para espresso e coado",
+            "nome": "Flávio S.",
+            "data": "mar/2026"
+          }
+        },
+        "b2": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-av-2026-01-19-an-nimo-1.jpg",
+            "alt": "Foto enviada por Anônimo",
+            "legenda": "Até meu pai, que só tomava adoçado, agora toma",
+            "nome": "Anônimo",
+            "data": "jan/2026"
+          }
+        },
+        "b3": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-av-2026-07-19-japakobayashi-1.jpg",
+            "alt": "Foto enviada por Japakobayashi",
+            "legenda": "Café de excelência, neste pode confiar!!!",
+            "nome": "Japakobayashi",
+            "data": "jul/2026"
+          }
+        },
+        "b4": {
+          "type": "foto",
+          "settings": {
+            "imagem_padrao": "tml-av-2025-10-10-eduarda-g-1.jpg",
+            "alt": "Foto enviada por Eduarda G.",
+            "legenda": "Perfeito, sabor incrível",
+            "nome": "Eduarda G.",
+            "data": "out/2025"
+          }
+        },
+        "b5": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Café delicioso, o aroma que sobe desde quando estou moendo ele, a crema que ele produz na máquina espresso e o sabor final, todo mundo aqui em casa ama, até meu pai que tinha medo de tomar café sem adoçar, agora está tomando.",
+            "nome": "Anônimo",
+            "data": "jan/2026",
+            "estrelas": 5,
+            "verificado": true
+          }
+        },
+        "b6": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Aqui só tomamos Temalli... Café equilibrado, forte na medida certa. Seja pra coado ou espresso agradou demais por aqui.",
+            "nome": "Lucas U.",
+            "data": "jun/2026",
+            "estrelas": 5,
+            "verificado": false
+          }
+        },
+        "b7": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "O melhor café especial que já tomei. Estou levando de presente para amigos nos EUA.",
+            "nome": "Tarcísio I.",
+            "data": "mai/2026",
+            "estrelas": 5,
+            "verificado": true
+          }
+        },
+        "b8": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Excelente café, grãos selecionados e torra na medida certa tanto para o espresso quanto para um método coado! Um café versátil que agrada o paladar!",
+            "nome": "Flávio S.",
+            "data": "mar/2026",
+            "estrelas": 5,
+            "verificado": true
+          }
+        },
+        "b9": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "O melhor café que já provei, amo ter sempre em casa. Qualidade sem igual. Indico muito",
+            "nome": "Karolinafbischoff",
+            "data": "jul/2026",
+            "estrelas": 5,
+            "verificado": false
+          }
+        },
+        "b10": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Ótimo café e ótimo atendimento, mandam atualizações desde o início da compra até a chegada.",
+            "nome": "Renatosbueno",
+            "data": "ago/2026",
+            "estrelas": 5,
+            "verificado": true
+          }
+        },
+        "b11": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "O melhor café brasileiro. Grãos bonitos, torra perfeita.",
+            "nome": "Mariana G.",
+            "data": "mar/2026",
+            "estrelas": 5,
+            "verificado": true
+          }
+        },
+        "b12": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Café com aroma muito bom e depois de passado na cafeteira italiana ficou melhor ainda. A cor homogênea do café mostra que não há contaminação com outros vegetais. Sabor muito bom!",
+            "nome": "Brauliohd",
+            "data": "jun/2026",
+            "estrelas": 5,
+            "verificado": false
+          }
+        },
+        "b13": {
+          "type": "depoimento",
+          "settings": {
+            "texto": "Café gostoso, suave, perfeito para beber a qualquer hora! Atendimento rápido e eficiente. Entrega no prazo em embalagem bem protegida!",
+            "nome": "Anônimo",
+            "data": "jul/2026",
+            "estrelas": 5,
+            "verificado": false
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13"
+      ]
+    },
+    "s8": {
       "type": "tml-cta-final",
       "settings": {
         "eyebrow": "Vocês pediram",
@@ -120,7 +440,7 @@
         "micro": ""
       }
     },
-    "s5": {
+    "s9": {
       "type": "tml-faq",
       "settings": {
         "eyebrow": "Dúvidas sobre a assinatura"
@@ -191,7 +511,7 @@
         "b7"
       ]
     },
-    "s6": {
+    "s10": {
       "type": "tml-whatsapp",
       "settings": {
         "titulo": "Prefere conversar antes?",
@@ -206,6 +526,10 @@
     "s3",
     "s4",
     "s5",
-    "s6"
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10"
   ]
 }
