@@ -134,6 +134,31 @@
 </div>
 <script type="application/ld+json">{{ p | structured_data }}</script>
 
+{%- if product == blank and p != blank -%}
+  {%- comment -%}
+    Fora da página do produto (ex.: home de pré-lançamento, que é a página de venda do Clássico) a
+    Shopify não dispara o evento "produto visto". O tema publica um evento próprio que o pixel do
+    Temalli CRM escuta, para a visita contar como produto visto.
+  {%- endcomment -%}
+  {%- assign v_inicial = p.selected_or_first_available_variant -%}
+  <script>
+    (function () {
+      var dados = {
+        produtoId: {{ p.id | json }},
+        produto: {{ p.title | json }},
+        variante: {{ v_inicial.title | json }},
+        valor: {{ v_inicial.price | divided_by: 100.0 | json }}
+      };
+      var tentativas = 0;
+      (function publicar() {
+        var a = window.Shopify && window.Shopify.analytics;
+        if (a && typeof a.publish === 'function') a.publish('temalli_produto_visto', dados);
+        else if (tentativas++ < 40) setTimeout(publicar, 250);
+      })();
+    })();
+  </script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "T • Compra do produto",
