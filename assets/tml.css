@@ -1200,3 +1200,7 @@ html.tml-ass-online .so-whats{display:none!important}
 @media(max-width:520px){.tml .m-linhas{grid-column:1/-1;border-top:1px solid var(--linha);padding-top:10px}
 .tml .m-linha{justify-content:space-between}
 .tml .m-linha>span{text-align:left}}
+html.tml-ass-online .m-resumo dl div.so-online{display:flex!important;align-items:baseline}
+.tml .m-online .m-resumo .m-total:not(.m-valor) dd{font-family:inherit;font-size:15px;font-weight:600}
+.tml .m-online .m-resumo .m-valor dt{opacity:1;font-weight:600}
+.tml .m-online .m-resumo .m-valor dd{font-size:3.36rem;color:var(--dourado-claro)}
