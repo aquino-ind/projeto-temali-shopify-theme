@@ -20,7 +20,7 @@
           "type": "coluna",
           "settings": {
             "titulo": "Ajuda",
-            "links": "Como preparar | /pages/como-preparar\nWhatsApp | whatsapp"
+            "links": "Como preparar | /pages/como-preparar\nMinhas assinaturas | /apps/temalli/minhas-assinaturas\nWhatsApp | whatsapp"
           }
         },
         "b3": {

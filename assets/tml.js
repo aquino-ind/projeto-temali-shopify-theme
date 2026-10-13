@@ -250,28 +250,57 @@
     });
   } catch(erro){ falhou('kit degustação', erro); }
 
-  // assinatura: monta o pedido e abre o WhatsApp com a mensagem pronta
+  // Assinatura pelo site: chamadas ao Temalli CRM pelo App Proxy da Shopify (/apps/temalli)
+  var ASSINATURA = {
+    config: function(){ return fetch('/apps/temalli/assinatura/config', {headers: {'Accept': 'application/json'}}).then(function(r){ if(!r.ok){ throw r; } return r.json(); }); },
+    criar: function(d){ return fetch('/apps/temalli/assinatura/criar', {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}, body: JSON.stringify(d)}).then(function(r){ return r.json(); }); }
+  };
+  // assinatura: monta o pedido. Com a assinatura pelo site ligada no CRM, paga com cartão (Asaas);
+  // desligada (ou se o CRM não responder), abre o WhatsApp com a mensagem pronta
   try {
+    var CICLO_DO_RADIO = { 'Mensal': 'MONTHLY', 'Bimestral': 'BIMONTHLY', 'Trimestral': 'QUARTERLY' };
     document.querySelectorAll('[data-assinatura]').forEach(function(m){
       var cafes = m.querySelectorAll('.m-cafe');
       var cta = m.querySelector('[data-assinar]');
       var aviso = m.querySelector('[data-aviso]');
+      var online = m.querySelector('[data-online]');
+      var pagar = m.querySelector('[data-pagar]');
+      var regras = null; // config do CRM quando a assinatura pelo site está ligada
+      var busca = new URLSearchParams(location.search);
+      var troca = busca.get('troca'), tokenTroca = busca.get('t');
       function estado(){
         return Array.prototype.map.call(cafes, function(c){
+          var formato = c.querySelector('[data-formato][aria-pressed="true"]').dataset.formato;
           return { nome: c.dataset.cafe, preco: parseFloat(c.dataset.preco),
-                   qtd: parseInt(c.querySelector('output').textContent, 10),
-                   formato: c.querySelector('[data-formato][aria-pressed="true"]').dataset.formato };
+                   qtd: parseInt(c.querySelector('output').textContent, 10), formato: formato,
+                   variante: formato === 'moído' ? c.dataset.varianteMoido : c.dataset.varianteGrao };
         }).filter(function(c){ return c.qtd > 0; });
+      }
+      function freqAtual(){ return m.querySelector('input[name="freq"]:checked'); }
+      function conta(itens){
+        var sub = itens.reduce(function(s, c){ return s + c.preco * c.qtd; }, 0);
+        var d = regras && regras.desconto, desc = 0;
+        if(d){ desc = d.tipo === 'percentual' ? sub * Math.min(d.valor, 100) / 100 : d.valor; desc = Math.round(Math.min(desc, sub) * 100) / 100; }
+        var frete = regras ? regras.frete.valor : 0;
+        return { sub: sub, desc: desc, frete: frete, total: Math.round((sub - desc + frete) * 100) / 100 };
       }
       function atualiza(){
         var itens = estado();
-        var freq = m.querySelector('input[name="freq"]:checked').value;
-        var total = itens.reduce(function(s, c){ return s + c.preco * c.qtd; }, 0);
+        var freq = freqAtual().value;
+        var c = conta(itens);
         m.querySelector('[data-resumo-itens]').innerHTML = itens.length
           ? itens.map(function(c){ return '<li><b>' + c.qtd + '×</b> ' + c.nome + ' <span>(' + c.formato + ')</span></li>'; }).join('')
           : '<li class="vazio">Nenhum café escolhido</li>';
         m.querySelector('[data-resumo-freq]').textContent = freq;
-        m.querySelector('[data-resumo-total]').textContent = brl(total);
+        m.querySelector('[data-resumo-total]').textContent = brl(c.sub);
+        if(regras){
+          var linhaDesc = m.querySelector('[data-resumo-desconto]');
+          linhaDesc.hidden = !c.desc;
+          linhaDesc.querySelector('dt').textContent = regras.desconto ? regras.desconto.motivo : 'Desconto';
+          linhaDesc.querySelector('dd').textContent = '−' + brl(c.desc);
+          m.querySelector('[data-resumo-frete]').textContent = c.frete ? regras.frete.nome + ' · ' + brl(c.frete) : 'Grátis';
+          m.querySelector('[data-resumo-valor]').textContent = brl(c.total);
+        }
         cafes.forEach(function(c){ c.classList.toggle('ativo', parseInt(c.querySelector('output').textContent, 10) > 0); });
         var msg = 'Olá! Quero fazer a assinatura Temalli.\n\nFrequência: ' + freq + '\nCafés em cada entrega:\n' +
           itens.map(function(c){ return '- ' + c.qtd + 'x ' + c.nome + ' (' + c.formato + ')'; }).join('\n') +
@@ -280,9 +309,10 @@
         cta.setAttribute('aria-disabled', itens.length ? 'false' : 'true');
         aviso.hidden = true;
       }
+      function mostrarAviso(t){ aviso.textContent = t; aviso.hidden = false; }
       m.addEventListener('click', function(e){
-        var b = e.target.closest('button'); if(!b || !m.contains(b)) return;
-        var cafe = b.closest('.m-cafe');
+        var b = e.target.closest('button'); if(!b || !m.contains(b) || b === pagar) return;
+        var cafe = b.closest('.m-cafe'); if(!cafe) return;
         if(b.hasAttribute('data-mais') || b.hasAttribute('data-menos')){
           var o = cafe.querySelector('output');
           o.textContent = Math.max(0, Math.min(10, parseInt(o.textContent, 10) + (b.hasAttribute('data-mais') ? 1 : -1)));
@@ -293,8 +323,53 @@
       });
       m.addEventListener('change', atualiza);
       cta.addEventListener('click', function(e){
-        if(cta.getAttribute('aria-disabled') === 'true'){ e.preventDefault(); aviso.hidden = false; }
+        if(cta.getAttribute('aria-disabled') === 'true'){ e.preventDefault(); mostrarAviso('Escolha pelo menos um café.'); }
       });
+
+      // Assinatura pelo site: o CRM diz se está ligada e com que desconto, frete e frequências
+      ASSINATURA.config().then(function(r){
+        if(!r || !r.ativo || !online){ return; }
+        regras = r;
+        m.classList.add('m-online');
+        document.documentElement.classList.add('tml-ass-online');
+        online.hidden = false;
+        var permitidos = (r.ciclos || []).map(function(c){ return c.valor; });
+        m.querySelectorAll('input[name="freq"]').forEach(function(i){
+          var ok = permitidos.indexOf(CICLO_DO_RADIO[i.value]) > -1;
+          i.closest('.opcao').hidden = !ok;
+          if(!ok && i.checked){ i.checked = false; }
+        });
+        if(!freqAtual()){ var primeiro = m.querySelector('.opcao:not([hidden]) input[name="freq"]'); if(primeiro){ primeiro.checked = true; } }
+        if(troca && tokenTroca){ var t = m.querySelector('[data-troca]'); if(t){ t.hidden = false; } }
+        atualiza();
+      }).catch(function(){ /* sem CRM: fica o WhatsApp */ });
+
+      if(pagar){
+        pagar.addEventListener('click', function(){
+          var itens = estado();
+          if(!itens.length){ mostrarAviso('Escolha pelo menos um café.'); return; }
+          var nome = online.querySelector('[name="nome"]').value.trim();
+          var whatsapp = online.querySelector('[name="whatsapp"]').value.trim();
+          var email = online.querySelector('[name="email"]').value.trim();
+          if(nome.length < 2){ mostrarAviso('Informe o seu nome.'); return; }
+          if(whatsapp.replace(/\D/g, '').length < 10){ mostrarAviso('Informe o WhatsApp com DDD.'); return; }
+          var texto = pagar.textContent;
+          pagar.disabled = true; pagar.textContent = 'Abrindo o pagamento…';
+          ASSINATURA.criar({
+            nome: nome, whatsapp: whatsapp, email: email,
+            ciclo: CICLO_DO_RADIO[freqAtual().value],
+            itens: itens.map(function(c){ return { varianteId: c.variante, quantidade: c.qtd }; }),
+            troca: troca, token: tokenTroca
+          }).then(function(r){
+            if(r && r.ok && r.url){ location.href = r.url; return; }
+            mostrarAviso((r && r.erro) || 'Não foi possível abrir o pagamento. Tente de novo ou fale com a gente no WhatsApp.');
+            pagar.disabled = false; pagar.textContent = texto;
+          }).catch(function(){
+            mostrarAviso('Não foi possível abrir o pagamento. Tente de novo ou fale com a gente no WhatsApp.');
+            pagar.disabled = false; pagar.textContent = texto;
+          });
+        });
+      }
       atualiza();
     });
   } catch(erro){ falhou('assinatura', erro); }

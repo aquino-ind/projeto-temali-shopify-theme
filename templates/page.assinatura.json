@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "s1": {
@@ -68,10 +59,19 @@
           "type": "passo",
           "settings": {
             "titulo": "Chame no WhatsApp",
-            "texto": "Sua escolha vai pronta na mensagem. A gente confirma os detalhes e o pagamento com você."
+            "texto": "Sua escolha vai pronta na mensagem. A gente confirma os detalhes e o pagamento com você.",
+            "modo": "whatsapp"
           }
         },
         "b4": {
+          "type": "passo",
+          "settings": {
+            "titulo": "Assine com cartão",
+            "texto": "Leva poucos minutos. As próximas entregas são cobradas no mesmo cartão, sem você precisar lembrar.",
+            "modo": "online"
+          }
+        },
+        "b5": {
           "type": "passo",
           "settings": {
             "titulo": "Receba em casa",
@@ -83,7 +83,8 @@
         "b1",
         "b2",
         "b3",
-        "b4"
+        "b4",
+        "b5"
       ]
     },
     "s3": {
@@ -129,24 +130,50 @@
           "type": "pergunta",
           "settings": {
             "pergunta": "Por que a assinatura é feita pelo WhatsApp?",
-            "resposta": "<p>Para ser do seu jeito. Pelo WhatsApp a gente combina com você os cafés, a frequência, o melhor dia de envio e a forma de pagamento, com atendimento de uma pessoa da equipe e não de um robô.</p>"
+            "resposta": "<p>Para ser do seu jeito. Pelo WhatsApp a gente combina com você os cafés, a frequência, o melhor dia de envio e a forma de pagamento, com atendimento de uma pessoa da equipe e não de um robô.</p>",
+            "modo": "whatsapp"
           }
         },
         "b2": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Como funciona o pagamento?",
+            "resposta": "<p>Você paga com cartão de crédito no ambiente seguro do Asaas, e cada nova entrega é cobrada no mesmo cartão, na frequência que escolheu. Os dados do cartão não passam pela loja.</p>",
+            "modo": "online"
+          }
+        },
+        "b3": {
           "type": "pergunta",
           "settings": {
             "pergunta": "O frete é grátis mesmo?",
             "resposta": "<p>Sim. Na assinatura, todas as entregas têm frete grátis.</p>"
           }
         },
-        "b3": {
+        "b4": {
           "type": "pergunta",
           "settings": {
             "pergunta": "Posso trocar os cafés ou a frequência depois?",
-            "resposta": "<p>Pode. É só mandar uma mensagem no WhatsApp antes do próximo envio.</p>"
+            "resposta": "<p>Pode. É só mandar uma mensagem no WhatsApp antes do próximo envio.</p>",
+            "modo": "whatsapp"
           }
         },
-        "b4": {
+        "b5": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Posso trocar os cafés ou a quantidade depois?",
+            "resposta": "<p>Pode. Em <a href=\"/apps/temalli/minhas-assinaturas\">Minhas assinaturas</a> você monta a assinatura nova e paga com o cartão. Quando o pagamento dela é aprovado, a atual é cancelada sozinha.</p>",
+            "modo": "online"
+          }
+        },
+        "b6": {
+          "type": "pergunta",
+          "settings": {
+            "pergunta": "Como cancelo a assinatura?",
+            "resposta": "<p>Em <a href=\"/apps/temalli/minhas-assinaturas\">Minhas assinaturas</a>, quando quiser. As próximas cobranças deixam de ser feitas, e um pedido já pago segue para a entrega normalmente. Para entrar, você recebe um link no WhatsApp da assinatura.</p>",
+            "modo": "online"
+          }
+        },
+        "b7": {
           "type": "pergunta",
           "settings": {
             "pergunta": "Qual frequência escolher?",
@@ -158,7 +185,10 @@
         "b1",
         "b2",
         "b3",
-        "b4"
+        "b4",
+        "b5",
+        "b6",
+        "b7"
       ]
     },
     "s6": {

@@ -6,7 +6,14 @@
         <h2>{{ section.settings.titulo }}</h2>
       </div>
       <ol class="passos reveal">
-        {%- for block in section.blocks -%}<li {{ block.shopify_attributes }}><b>{{ forloop.index }}</b><h3>{{ block.settings.titulo }}</h3><p>{{ block.settings.texto }}</p></li>{%- endfor -%}
+        {%- comment -%} modo: um passo pode valer só com a assinatura pelo site ligada (online) ou só desligada (WhatsApp); a numeração de cada modo é própria {%- endcomment -%}
+        {%- assign nw = 0 -%}{%- assign no = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- assign modo = block.settings.modo | default: 'sempre' -%}
+          {%- unless modo == 'online' -%}{%- assign nw = nw | plus: 1 -%}{%- endunless -%}
+          {%- unless modo == 'whatsapp' -%}{%- assign no = no | plus: 1 -%}{%- endunless -%}
+          <li {{ block.shopify_attributes }}{% if modo == 'whatsapp' %} class="so-whats"{% elsif modo == 'online' %} class="so-online"{% endif %}><b>{%- if modo == 'whatsapp' -%}{{ nw }}{%- elsif modo == 'online' -%}{{ no }}{%- elsif nw == no -%}{{ nw }}{%- else -%}<span class="so-whats">{{ nw }}</span><span class="so-online">{{ no }}</span>{%- endif -%}</b><h3>{{ block.settings.titulo }}</h3><p>{{ block.settings.texto }}</p></li>
+        {%- endfor -%}
       </ol>
     </div>
   </section>
@@ -21,9 +28,10 @@
   ],
   "blocks": [ { "type": "passo", "name": "Passo", "settings": [
     { "type": "text", "id": "titulo", "label": "Título" },
-    { "type": "textarea", "id": "texto", "label": "Texto" }
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "select", "id": "modo", "label": "Mostrar", "options": [ { "value": "sempre", "label": "Sempre" }, { "value": "whatsapp", "label": "Só com a assinatura pelo WhatsApp" }, { "value": "online", "label": "Só com a assinatura pelo site (cartão)" } ], "default": "sempre", "info": "A assinatura pelo site é ligada no Temalli CRM." }
   ]}],
-  "max_blocks": 4,
+  "max_blocks": 6,
   "presets": [ { "name": "T • Passo a passo" } ]
 }
 {% endschema %}

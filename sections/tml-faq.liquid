@@ -5,7 +5,8 @@
       <span class="eyebrow">{{ section.settings.eyebrow }}</span>
       <h2>{{ section.settings.titulo }}</h2>
       {%- for block in section.blocks -%}
-        <details {{ block.shopify_attributes }}>
+        {%- assign modo = block.settings.modo | default: 'sempre' -%}
+        <details {{ block.shopify_attributes }}{% if modo == 'whatsapp' %} class="so-whats"{% elsif modo == 'online' %} class="so-online"{% endif %}>
           <summary>{{ block.settings.pergunta }}</summary>
           <div class="resp">{% render 'tml-texto', t: block.settings.resposta, p: prod %}</div>
         </details>
@@ -15,7 +16,7 @@
 </div>
 {%- if section.settings.dados_estruturados and section.blocks.size > 0 -%}
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{%- for block in section.blocks -%}{"@type":"Question","name":{{ block.settings.pergunta | json }},"acceptedAnswer":{"@type":"Answer","text":{% capture r %}{% render 'tml-texto', t: block.settings.resposta, p: prod %}{% endcapture %}{{ r | strip_html | json }}}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{%- assign sep = '' -%}{%- for block in section.blocks -%}{%- if block.settings.modo == 'online' -%}{%- continue -%}{%- endif -%}{{ sep }}{%- assign sep = ',' -%}{"@type":"Question","name":{{ block.settings.pergunta | json }},"acceptedAnswer":{"@type":"Answer","text":{% capture r %}{% render 'tml-texto', t: block.settings.resposta, p: prod %}{% endcapture %}{{ r | strip_html | json }}}}{%- endfor -%}]}
 </script>
 {%- endif -%}
 
@@ -31,7 +32,8 @@
   "blocks": [
     { "type": "pergunta", "name": "Pergunta", "settings": [
       { "type": "text", "id": "pergunta", "label": "Pergunta" },
-      { "type": "richtext", "id": "resposta", "label": "Resposta", "info": "Em página de produto, aceita {preco}, {kit}, {kit_de}, {kit_un}, {economia}, calculados pelo preço cadastrado." }
+      { "type": "richtext", "id": "resposta", "label": "Resposta", "info": "Em página de produto, aceita {preco}, {kit}, {kit_de}, {kit_un}, {economia}, calculados pelo preço cadastrado." },
+      { "type": "select", "id": "modo", "label": "Mostrar", "options": [ { "value": "sempre", "label": "Sempre" }, { "value": "whatsapp", "label": "Só com a assinatura pelo WhatsApp" }, { "value": "online", "label": "Só com a assinatura pelo site (cartão)" } ], "default": "sempre", "info": "A assinatura pelo site é ligada no Temalli CRM." }
     ]}
   ],
   "presets": [ { "name": "T • Perguntas frequentes" } ]

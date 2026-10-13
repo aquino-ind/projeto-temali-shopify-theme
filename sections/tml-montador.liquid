@@ -4,7 +4,8 @@
       <div class="centro reveal">
         <span class="eyebrow">{{ section.settings.eyebrow }}</span>
         <h2>{{ section.settings.titulo }}</h2>
-        <p class="lead">{{ section.settings.texto }}</p>
+        <p class="lead so-whats">{{ section.settings.texto }}</p>
+        <p class="lead so-online">{{ section.settings.texto_online }}</p>
       </div>
 
       <div class="montador" data-assinatura data-whats="{{ settings.tml_whats_numero }}">
@@ -14,7 +15,14 @@
             {%- for block in section.blocks -%}
               {%- assign p = block.settings.produto -%}
               {%- if p != blank -%}
-                <div class="m-cafe {{ block.settings.estilo }}" data-cafe="{{ block.settings.nome }} {{ block.settings.peso }}" data-preco="{{ p.price | divided_by: 100.0 }}" {{ block.shopify_attributes }}>
+                {%- comment -%} Variantes de grão e moído (o pagamento pelo site manda a variante escolhida) {%- endcomment -%}
+                {%- assign v_grao = p.selected_or_first_available_variant.id -%}
+                {%- assign v_moido = v_grao -%}
+                {%- for v in p.variants -%}
+                  {%- assign t = v.title | downcase -%}
+                  {%- if t contains 'mo' -%}{%- assign v_moido = v.id -%}{%- else -%}{%- assign v_grao = v.id -%}{%- endif -%}
+                {%- endfor -%}
+                <div class="m-cafe {{ block.settings.estilo }}" data-cafe="{{ block.settings.nome }} {{ block.settings.peso }}" data-preco="{{ p.price | divided_by: 100.0 }}" data-variante-grao="{{ v_grao }}" data-variante-moido="{{ v_moido }}" {{ block.shopify_attributes }}>
                   {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}
                   <div class="m-info">
                     <b>{{ block.settings.nome }}{% if block.settings.selo != blank %} <span class="m-novo">{{ block.settings.selo }}</span>{% endif %}</b>
@@ -50,12 +58,24 @@
           <ul data-resumo-itens></ul>
           <dl>
             <div><dt>Frequência</dt><dd data-resumo-freq>Mensal</dd></div>
-            <div><dt>Frete</dt><dd class="m-gratis">Grátis</dd></div>
             <div class="m-total"><dt>Cafés por entrega</dt><dd data-resumo-total></dd></div>
+            <div class="m-desconto" data-resumo-desconto hidden><dt>Assinante</dt><dd></dd></div>
+            <div><dt>Frete</dt><dd class="m-gratis" data-resumo-frete>Grátis</dd></div>
+            <div class="m-total so-online"><dt>Valor por entrega</dt><dd data-resumo-valor></dd></div>
           </dl>
-          <p class="m-obs">{{ section.settings.obs }}</p>
+          <p class="m-obs so-whats">{{ section.settings.obs }}</p>
+          <p class="m-obs so-online">{{ section.settings.obs_online }}</p>
+          <div class="m-pagar" data-online hidden>
+            <p class="m-troca" data-troca hidden>{{ section.settings.troca_texto }}</p>
+            <label class="m-campo"><span>Seu nome</span><input name="nome" autocomplete="name" required></label>
+            <label class="m-campo"><span>WhatsApp com DDD</span><input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 98765-4321" required></label>
+            <label class="m-campo"><span>E-mail <small>(opcional)</small></span><input name="email" type="email" autocomplete="email"></label>
+            <button type="button" class="btn btn-bloco" data-pagar>{% render 'tml-icone', nome: 'cadeado' %} Assinar com cartão</button>
+            <p class="micro">{{ section.settings.pagar_micro }}</p>
+            <p class="m-ou">ou, se preferir conversar antes</p>
+          </div>
           <a href="#" class="btn btn-bloco btn-whats" data-assinar target="_blank" rel="noopener">{% render 'tml-icone', nome: 'whats' %} Assinar pelo WhatsApp</a>
-          <p class="m-aviso" data-aviso hidden>Escolha pelo menos um café.</p>
+          <p class="m-aviso" data-aviso role="alert" hidden>Escolha pelo menos um café.</p>
           <p class="micro" style="text-align:center">Atendimento humano: {{ settings.tml_whats_horario }}</p>
         </aside>
       </div>
@@ -71,7 +91,12 @@
     { "type": "text", "id": "titulo", "label": "Título", "default": "Do seu jeito, no seu ritmo" },
     { "type": "textarea", "id": "texto", "label": "Texto", "default": "Escolha abaixo e clique em “Assinar pelo WhatsApp”. A mensagem já vai pronta." },
     { "type": "inline_richtext", "id": "dica", "label": "Dica de consumo", "default": "<b>Quanto café eu preciso?</b> Cada xícara usa cerca de 10g. Quem toma 2 xícaras por dia gasta uns 600g por mês, ou seja, 1 Clássico e 1 Arara." },
-    { "type": "text", "id": "obs", "label": "Observação sobre o valor", "default": "Valor dos cafés pelo preço do site. O valor final e a forma de pagamento são confirmados no WhatsApp." }
+    { "type": "text", "id": "obs", "label": "Observação sobre o valor", "default": "Valor dos cafés pelo preço do site. O valor final e a forma de pagamento são confirmados no WhatsApp." },
+    { "type": "header", "content": "Assinatura pelo site (ligada no Temalli CRM)" },
+    { "type": "textarea", "id": "texto_online", "label": "Texto", "default": "Escolha os cafés e a frequência e assine com cartão. Em Minhas assinaturas você troca ou cancela quando quiser." },
+    { "type": "text", "id": "obs_online", "label": "Observação sobre o valor", "default": "Valor de cada entrega, já com o desconto de assinante. As próximas entregas são cobradas no mesmo cartão." },
+    { "type": "text", "id": "pagar_micro", "label": "Texto abaixo do botão", "default": "Pagamento seguro pelo Asaas. Os dados do cartão não passam pela loja." },
+    { "type": "text", "id": "troca_texto", "label": "Aviso de troca", "default": "Você está trocando a sua assinatura atual. Quando o pagamento desta for aprovado, a atual é cancelada sozinha." }
   ],
   "blocks": [ { "type": "cafe", "name": "Café", "settings": [
     { "type": "product", "id": "produto", "label": "Produto" },

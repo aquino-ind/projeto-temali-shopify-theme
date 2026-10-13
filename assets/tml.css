@@ -1175,3 +1175,20 @@ body.tpl-arara .tml .gav-up-btn{color:var(--mata-fundo)}
 .tml .av-topo,.tml .av-filtros{flex-shrink:0}
 /* editor da Shopify: seções sempre visíveis (a seção recarregada não passa pelo revelar ao rolar) */
 .shopify-design-mode .tml .reveal{opacity:1;transform:none}
+.tml .so-online{display:none!important}
+html.tml-ass-online .so-online{display:revert!important}
+html.tml-ass-online .so-whats{display:none!important}
+.tml .m-freq .opcao[hidden],.tml .m-pagar[hidden],.tml .m-troca[hidden],.tml .m-desconto[hidden]{display:none}
+.tml .m-desconto dd{color:#5BD39A}
+.tml .m-pagar{display:grid;gap:10px;margin:14px 0 8px}
+.tml .m-campo{display:grid;gap:5px;font-size:13px;font-weight:600;color:inherit}
+.tml .m-campo small{font-weight:400;opacity:.7}
+.tml .m-campo input{font:inherit;font-size:16px;font-weight:400;padding:12px 14px;border:1px solid var(--linha);border-radius:10px;background:#fff;color:var(--tinta);width:100%;box-sizing:border-box}
+.tml .m-campo input:focus{outline:3px solid var(--dourado);outline-offset:1px}
+.tml .m-troca{margin:0;background:var(--creme-2);color:var(--tinta);border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.45}
+.tml .m-pagar .micro{margin:0;text-align:center}
+.tml .m-ou{margin:4px 0 0;text-align:center;font-size:13px;color:rgba(243,239,230,.7)}
+.tml .m-pagar [data-pagar]{background:var(--acento-luz);color:var(--acento-fundo)}
+.tml .m-pagar [data-pagar] svg{width:20px;height:20px;flex-shrink:0}
+.tml .m-online .m-resumo .btn-whats{background:transparent;color:var(--creme);border:1.5px solid rgba(243,239,230,.5);box-shadow:none}
+.tml .m-pagar .btn[disabled]{opacity:.7;cursor:progress;transform:none}
