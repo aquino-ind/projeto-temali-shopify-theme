@@ -268,13 +268,17 @@
       var regras = null; // config do CRM quando a assinatura pelo site está ligada
       var busca = new URLSearchParams(location.search);
       var troca = busca.get('troca'), tokenTroca = busca.get('t');
+      // Cada café tem uma linha por formato (grão, moído), cada uma com a sua quantidade
+      function qtdDe(linha){ return parseInt(linha.querySelector('output').textContent, 10) || 0; }
       function estado(){
-        return Array.prototype.map.call(cafes, function(c){
-          var formato = c.querySelector('[data-formato][aria-pressed="true"]').dataset.formato;
-          return { nome: c.dataset.cafe, preco: parseFloat(c.dataset.preco),
-                   qtd: parseInt(c.querySelector('output').textContent, 10), formato: formato,
-                   variante: formato === 'moído' ? c.dataset.varianteMoido : c.dataset.varianteGrao };
-        }).filter(function(c){ return c.qtd > 0; });
+        var itens = [];
+        cafes.forEach(function(c){
+          c.querySelectorAll('.m-linha').forEach(function(l){
+            var q = qtdDe(l);
+            if(q > 0){ itens.push({ nome: c.dataset.cafe, preco: parseFloat(c.dataset.preco), qtd: q, formato: l.dataset.formato, variante: l.dataset.variante }); }
+          });
+        });
+        return itens;
       }
       function freqAtual(){ return m.querySelector('input[name="freq"]:checked'); }
       function conta(itens){
@@ -301,7 +305,7 @@
           m.querySelector('[data-resumo-frete]').textContent = c.frete ? regras.frete.nome + ' · ' + brl(c.frete) : 'Grátis';
           m.querySelector('[data-resumo-valor]').textContent = brl(c.total);
         }
-        cafes.forEach(function(c){ c.classList.toggle('ativo', parseInt(c.querySelector('output').textContent, 10) > 0); });
+        cafes.forEach(function(c){ c.classList.toggle('ativo', Array.prototype.some.call(c.querySelectorAll('.m-linha'), function(l){ return qtdDe(l) > 0; })); });
         var msg = 'Olá! Quero fazer a assinatura Temalli.\n\nFrequência: ' + freq + '\nCafés em cada entrega:\n' +
           itens.map(function(c){ return '- ' + c.qtd + 'x ' + c.nome + ' (' + c.formato + ')'; }).join('\n') +
           '\n\nPode me passar os próximos passos?';
@@ -312,12 +316,10 @@
       function mostrarAviso(t){ aviso.textContent = t; aviso.hidden = false; }
       m.addEventListener('click', function(e){
         var b = e.target.closest('button'); if(!b || !m.contains(b) || b === pagar) return;
-        var cafe = b.closest('.m-cafe'); if(!cafe) return;
+        var linha = b.closest('.m-linha'); if(!linha) return;
         if(b.hasAttribute('data-mais') || b.hasAttribute('data-menos')){
-          var o = cafe.querySelector('output');
-          o.textContent = Math.max(0, Math.min(10, parseInt(o.textContent, 10) + (b.hasAttribute('data-mais') ? 1 : -1)));
-        } else if(b.dataset.formato){
-          cafe.querySelectorAll('[data-formato]').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          var o = linha.querySelector('output');
+          o.textContent = Math.max(0, Math.min(10, qtdDe(linha) + (b.hasAttribute('data-mais') ? 1 : -1)));
         }
         atualiza();
       });

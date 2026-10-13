@@ -22,20 +22,32 @@
                   {%- assign t = v.title | downcase -%}
                   {%- if t contains 'mo' -%}{%- assign v_moido = v.id -%}{%- else -%}{%- assign v_grao = v.id -%}{%- endif -%}
                 {%- endfor -%}
-                <div class="m-cafe {{ block.settings.estilo }}" data-cafe="{{ block.settings.nome }} {{ block.settings.peso }}" data-preco="{{ p.price | divided_by: 100.0 }}" data-variante-grao="{{ v_grao }}" data-variante-moido="{{ v_moido }}" {{ block.shopify_attributes }}>
+                <div class="m-cafe {{ block.settings.estilo }}" data-cafe="{{ block.settings.nome }} {{ block.settings.peso }}" data-preco="{{ p.price | divided_by: 100.0 }}" {{ block.shopify_attributes }}>
                   {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}
                   <div class="m-info">
                     <b>{{ block.settings.nome }}{% if block.settings.selo != blank %} <span class="m-novo">{{ block.settings.selo }}</span>{% endif %}</b>
                     <small>{{ block.settings.peso }} • {{ block.settings.notas }} • {{ p.price | money }}</small>
-                    <div class="m-formato" role="group" aria-label="Formato do {{ block.settings.nome }}">
-                      <button type="button" data-formato="grão" aria-pressed="true">Grão</button>
-                      <button type="button" data-formato="moído" aria-pressed="false">Moído</button>
-                    </div>
                   </div>
-                  <div class="m-qtd">
-                    <button type="button" data-menos aria-label="Menos um {{ block.settings.nome }}">−</button>
-                    <output aria-live="polite">{{ block.settings.qtd }}</output>
-                    <button type="button" data-mais aria-label="Mais um {{ block.settings.nome }}">+</button>
+                  {%- comment -%} Uma linha por formato: dá para pedir grão e moído do mesmo café {%- endcomment -%}
+                  <div class="m-linhas">
+                    <div class="m-linha" data-formato="grão" data-variante="{{ v_grao }}">
+                      <span>{% if v_moido == v_grao %}Quantidade{% else %}Grão{% endif %}</span>
+                      <div class="m-qtd">
+                        <button type="button" data-menos aria-label="Menos um {{ block.settings.nome }} em grão">−</button>
+                        <output aria-live="polite">{{ block.settings.qtd }}</output>
+                        <button type="button" data-mais aria-label="Mais um {{ block.settings.nome }} em grão">+</button>
+                      </div>
+                    </div>
+                    {%- if v_moido != v_grao -%}
+                    <div class="m-linha" data-formato="moído" data-variante="{{ v_moido }}">
+                      <span>Moído</span>
+                      <div class="m-qtd">
+                        <button type="button" data-menos aria-label="Menos um {{ block.settings.nome }} moído">−</button>
+                        <output aria-live="polite">0</output>
+                        <button type="button" data-mais aria-label="Mais um {{ block.settings.nome }} moído">+</button>
+                      </div>
+                    </div>
+                    {%- endif -%}
                   </div>
                 </div>
               {%- endif -%}
@@ -95,7 +107,7 @@
     { "type": "header", "content": "Assinatura pelo site (ligada no Temalli CRM)" },
     { "type": "textarea", "id": "texto_online", "label": "Texto", "default": "Escolha os cafés e a frequência e assine com cartão. Em Minhas assinaturas você troca ou cancela quando quiser." },
     { "type": "text", "id": "obs_online", "label": "Observação sobre o valor", "default": "Valor de cada entrega, já com o desconto de assinante. As próximas entregas são cobradas no mesmo cartão." },
-    { "type": "text", "id": "pagar_micro", "label": "Texto abaixo do botão", "default": "Pagamento seguro pelo Asaas. Os dados do cartão não passam pela loja." },
+    { "type": "text", "id": "pagar_micro", "label": "Texto abaixo do botão", "default": "Pagamento seguro pelo Asaas." },
     { "type": "text", "id": "troca_texto", "label": "Aviso de troca", "default": "Você está trocando a sua assinatura atual. Quando o pagamento desta for aprovado, a atual é cancelada sozinha." }
   ],
   "blocks": [ { "type": "cafe", "name": "Café", "settings": [
@@ -105,7 +117,7 @@
     { "type": "text", "id": "notas", "label": "Notas", "default": "caramelo, chocolate, frutas" },
     { "type": "text", "id": "selo", "label": "Selo (ex.: Novo)" },
     { "type": "select", "id": "estilo", "label": "Cor", "options": [ { "value": "classico", "label": "Azul (Clássico)" }, { "value": "arara", "label": "Verde (Arara)" } ], "default": "classico" },
-    { "type": "range", "id": "qtd", "label": "Quantidade inicial", "min": 0, "max": 5, "step": 1, "default": 0 }
+    { "type": "range", "id": "qtd", "label": "Quantidade inicial (grão)", "min": 0, "max": 5, "step": 1, "default": 0 }
   ]}],
   "max_blocks": 4,
   "presets": [ { "name": "Montador da assinatura" } ]

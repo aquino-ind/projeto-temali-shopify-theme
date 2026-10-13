@@ -1192,3 +1192,11 @@ html.tml-ass-online .so-whats{display:none!important}
 .tml .m-pagar [data-pagar] svg{width:20px;height:20px;flex-shrink:0}
 .tml .m-online .m-resumo .btn-whats{background:transparent;color:var(--creme);border:1.5px solid rgba(243,239,230,.5);box-shadow:none}
 .tml .m-pagar .btn[disabled]{opacity:.7;cursor:progress;transform:none}
+.tml .m-linhas{display:grid;gap:8px}
+.tml .m-linha{display:flex;align-items:center;justify-content:flex-end;gap:10px}
+.tml .m-linha>span{font-size:13px;font-weight:600;color:var(--tinta-2);min-width:50px;text-align:right}
+.tml .m-linha .m-qtd{padding:2px}
+.tml .m-linha .m-qtd button{width:34px;height:34px}
+@media(max-width:520px){.tml .m-linhas{grid-column:1/-1;border-top:1px solid var(--linha);padding-top:10px}
+.tml .m-linha{justify-content:space-between}
+.tml .m-linha>span{text-align:left}}
